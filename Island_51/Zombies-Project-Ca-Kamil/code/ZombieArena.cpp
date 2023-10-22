@@ -7,6 +7,7 @@
 #include "TextureHolder.h"
 #include "Bullet.h"
 #include "Pickup.h"
+#include "LevelManager.h"
 
 using namespace sf;
 
@@ -49,8 +50,11 @@ int main()
 	// The boundaries of the arena
 	IntRect arena;
 
+	
+
 	// Create the background
 	VertexArray background;
+
 	// Load the texture for our background vertex array
 	Texture textureBackground = TextureHolder::GetTexture(
 		"graphics/background_sheet.png");
@@ -683,7 +687,7 @@ int main()
 
 				// Pass the vertex array by reference 
 				// to the createBackground function
-				int tileSize = createBackground(background, arena);
+				int tileSize = loadLevel(background);
 
 				// Spawn the player in the middle of the arena
 				player.spawn(arena, resolution, tileSize);

@@ -3,5 +3,5 @@
 
 using namespace sf;
 
-int createBackground(VertexArray& rVA, IntRect arena);
+int loadLevel(VertexArray& rVA);
 Zombie* createHorde(int numZombies, IntRect arena);
