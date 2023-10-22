@@ -1,0 +1,150 @@
+﻿  Bullet.cpp
+  CreateBackground.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(30,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(30,49): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(31,78): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(31,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(32,92): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(32,63): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(33,80): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(33,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(52,54): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(53,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(54,70): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateBackground.cpp(55,62): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  CreateHorde.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(25,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(26,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(31,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(32,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(37,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(38,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(43,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Pickup.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Pickup.cpp(37,20): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Pickup.cpp(38,20): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Pickup.cpp(66,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Pickup.cpp(66,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Pickup.cpp(124,34): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Pickup.cpp(128,32): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Pickup.cpp(132,33): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  Player.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(7,13): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(8,16): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(23,13): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(24,16): warning C4244: '=': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(30,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(31,30): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(163,32): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(168,31): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(173,33): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(178,30): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(182,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Player.cpp(192,26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  TextureHolder.cpp
+  Zombie.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(59,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(173,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  ZombieArena.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(27,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(28,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(30,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(30,42): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(77,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(91,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(892,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+  Zombies-Project-Ca-Kamil.vcxproj -> C:\Users\Admin\Documents\GitHub\Island51\Island_51\Debug\Zombies-Project-Ca-Kamil.exe
