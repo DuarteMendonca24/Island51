@@ -684,10 +684,11 @@ int main()
 				arena.height = 500 * wave;
 				arena.left = 0;
 				arena.top = 0;
-
+				LevelManager lvlManager;
 				// Pass the vertex array by reference 
+				
 				// to the createBackground function
-				int tileSize = loadLevel(background);
+				int tileSize = lvlManager.loadLevel(background);
 
 				// Spawn the player in the middle of the arena
 				player.spawn(arena, resolution, tileSize);

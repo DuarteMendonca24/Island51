@@ -22,7 +22,63 @@ int LevelManager::loadLevel(VertexArray& rVaLevel)
 	m_StartPosition.x = 100;
 	m_StartPosition.y = 100; 
 
-	int** arrayLevel = getBackgroundArray();
+	ifstream inputFile(MAP_NAME);
+	ofstream outputFile(NEW_MAP_NAME);
+	string s;
+
+	// Count the number of rows in the file
+	while (getline(inputFile, s))
+	{
+		++m_LevelSize.y;
+	}
+
+	// Store the length of the rows
+	m_LevelSize.x = s.length();
+
+	// Go back to the start of the file
+	inputFile.clear();
+	inputFile.seekg(0, ios::beg);
+
+	// Prepare the 2d array to hold the int values from the file
+	int** arrayLevel = new int* [m_LevelSize.y];
+	for (int i = 0; i < m_LevelSize.y; ++i)
+	{
+		// Add a new array into each array element
+		arrayLevel[i] = new int[m_LevelSize.x];
+	}
+
+	// Loop through the file and store all the values in the 2d array
+	string row;
+	int y = 0;
+	while (inputFile >> row)
+	{
+		for (int x = 0; x < row.length(); x++) {
+
+			char val = row[x];
+
+			//Check if tile is a resource or a grass tile
+			if (val == '6')
+			{
+				val = randomiseTile(val);
+			}
+			else if (val == '1')
+			{
+				val = randomiseGrassTile(val);
+			}
+			cout << val << " ";
+			arrayLevel[y][x] = atoi(&val);
+			outputFile << val;
+
+		}
+		outputFile << "\n";
+		y++;
+	}
+
+	// close the input file
+	inputFile.close();
+
+	// close the output file
+	outputFile.close();
 	
 
 	// What type of primitive are we using?
@@ -101,65 +157,7 @@ Vector2f LevelManager::getStartPosition()
 	return m_StartPosition;
 }
 
-int** LevelManager::getBackgroundArray(){
-	ifstream inputFile(MAP_NAME);
-	ifstream outputFile(NEW_MAP_NAME);
-	string s;
 
-	// Count the number of rows in the file
-	while (getline(inputFile, s))
-	{
-		++m_LevelSize.y;
-	}
-
-	// Store the length of the rows
-	m_LevelSize.x = s.length();
-
-	// Go back to the start of the file
-	inputFile.clear();
-	inputFile.seekg(0, ios::beg);
-
-	// Prepare the 2d array to hold the int values from the file
-	int** arrayLevel = new int*[m_LevelSize.y];
-	for (int i = 0; i < m_LevelSize.y; ++i)
-	{
-		// Add a new array into each array element
-		arrayLevel[i] = new int[m_LevelSize.x];
-	}
-
-	// Loop through the file and store all the values in the 2d array
-	string row;
-	int y = 0;
-	while (inputFile >> row)
-	{
-		for (int x = 0; x < row.length(); x++) {
-
-			char val = row[x];
-
-			//Check if tile is a resource or a grass tile
-			if (val == '6')
-			{
-				val = randomiseTile(val);
-			}
-			else if (val == '1')
-			{
-				val = randomiseGrassTile(val);
-			}
-			cout << val << " ";
-			arrayLevel[y][x] = atoi(&val);
-			outputFile>>val;
-
-		}
-		outputFile>>"\n";
-		y++;
-	}
-
-	// close the input file
-	inputFile.close();
-
-	// close the output file
-	outputFile.close();
-}
 
 char LevelManager::randomiseTile(char tile)
 {

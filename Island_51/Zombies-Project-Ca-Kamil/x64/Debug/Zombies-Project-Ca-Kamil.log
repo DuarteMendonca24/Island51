@@ -1,0 +1,107 @@
+﻿  LevelManager.cpp
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(14,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(36,28): warning C4267: '=': conversion from 'size_t' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(99,31): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(99,16): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(102,45): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(102,30): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(105,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(105,30): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(108,47): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(108,17): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(114,19): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(117,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(117,14): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(120,35): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(120,14): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(123,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  ZombieArena.cpp
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(28,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(29,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(31,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(31,42): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(81,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(95,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(897,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+  Zombies-Project-Ca-Kamil.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51\x64\Debug\Zombies-Project-Ca-Kamil.exe

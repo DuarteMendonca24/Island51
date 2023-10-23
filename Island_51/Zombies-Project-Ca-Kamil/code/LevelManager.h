@@ -35,7 +35,7 @@ public:
 
 	int getCurrentLevel();
 
-	int** getBackgroundArray();
+
 	char randomiseTile(char tile);
 
 	char randomiseGrassTile(char tile);
