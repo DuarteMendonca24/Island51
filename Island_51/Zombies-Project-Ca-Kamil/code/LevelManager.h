@@ -29,8 +29,9 @@ public:
 
 	int loadLevel(VertexArray& rVaLevel);
 	
-
 	Vector2i getLevelSize();
+
+	int getTileSize();
 
 	int getCurrentLevel();
 
