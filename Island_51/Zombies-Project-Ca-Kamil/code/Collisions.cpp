@@ -1,11 +1,11 @@
 #include "Collisions.h"
 
 
-bool Collisions::checkCollisions(FloatRect objectOne, FloatRect objectTwo)
+bool Collisions::checkCollisions(FloatRect hitBoxOne, FloatRect hitBoxTwo)
 {
     bool objectsColliding;
 
-    if(objectOne.intersects(objectTwo))
+    if(hitBoxOne.intersects(hitBoxTwo))
     {
         objectsColliding = true;
     }
@@ -16,7 +16,7 @@ bool Collisions::checkCollisions(FloatRect objectOne, FloatRect objectTwo)
     return objectsColliding;
 }
 
-Vector2f Collisions::findMidPointOfObjects(FloatRect objectOne, FloatRect objectTwo)
+Vector2f Collisions::findMidPointOfObjects(FloatRect hitBoxOne, FloatRect hitBoxTwo)
 {
     //Uninitialised midpoint variables
     Vector2f midPointOfObjectOne;
@@ -27,21 +27,22 @@ Vector2f Collisions::findMidPointOfObjects(FloatRect objectOne, FloatRect object
     Vector2f positionOfObjectTwo;
 
     //Getting Top Left Coordinates of the rectangle one
-    positionOfObjectOne.x = objectOne.left;
-    positionOfObjectOne.y = objectOne.top;
+    positionOfObjectOne.x = hitBoxOne.left;
+    positionOfObjectOne.y = hitBoxOne.top;
 
     //Getting Top Left Coordinates of the rectangle one
-    positionOfObjectTwo.x = objectTwo.left;
-    positionOfObjectTwo.y = objectTwo.top;
+    positionOfObjectTwo.x = hitBoxTwo.left;
+    positionOfObjectTwo.y = hitBoxTwo.top;
 
     //Gathering Midpoints of each rectangle
     //Object 1
-    midPointOfObjectOne.x = positionOfObjectOne.x + (objectOne.width / 2.0f);
-    midPointOfObjectOne.y = positionOfObjectOne.y + (objectOne.height / 2.0f);
+    midPointOfObjectOne.x = positionOfObjectOne.x + (hitBoxOne.width / 2.0f);
+    midPointOfObjectOne.y = positionOfObjectOne.y + (hitBoxOne.height / 2.0f);
     //Object 2
-    midPointOfObjectTwo.x = positionOfObjectTwo.x + (objectTwo.width / 2.0f);
-    midPointOfObjectTwo.y = positionOfObjectTwo.y + (objectTwo.height / 2.0f);
+    midPointOfObjectTwo.x = positionOfObjectTwo.x + (hitBoxTwo.width / 2.0f);
+    midPointOfObjectTwo.y = positionOfObjectTwo.y + (hitBoxTwo.height / 2.0f);
 
+    //Creating a vector2f to save the coordinates of the midpoint of between the two hitboxes
     Vector2f midPointOfObjects;
 
     midPointOfObjects.x = (midPointOfObjectOne.x + midPointOfObjectTwo.x) / 2;
