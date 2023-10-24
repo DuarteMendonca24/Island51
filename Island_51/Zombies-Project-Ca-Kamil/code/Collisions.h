@@ -10,9 +10,9 @@ private:
 public:
 
 //Checking collisions between two hitboxes
-bool checkCollisions(FloatRect objectOne, FloatRect objectTwo);
+bool checkCollisions(FloatRect hitBoxOne, FloatRect hitBoxTwo);
 
 //Finding MidPoint of two rectangles returning the point
-Vector2f findMidPointOfObjects(FloatRect objectOne, FloatRect objectTwo);
+Vector2f findMidPointOfObjects(FloatRect hitBoxOne, FloatRect hitBoxTwo);
 
 };
