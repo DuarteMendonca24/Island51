@@ -129,6 +129,11 @@ FloatRect Zombie::getPosition()
 	return m_Sprite.getGlobalBounds();
 }
 
+Vector2f Zombie::getPosCoordinates() {
+
+	return m_Position;
+}
+
 
 Sprite Zombie::getSprite()
 {
@@ -141,26 +146,35 @@ void Zombie::update(float elapsedTime,
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
 
+	int x1 = playerX + 25; // center of pacman
+	int y1 = playerY + 25; // center of pacman
+	int x2 = m_Position.x + 25; //centre of the ghost
+	int y2 = m_Position.y + 25;//centre of the ghost
+	int xsquared = (x2 - x1) * (x2 - x1);
+	int ysquared = (y2 - y1) * (y2 - y1);
+	double d = sqrt(xsquared + ysquared);
+
+
 	// Update the zombie position variables
-	if (playerX > m_Position.x)
+	if (playerX > m_Position.x && d < 200)
 	{
 		m_Position.x = m_Position.x +
 			m_Speed * elapsedTime;
 	}
 
-	if (playerY > m_Position.y)
+	if (playerY > m_Position.y && d < 200)
 	{
 		m_Position.y = m_Position.y +
 			m_Speed * elapsedTime;
 	}
 
-	if (playerX < m_Position.x)
+	if (playerX < m_Position.x && d < 200)
 	{
 		m_Position.x = m_Position.x -
 			m_Speed * elapsedTime;
 	}
 
-	if (playerY < m_Position.y)
+	if (playerY < m_Position.y && d < 200)
 	{
 		m_Position.y = m_Position.y -
 			m_Speed * elapsedTime;

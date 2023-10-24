@@ -9,6 +9,7 @@
 #include "Pickup.h"
 #include "LevelManager.h"
 
+
 using namespace sf;
 
 
@@ -796,6 +797,7 @@ int main()
 			{
 				for (int j = 0; j < numZombies; j++)
 				{
+				{
 					if (bullets[i].isInFlight() && 
 						zombies[j].isAlive())
 					{
@@ -816,11 +818,12 @@ int main()
 								// Not just a hit but a kill too
 								//Custom scores for each zombie type
 								score += zombies[j].killValue();
+								//zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,1,1);
 								if (wave >= hiScore)
 								{
 									hiScore = wave;
 								}
-
+								
 								numZombiesAlive--;
 
 								// When all the zombies are dead (again)
@@ -1030,4 +1033,5 @@ int main()
 	}// End game loop
 
 	return 0;
+}
 }
