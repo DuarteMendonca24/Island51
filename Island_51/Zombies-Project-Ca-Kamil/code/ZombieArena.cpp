@@ -818,7 +818,8 @@ int main()
 								// Not just a hit but a kill too
 								//Custom scores for each zombie type
 								score += zombies[j].killValue();
-								//zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,1,1);
+								//spawn another zombie when killed
+								zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,1,1);
 								if (wave >= hiScore)
 								{
 									hiScore = wave;
@@ -1032,6 +1033,7 @@ int main()
 
 	}// End game loop
 
-	return 0;
+	
 }
+return 0;
 }
