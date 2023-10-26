@@ -1,29 +1,17 @@
-﻿  ZombieArena.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(29,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(30,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(32,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(32,42): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(82,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(96,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(900,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  Zombies-Project-Ca-Kamil.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51\x64\Debug\Zombies-Project-Ca-Kamil.exe
+﻿  Bullet.cpp
+C:\gdp\code\Island51-main\Island_51\Zombies-Project-Ca-Kamil\code\bullet.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  CreateBackground.cpp
+c1xx : fatal  error C1083: Cannot open source file: 'code\CreateBackground.cpp': No such file or directory
+  CreateHorde.cpp
+C:\gdp\code\Island51-main\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Pickup.cpp
+C:\gdp\code\Island51-main\Island_51\Zombies-Project-Ca-Kamil\code\Pickup.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Player.cpp
+C:\gdp\code\Island51-main\Island_51\Zombies-Project-Ca-Kamil\code\player.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  TextureHolder.cpp
+C:\gdp\code\Island51-main\Island_51\Zombies-Project-Ca-Kamil\code\TextureHolder.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Zombie.cpp
+C:\gdp\code\Island51-main\Island_51\Zombies-Project-Ca-Kamil\code\zombie.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  ZombieArena.cpp
+C:\gdp\code\Island51-main\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Generating Code...

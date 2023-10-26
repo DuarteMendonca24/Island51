@@ -137,10 +137,6 @@ Vector2i LevelManager::getLevelSize()
 	return m_LevelSize;
 }
 
-int LevelManager::getTileSize(){
-	return TILE_SIZE;
-}
-
 int LevelManager::getCurrentLevel()
 {
 	//return m_CurrentLevel;
@@ -156,7 +152,6 @@ Vector2f LevelManager::getStartPosition()
 {
 	return m_StartPosition;
 }
-
 
 
 char LevelManager::randomiseTile(char tile)

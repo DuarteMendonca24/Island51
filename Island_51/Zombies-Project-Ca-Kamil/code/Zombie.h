@@ -66,8 +66,6 @@ public:
 	// Return a rectangle that is the position in the world
 	FloatRect getPosition();
 
-	Vector2f getPosCoordinates();
-
 	// Get a copy of the sprite to draw
 	Sprite getSprite();
 

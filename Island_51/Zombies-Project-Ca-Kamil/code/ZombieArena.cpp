@@ -9,9 +9,7 @@
 #include "Pickup.h"
 #include "LevelManager.h"
 
-
 using namespace sf;
-
 
 int main()
 {
@@ -50,8 +48,6 @@ int main()
 
 	// The boundaries of the arena
 	IntRect arena;
-
-	
 
 	// Create the background
 	VertexArray background;
@@ -128,6 +124,20 @@ int main()
 	Texture textureAmmoIcon = TextureHolder::GetTexture("graphics/ammo_icon.png");
 	spriteAmmoIcon.setTexture(textureAmmoIcon);
 	spriteAmmoIcon.setPosition(20, 980);
+
+	// Hunger bar
+	RectangleShape HungerBar;
+	float HungerBarStartWidth = 400;
+	float HungerTickAmount = 0.01;
+	float HungerBarHeight = 40;
+	//float HungerRegainAmount = 0.02;
+	float currentHunger = HungerBarStartWidth;
+	HungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
+	HungerBar.setFillColor(Color::Red);
+	HungerBar.setPosition((190 / 2) - HungerBarStartWidth / 2, 100);
+
+	float timeRemaining = 6.0f;
+	float timeBarWidthPerSecond = HungerBarStartWidth / timeRemaining;
 
 	// Load the font
 	Font font;
@@ -685,10 +695,10 @@ int main()
 				arena.height = 500 * wave;
 				arena.left = 0;
 				arena.top = 0;
-				LevelManager lvlManager;
+
 				// Pass the vertex array by reference 
-				
 				// to the createBackground function
+				LevelManager lvlManager;
 				int tileSize = lvlManager.loadLevel(background);
 
 				// Spawn the player in the middle of the arena
@@ -745,6 +755,21 @@ int main()
 			// Update the delta time
 			Time dt = clock.restart();
 			// Update the total game time
+
+			//Upadte the Hunger Bar
+			currentHunger -= HungerTickAmount;
+			/*if ()
+			{
+				currentHunger += HungerRegainAmount
+			}
+			else
+			{
+				false;
+			}*/
+			//currentHunger += HungerRegainAmount;
+			HungerBar.setSize(Vector2f(currentHunger, HungerBarHeight));
+			window.draw(HungerBar);
+
 			gameTimeTotal += dt;
 			// Make a decimal fraction of 1 from the delta time
 			float dtAsSeconds = dt.asSeconds();
@@ -797,7 +822,6 @@ int main()
 			{
 				for (int j = 0; j < numZombies; j++)
 				{
-				{
 					if (bullets[i].isInFlight() && 
 						zombies[j].isAlive())
 					{
@@ -818,12 +842,11 @@ int main()
 								// Not just a hit but a kill too
 								//Custom scores for each zombie type
 								score += zombies[j].killValue();
-								//zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,1,1);
 								if (wave >= hiScore)
 								{
 									hiScore = wave;
 								}
-								
+
 								numZombiesAlive--;
 
 								// When all the zombies are dead (again)
@@ -899,6 +922,8 @@ int main()
 			// size up the health bar
 			healthBar.setSize(Vector2f(player.getHealth() * 3, 70));
 
+
+
 			// Increment the amount of time since the last HUD update
 			timeSinceLastUpdate += dt;
 			// Increment the number of frames since the last HUD calculation
@@ -913,6 +938,8 @@ int main()
 				std::stringstream ssHiScore;
 				std::stringstream ssWave;
 				std::stringstream ssZombiesAlive;
+
+				
 
 				// Update the ammo text
 				ssAmmo << bulletsInClip << "/" << bulletsSpare;
@@ -1002,6 +1029,8 @@ int main()
 			window.draw(healthBar);
 			window.draw(waveNumberText);
 			window.draw(zombiesRemainingText);
+
+			window.draw(HungerBar);
 		}
 
 		if (state == State::LEVELING_UP)
@@ -1033,5 +1062,4 @@ int main()
 	}// End game loop
 
 	return 0;
-}
 }

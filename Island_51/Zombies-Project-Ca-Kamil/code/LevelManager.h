@@ -29,13 +29,12 @@ public:
 
 	int loadLevel(VertexArray& rVaLevel);
 	
-	Vector2i getLevelSize();
 
-	int getTileSize();
+	Vector2i getLevelSize();
 
 	int getCurrentLevel();
 
-
+	int** getBackgroundArray();
 	char randomiseTile(char tile);
 
 	char randomiseGrassTile(char tile);
