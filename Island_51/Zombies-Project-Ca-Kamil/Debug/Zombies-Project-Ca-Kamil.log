@@ -1,12 +1,25 @@
-﻿  CreateHorde.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(25,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(26,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(31,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(32,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(37,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(38,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(43,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(44,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+﻿  Collisions.cpp
+  CreateHorde.cpp
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(91,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(92,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(97,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(98,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(103,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(104,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(109,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(110,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(136,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(137,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(142,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\CreateHorde.cpp(142,16): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   LevelManager.cpp
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(14,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\LevelManager.cpp(55,21): warning C4018: '<': signed/unsigned mismatch
@@ -96,29 +109,29 @@ C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Ka
           ]
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(187,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   ZombieArena.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(29,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(30,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(32,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(31,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(32,42): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(33,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(82,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(96,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(900,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(33,42): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(87,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(101,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(922,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
@@ -145,6 +158,10 @@ CreateHorde.obj : error LNK2001: unresolved external symbol "__declspec(dllimpor
 Pickup.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall sf::Sprite::~Sprite(void)" (__imp_??1Sprite@sf@@UAE@XZ)
 Player.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall sf::Sprite::~Sprite(void)" (__imp_??1Sprite@sf@@UAE@XZ)
 Zombie.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: virtual __thiscall sf::Sprite::~Sprite(void)" (__imp_??1Sprite@sf@@UAE@XZ)
+CreateHorde.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite const &)" (__imp_??0Sprite@sf@@QAE@ABV01@@Z) referenced in function "public: __thiscall Zombie::Zombie(class Zombie const &)" (??0Zombie@@QAE@ABV0@@Z)
+Pickup.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite const &)" (__imp_??0Sprite@sf@@QAE@ABV01@@Z)
+Player.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite const &)" (__imp_??0Sprite@sf@@QAE@ABV01@@Z)
+Zombie.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite const &)" (__imp_??0Sprite@sf@@QAE@ABV01@@Z)
 LevelManager.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: class sf::Vertex & __thiscall sf::VertexArray::operator[](unsigned int)" (__imp_??AVertexArray@sf@@QAEAAVVertex@1@I@Z) referenced in function "public: int __thiscall LevelManager::loadLevel(class sf::VertexArray &)" (?loadLevel@LevelManager@@QAEHAAVVertexArray@sf@@@Z)
 LevelManager.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::VertexArray::resize(unsigned int)" (__imp_?resize@VertexArray@sf@@QAEXI@Z) referenced in function "public: int __thiscall LevelManager::loadLevel(class sf::VertexArray &)" (?loadLevel@LevelManager@@QAEHAAVVertexArray@sf@@@Z)
 LevelManager.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: void __thiscall sf::VertexArray::setPrimitiveType(enum sf::PrimitiveType)" (__imp_?setPrimitiveType@VertexArray@sf@@QAEXW4PrimitiveType@2@@Z) referenced in function "public: int __thiscall LevelManager::loadLevel(class sf::VertexArray &)" (?loadLevel@LevelManager@@QAEHAAVVertexArray@sf@@@Z)
@@ -160,9 +177,6 @@ Zombie.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) pu
 Pickup.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: class sf::Rect<float> __thiscall sf::Sprite::getGlobalBounds(void)const " (__imp_?getGlobalBounds@Sprite@sf@@QBE?AV?$Rect@M@2@XZ) referenced in function "public: class sf::Rect<float> __thiscall Pickup::getPosition(void)" (?getPosition@Pickup@@QAE?AV?$Rect@M@sf@@XZ)
 Player.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: class sf::Rect<float> __thiscall sf::Sprite::getGlobalBounds(void)const " (__imp_?getGlobalBounds@Sprite@sf@@QBE?AV?$Rect@M@2@XZ)
 Zombie.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: class sf::Rect<float> __thiscall sf::Sprite::getGlobalBounds(void)const " (__imp_?getGlobalBounds@Sprite@sf@@QBE?AV?$Rect@M@2@XZ)
-Pickup.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite const &)" (__imp_??0Sprite@sf@@QAE@ABV01@@Z) referenced in function "public: class sf::Sprite __thiscall Pickup::getSprite(void)" (?getSprite@Pickup@@QAE?AVSprite@sf@@XZ)
-Player.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite const &)" (__imp_??0Sprite@sf@@QAE@ABV01@@Z)
-Zombie.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: __thiscall sf::Sprite::Sprite(class sf::Sprite const &)" (__imp_??0Sprite@sf@@QAE@ABV01@@Z)
 Pickup.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: class sf::Sprite & __thiscall sf::Sprite::operator=(class sf::Sprite &&)" (__imp_??4Sprite@sf@@QAEAAV01@$$QAV01@@Z) referenced in function "public: __thiscall Pickup::Pickup(int)" (??0Pickup@@QAE@H@Z)
 Player.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: class sf::Sprite & __thiscall sf::Sprite::operator=(class sf::Sprite &&)" (__imp_??4Sprite@sf@@QAEAAV01@$$QAV01@@Z)
 Zombie.obj : error LNK2001: unresolved external symbol "__declspec(dllimport) public: class sf::Sprite & __thiscall sf::Sprite::operator=(class sf::Sprite &&)" (__imp_??4Sprite@sf@@QAEAAV01@$$QAV01@@Z)

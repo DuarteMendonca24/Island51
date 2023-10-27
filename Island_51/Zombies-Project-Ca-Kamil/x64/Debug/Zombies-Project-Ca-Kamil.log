@@ -1,45 +1,29 @@
-﻿  Zombie.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(59,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(149,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(150,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(151,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+﻿  ZombieArena.cpp
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(31,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(152,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(32,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\Zombie.cpp(187,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  ZombieArena.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(29,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(34,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(30,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(34,42): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(32,56): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(88,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(102,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(920,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(32,42): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(82,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(96,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(901,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  Generating Code...
   Zombies-Project-Ca-Kamil.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51\x64\Debug\Zombies-Project-Ca-Kamil.exe

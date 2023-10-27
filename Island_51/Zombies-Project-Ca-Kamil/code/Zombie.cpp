@@ -107,8 +107,8 @@ bool Zombie::hit()
 
 	if (m_Health <= 0)
 	{
-		// dead
-		m_Alive = true;
+		//we changed this to true for testing , it should be false
+		m_Alive = false;
 		m_Sprite.setTexture(TextureHolder::GetTexture(
 			"graphics/blood.png"));
 
@@ -140,12 +140,12 @@ Sprite Zombie::getSprite()
 	return m_Sprite;
 }
 
-void Zombie::update(float elapsedTime,
-	Vector2f playerLocation)
+void Zombie::update(float elapsedTime,Vector2f playerLocation)
 {
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
 
+	//its using 25 because of pacman being a 50x50 image , dont forget to see player size
 	int x1 = playerX + 25; // center of pacman
 	int y1 = playerY + 25; // center of pacman
 	int x2 = m_Position.x + 25; //centre of the ghost

@@ -8,6 +8,8 @@
 #include "Bullet.h"
 #include "Pickup.h"
 #include "LevelManager.h"
+#include <list>
+#include <iostream>
 
 
 using namespace sf;
@@ -64,6 +66,10 @@ int main()
 	int numZombies;
 	int numZombiesAlive;
 	Zombie* zombies = NULL;
+
+	//changing the array to a list
+	std::list<Zombie> m_EnemiesList;
+
 
 	// 1000 bullets should do
 	Bullet bullets[1000];
@@ -671,6 +677,7 @@ int main()
 			if (event.key.code == Keyboard::Space)
 			{
 				//Continuing to the game after pressing space bar
+				std::cout << "Space";
 				state = State::PLAYING;
 			}
 
@@ -700,27 +707,28 @@ int main()
 				moneyPickup.setArena(arena);
 
 
-				if ((wave % 5) == 0)
-				{
-					//If Wave is a multiple of 5 then spawn a boss enemy
-					// Create a horde of zombies
-					numZombies = 1;
-
-					// Delete the previously allocated memory (if it exists)
-					delete[] zombies;
-					zombies = createHorde(numZombies, arena);
-					numZombiesAlive = numZombies;
-				}
-				else
-				{
+				//if ((wave % 5) == 0)
+				//
+				//	//If Wave is a multiple of 5 then spawn a boss enemy
+				//	// Create a horde of zombies
+				//	//numZombies = 1;
+				//	//
+				//	//// Delete the previously allocated memory (if it exists)
+				//	//delete[] zombies;
+				//	//zombies = createHorde(numZombies, arena);
+				//	//numZombiesAlive = numZombies;
+				//
+				
 					// Create a horde of zombies
 					numZombies = 5 * wave;
 
 					// Delete the previously allocated memory (if it exists)
-					delete[] zombies;
-					zombies = createHorde(numZombies, arena);
+					//delete[] zombies;
+				
+					//m_EnemiesList = createHorde(numZombies, arena);
+					m_EnemiesList = createHorde(numZombies, arena);
 					numZombiesAlive = numZombies;
-				}
+				
 				
 
 				
@@ -768,14 +776,24 @@ int main()
 			// Make the view centre around the player				
 			mainView.setCenter(player.getCenter());
 
-			// Loop through each Zombie and update them
-			for (int i = 0; i < numZombies; i++)
-			{
-				if (zombies[i].isAlive())
-				{
-					zombies[i].update(dt.asSeconds(), playerPosition);
+			//changing the loop to use a list
+			std::list<Zombie>::iterator it;
+			for (it = m_EnemiesList.begin(); it != m_EnemiesList.end();it++) {
+
+				if ((it)->isAlive()) {
+
+					(it)->update(dt.asSeconds(), playerPosition);
 				}
 			}
+
+			// Loop through each Zombie and update them
+			//for (int i = 0; i < numZombies; i++)
+			//{
+			//	if (zombies[i].isAlive())
+			//	{
+			//		zombies[i].update(dt.asSeconds(), playerPosition);
+			//	}
+			//}
 
 			// Update any bullets that are in-flight
 			for (int i = 0; i < 100; i++)
@@ -793,57 +811,58 @@ int main()
 
 			// Collision detection
 			// Have any zombies been shot?
-			for (int i = 0; i < 100; i++)
-			{
-				for (int j = 0; j < numZombies; j++)
-				{
-				{
-					if (bullets[i].isInFlight() && 
-						zombies[j].isAlive())
-					{
-						if (bullets[i].getPosition().intersects
-							(zombies[j].getPosition()))
-						{
-							//Stop the bullet unless the equipped gun is the railgun
-							if (!railgunEquipped)
-							{
-								// Stop the bullet
-								bullets[i].stop();
-							}
-
-							
-
-							// Register the hit and see if it was a kill
-							if (zombies[j].hit()) {
-								// Not just a hit but a kill too
-								//Custom scores for each zombie type
-								score += zombies[j].killValue();
-								//spawn another zombie when killed
-								zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,1,1);
-								if (wave >= hiScore)
-								{
-									hiScore = wave;
-								}
-								
-								numZombiesAlive--;
-
-								// When all the zombies are dead (again)
-								if (numZombiesAlive == 0) {
-									state = State::LEVELING_UP;
-								}
-							}	
-
-							// Make a splat sound
-							splat.play();
-							
-						}
-					}
-
-				}
-			}// End zombie being shot
+			//for (int i = 0; i < 100; i++)
+			//{
+			//	for (int j = 0; j < numZombies; j++)
+			//	{
+			//		if (bullets[i].isInFlight() && zombies[j].isAlive())
+			//		{
+			//			if (bullets[i].getPosition().intersects(zombies[j].getPosition()))
+			//			{
+			//				//Stop the bullet unless the equipped gun is the railgun
+			//				if (!railgunEquipped)
+			//				{
+			//					// Stop the bullet
+			//					bullets[i].stop();
+			//				}
+			//
+			//				
+			//
+			//				// Register the hit and see if it was a kill
+			//				if (zombies[j].hit()) {
+			//					// Not just a hit but a kill too
+			//					//Custom scores for each zombie type
+			//					score += zombies[j].killValue();
+			//					//spawn another zombie when killed
+			//					//zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
+			//					// Delete the previously allocated memory (if it exists)
+			//					//delete[] zombies;
+			//					createEnemies(2, zombies[j].getPosCoordinates(),3);
+			//					//numZombiesAlive = numZombies;
+			//					if (wave >= hiScore)
+			//					{
+			//						hiScore = wave;
+			//					}
+			//					
+			//					numZombiesAlive--;
+			//
+			//					// When all the zombies are dead (again)
+			//					if (numZombiesAlive == 0) {
+			//						state = State::LEVELING_UP;
+			//					}
+			//				}	
+			//
+			//				// Make a splat sound
+			//				splat.play();
+			//				
+			//			}
+			//		}
+			//
+			//	}
+			//}// End zombie being shot
 
 			// Have any zombies touched the player			
-			for (int i = 0; i < numZombies; i++)
+			/*for (int i = 0; i < numZombies; i++)
 			{
 				if (player.getPosition().intersects
 					(zombies[i].getPosition()) && zombies[i].isAlive())
@@ -865,7 +884,7 @@ int main()
 						
 					}
 				}
-			}// End player touched
+			}// End player touched*/
 
 			// Has the player touched health pickup
 			if (player.getPosition().intersects
@@ -959,9 +978,16 @@ int main()
 			window.draw(background, &textureBackground);
 
 			// Draw the zombies
-			for (int i = 0; i < numZombies; i++)
-			{
-				window.draw(zombies[i].getSprite());
+			//for (int i = 0; i < numZombies; i++)
+			//{
+			//	window.draw(zombies[i].getSprite());
+			//}
+
+			//Draw the zombies with a list
+			std::list<Zombie>::iterator it2;
+			for (it2 = m_EnemiesList.begin(); it2 != m_EnemiesList.end();it2++) {
+
+				window.draw((it2)->getSprite());
 			}
 
 			for (int i = 0; i < 100; i++)
@@ -1034,6 +1060,10 @@ int main()
 	}// End game loop
 
 	
-}
-return 0;
+	
+ 
+
+
+
+	return 0;
 }
