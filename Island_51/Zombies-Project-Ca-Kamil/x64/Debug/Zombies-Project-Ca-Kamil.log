@@ -21,7 +21,7 @@ C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Ka
           ]
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(88,29): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(102,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(920,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51\Zombies-Project-Ca-Kamil\code\ZombieArena.cpp(926,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
