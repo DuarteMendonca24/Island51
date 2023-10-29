@@ -1,0 +1,9 @@
+﻿  Update.cpp
+C:\2dgd\classroom code\Island_51_Solution\Island_51\code\Engine.h(62,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\2dgd\classroom code\Island_51_Solution\Island_51\code\Engine.h(74,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\2dgd\classroom code\Island_51_Solution\Island_51\code\Update.cpp(171,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Island_51.vcxproj -> C:\2dgd\classroom code\Island_51_Solution\x64\Debug\Island_51.exe
