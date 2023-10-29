@@ -19,25 +19,49 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="code\Behaviour.cpp" />
     <ClCompile Include="code\Bullet.cpp" />
     <ClCompile Include="code\Collisions.cpp" />
     <ClCompile Include="code\CreateHorde.cpp" />
+    <ClCompile Include="code\Draw.cpp" />
+    <ClCompile Include="code\Engine.cpp" />
+    <ClCompile Include="code\GUI.cpp" />
+    <ClCompile Include="code\HandleCollisions.cpp" />
+    <ClCompile Include="code\HandleInput.cpp" />
     <ClCompile Include="code\LevelManager.cpp" />
+    <ClCompile Include="code\Main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="code\Pickup.cpp" />
     <ClCompile Include="code\Player.cpp" />
+    <ClCompile Include="code\SoundEngine.cpp" />
+    <ClCompile Include="code\Sprites.cpp" />
+    <ClCompile Include="code\StatsManager.cpp" />
+    <ClCompile Include="code\TextureHandler.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
+    <ClCompile Include="code\Tools.cpp" />
+    <ClCompile Include="code\Update.cpp" />
+    <ClCompile Include="code\Weapons.cpp" />
     <ClCompile Include="code\Zombie.cpp" />
-    <ClCompile Include="code\ZombieArena.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="code\Behaviour.h" />
     <ClInclude Include="code\Bullet.h" />
     <ClInclude Include="code\Collisions.h" />
+    <ClInclude Include="code\Engine.h" />
+    <ClInclude Include="code\GUI.h" />
+    <ClInclude Include="code\HandleCollisions.h" />
     <ClInclude Include="code\LevelManager.h" />
     <ClInclude Include="code\Pickup.h" />
     <ClInclude Include="code\Player.h" />
+    <ClInclude Include="code\SoundEngine.h" />
+    <ClInclude Include="code\Sprites.h" />
+    <ClInclude Include="code\State.h" />
+    <ClInclude Include="code\StatsManager.h" />
     <ClInclude Include="code\TextureHolder.h" />
+    <ClInclude Include="code\Tools.h" />
+    <ClInclude Include="code\Weapons.h" />
     <ClInclude Include="code\Zombie.h" />
-    <ClInclude Include="code\ZombieArena.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
@@ -114,12 +138,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Administrador\Documents\GitHub\Island51\SFML\SFML-2.6.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Admin\Documents\GitHub\Island51\SFML\SFML-2.6.0\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Administrador\Documents\GitHub\Island51\SFML\SFML-2.6.0\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Admin\Documents\GitHub\Island51\SFML\SFML-2.6.0\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;sfml-audio-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -148,12 +172,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Administrador\Documents\GitHub\Island51\SFML\SFML-2.6.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Administrador\Documents\GitHub\Island51\SFML\SFML-2.5.1\include\SFML</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Administrador\Documents\GitHub\Island51\SFML\SFML-2.6.0\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Administrador\Documents\GitHub\Island51\SFML\SFML-2.5.1\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;sfml-audio-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
