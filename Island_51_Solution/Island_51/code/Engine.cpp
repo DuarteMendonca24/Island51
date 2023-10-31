@@ -40,6 +40,25 @@ Engine::Engine(TextureHolder holder){
 	//Setting HungerBar Up 
 	hungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
 
+
+	//Zombie Amount Decpends on wave number
+	numZombies = 5 * wave;
+
+	// Delete the previously allocated memory (if it exists)
+	//delete[] zombies;
+
+	//m_EnemiesList = createHorde(numZombies, arena);
+	Vector2i worldSize = manageLevel.getLevelSize();
+	m_EnemiesList = createHorde(numZombies, arena);
+	numZombiesAlive = numZombies;
+	IntRect arena;
+	arena.width = worldSize.x * TILE_SIZE;
+	arena.height = worldSize.y * TILE_SIZE;
+	arena.left = 0;
+	arena.top = 0;
+	// Spawn the player in the middle of the arena
+	player.spawn(arena, resolution, TILE_SIZE);
+
 }
 
 void Engine::run(){
@@ -60,15 +79,6 @@ void Engine::run(){
 		update(dtAsSeconds);
 		draw();
 
-		//Zombie Amount Decpends on wave number
-		numZombies = 5 * wave;
-
-		// Delete the previously allocated memory (if it exists)
-		//delete[] zombies;
-				
-		//m_EnemiesList = createHorde(numZombies, arena);
-		m_EnemiesList = createHorde(numZombies, arena);
-		numZombiesAlive = numZombies;
 	}
 
     

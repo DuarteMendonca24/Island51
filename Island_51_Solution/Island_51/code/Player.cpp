@@ -160,22 +160,22 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 	// Keep the player in the arena
 	if (m_Position.x > m_Arena.width - m_TileSize)
 	{
-		m_Position.x = m_Arena.width - m_TileSize;
+		m_Position.x = m_Position.x - m_TileSize;
 	}
 
 	if (m_Position.x < m_Arena.left + m_TileSize)
 	{
-		m_Position.x = m_Arena.left + m_TileSize;
+		m_Position.x = m_Position.x + m_TileSize;
 	}
 
-	if (m_Position.y > m_Arena.height - m_TileSize)
+	if (m_Position.y > m_Arena.height - m_TileSize)  
 	{
-		m_Position.y = m_Arena.height - m_TileSize;
+		m_Position.y = m_Position.y - m_TileSize;
 	}
 
 	if (m_Position.y < m_Arena.top + m_TileSize)
 	{
-		m_Position.y = m_Arena.top + m_TileSize;
+		m_Position.y = m_Position.y + m_TileSize;
 	}
 
 	// Calculate the angle the player is facing

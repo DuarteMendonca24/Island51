@@ -18,8 +18,8 @@ int LevelManager::loadLevel(VertexArray& rVaLevel)
 	// Load the appropriate level from a text file
 	 
 	//Player start position
-	m_StartPosition.x = 100;
-	m_StartPosition.y = 100; 
+	m_StartPosition.x = -100;
+	m_StartPosition.y = -100; 
 
 	ifstream inputFile(MAP_NAME);
 	ofstream outputFile(NEW_MAP_NAME);

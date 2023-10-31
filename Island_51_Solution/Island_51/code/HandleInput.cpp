@@ -240,15 +240,14 @@ void Engine::input()
         // We will modify the next two lines later
         Vector2i worldSize = manageLevel.getLevelSize();
         
-        arena.width = worldSize.x;
-        arena.height = worldSize.y;
+        arena.width = worldSize.x * TILE_SIZE;
+        arena.height = worldSize.y * TILE_SIZE;
         arena.left = 0;
         arena.top = 0;
         // Pass the vertex array by reference
 
 
-        // Spawn the player in the middle of the arena
-        player.spawn(arena, resolution, TILE_SIZE);
+        
 
         // Configure the pick-ups
         healthPickup.setArena(arena);
