@@ -54,6 +54,83 @@ C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Eng
 C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(64,26): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(76,26): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(196,30): warning C4305: 'initializing': truncation from 'double' to 'float'
+  LevelManager.cpp
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(13,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(35,26): warning C4267: '=': conversion from 'size_t' to 'T', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(98,31): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(98,16): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(101,45): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(101,30): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(104,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(104,30): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(107,47): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(107,17): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(113,19): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(116,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(116,14): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(119,35): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(119,14): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(122,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   Main.cpp
 C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(64,26): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(76,26): warning C4305: 'initializing': truncation from 'double' to 'float'

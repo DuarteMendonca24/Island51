@@ -238,18 +238,17 @@ void Engine::input()
 
         // Prepare thelevel
         // We will modify the next two lines later
-        arena.width = 500 * wave;
-        arena.height = 500 * wave;
+        Vector2i worldSize = manageLevel.getLevelSize();
+        
+        arena.width = worldSize.x;
+        arena.height = worldSize.y;
         arena.left = 0;
         arena.top = 0;
-        LevelManager lvlManager;
         // Pass the vertex array by reference
 
-        // to the createBackground function
-        int tileSize = lvlManager.loadLevel(background);
 
         // Spawn the player in the middle of the arena
-        player.spawn(arena, resolution, tileSize);
+        player.spawn(arena, resolution, TILE_SIZE);
 
         // Configure the pick-ups
         healthPickup.setArena(arena);
