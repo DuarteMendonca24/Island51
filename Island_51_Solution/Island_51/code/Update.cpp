@@ -11,6 +11,10 @@ void Engine::update(float dtAsSeconds)
 
     if (state == State::PLAYING)
     {
+        //Update the Hunger Bar
+        currentHunger -= HungerTickAmount;
+        hungerBar.setSize(Vector2f(currentHunger, HungerBarHeight));
+
         // Where is the mouse pointer
         mouseScreenPosition = Mouse::getPosition();
 

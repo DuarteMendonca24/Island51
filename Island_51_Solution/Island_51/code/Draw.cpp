@@ -12,12 +12,11 @@ void Engine::draw()
 
     View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 
-    /*
-        LOADING TEXURES
-    */
-    
-    // Load the texture for our background vertex array
-	
+    hungerBar.setFillColor(Color::Red);
+    hungerBar.setPosition((190 / 2) - HungerBarStartWidth / 2, 100);
+
+    float timeRemaining = 6.0f;
+    float timeBarWidthPerSecond = HungerBarStartWidth / timeRemaining;
 
     
 
@@ -164,6 +163,7 @@ void Engine::draw()
         m_Window.draw(healthBar);
         m_Window.draw(waveNumberText);
         m_Window.draw(zombiesRemainingText);
+        m_Window.draw(hungerBar);
     }
 
     if (state == State::LEVELING_UP)

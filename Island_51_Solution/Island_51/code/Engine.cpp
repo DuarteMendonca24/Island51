@@ -37,6 +37,9 @@ Engine::Engine(TextureHolder holder){
 	spriteGameOver.setTexture(textureGameOver);
 	spriteGameOver.setPosition(0, 0);
 
+	//Setting HungerBar Up 
+	hungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
+
 }
 
 void Engine::run(){

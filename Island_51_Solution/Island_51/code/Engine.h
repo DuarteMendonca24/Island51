@@ -1,3 +1,5 @@
+
+
 #pragma once
 //Including All Header files and libraries needed
 #include <sstream>
@@ -188,6 +190,13 @@ private:
     //Bar Variables
     // Health bar
 	RectangleShape healthBar;
+    //Hunger Bar
+    RectangleShape hungerBar;
+    float HungerBarStartWidth = 400;
+    float HungerTickAmount = 0.1;
+    float HungerBarHeight = 40;
+    float currentHunger = HungerBarStartWidth;
+
 
 
     //Create PickUps
