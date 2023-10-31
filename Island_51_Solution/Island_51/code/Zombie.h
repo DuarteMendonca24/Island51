@@ -48,6 +48,9 @@ private:
 	// Is it still alive?
 	bool m_Alive;
 
+	//type of zombie
+	int m_type;
+
 	
 
 	// Public prototypes go here	
@@ -77,6 +80,8 @@ public:
 	void update(float elapsedTime, Vector2f playerLocation);
 
 	int killValue();
+
+	int getType();
 };
 
 

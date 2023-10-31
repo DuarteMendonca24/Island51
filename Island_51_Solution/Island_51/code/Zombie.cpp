@@ -19,6 +19,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Speed = BLOATER_SPEED;
 		m_Health = BLOATER_HEALTH;
 		m_ScoreValue = BLOATER_VALUE;
+		m_type = type;
 		break;
 
 	case 1:
@@ -29,6 +30,8 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Speed = CHASER_SPEED;
 		m_Health = CHASER_HEALTH;
 		m_ScoreValue = CHASER_VALUE;
+		m_type = type;
+	
 		break;
 
 	case 2:
@@ -39,6 +42,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Speed = CRAWLER_SPEED;
 		m_Health = CRAWLER_HEALTH;
 		m_ScoreValue = CRAWLER_VALUE;
+		m_type = type;
 		break;
 	
 	case 3:
@@ -49,6 +53,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Speed = RAT_SPEED;
 		m_Health = RAT_HEALTH;
 		m_ScoreValue = RAT_VALUE;
+		m_type = type;
 		break;
 	}
 
@@ -197,4 +202,10 @@ int Zombie::killValue()
 {
 	//Returning the score value for this zombie
 	return m_ScoreValue;
+}
+
+int Zombie::getType()
+{
+	//Returning the score value for this zombie
+	return m_type;
 }

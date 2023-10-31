@@ -98,8 +98,13 @@ void Engine::update(float dtAsSeconds)
                             //  Delete the previously allocated memory (if it exists)
                             // delete[] zombies;
                             //  Create new zombies and add them to m_EnemiesList
-                            std::list<Zombie> newZombies = createEnemies(2, (it3)->getPosCoordinates(), 3);
-                            m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
+                   
+                            //if zombie is a crawler , create two more enemies
+                            if ((it3)->getType() == 2) {
+                                std::list<Zombie> newZombies = createEnemies(2, (it3)->getPosCoordinates(), 3);
+                                m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
+                            }
+                         
                             // numZombiesAlive = numZombies;
                             if (wave >= hiScore)
                             {

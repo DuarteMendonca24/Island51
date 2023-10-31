@@ -135,12 +135,15 @@ std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int t
 
 	int x = position.x;
 	int y = position.y;
+	int xOffset = 25;
 
 	for (int i = 0; i < numZombies; i++)
 	{
 		Zombie zombie;
 		zombie.spawn(x, y, type, i);
 		zombiesList.push_back(zombie);
+
+		x += xOffset;
 	}
 
 	return zombiesList;
