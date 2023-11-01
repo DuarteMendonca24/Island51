@@ -117,7 +117,7 @@ void Engine::draw()
                 
                 m_Window.draw(Illusions[i].getSprite());
             }
-            else {
+            else if(!m_test) {
                 
                 m_Window.draw(Illusionist[i].getSprite());
             }
@@ -164,14 +164,14 @@ void Engine::draw()
         m_Window.setView(hudView);
 
         // Draw all the HUD elements
-        m_Window.draw(spriteAmmoIcon);
-        m_Window.draw(ammoText);
-        m_Window.draw(scoreText);
-        m_Window.draw(hiScoreText);
-        m_Window.draw(healthBar);
-        m_Window.draw(waveNumberText);
-        m_Window.draw(zombiesRemainingText);
-        m_Window.draw(hungerBar);
+       // m_Window.draw(spriteAmmoIcon);
+       // m_Window.draw(ammoText);
+       // m_Window.draw(scoreText);
+       // m_Window.draw(hiScoreText);
+       // m_Window.draw(healthBar);
+       // m_Window.draw(waveNumberText);
+       // m_Window.draw(zombiesRemainingText);
+       // m_Window.draw(hungerBar);
     }
 
     if (state == State::LEVELING_UP)

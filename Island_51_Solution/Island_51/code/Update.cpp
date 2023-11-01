@@ -37,34 +37,86 @@ void Engine::update(float dtAsSeconds)
         std::list<Zombie>::iterator it;
         for (it = m_EnemiesList.begin(); it != m_EnemiesList.end(); it++)
         {
+        
+           // cout << m_EnemiesList.size() <<"\n";
 
             if ((it)->isAlive())
             {
 
                 (it)->update(dtAsSeconds, playerPosition);
             }
+            else {
+
+                //need to investigate this more 
+               // m_EnemiesList.erase(it); // Erase the object from the list and get the next valid iterator
+            }
         }
 
-
+        //make the illusionist look at player
         Illusionist[0].illusionBehaviour(playerPosition);
+
+        //if its close to the player create the illusions
         if (Illusionist[0].distanceToPlayer(playerPosition) < 70 && !m_illusions) {
             
+            //we delete the illusionist and create a new array with the illusions
             delete[] Illusionist;
+            m_test = true;
+            //get random numnber betwwen 0 and 3
+            m_realOne = rand() % 4;
             Illusions = createIllusions(playerPosition);
           
 
         }
 
+        //update the illusions , make them look at player
         if (m_illusions) {
 
             for (int i = 0; i < 4; i++)
             {
 
-
                 Illusions[0].illusionBehaviour(playerPosition);
                 Illusions[1].illusionBehaviour(playerPosition);
                 Illusions[2].illusionBehaviour(playerPosition);
                 Illusions[3].illusionBehaviour(playerPosition);
+            }
+
+
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++) {
+
+                    if (bullets[i].isInFlight() && Illusions[j].isAlive())
+                    {
+
+                        if (bullets[i].getPosition().intersects(Illusions[j].getPosition()) && j == m_realOne)
+                        {
+                            cout << "Entrou";
+                            // Stop the bullet unless the equipped gun is the railgun
+                            if (!railgunEquipped)
+                            {
+                                // Stop the bullet
+                                bullets[i].stop();
+                            }
+
+                            // Register the hit and see if it was a kill
+                            if (Illusions[j].hit())
+                            {
+                          
+                                delete[]Illusions;
+                                m_illusions = false;
+                              
+                                // Not just a hit but a kill too
+                                // Custom scores for each zombie type
+                                score += Illusions[j].killValue();
+                            }
+                        }
+                    }
+
+
+
+
+                }
+              
             }
 
         }

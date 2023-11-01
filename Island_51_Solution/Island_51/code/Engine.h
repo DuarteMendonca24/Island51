@@ -42,7 +42,12 @@ public:
 
 private:
 
+    int numberOnList = 0;
+    //variable to store in which position of the array is the real illusionist
+    int m_realOne;
 
+    bool m_test = false;
+    
     //are illusions activated
     bool m_illusions = false;
    

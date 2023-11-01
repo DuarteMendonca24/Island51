@@ -49,8 +49,8 @@ Engine::Engine(TextureHolder holder){
 
 	//m_EnemiesList = createHorde(numZombies, arena);
 	Vector2i worldSize = manageLevel.getLevelSize();
-	//m_EnemiesList = createHorde(numZombies, arena);
-	//numZombiesAlive = numZombies;
+	m_EnemiesList = createHorde(numZombies, arena);
+	numZombiesAlive = numZombies;
 	IntRect arena;
 	arena.width = worldSize.x * TILE_SIZE;
 	arena.height = worldSize.y * TILE_SIZE;

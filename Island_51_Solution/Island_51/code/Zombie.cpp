@@ -190,12 +190,10 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 
 }
 
-bool Zombie::illusionBehaviour(Vector2f playerLocation) {
+void Zombie::illusionBehaviour(Vector2f playerLocation) {
 
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
-
-	double d = distanceToPlayer(playerLocation);
 
 	// Face the sprite in the correct direction
 	float angle = (atan2(playerY - m_Position.y,
@@ -204,14 +202,9 @@ bool Zombie::illusionBehaviour(Vector2f playerLocation) {
 
 	m_Sprite.setRotation(angle);
 
-	if (d < 200) {
+	// Move the sprite
+	m_Sprite.setPosition(m_Position);
 
-		return true;
-	
-	}
-	else {
-		return false;
-	}
 }
 
 double Zombie::distanceToPlayer(Vector2f playerLocation) {
