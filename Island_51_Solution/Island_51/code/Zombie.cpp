@@ -23,7 +23,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		break;
 
 	case 1:
-		// Chaser
+		// Chaser(takes player hunger bar)
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/chaser.png"));
 
@@ -35,7 +35,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		break;
 
 	case 2:
-		// Crawler
+		// Crawler(spawns 2 rats when killed)
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/crawler.png"));
 
@@ -149,15 +149,7 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 {
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
-
-	//its using 25 because of pacman being a 50x50 image , dont forget to see player size
-	int x1 = playerX + 25; // center of pacman
-	int y1 = playerY + 25; // center of pacman
-	int x2 = m_Position.x + 25; //centre of the ghost
-	int y2 = m_Position.y + 25;//centre of the ghost
-	int xsquared = (x2 - x1) * (x2 - x1);
-	int ysquared = (y2 - y1) * (y2 - y1);
-	double d = sqrt(xsquared + ysquared);
+	double d = distanceToPlayer(playerLocation);
 
 
 	// Update the zombie position variables
@@ -197,6 +189,49 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 
 
 }
+
+bool Zombie::illusionBehaviour(Vector2f playerLocation) {
+
+	float playerX = playerLocation.x;
+	float playerY = playerLocation.y;
+
+	double d = distanceToPlayer(playerLocation);
+
+	// Face the sprite in the correct direction
+	float angle = (atan2(playerY - m_Position.y,
+		playerX - m_Position.x)
+		* 180) / 3.141;
+
+	m_Sprite.setRotation(angle);
+
+	if (d < 200) {
+
+		return true;
+	
+	}
+	else {
+		return false;
+	}
+}
+
+double Zombie::distanceToPlayer(Vector2f playerLocation) {
+
+	float playerX = playerLocation.x;
+	float playerY = playerLocation.y;
+
+	//its using 25 because of pacman being a 50x50 image , dont forget to see player size
+	int x1 = playerX + 25; // center of pacman
+	int y1 = playerY + 25; // center of pacman
+	int x2 = m_Position.x + 25; //centre of the ghost
+	int y2 = m_Position.y + 25;//centre of the ghost
+	int xsquared = (x2 - x1) * (x2 - x1);
+	int ysquared = (y2 - y1) * (y2 - y1);
+	double d = sqrt(xsquared + ysquared);
+
+	return d;
+
+}
+
 
 int Zombie::killValue()
 {

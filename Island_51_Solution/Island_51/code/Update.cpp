@@ -45,6 +45,30 @@ void Engine::update(float dtAsSeconds)
             }
         }
 
+
+        Illusionist[0].illusionBehaviour(playerPosition);
+        if (Illusionist[0].distanceToPlayer(playerPosition) < 70 && !m_illusions) {
+            
+            delete[] Illusionist;
+            Illusions = createIllusions(playerPosition);
+          
+
+        }
+
+        if (m_illusions) {
+
+            for (int i = 0; i < 4; i++)
+            {
+
+
+                Illusions[0].illusionBehaviour(playerPosition);
+                Illusions[1].illusionBehaviour(playerPosition);
+                Illusions[2].illusionBehaviour(playerPosition);
+                Illusions[3].illusionBehaviour(playerPosition);
+            }
+
+        }
+       
         // Loop through each Zombie and update them
         // for (int i = 0; i < numZombies; i++)
         //{
@@ -137,6 +161,14 @@ void Engine::update(float dtAsSeconds)
 
                 if (player.hit(gameTimeTotal))
                 {
+                    
+                    //if it is a chaser
+                    if ((it4)->getType() == 1) {
+                        
+                        //decrease hunger bar
+                        currentHunger -= 5;
+                    }
+                 
                     // More here later
                     hit.play();
                 }

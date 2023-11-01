@@ -24,18 +24,33 @@ class Engine
 public:
     //int loadLevel(VertexArray& rVA);
 
-    std::list<Zombie> createHorde(int numZombies, IntRect arena);
-    std::list<Zombie> createEnemies(int numZombies, Vector2f position, int type);
+   
+ 
 
     Engine(TextureHolder holder);
     void run();
     void input();
     void draw();
     void loadSounds();
+
+    std::list<Zombie> createHorde(int numZombies, IntRect arena);
+    std::list<Zombie> createEnemies(int numZombies, Vector2f position, int type);
+
+    Zombie* createIllusions(Vector2f playerPosition);
     
 
 
 private:
+
+
+    //are illusions activated
+    bool m_illusions = false;
+   
+    //array for the number of illusionist enemies
+    Zombie* Illusionist = new Zombie[4];
+    //this array will handle the illusions created
+    Zombie* Illusions = NULL;
+
     //Level Manager Object
     LevelManager manageLevel;
 
@@ -192,7 +207,7 @@ private:
 	RectangleShape healthBar;
     //Hunger Bar
     RectangleShape hungerBar;
-    float HungerBarStartWidth = 400;
+    float HungerBarStartWidth = 100;
     float HungerTickAmount = 0.1;
     float HungerBarHeight = 40;
     float currentHunger = HungerBarStartWidth;

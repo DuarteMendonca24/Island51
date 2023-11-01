@@ -1,16 +1,10 @@
-﻿  Zombie.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(64,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(154,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(155,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(156,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+﻿  Update.cpp
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(79): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(91): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(211): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(212,55): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(157,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(192,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

@@ -79,6 +79,11 @@ public:
 	// Update the zombie each frame
 	void update(float elapsedTime, Vector2f playerLocation);
 
+	//behaviour for the Illusionist enemy
+	bool illusionBehaviour(Vector2f enemyLocation);
+
+	double distanceToPlayer(Vector2f playerLocation);
+
 	int killValue();
 
 	int getType();

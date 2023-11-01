@@ -49,8 +49,8 @@ Engine::Engine(TextureHolder holder){
 
 	//m_EnemiesList = createHorde(numZombies, arena);
 	Vector2i worldSize = manageLevel.getLevelSize();
-	m_EnemiesList = createHorde(numZombies, arena);
-	numZombiesAlive = numZombies;
+	//m_EnemiesList = createHorde(numZombies, arena);
+	//numZombiesAlive = numZombies;
 	IntRect arena;
 	arena.width = worldSize.x * TILE_SIZE;
 	arena.height = worldSize.y * TILE_SIZE;
@@ -58,6 +58,11 @@ Engine::Engine(TextureHolder holder){
 	arena.top = 0;
 	// Spawn the player in the middle of the arena
 	player.spawn(arena, resolution, TILE_SIZE);
+
+	Illusionist[0].spawn(200, 200, 0, 1); // Top Illusionist
+	Illusionist[1].spawn(400, 400, 0, 1); // Top Illusionist
+	
+
 
 }
 
