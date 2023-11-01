@@ -7,7 +7,7 @@ Engine::Engine(TextureHolder holder){
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 	state = State::GAME_OVER;
-
+	
 
 	m_Window.create(VideoMode(resolution.x, resolution.y), "Island 51",Style::Fullscreen);
 
@@ -21,6 +21,10 @@ Engine::Engine(TextureHolder holder){
 	textureAmmoIcon = holder.GetTexture("graphics/ammo_icon.png");
 	textureCrosshair = holder.GetTexture("graphics/crosshair.png");
 	textureGameOver = holder.GetTexture("graphics/background.png");
+
+	//Background image
+    String background_name = "graphics/MainMenu.png";
+    GUI_background_Texture = holder.GetTexture(background_name);
 
 	//Load Texture for Ammo Icon
 
@@ -59,12 +63,17 @@ Engine::Engine(TextureHolder holder){
 	// Spawn the player in the middle of the arena
 	player.spawn(arena, resolution, TILE_SIZE);
 
+
+	m_TextureHolder = holder;
+
 }
 
 void Engine::run(){
 
     // Timing 	
 	Clock clock;
+	//Setting State to 
+	state = State::MAIN_MENU;
 
 	while (m_Window.isOpen())
 	{
@@ -74,10 +83,13 @@ void Engine::run(){
 		timeSinceLastUpdate = dt;
 		// Make a decimal fraction from the delta time
 		float dtAsSeconds = dt.asSeconds();
-
 		input();
 		update(dtAsSeconds);
 		draw();
+
+		if(state == State::EXIT){
+			m_Window.close();
+		}
 
 	}
 

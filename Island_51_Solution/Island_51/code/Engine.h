@@ -1,5 +1,3 @@
-
-
 #pragma once
 //Including All Header files and libraries needed
 #include <sstream>
@@ -33,11 +31,16 @@ public:
     void draw();
     void loadSounds();
     
+    // A regular RenderWindow
+	RenderWindow m_Window;
 
 
 private:
     //Level Manager Object
     LevelManager manageLevel;
+
+    //TextureHolder object
+    TextureHolder m_TextureHolder;
 
     //Horde Object
     //CreateHorde
@@ -85,9 +88,6 @@ private:
     
     // Update Function For All Classes
     void update(float dtAsSeconds);
-
-    // A regular RenderWindow
-	RenderWindow m_Window;
 
     //view for the background
 	View m_BGMainView;
@@ -145,6 +145,18 @@ private:
     // Here is the instabce of TextureHolder
 	
 
+    //Buttons FloatRect objects hitboxes
+    FloatRect startButtonHitBox;
+    FloatRect exitButtonHitBox;
+    //GUI Button Rectangles
+    RectangleShape startButton;
+    RectangleShape exitButton;
+    // Button Colors
+    //  Rectangle Colors
+    Color startButtonColor = Color::Green;
+    Color exitButtonColor = Color::Red;
+    Color hoverOverColor = Color::Magenta;
+
     //Text Variables
     Text zombiesRemainingText;
 	Text hiScoreText;
@@ -160,6 +172,7 @@ private:
     Texture textureAmmoIcon;
     Texture textureCrosshair;
     Texture textureGameOver;
+    Texture GUI_background_Texture;
 
     //Sprites variables
     Sprite spriteCrosshair;
@@ -213,5 +226,7 @@ private:
 
     // 1000 bullets should do
     Bullet bullets[1000];
+
+
 };
     

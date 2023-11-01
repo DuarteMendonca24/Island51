@@ -218,4 +218,32 @@ void Engine::update(float dtAsSeconds)
         } // End HUD update
 
     } // End updating the scene
+
+
+
+    if(state == State::MAIN_MENU)
+    {
+        //Check Collisions Between mouse and buttons
+        if(startButtonHitBox.contains(mouseScreenPosition.x , mouseScreenPosition.y)){
+            startButton.setFillColor(hoverOverColor);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                state = State::LEVELING_UP;
+            }
+        }
+        else{
+            startButton.setFillColor(startButtonColor);
+        }
+
+        if(exitButtonHitBox.contains(mouseScreenPosition.x , mouseScreenPosition.y)){
+            exitButton.setFillColor(hoverOverColor);
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                state = State::EXIT;
+            }
+        }
+        else{
+            exitButton.setFillColor(exitButtonColor);
+        }
+    }
 }
