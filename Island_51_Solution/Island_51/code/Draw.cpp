@@ -125,11 +125,11 @@ void Engine::draw()
          }
 
         // Draw the zombies with a list
-        std::list<Zombie>::iterator it2;
+        std::list<Zombie*>::iterator it2;
         for (it2 = m_EnemiesList.begin(); it2 != m_EnemiesList.end(); it2++)
         {
 
-            m_Window.draw((it2)->getSprite());
+            m_Window.draw((*it2)->getSprite());
         }
 
         for (int i = 0; i < 100; i++)
@@ -170,14 +170,14 @@ void Engine::draw()
         m_Window.setView(hudView);
 
         // Draw all the HUD elements
-        m_Window.draw(spriteAmmoIcon);
-        m_Window.draw(ammoText);
-        m_Window.draw(scoreText);
-        m_Window.draw(hiScoreText);
-        m_Window.draw(healthBar);
-        m_Window.draw(waveNumberText);
-        m_Window.draw(zombiesRemainingText);
-        m_Window.draw(hungerBar);
+       //m_Window.draw(spriteAmmoIcon);
+       //m_Window.draw(ammoText);
+       //m_Window.draw(scoreText);
+       //m_Window.draw(hiScoreText);
+       //m_Window.draw(healthBar);
+       //m_Window.draw(waveNumberText);
+       //m_Window.draw(zombiesRemainingText);
+       //m_Window.draw(hungerBar);
     }
 
     if (state == State::LEVELING_UP)

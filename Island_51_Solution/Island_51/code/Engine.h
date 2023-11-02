@@ -33,8 +33,8 @@ public:
     void draw();
     void loadSounds();
 
-    std::list<Zombie> createHorde(int numZombies, IntRect arena);
-    std::list<Zombie> createEnemies(int numZombies, Vector2f position, int type);
+    std::list<Zombie*> createHorde(int numZombies, IntRect arena);
+    std::list<Zombie*> createEnemies(int numZombies, Vector2f position, int type);
 
     Zombie* createIllusions(Vector2f playerPosition);
     
@@ -46,7 +46,7 @@ private:
     //variable to store in which position of the array is the real illusionist
     int m_realOne;
 
-    bool m_test = true;
+    bool m_test = false;
     
     //are illusions activated
     bool m_illusions = false;
@@ -229,18 +229,17 @@ private:
     Zombie* zombies = NULL;
 
 	//changing the array to a list
-	std::list<Zombie> m_EnemiesList;
+	std::list<Zombie*> m_EnemiesList;
 
     // 1000 bullets should do
     Bullet bullets[1000];
-<<<<<<< Updated upstream
-=======
+
 
     //bullets for the enemies
     Bullet enemyBullets[1000];
 
     //cooldown for the shooting of the enemies
     float m_cooldown = 3.0f;
->>>>>>> Stashed changes
+
 };
     

@@ -89,9 +89,9 @@ Zombie* Engine:: createIllusions(Vector2f playerPosition)
 }
 
 //changing the function to return a list
-std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
+std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
 {
-	std::list<Zombie> zombiesList;
+	std::list<Zombie*> zombiesList;
 
 	int maxY = arena.height - 20;
 	int minY = arena.top + 20;
@@ -139,9 +139,10 @@ std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
 		//dont spawn the blowter aka The illusionist
 		int type = (rand() % 4) + 1;
 
-		Zombie zombie ;
-		zombie.spawn(x, y, type, i);
+		Zombie* zombie = new Zombie();
+		zombie->spawn(x, y, type, i);
 		zombiesList.push_back(zombie);
+		
 		
 
 
@@ -150,9 +151,9 @@ std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
 }
 
 //new function created to spawn enemies when one is killed
-std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int type)
+std::list<Zombie*> Engine::createEnemies(int numZombies, Vector2f position, int type)
 {
-	std::list<Zombie> zombiesList;
+	std::list<Zombie*> zombiesList;
 
 	int x = position.x;
 	int y = position.y;
@@ -160,8 +161,8 @@ std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int t
 
 	for (int i = 0; i < numZombies; i++)
 	{
-		Zombie zombie;
-		zombie.spawn(x, y, type, i);
+		Zombie* zombie = new Zombie();
+		zombie->spawn(x, y, type, i);
 		zombiesList.push_back(zombie);
 
 		x += xOffset;

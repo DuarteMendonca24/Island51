@@ -50,7 +50,7 @@ private:
 	float m_Health;
 
 	// Is it still alive?
-	bool m_Alive;
+	bool m_Alive = true;
 
 	//type of zombie
 	int m_type;
