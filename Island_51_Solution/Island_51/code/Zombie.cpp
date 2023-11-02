@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Health = CHASER_HEALTH;
 		m_ScoreValue = CHASER_VALUE;
 		m_type = type;
-	
+
 		break;
 
 	case 2:
@@ -44,7 +45,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_ScoreValue = CRAWLER_VALUE;
 		m_type = type;
 		break;
-	
+
 	case 3:
 		// Rat
 		m_Sprite = Sprite(TextureHolder::GetTexture(
@@ -55,7 +56,21 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_ScoreValue = RAT_VALUE;
 		m_type = type;
 		break;
-	}
+	
+	case 4:
+		
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/boss.png"));
+
+		m_Speed = 10;
+		m_Health = 10;
+		m_ScoreValue = 10;
+		m_type = type;
+		
+		break;
+
+
+    }
 
 	// Modify the speed to make the zombie unique
 	// Every zombie is unique. Create a speed modifier
@@ -224,6 +239,8 @@ double Zombie::distanceToPlayer(Vector2f playerLocation) {
 	return d;
 
 }
+
+
 
 
 int Zombie::killValue()

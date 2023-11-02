@@ -46,7 +46,7 @@ private:
     //variable to store in which position of the array is the real illusionist
     int m_realOne;
 
-    bool m_test = false;
+    bool m_test = true;
     
     //are illusions activated
     bool m_illusions = false;
@@ -233,5 +233,14 @@ private:
 
     // 1000 bullets should do
     Bullet bullets[1000];
+<<<<<<< Updated upstream
+=======
+
+    //bullets for the enemies
+    Bullet enemyBullets[1000];
+
+    //cooldown for the shooting of the enemies
+    float m_cooldown = 3.0f;
+>>>>>>> Stashed changes
 };
     

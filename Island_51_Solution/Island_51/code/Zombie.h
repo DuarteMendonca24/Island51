@@ -1,11 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+
 using namespace sf;
 
 class Zombie
 {
 private:
+
+	
+
 	// How fast is each zombie type?
 	const float BLOATER_SPEED = 40;
 	const float CHASER_SPEED = 80;
@@ -76,11 +80,12 @@ public:
 	// Get a copy of the sprite to draw
 	Sprite getSprite();
 
-	// Update the zombie each frame
+	// behaviour that makes the zombies chase the player if close
 	void update(float elapsedTime, Vector2f playerLocation);
 
 	//behaviour for the Illusionist enemy
 	void illusionBehaviour(Vector2f enemyLocation);
+
 
 	double distanceToPlayer(Vector2f playerLocation);
 

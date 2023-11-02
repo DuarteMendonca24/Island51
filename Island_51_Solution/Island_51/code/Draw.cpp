@@ -138,6 +138,12 @@ void Engine::draw()
             {
                 m_Window.draw(bullets[i].getShape());
             }
+
+            if (enemyBullets[i].isInFlight())
+            {
+                
+                m_Window.draw(enemyBullets[i].getShape());
+            }
         }
 
         // Draw the player

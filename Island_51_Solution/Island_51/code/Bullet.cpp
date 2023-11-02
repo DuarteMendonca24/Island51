@@ -19,7 +19,7 @@ void Bullet::shoot(float startX, float startY,
 	float gradient = (startX - targetX) / (startY - targetY);
 
 	// Any gradient less than zero needs to be negative
-	if (gradient < 0)
+	if ( gradient < 0)
 	{
 		gradient *= -1;
 	}
