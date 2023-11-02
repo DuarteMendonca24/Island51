@@ -12,7 +12,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	switch (type)
 	{
 	case 0:
-		// Bloater
+		// Bloater aka the Illusionist 
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/bloater.png"));
 

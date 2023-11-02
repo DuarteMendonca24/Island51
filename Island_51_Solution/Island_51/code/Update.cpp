@@ -48,7 +48,7 @@ void Engine::update(float dtAsSeconds)
             else {
 
                 //need to investigate this more 
-               // m_EnemiesList.erase(it); // Erase the object from the list and get the next valid iterator
+              //  m_EnemiesList.erase(it); // Erase the object from the list and get the next valid iterator
             }
         }
 
@@ -101,7 +101,7 @@ void Engine::update(float dtAsSeconds)
                             // Register the hit and see if it was a kill
                             if (Illusions[j].hit())
                             {
-                          
+                                
                                 delete[]Illusions;
                                 m_illusions = false;
                               
@@ -147,61 +147,61 @@ void Engine::update(float dtAsSeconds)
         // Collision detection
         // Have any zombies been shot?
         // Changed to use a list
-        std::list<Zombie>::iterator it3;
-        for (int i = 0; i < 100; i++)
-        {
-            for (it3 = m_EnemiesList.begin(); it3 != m_EnemiesList.end(); it3++)
-            {
-                if (bullets[i].isInFlight() && (it3)->isAlive())
-                {
-                    if (bullets[i].getPosition().intersects((it3)->getPosition()))
-                    {
-                        // Stop the bullet unless the equipped gun is the railgun
-                        if (!railgunEquipped)
-                        {
-                            // Stop the bullet
-                            bullets[i].stop();
-                        }
-
-                        // Register the hit and see if it was a kill
-                        if ((it3)->hit())
-                        {
-                            // Not just a hit but a kill too
-                            // Custom scores for each zombie type
-                            score += (it3)->killValue();
-                            // spawn another zombie when killed
-                            // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
-                            //  Delete the previously allocated memory (if it exists)
-                            // delete[] zombies;
-                            //  Create new zombies and add them to m_EnemiesList
-                   
-                            //if zombie is a crawler , create two more enemies
-                            if ((it3)->getType() == 2) {
-                                std::list<Zombie> newZombies = createEnemies(2, (it3)->getPosCoordinates(), 3);
-                                m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
-                            }
-                         
-                            // numZombiesAlive = numZombies;
-                            if (wave >= hiScore)
-                            {
-                                hiScore = wave;
-                            }
-
-                            numZombiesAlive--;
-
-                            // When all the zombies are dead (again)
-                            if (numZombiesAlive == 0)
-                            {
-                                state = State::LEVELING_UP;
-                            }
-                        }
-
-                        // Make a splat sound
-                        splat.play();
-                    }
-                }
-            }
-        } // End zombie being shot
+       std::list<Zombie>::iterator it3;
+       for (int i = 0; i < 100; i++)
+       {
+           for (it3 = m_EnemiesList.begin(); it3 != m_EnemiesList.end(); it3++)
+           {
+               if (bullets[i].isInFlight() && (it3)->isAlive())
+               {
+                   if (bullets[i].getPosition().intersects((it3)->getPosition()))
+                   {
+                       // Stop the bullet unless the equipped gun is the railgun
+                       if (!railgunEquipped)
+                       {
+                           // Stop the bullet
+                           bullets[i].stop();
+                       }
+      
+                       // Register the hit and see if it was a kill
+                       if ((it3)->hit())
+                       {
+                           // Not just a hit but a kill too
+                           // Custom scores for each zombie type
+                           score += (it3)->killValue();
+                           // spawn another zombie when killed
+                           // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
+                           //  Delete the previously allocated memory (if it exists)
+                           // delete[] zombies;
+                           //  Create new zombies and add them to m_EnemiesList
+                  
+                           //if zombie is a crawler , create two more enemies
+                           if ((it3)->getType() == 2) {
+                               std::list<Zombie> newZombies = createEnemies(2, (it3)->getPosCoordinates(), 3);
+                               m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
+                           }
+                        
+                           // numZombiesAlive = numZombies;
+                           if (wave >= hiScore)
+                           {
+                               hiScore = wave;
+                           }
+      
+                           numZombiesAlive--;
+      
+                           // When all the zombies are dead (again)
+                           if (numZombiesAlive == 0)
+                           {
+                               state = State::LEVELING_UP;
+                           }
+                       }
+      
+                       // Make a splat sound
+                       splat.play();
+                   }
+               }
+           }
+       } // End zombie being shot
 
         // Have any zombies touched the player
         // Changed to use a list
