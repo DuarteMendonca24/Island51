@@ -134,7 +134,6 @@
     <ClInclude Include="code\Bullet.h" />
     <ClInclude Include="code\Collisions.h" />
     <ClInclude Include="code\Engine.h" />
-    <ClInclude Include="code\GUI.h" />
     <ClInclude Include="code\HandleCollisions.h" />
     <ClInclude Include="code\LevelManager.h" />
     <ClInclude Include="code\Pickup.h" />
@@ -155,7 +154,6 @@
     <ClCompile Include="code\CreateHorde.cpp" />
     <ClCompile Include="code\Draw.cpp" />
     <ClCompile Include="code\Engine.cpp" />
-    <ClCompile Include="code\GUI.cpp" />
     <ClCompile Include="code\HandleCollisions.cpp" />
     <ClCompile Include="code\HandleInput.cpp" />
     <ClCompile Include="code\LevelManager.cpp" />
