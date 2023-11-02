@@ -48,8 +48,9 @@ void Engine::update(float dtAsSeconds)
             }
             else {
 
-                //need to investigate this more 
-              //  m_EnemiesList.erase(it); // Erase the object from the list and get the next valid iterator
+                
+                // Erase the object from the list and get the next valid iterator
+                it = m_EnemiesList.erase(it);
             }
 
             if ((*it)->getType() == 4 && (*it)->isAlive()) {
