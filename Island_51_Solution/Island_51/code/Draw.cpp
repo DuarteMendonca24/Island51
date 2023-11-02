@@ -111,10 +111,18 @@ void Engine::draw()
         m_Window.draw(background, &textureBackground);
 
         // Draw the zombies
-        // for (int i = 0; i < numZombies; i++)
-        //{
-        //	m_Window.draw(zombies[i].getSprite());
-        //}
+         for (int i = 0; i < 4; i++){
+
+            if (m_illusions) {
+                
+                m_Window.draw(Illusions[i].getSprite());
+            }
+            else if(!m_test) {
+                
+                m_Window.draw(Illusionist[i].getSprite());
+            }
+
+         }
 
         // Draw the zombies with a list
         std::list<Zombie>::iterator it2;

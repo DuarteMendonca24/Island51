@@ -56,6 +56,8 @@ bool Player::hit(Time timeHit)
 	{
 		m_LastHit = timeHit;
 		m_Health -= 10;
+	
+
 		return true;
 	}
 	else

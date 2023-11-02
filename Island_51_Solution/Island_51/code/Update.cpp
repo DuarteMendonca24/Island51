@@ -37,14 +37,90 @@ void Engine::update(float dtAsSeconds)
         std::list<Zombie>::iterator it;
         for (it = m_EnemiesList.begin(); it != m_EnemiesList.end(); it++)
         {
+        
+           // cout << m_EnemiesList.size() <<"\n";
 
             if ((it)->isAlive())
             {
 
                 (it)->update(dtAsSeconds, playerPosition);
             }
+            else {
+
+                //need to investigate this more 
+              //  m_EnemiesList.erase(it); // Erase the object from the list and get the next valid iterator
+            }
         }
 
+        //make the illusionist look at player
+        Illusionist[0].illusionBehaviour(playerPosition);
+
+        //if its close to the player create the illusions
+        if (Illusionist[0].distanceToPlayer(playerPosition) < 70 && !m_illusions) {
+            
+            //we delete the illusionist and create a new array with the illusions
+            delete[] Illusionist;
+            m_test = true;
+            //get random numnber betwwen 0 and 3
+            m_realOne = rand() % 4;
+            Illusions = createIllusions(playerPosition);
+          
+
+        }
+
+        //update the illusions , make them look at player
+        if (m_illusions) {
+
+            for (int i = 0; i < 4; i++)
+            {
+
+                Illusions[0].illusionBehaviour(playerPosition);
+                Illusions[1].illusionBehaviour(playerPosition);
+                Illusions[2].illusionBehaviour(playerPosition);
+                Illusions[3].illusionBehaviour(playerPosition);
+            }
+
+
+            for (int i = 0; i < 100; i++)
+            {
+                for (int j = 0; j < 100; j++) {
+
+                    if (bullets[i].isInFlight() && Illusions[j].isAlive())
+                    {
+
+                        if (bullets[i].getPosition().intersects(Illusions[j].getPosition()) && j == m_realOne)
+                        {
+                            cout << "Entrou";
+                            // Stop the bullet unless the equipped gun is the railgun
+                            if (!railgunEquipped)
+                            {
+                                // Stop the bullet
+                                bullets[i].stop();
+                            }
+
+                            // Register the hit and see if it was a kill
+                            if (Illusions[j].hit())
+                            {
+                                
+                                delete[]Illusions;
+                                m_illusions = false;
+                              
+                                // Not just a hit but a kill too
+                                // Custom scores for each zombie type
+                                score += Illusions[j].killValue();
+                            }
+                        }
+                    }
+
+
+
+
+                }
+              
+            }
+
+        }
+       
         // Loop through each Zombie and update them
         // for (int i = 0; i < numZombies; i++)
         //{
@@ -71,61 +147,61 @@ void Engine::update(float dtAsSeconds)
         // Collision detection
         // Have any zombies been shot?
         // Changed to use a list
-        std::list<Zombie>::iterator it3;
-        for (int i = 0; i < 100; i++)
-        {
-            for (it3 = m_EnemiesList.begin(); it3 != m_EnemiesList.end(); it3++)
-            {
-                if (bullets[i].isInFlight() && (it3)->isAlive())
-                {
-                    if (bullets[i].getPosition().intersects((it3)->getPosition()))
-                    {
-                        // Stop the bullet unless the equipped gun is the railgun
-                        if (!railgunEquipped)
-                        {
-                            // Stop the bullet
-                            bullets[i].stop();
-                        }
-
-                        // Register the hit and see if it was a kill
-                        if ((it3)->hit())
-                        {
-                            // Not just a hit but a kill too
-                            // Custom scores for each zombie type
-                            score += (it3)->killValue();
-                            // spawn another zombie when killed
-                            // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
-                            //  Delete the previously allocated memory (if it exists)
-                            // delete[] zombies;
-                            //  Create new zombies and add them to m_EnemiesList
-                   
-                            //if zombie is a crawler , create two more enemies
-                            if ((it3)->getType() == 2) {
-                                std::list<Zombie> newZombies = createEnemies(2, (it3)->getPosCoordinates(), 3);
-                                m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
-                            }
-                         
-                            // numZombiesAlive = numZombies;
-                            if (wave >= hiScore)
-                            {
-                                hiScore = wave;
-                            }
-
-                            numZombiesAlive--;
-
-                            // When all the zombies are dead (again)
-                            if (numZombiesAlive == 0)
-                            {
-                                state = State::LEVELING_UP;
-                            }
-                        }
-
-                        // Make a splat sound
-                        splat.play();
-                    }
-                }
-            }
-        } // End zombie being shot
+       std::list<Zombie>::iterator it3;
+       for (int i = 0; i < 100; i++)
+       {
+           for (it3 = m_EnemiesList.begin(); it3 != m_EnemiesList.end(); it3++)
+           {
+               if (bullets[i].isInFlight() && (it3)->isAlive())
+               {
+                   if (bullets[i].getPosition().intersects((it3)->getPosition()))
+                   {
+                       // Stop the bullet unless the equipped gun is the railgun
+                       if (!railgunEquipped)
+                       {
+                           // Stop the bullet
+                           bullets[i].stop();
+                       }
+      
+                       // Register the hit and see if it was a kill
+                       if ((it3)->hit())
+                       {
+                           // Not just a hit but a kill too
+                           // Custom scores for each zombie type
+                           score += (it3)->killValue();
+                           // spawn another zombie when killed
+                           // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
+                           //  Delete the previously allocated memory (if it exists)
+                           // delete[] zombies;
+                           //  Create new zombies and add them to m_EnemiesList
+                  
+                           //if zombie is a crawler , create two more enemies
+                           if ((it3)->getType() == 2) {
+                               std::list<Zombie> newZombies = createEnemies(2, (it3)->getPosCoordinates(), 3);
+                               m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
+                           }
+                        
+                           // numZombiesAlive = numZombies;
+                           if (wave >= hiScore)
+                           {
+                               hiScore = wave;
+                           }
+      
+                           numZombiesAlive--;
+      
+                           // When all the zombies are dead (again)
+                           if (numZombiesAlive == 0)
+                           {
+                               state = State::LEVELING_UP;
+                           }
+                       }
+      
+                       // Make a splat sound
+                       splat.play();
+                   }
+               }
+           }
+       } // End zombie being shot
 
         // Have any zombies touched the player
         // Changed to use a list
@@ -137,6 +213,14 @@ void Engine::update(float dtAsSeconds)
 
                 if (player.hit(gameTimeTotal))
                 {
+                    
+                    //if it is a chaser
+                    if ((it4)->getType() == 1) {
+                        
+                        //decrease hunger bar
+                        currentHunger -= 5;
+                    }
+                 
                     // More here later
                     hit.play();
                 }
