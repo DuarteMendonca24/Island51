@@ -33,16 +33,18 @@ private:
 	float m_SecondsToLive;
 	float m_SecondsToWait;
 
+	//Positon pickup
+	float m_posX;
+	float m_posY;
 	// Public prototypes go here
 public: 
 
 	//Parameterized Constructor
-	Pickup(int type);
-
+	//Pickup(int type);
 	// Prepare a new pickup
 	void setArena(IntRect arena);
 
-	void spawn();
+	void spawn(int type, float startX, float startY);
 
 	// Check the position of a pickup
 	FloatRect getPosition();
@@ -62,6 +64,7 @@ public:
 	// Upgrade the value of each pickup
 	void upgrade();
 
+	int getType();
 };
 
 

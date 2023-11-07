@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
 using namespace sf;
 
 class Bullet
@@ -34,6 +33,7 @@ private:
 	float m_MaxY;
 	float m_MinY;
 
+	float m_Range;
 // Public function prototypes go here
 public:
 	// The constructor
@@ -57,5 +57,8 @@ public:
 
 	// Update the bullet each frame
 	void update(float elapsedTime);
-
+	
+	int getRange();
+	void setRange(int range);
+	
 };

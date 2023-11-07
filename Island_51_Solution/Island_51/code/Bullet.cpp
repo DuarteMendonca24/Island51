@@ -14,7 +14,6 @@ void Bullet::shoot(float startX, float startY,
 	m_InFlight = true;
 	m_Position.x = startX;
 	m_Position.y = startY;
-
 	// Calculate the gradient of the flight path
 	float gradient = (startX - targetX) / (startY - targetY);
 
@@ -48,11 +47,11 @@ void Bullet::shoot(float startX, float startY,
 	m_YTarget = targetY;
 
 	// Set a max range of 1000 pixels
-	float range = 1000;
-	m_MinX = startX - range;
-	m_MaxX = startX + range;
-	m_MinY = startY - range;
-	m_MaxY = startY + range;
+	float range = m_Range;
+	m_MinX = startX - m_Range;
+	m_MaxX = startX + m_Range;
+	m_MinY = startY - m_Range;
+	m_MaxY = startY + m_Range;
 	
 	// Position the bullet ready to be drawn
 	m_BulletShape.setPosition(m_Position);
@@ -95,4 +94,12 @@ void Bullet::update(float elapsedTime)
 		m_InFlight = false;
 	}
 
+}
+void Bullet::setRange(int range)
+{
+	m_Range = range;
+}
+int Bullet::getRange()
+{
+	return m_Range;
 }

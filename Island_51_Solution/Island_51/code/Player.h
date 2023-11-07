@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include "LevelManager.h"
 using namespace sf;
 
 class Player
@@ -45,6 +45,19 @@ private:
 	// Speed in pixels per second
 	float m_Speed;
 
+	// Private variables and functions come next
+	sf::Vector2i sheetCoordinate; // Coordinate on spritesheet
+	sf::Vector2i spriteSize;
+	int animation_it_limit; //Max animation iterations
+	bool horizontal{ true };
+	int ani_counter{};
+	//which direction is the character headed? used to see if we need to reset the animation to first frame as we have changed direction
+	sf::Vector2f direction{ 0, 1 }; //default value is left
+
+	Clock clock;
+	float timeElapsed;
+	//50 ms for each frame
+	float animationTimer = 0;
 
 	// All our public functions will come next
 public:
@@ -110,6 +123,10 @@ public:
 	// Change Player Sprite to hold new weapons
 	void changePlayerSprite(int type);
 
+	//setSprite to use correct animation cell
+	void setSpriteFromSheet(sf::IntRect textureBox);
+	//move the rectangle to the next cell in the animation
+	void moveTextureRect();
 };
 
 

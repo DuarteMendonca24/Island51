@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Zombie.h"
+#include "Pickup.h"
 #include <list>
 
 /*Zombie* createHorde(int numZombies, IntRect arena)
@@ -147,4 +148,86 @@ std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int t
 	}
 
 	return zombiesList;
+}
+
+
+//new function created to spawn enemies when one is killed
+std::list<Pickup> Engine::createPickup( Vector2f position)
+{
+	std::list<Pickup> pickupList;
+
+	float posX = position.x;
+	float posY = position.y;
+	int xOffset = 25;
+	
+		Pickup pickup;
+		srand((int)time(0));
+		int type = (rand() % 3 +1);
+		pickup.spawn(type, posX, posY);
+		pickupList.push_back(pickup);
+
+		//posX += xOffset;
+	
+
+	return pickupList;
+}
+
+//changing the function to return a list
+std::list<Tools> Engine::createTools(int numResource, IntRect arena)
+{
+	std::list<Tools> toolsList;
+
+	int maxY = arena.height - 20;
+	int minY = arena.top + 20;
+	int maxX = arena.width - 20;
+	int minX = arena.left + 20;
+
+	for (int i = 0; i < numResource; i++)
+	{
+
+		// Which side should the zombie spawn
+		srand((int)time(0) * i);
+		int side = (rand() % 3);
+		float x, y;
+
+		switch (side)
+		{
+		case 0:
+			// left
+			x = minX;
+			y = (rand() % maxY) + minY;
+			break;
+
+		case 1:
+			// right
+			x = maxX;
+			y = (rand() % maxY) + minY;
+			break;
+
+		case 2:
+			// top
+			x = (rand() % maxX) + minX;
+			y = minY;
+			break;
+
+		case 3:
+			// bottom
+			x = (rand() % maxX) + minX;
+			y = maxY;
+			break;
+		}
+
+
+		// Bloater, crawler, runner, rat
+		srand((int)time(0) * i * 2);
+		int type = (rand() % 3);
+
+		Tools tool;
+		tool.spawn(x, y, type);
+		toolsList.push_back(tool);
+
+
+
+	}
+	return toolsList;
 }

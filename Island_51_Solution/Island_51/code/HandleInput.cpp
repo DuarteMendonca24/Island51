@@ -37,10 +37,10 @@ void Engine::input()
 
 					// Prepare the gun and ammo for next game
 					currentBullet = 0;
-					bulletsSpare = handgunBulletsSpare;
-					bulletsInClip = handgunBulletsInClip;
-					clipSize = handgunClipSize;
-					fireRate = handgunFireRate;
+					bulletsSpare = handBulletsSpare;
+					bulletsInClip = handBulletsInClip;
+					clipSize = handClipSize;
+					fireRate = handFireRate;
 					
 					
 
@@ -126,11 +126,11 @@ void Engine::input()
         {
             player.stopRight();
         }
-
+        
         // Fire a bullet
+        
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
-
             if (gameTimeTotal.asMilliseconds() - lastPressed.asMilliseconds() > 1000 / fireRate && bulletsInClip > 0)
             {
 
@@ -139,7 +139,8 @@ void Engine::input()
                 bullets[currentBullet].shoot(
                     player.getCenter().x, player.getCenter().y,
                     mouseWorldPosition.x, mouseWorldPosition.y);
-
+                bullets[currentBullet].setRange(20);
+                
                 currentBullet++;
                 if (currentBullet > 99)
                 {
@@ -151,76 +152,139 @@ void Engine::input()
             }
 
         } // End fire a bullet
-
+        
         if (Keyboard::isKeyPressed(Keyboard::Num1))
         {
-            // Equip Handgun
+            // Equip Hand
             player.changePlayerSprite(1);
-            handgunEquipped = true;
-            smgEquipped = false;
-            railgunEquipped = false;
+            handEquipped = true;
+            woodSwordEquipped = false;
+            stoneSwordEquipped = false;
+            ironSwordEquipped = false;
+            arrowEquipped = false;
 
-            currentBullet = handgunCurrentBullet;
-            bulletsSpare = handgunBulletsSpare;
-            bulletsInClip = handgunBulletsInClip;
-            clipSize = handgunClipSize;
-            fireRate = handgunFireRate;
+            currentBullet = handCurrentBullet;
+            bulletsSpare = handBulletsSpare;
+            bulletsInClip = handBulletsInClip;
+            clipSize = handClipSize;
+            fireRate = handFireRate;
         }
 
         if (Keyboard::isKeyPressed(Keyboard::Num2))
         {
-            // Equip SMG if unlocked
+            // Equip Wood Sword if unlocked
             player.changePlayerSprite(2);
-            handgunEquipped = false;
-            smgEquipped = true;
-            railgunEquipped = false;
-            // Equipping the correct parameters for the smg
-            currentBullet = smgCurrentBullet;
-            bulletsSpare = smgBulletsSpare;
-            bulletsInClip = smgBulletsInClip;
-            clipSize = smgClipSize;
-            fireRate = smgFireRate;
+            handEquipped = false;
+            woodSwordEquipped = true;
+            stoneSwordEquipped = false;
+            ironSwordEquipped = false;
+            arrowEquipped = false;
+            
+            // Equipping the correct parameters for the Wood Sword
+            currentBullet = woodSwordCurrentBullet;
+            bulletsSpare = woodSwordBulletsSpare;
+            bulletsInClip = woodSwordBulletsInClip;
+            clipSize = woodSwordClipSize;
+            fireRate = woodSwordFireRate;
         }
 
         if (Keyboard::isKeyPressed(Keyboard::Num3))
         {
-            // Equip Railgun if unlocked
+            // Equip Stone Sword if unlocked
             player.changePlayerSprite(3);
-            handgunEquipped = false;
-            smgEquipped = false;
-            railgunEquipped = true;
-            // Equipping the correct parameters for the railgun
-            currentBullet = railgunCurrentBullet;
-            bulletsSpare = railgunBulletsSpare;
-            bulletsInClip = railgunBulletsInClip;
-            clipSize = railgunClipSize;
-            fireRate = railgunFireRate;
+            handEquipped = false;
+            woodSwordEquipped = false;
+            stoneSwordEquipped = true;
+            ironSwordEquipped = false;
+            arrowEquipped = false;
+            // Equipping the correct parameters for the Stone Sword
+            currentBullet = stoneSwordCurrentBullet;
+            bulletsSpare = stoneSwordBulletsSpare;
+            bulletsInClip = stoneSwordBulletsInClip;
+            clipSize = stoneSwordClipSize;
+            fireRate = stoneSwordFireRate;
         }
 
+        if (Keyboard::isKeyPressed(Keyboard::Num4))
+        {
+            // Equip Iron Sword if unlocked
+            player.changePlayerSprite(3);
+            handEquipped = false;
+            woodSwordEquipped = false;
+            stoneSwordEquipped = false;
+            ironSwordEquipped = true;
+            arrowEquipped = false;
+
+            // Equipping the correct parameters for the Iron Sword
+            currentBullet = ironSwordCurrentBullet;
+            bulletsSpare = ironSwordBulletsSpare;
+            bulletsInClip = ironSwordBulletsInClip;
+            clipSize = ironSwordClipSize;
+            fireRate = ironSwordFireRate;
+        }
+
+        if (Keyboard::isKeyPressed(Keyboard::Num5))
+        {
+            // Equip arrow if unlocked
+            player.changePlayerSprite(3);
+            handEquipped = false;
+            woodSwordEquipped = false;
+            stoneSwordEquipped = false;
+            ironSwordEquipped = false;
+            arrowEquipped = true;
+
+            // Equipping the correct parameters for the arrow
+            currentBullet = arrowCurrentBullet;
+            bulletsSpare = arrowBulletsSpare;
+            bulletsInClip = arrowBulletsInClip;
+            clipSize = arrowClipSize;
+            fireRate = arrowFireRate;
+        }
         // Update ammo to corresponding gun
-        if (handgunEquipped)
+        if (handEquipped)
         {
-            handgunCurrentBullet = currentBullet;
-            handgunBulletsSpare = bulletsSpare;
-            handgunBulletsInClip = bulletsInClip;
-            handgunClipSize = clipSize;
-            handgunFireRate = fireRate;
+            handCurrentBullet = currentBullet;
+            handBulletsSpare = bulletsSpare;
+            handBulletsInClip = bulletsInClip;
+            handClipSize = clipSize;
+            handFireRate = fireRate;
+            bullets[currentBullet].setRange(20);
         }
-        else if (smgEquipped)
+        else if (woodSwordEquipped)
         {
-            smgCurrentBullet = currentBullet;
-            smgBulletsSpare = bulletsSpare;
-            smgBulletsInClip = bulletsInClip;
-            smgClipSize = clipSize;
-            smgFireRate = fireRate;
+            woodSwordCurrentBullet = currentBullet;
+            woodSwordBulletsSpare = bulletsSpare;
+            woodSwordBulletsInClip = bulletsInClip;
+            woodSwordClipSize = clipSize;
+            woodSwordFireRate = fireRate;
+            bullets[currentBullet].setRange(50);
         }
-        else if (railgunEquipped)
+        else if (stoneSwordEquipped)
         {
-            railgunCurrentBullet = currentBullet;
-            railgunBulletsSpare = bulletsSpare;
-            railgunBulletsInClip = bulletsInClip;
-            railgunClipSize = clipSize;
-            railgunFireRate = fireRate;
+            stoneSwordCurrentBullet = currentBullet;
+            stoneSwordBulletsSpare = bulletsSpare;
+            stoneSwordBulletsInClip = bulletsInClip;
+            stoneSwordClipSize = clipSize;
+            stoneSwordFireRate = fireRate;
+            bullets[currentBullet].setRange(60);
+        }
+        else if (ironSwordEquipped)
+        {
+            ironSwordCurrentBullet = currentBullet;
+            ironSwordBulletsSpare = bulletsSpare;
+            ironSwordBulletsInClip = bulletsInClip;
+            ironSwordClipSize = clipSize;
+            ironSwordFireRate = fireRate;
+            bullets[currentBullet].setRange(66);
+        }
+        else if (arrowEquipped)
+        {
+            arrowCurrentBullet = currentBullet;
+            arrowBulletsSpare = bulletsSpare;
+            arrowBulletsInClip = bulletsInClip;
+            arrowClipSize = clipSize;
+            arrowFireRate = fireRate;
+            bullets[currentBullet].setRange(1000);
         }
     }
 
@@ -250,10 +314,11 @@ void Engine::input()
         
 
         // Configure the pick-ups
+        /*
         healthPickup.setArena(arena);
         ammoPickup.setArena(arena);
         moneyPickup.setArena(arena);
-
+        */
         // if ((wave % 5) == 0)
         //
         //	//If Wave is a multiple of 5 then spawn a boss enemy
@@ -282,9 +347,10 @@ void Engine::input()
             if (score >= 300)
             {
                 // Increase fire rate
-                handgunFireRate++;
-                smgFireRate++;
-                railgunFireRate++;
+                handFireRate++;
+                woodSwordFireRate++;
+                stoneSwordFireRate++;
+                ironSwordFireRate++;
                 score -= 300;
                 buySuccess.play();
             }
@@ -338,7 +404,7 @@ void Engine::input()
                 buyFailed.play();
             }
         }
-
+        /*
         if (event.key.code == Keyboard::Num5)
         {
             // Upgrading all pickups
@@ -355,17 +421,17 @@ void Engine::input()
                 buyFailed.play();
             }
         }
-
+        */
         if (event.key.code == Keyboard::Num6)
         {
             if (score >= 1000)
             {
                 // SMG UPGRADE (upgrade all smg stats by 2)
-                smgCurrentBullet *= 2;
-                smgBulletsSpare *= 2;
-                smgBulletsInClip *= 2;
-                smgClipSize *= 2;
-                smgFireRate *= 2;
+                woodSwordCurrentBullet *= 2;
+                woodSwordBulletsSpare *= 2;
+                woodSwordBulletsInClip *= 2;
+                woodSwordClipSize *= 2;
+                woodSwordFireRate *= 2;
 
                 score -= 1000;
                 buySuccess.play();
@@ -398,11 +464,11 @@ void Engine::input()
             if (score >= 4000)
             {
                 // SMG UPGRADE (upgrade all smg stats by 2)
-                railgunCurrentBullet *= 2;
-                railgunBulletsSpare *= 2;
-                railgunBulletsInClip *= 2;
-                railgunClipSize *= 2;
-                railgunFireRate *= 2;
+                stoneSwordCurrentBullet *= 2;
+                stoneSwordBulletsSpare *= 2;
+                stoneSwordBulletsInClip *= 2;
+                stoneSwordClipSize *= 2;
+                stoneSwordFireRate *= 2;
 
                 score -= 4000;
                 buySuccess.play();
