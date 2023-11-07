@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Zombie.h"
+#include "Pickup.h"
 #include <list>
 
 /*Zombie* createHorde(int numZombies, IntRect arena)
@@ -66,28 +67,6 @@
 	return zombies;
 }*/
 
-Zombie* Engine:: createIllusions(Vector2f playerPosition)
-{
-	Zombie* illusion = new Zombie[4];
-
-	// Reference Illusionist position
-	int refX = playerPosition.x; // X-coordinate of the reference illusionist
-	int refY = playerPosition.y;  // Y-coordinate of the reference illusionist
-
-	// Offsets for other illusionists
-	int offset = 100;  // Offset to the left
-
-	// Top Illusionist
-	illusion[0].spawn(refX - offset, refY, 0, 1);     // left Illusionist
-	illusion[1].spawn(refX, refY + offset, 0, 1);     // Bottom Illusionist
-	illusion[2].spawn(refX, refY - offset, 0, 1);       // top
-	illusion[3].spawn(refX + offset, refY, 0, 1);      // Right Illusionist
-
-	m_illusions = true;
-
-	return illusion;
-}
-
 //changing the function to return a list
 std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
 {
@@ -136,10 +115,9 @@ std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
 		
 		// Bloater, crawler, runner, rat
 		srand((int)time(0) * i * 2);
-		//dont spawn the blowter aka The illusionist
-		int type = (rand() % 4) + 1;
+		int type = (rand() % 4);
 
-		Zombie zombie ;
+		Zombie zombie;
 		zombie.spawn(x, y, type, i);
 		zombiesList.push_back(zombie);
 		
@@ -148,6 +126,8 @@ std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
 	}
 	return zombiesList;
 }
+
+
 
 //new function created to spawn enemies when one is killed
 std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int type)
@@ -170,3 +150,84 @@ std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int t
 	return zombiesList;
 }
 
+
+//new function created to spawn enemies when one is killed
+std::list<Pickup> Engine::createPickup( Vector2f position)
+{
+	std::list<Pickup> pickupList;
+
+	float posX = position.x;
+	float posY = position.y;
+	int xOffset = 25;
+	
+		Pickup pickup;
+		srand((int)time(0));
+		int type = (rand() % 3 +1);
+		pickup.spawn(type, posX, posY);
+		pickupList.push_back(pickup);
+
+		//posX += xOffset;
+	
+
+	return pickupList;
+}
+
+//changing the function to return a list
+std::list<Tools> Engine::createTools(int numResource, IntRect arena)
+{
+	std::list<Tools> toolsList;
+
+	int maxY = arena.height - 20;
+	int minY = arena.top + 20;
+	int maxX = arena.width - 20;
+	int minX = arena.left + 20;
+
+	for (int i = 0; i < numResource; i++)
+	{
+
+		// Which side should the zombie spawn
+		srand((int)time(0) * i);
+		int side = (rand() % 3);
+		float x, y;
+
+		switch (side)
+		{
+		case 0:
+			// left
+			x = minX;
+			y = (rand() % maxY) + minY;
+			break;
+
+		case 1:
+			// right
+			x = maxX;
+			y = (rand() % maxY) + minY;
+			break;
+
+		case 2:
+			// top
+			x = (rand() % maxX) + minX;
+			y = minY;
+			break;
+
+		case 3:
+			// bottom
+			x = (rand() % maxX) + minX;
+			y = maxY;
+			break;
+		}
+
+
+		// Bloater, crawler, runner, rat
+		srand((int)time(0) * i * 2);
+		int type = (rand() % 3);
+
+		Tools tool;
+		tool.spawn(x, y, type);
+		toolsList.push_back(tool);
+
+
+
+	}
+	return toolsList;
+}

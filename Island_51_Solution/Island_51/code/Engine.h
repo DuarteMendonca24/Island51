@@ -14,7 +14,8 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Pickup.h"
-
+#include "Weapons.h"
+#include "Tools.h"
 using namespace sf;
 
 class Engine
@@ -22,9 +23,10 @@ class Engine
 public:
     //int loadLevel(VertexArray& rVA);
 
-   
- 
-
+    std::list<Zombie> createHorde(int numZombies, IntRect arena);
+    std::list<Zombie> createEnemies(int numZombies, Vector2f position, int type);
+    std::list<Pickup> createPickup(Vector2f position);
+    std::list<Tools> createTools(int numResource, IntRect arena);
     Engine(TextureHolder holder);
     void run();
     void input();
@@ -62,10 +64,11 @@ private:
     //TextureHolder object
     TextureHolder m_TextureHolder;
 
+    int numPickup;
+    Vector2f position;
     //Horde Object
     //CreateHorde
     //Zombie List
-
     /*
         LIST OF VARIABLES NEEDED FOR OTHER CLASSES
     */
@@ -73,39 +76,55 @@ private:
     // Prepare for a horde of zombies
 	int numZombies;
 	int numZombiesAlive;
+    // Prepare for a horde of resource
+    int numResource;
+    int numResourceAlive;
     //Gun Variables
 	int currentBullet = 1;
 	int bulletsSpare = 12;
 	int bulletsInClip = 12;
 	int clipSize = 12;
 	float fireRate = 1;
-    //Handgun parameters
-	int handgunCurrentBullet = 0;
-	int handgunBulletsSpare = 30;
-	int handgunBulletsInClip = 15;
-	int handgunClipSize = 15;
-	float handgunFireRate = 0.6;
-	//Smg Parameters 
-	int smgCurrentBullet = 0;
-	int smgBulletsSpare = 120;
-	int smgBulletsInClip = 30;
-	int smgClipSize = 30;
-	float smgFireRate = 4;
-	//Railgun Parameters
-	int railgunCurrentBullet = 0;
-	int railgunBulletsSpare = 20;
-	int railgunBulletsInClip = 5;
-	int railgunClipSize = 5;
-	float railgunFireRate = 0.4;
+    //Hand parameters
+	int handCurrentBullet = 0;
+	int handBulletsSpare = 30;
+	int handBulletsInClip = 15;
+	int handClipSize = 15;
+	float handFireRate = 0.4;
+	//Wood Sword Parameters 
+	int woodSwordCurrentBullet = 0;
+	int woodSwordBulletsSpare = 120;
+	int woodSwordBulletsInClip = 30;
+	int woodSwordClipSize = 30;
+	float woodSwordFireRate = 0.6;
+	//Stone Sword Parameters
+	int stoneSwordCurrentBullet = 0;
+	int stoneSwordBulletsSpare = 20;
+	int stoneSwordBulletsInClip = 5;
+	int stoneSwordClipSize = 5;
+	float stoneSwordFireRate = 1.0;
+    //Iron Sword Parameters
+    int ironSwordCurrentBullet = 0;
+    int ironSwordBulletsSpare = 20;
+    int ironSwordBulletsInClip = 5;
+    int ironSwordClipSize = 5;
+    float ironSwordFireRate = 3.0;
+    //Arrow Parameters
+    int arrowCurrentBullet = 0;
+    int arrowBulletsSpare = 20;
+    int arrowBulletsInClip = 5;
+    int arrowClipSize = 5;
+    float arrowFireRate = 0.5;
     // About the game
 	int score = 0;
 	int hiScore = 0;
     int wave = 1;
     // Weapons Equipped
-	bool handgunEquipped = true;
-	bool smgEquipped = false;
-	bool railgunEquipped = false;
-    
+	bool handEquipped = true;
+    bool woodSwordEquipped = false;
+	bool stoneSwordEquipped = false;
+	bool ironSwordEquipped = false;
+    bool arrowEquipped = false;
     // Update Function For All Classes
     void update(float dtAsSeconds);
 
@@ -234,15 +253,17 @@ private:
 
     //Create PickUps
     // Create a couple of pickups
+    /*
 	Pickup healthPickup = Pickup(1);
 	Pickup ammoPickup = Pickup(2);
 	Pickup moneyPickup = Pickup(3);
-
+    */
     //Zombie List
     Zombie* zombies = NULL;
-
 	//changing the array to a list
 	std::list<Zombie> m_EnemiesList;
+    std::list<Pickup> m_PickupList;
+    std::list<Tools> m_ResourceList;
 
     // 1000 bullets should do
     Bullet bullets[1000];

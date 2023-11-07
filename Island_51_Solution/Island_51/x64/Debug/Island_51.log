@@ -3,3 +3,18 @@ C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\co
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(96): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(216): warning C4305: 'initializing': truncation from 'double' to 'float'
   Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+﻿  Tools.cpp
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Tools.cpp(96,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Tools.cpp(97,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Tools.cpp(98,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Tools.cpp(99,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Tools.cpp(134,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Island_51.vcxproj -> C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

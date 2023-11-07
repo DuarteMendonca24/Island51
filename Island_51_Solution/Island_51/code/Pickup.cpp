@@ -1,7 +1,9 @@
 #include "Pickup.h"
 #include "TextureHolder.h"
-
-Pickup::Pickup(int type)
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+void Pickup::spawn(int type, float startX, float startY)
 {
 	// Store the type of this pickup
 	m_Type = type;
@@ -16,7 +18,7 @@ Pickup::Pickup(int type)
 		m_Value = HEALTH_START_VALUE;
 
 	}
-	else if(m_Type == 2)
+	else if (m_Type == 2)
 	{
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/ammo_pickup.png"));
@@ -36,8 +38,16 @@ Pickup::Pickup(int type)
 
 	m_SecondsToLive = START_SECONDS_TO_LIVE;
 	m_SecondsToWait = START_WAIT_TIME;
-}
 
+	m_posX = startX;
+	m_posY = startY;
+	// Not currently spawned
+	//m_Spawned = false;
+	m_SecondsSinceSpawn = 0;
+	m_Spawned = true;
+
+	m_Sprite.setPosition(startX, startY);
+}
 void Pickup::setArena(IntRect arena)
 {
 
@@ -47,23 +57,7 @@ void Pickup::setArena(IntRect arena)
 	m_Arena.top = arena.top + 50;
 	m_Arena.height = arena.height - 50;
 
-	spawn();
-}
-
-void Pickup::spawn()
-{
-	// Spawn at a random location
-	srand((int)time(0) / m_Type);
-	int x = (rand() % m_Arena.width);
-	srand((int)time(0) * m_Type);
-	int y = (rand() % m_Arena.height);
-
-	// Not currently spawned
-	//m_Spawned = false;
-	m_SecondsSinceSpawn = 0;
-	m_Spawned = true;
-	
-	m_Sprite.setPosition(x, y);
+	//spawn();
 }
 
 FloatRect Pickup::getPosition()
@@ -112,7 +106,7 @@ void Pickup::update(float elapsedTime)
 	if (m_SecondsSinceDeSpawn > m_SecondsToWait && !m_Spawned)
 	{
 		// spawn the pickup and reset the timer
-		spawn();
+		//spawn();
 	}
 
 }
@@ -135,4 +129,10 @@ void Pickup::upgrade()
 	// Make them more frequent and last longer
 	m_SecondsToLive += (START_SECONDS_TO_LIVE / 15);
 	m_SecondsToWait -= (START_WAIT_TIME / 15);
+}
+
+int Pickup::getType()
+{
+	//Returning the score value for this zombie
+	return m_Type;
 }

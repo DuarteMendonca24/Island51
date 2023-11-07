@@ -43,7 +43,7 @@ Engine::Engine(TextureHolder holder){
 
 	//Zombie Amount Decpends on wave number
 	numZombies = 5 * wave;
-
+	numResource = 5 * wave;
 	// Delete the previously allocated memory (if it exists)
 	//delete[] zombies;
 
@@ -51,6 +51,8 @@ Engine::Engine(TextureHolder holder){
 	Vector2i worldSize = manageLevel.getLevelSize();
 	m_EnemiesList = createHorde(numZombies, arena);
 	numZombiesAlive = numZombies;
+	m_ResourceList = createTools(numResource, arena);
+	numResourceAlive = numResource;
 	IntRect arena;
 	arena.width = worldSize.x * TILE_SIZE;
 	arena.height = worldSize.y * TILE_SIZE;

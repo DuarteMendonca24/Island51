@@ -132,6 +132,19 @@ void Engine::draw()
             m_Window.draw((it2)->getSprite());
         }
 
+        // Draw the pickup with a list
+        std::list<Pickup>::iterator it3;
+        for (it3 = m_PickupList.begin(); it3 != m_PickupList.end(); it3++)
+        {
+
+            m_Window.draw((it3)->getSprite());
+        }
+        // Draw the pickup with a list
+        std::list<Tools>::iterator it4;
+        for (it4 = m_ResourceList.begin(); it4 != m_ResourceList.end(); it4++)
+        {
+            m_Window.draw((it4)->getSprite());
+        }
         for (int i = 0; i < 100; i++)
         {
             if (bullets[i].isInFlight())
@@ -139,11 +152,12 @@ void Engine::draw()
                 m_Window.draw(bullets[i].getShape());
             }
         }
-
+        
         // Draw the player
         m_Window.draw(player.getSprite());
 
         // Draw the pickups is currently spawned
+        /*
         if (ammoPickup.isSpawned())
         {
             m_Window.draw(ammoPickup.getSprite());
@@ -156,6 +170,7 @@ void Engine::draw()
         {
             m_Window.draw(moneyPickup.getSprite());
         }
+        */
 
         // Draw the crosshair
         m_Window.draw(spriteCrosshair);
