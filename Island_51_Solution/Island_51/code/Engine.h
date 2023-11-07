@@ -33,10 +33,9 @@ public:
     void draw();
     void loadSounds();
 
-    std::list<Zombie> createHorde(int numZombies, IntRect arena);
-    std::list<Zombie> createEnemies(int numZombies, Vector2f position, int type);
+   
 
-    Zombie* createIllusions(Vector2f playerPosition);
+   Zombie* createIllusions(Vector2f playerPosition);
     
     // A regular RenderWindow
 	RenderWindow m_Window;

@@ -127,7 +127,27 @@ std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
 	return zombiesList;
 }
 
+Zombie* Engine::createIllusions(Vector2f playerPosition)
+{
+	Zombie* illusion = new Zombie[4];
 
+	// Reference Illusionist position
+	int refX = playerPosition.x; // X-coordinate of the reference illusionist
+	int refY = playerPosition.y;  // Y-coordinate of the reference illusionist
+
+	// Offsets for other illusionists
+	int offset = 100;  // Offset to the left
+
+	// Top Illusionist
+	illusion[0].spawn(refX - offset, refY, 0, 1);     // left Illusionist
+	illusion[1].spawn(refX, refY + offset, 0, 1);     // Bottom Illusionist
+	illusion[2].spawn(refX, refY - offset, 0, 1);       // top
+	illusion[3].spawn(refX + offset, refY, 0, 1);      // Right Illusionist
+
+	m_illusions = true;
+
+	return illusion;
+}
 
 //new function created to spawn enemies when one is killed
 std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int type)

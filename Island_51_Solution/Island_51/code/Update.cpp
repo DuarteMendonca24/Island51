@@ -91,12 +91,7 @@ void Engine::update(float dtAsSeconds)
                         if (bullets[i].getPosition().intersects(Illusions[j].getPosition()) && j == m_realOne)
                         {
                             cout << "Entrou";
-                            // Stop the bullet unless the equipped gun is the railgun
-                            if (!railgunEquipped)
-                            {
-                                // Stop the bullet
-                                bullets[i].stop();
-                            }
+                          
 
                             // Register the hit and see if it was a kill
                             if (Illusions[j].hit())
@@ -195,12 +190,8 @@ void Engine::update(float dtAsSeconds)
                {
                    if (bullets[i].getPosition().intersects((it3)->getPosition()))
                    {
-                       // Stop the bullet unless the equipped gun is the railgun
-                       if (!railgunEquipped)
-                       {
-                           // Stop the bullet
-                           bullets[i].stop();
-                       }
+                      
+                      
       
                        // Register the hit and see if it was a kill
                        if ((it3)->hit())
@@ -242,14 +233,14 @@ void Engine::update(float dtAsSeconds)
            }
        } // End zombie being shot
        
-        std::list<Zombie>::iterator it3;
+        std::list<Zombie>::iterator it5;
         for (int i = 0; i < 100; i++)
         {
-            for (it3 = m_EnemiesList.begin(); it3 != m_EnemiesList.end(); it3++)
+            for (it5 = m_EnemiesList.begin(); it5 != m_EnemiesList.end(); it5++)
             {
-                if (bullets[i].isInFlight() && (it3)->isAlive())
+                if (bullets[i].isInFlight() && (it5)->isAlive())
                 {
-                    if (bullets[i].getPosition().intersects((it3)->getPosition()))
+                    if (bullets[i].getPosition().intersects((it5)->getPosition()))
                     {
                         // Stop the bullet unless the equipped gun is the railgun
                         if (!woodSwordEquipped)
@@ -259,14 +250,14 @@ void Engine::update(float dtAsSeconds)
                         }
 
                         // Register the hit and see if it was a kill
-                        if ((it3)->hit())
+                        if ((it5)->hit())
                         {
                             //Spawn pickup
-                            std::list<Pickup> newPickup = createPickup((it3)->getPosCoordinates());
+                            std::list<Pickup> newPickup = createPickup((it5)->getPosCoordinates());
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
                             // Not just a hit but a kill too
                             // Custom scores for each zombie type
-                            score += (it3)->killValue();
+                            score += (it5)->killValue();
                             // spawn another zombie when killed
                             // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
                             //  Delete the previously allocated memory (if it exists)
@@ -274,8 +265,8 @@ void Engine::update(float dtAsSeconds)
                             //  Create new zombies and add them to m_EnemiesList
                    
                             //if zombie is a crawler , create two more enemies
-                            if ((it3)->getType() == 2) {
-                                std::list<Zombie> newZombies = createEnemies(2, (it3)->getPosCoordinates(), 3);
+                            if ((it5)->getType() == 2) {
+                                std::list<Zombie> newZombies = createEnemies(2, (it5)->getPosCoordinates(), 3);
                                 m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
                             }
                          
