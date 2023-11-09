@@ -51,7 +51,7 @@ private:
 	//type of zombie
 	int m_type;
 
-	
+
 
 	// Public prototypes go here	
 public:
