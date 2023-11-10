@@ -33,6 +33,20 @@ void Engine::update(float dtAsSeconds)
         // Make the view centre around the player
         mainView.setCenter(player.getCenter());
 
+        // Update any bullets that are in-flight
+        for (int i = 0; i < 100; i++)
+        {
+            if (bullets[i].isInFlight())
+            {
+                bullets[i].update(dtAsSeconds);
+            }
+        }
+
+      
+
+        //Update code for the enemies
+        // ----------------------------------------------------------------------------------------
+        
         // changing the loop to use a list
         std::list<Zombie*>::iterator it;
         for (it = m_EnemiesList.begin(); it != m_EnemiesList.end(); it++)
@@ -54,17 +68,17 @@ void Engine::update(float dtAsSeconds)
 
         // Have any zombies touched the player
        // Changed to use a list
-        std::list<Zombie*>::iterator it4;
-        for (it4 = m_EnemiesList.begin(); it4 != m_EnemiesList.end(); it4++)
+        std::list<Zombie*>::iterator it2;
+        for (it2 = m_EnemiesList.begin(); it2 != m_EnemiesList.end(); it2++)
         {
-            if (player.getPosition().intersects((*it4)->getPosition()) && (*it4)->isAlive())
+            if (player.getPosition().intersects((*it2)->getPosition()) && (*it2)->isAlive())
             {
 
                 if (player.hit(gameTimeTotal))
                 {
 
                     //if it is a chaser
-                    if ((*it4)->getType() == 1) {
+                    if ((*it2)->getType() == 1) {
 
                         //decrease hunger bar
                         currentHunger -= 5;
@@ -86,35 +100,30 @@ void Engine::update(float dtAsSeconds)
         } // End player touched
 
 
-        std::list<Zombie*>::iterator it5;
+        std::list<Zombie*>::iterator it3;
         for (int i = 0; i < 100; i++)
         {
-            for (it5 = m_EnemiesList.begin(); it5 != m_EnemiesList.end(); it5++)
+            for (it3 = m_EnemiesList.begin(); it3 != m_EnemiesList.end(); it3++)
             {
-                if (bullets[i].isInFlight() && (*it5)->isAlive())
+                if (bullets[i].isInFlight() && (*it3)->isAlive())
                 {
-                    if (bullets[i].getPosition().intersects((*it5)->getPosition()))
+                    if (bullets[i].getPosition().intersects((*it3)->getPosition()))
                     {
                         // Stop the bullet unless the equipped gun is the railgun
                         bullets[i].stop();
                         // Register the hit and see if it was a kill
-                        if ((*it5)->hit())
+                        if ((*it3)->hit())
                         {
                             //Spawn pickup
-                            std::list<Pickup*> newPickup = createPickup((*it5)->getPosCoordinates());
+                            std::list<Pickup*> newPickup = createPickup((*it3)->getPosCoordinates());
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
                             // Not just a hit but a kill too
                             // Custom scores for each zombie type
-                            score += (*it5)->killValue();
-                            // spawn another zombie when killed
-                            // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
-                            //  Delete the previously allocated memory (if it exists)
-                            // delete[] zombies;
-                            //  Create new zombies and add them to m_EnemiesList
-
+                            score += (*it3)->killValue();
+                 
                             //if zombie is a crawler , create two more enemies
-                            if ((*it5)->getType() == 2) {
-                                std::list<Zombie*> newZombies = createEnemies(2, (*it5)->getPosCoordinates(), 3);
+                            if ((*it3)->getType() == 2) {
+                                std::list<Zombie*> newZombies = createEnemies(2, (*it3)->getPosCoordinates(), 3);
                                 m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
                             }
 
@@ -204,32 +213,21 @@ void Engine::update(float dtAsSeconds)
 
         }
        
-        // Loop through each Zombie and update them
-        // for (int i = 0; i < numZombies; i++)
-        //{
-        //	if (zombies[i].isAlive())
-        //	{
-        //		zombies[i].update(dt.asSeconds(), playerPosition);
-        //	}
-        //}
+       
 
-        // Update any bullets that are in-flight
-        for (int i = 0; i < 100; i++)
-        {
-            if (bullets[i].isInFlight())
-            {
-                bullets[i].update(dtAsSeconds);
-            }
-        }
         
-        std::list<Tools*>::iterator it7;
+
+        //Update code for the tools
+        // ----------------------------------------------------------------------------------------
+        
+        std::list<Tools*>::iterator it4;
         for (int i = 0; i < 100; i++)
         {
-            for (it7 = m_ResourceList.begin(); it7 != m_ResourceList.end(); it7++)
+            for (it4 = m_ResourceList.begin(); it4 != m_ResourceList.end(); it4++)
             {
-                if (bullets[i].isInFlight() && (*it7)->isAlive())
+                if (bullets[i].isInFlight() && (*it4)->isAlive())
                 {
-                    if (bullets[i].getPosition().intersects((*it7)->getPosition()))
+                    if (bullets[i].getPosition().intersects((*it4)->getPosition()))
                     {
                         // Stop the bullet unless the equipped gun is the railgun
                         if (!woodSwordEquipped)
@@ -239,19 +237,11 @@ void Engine::update(float dtAsSeconds)
                         }
 
                         // Register the hit and see if it was a kill
-                        if ((*it7)->hit())
+                        if ((*it4)->hit())
                         {
                             //Spawn pickup
-                            std::list<Pickup*> newPickup = createPickup((*it7)->getPosCoordinates());
+                            std::list<Pickup*> newPickup = createPickup((*it4)->getPosCoordinates());
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
-                            // Not just a hit but a kill too
-                            // Custom scores for each zombie type
-                            // spawn another zombie when killed
-                            // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
-                            //  Delete the previously allocated memory (if it exists)
-                            // delete[] zombies;
-                            //  Create new zombies and add them to m_EnemiesList
-
                             numResourceAlive--;
                         }
 
@@ -262,30 +252,23 @@ void Engine::update(float dtAsSeconds)
             }
         } // End zombie being shot
         
-        // Update the pickups
-        /*
-        healthPickup.update(dtAsSeconds);
-        ammoPickup.update(dtAsSeconds);
-        moneyPickup.update(dtAsSeconds);
-        */
-        // Collision detection
-        // Have any zombies been shot?
-        // Changed to use a list
+       
        
         
-        
+        //Update code for the pickups
+        //----------------------------------------------------------------------------------------
  
-        std::list<Pickup*>::iterator it9;
+        std::list<Pickup*>::iterator it5;
         for (int i = 0; i < 100; i++)
         {
-            for (it9 = m_PickupList.begin(); it9 != m_PickupList.end(); it9++)
+            for (it5 = m_PickupList.begin(); it5 != m_PickupList.end(); it5++)
             {
-                    if (player.getPosition().intersects((*it9)->getPosition()) && (*it9)->isSpawned())
+                    if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
                     {
-                        if ((*it9)->getType() == 1)
+                        if ((*it5)->getType() == 1)
                         {
-                            player.increaseHealthLevel((*it9)->gotIt());
-                            m_PickupList.erase(it9); // This erases the pickup from the list
+                            player.increaseHealthLevel((*it5)->gotIt());
+                            m_PickupList.erase(it5); // This erases the pickup from the list
                         }
                        
                         break;// Break the loop after erasing the pickup
