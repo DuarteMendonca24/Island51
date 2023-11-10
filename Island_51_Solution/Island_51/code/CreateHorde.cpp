@@ -68,9 +68,9 @@
 }*/
 
 //changing the function to return a list
-std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
+std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
 {
-	std::list<Zombie> zombiesList;
+	std::list<Zombie*> zombiesList;
 
 	int maxY = arena.height - 20;
 	int minY = arena.top + 20;
@@ -112,15 +112,17 @@ std::list<Zombie> Engine::createHorde(int numZombies, IntRect arena)
 			break;
 		}
 
-		
+
 		// Bloater, crawler, runner, rat
 		srand((int)time(0) * i * 2);
-		int type = (rand() % 4);
+		//dont spawn the blowter aka The illusionist
+		int type = (rand() % 4) + 1;
 
-		Zombie zombie;
-		zombie.spawn(x, y, type, i);
+		Zombie* zombie = new Zombie();
+		zombie->spawn(x, y, type, i);
 		zombiesList.push_back(zombie);
-		
+
+
 
 
 	}
@@ -160,7 +162,7 @@ std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int t
 
 	for (int i = 0; i < numZombies; i++)
 	{
-		Zombie zombie;
+		Zombie zombie ;
 		zombie.spawn(x, y, type, i);
 		zombiesList.push_back(zombie);
 
@@ -172,18 +174,18 @@ std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int t
 
 
 //new function created to spawn enemies when one is killed
-std::list<Pickup> Engine::createPickup( Vector2f position)
+std::list<Pickup*> Engine::createPickup( Vector2f position)
 {
-	std::list<Pickup> pickupList;
+	std::list<Pickup*> pickupList;
 
 	float posX = position.x;
 	float posY = position.y;
 	int xOffset = 25;
 	
-		Pickup pickup;
+		Pickup* pickup = new Pickup();
 		srand((int)time(0));
 		int type = (rand() % 3 +1);
-		pickup.spawn(type, posX, posY);
+		pickup->spawn(type, posX, posY);
 		pickupList.push_back(pickup);
 
 		//posX += xOffset;
@@ -193,9 +195,9 @@ std::list<Pickup> Engine::createPickup( Vector2f position)
 }
 
 //changing the function to return a list
-std::list<Tools> Engine::createTools(int numResource, IntRect arena)
+std::list<Tools*> Engine::createTools(int numResource, IntRect arena)
 {
-	std::list<Tools> toolsList;
+	std::list<Tools*> toolsList;
 
 	int maxY = arena.height - 20;
 	int minY = arena.top + 20;
@@ -242,8 +244,8 @@ std::list<Tools> Engine::createTools(int numResource, IntRect arena)
 		srand((int)time(0) * i * 2);
 		int type = (rand() % 3);
 
-		Tools tool;
-		tool.spawn(x, y, type);
+		Tools* tool = new Tools();
+		tool->spawn(x, y, type);
 		toolsList.push_back(tool);
 
 

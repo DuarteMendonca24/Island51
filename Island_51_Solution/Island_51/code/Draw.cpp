@@ -124,26 +124,26 @@ void Engine::draw()
 
          }
 
-        // Draw the zombies with a list
-        std::list<Zombie>::iterator it2;
-        for (it2 = m_EnemiesList.begin(); it2 != m_EnemiesList.end(); it2++)
-        {
+         // Draw the zombies with a list
+         std::list<Zombie*>::iterator it2;
+         for (it2 = m_EnemiesList.begin(); it2 != m_EnemiesList.end(); it2++)
+         {
 
-            m_Window.draw((it2)->getSprite());
-        }
+             m_Window.draw((*it2)->getSprite());
+         }
 
         // Draw the pickup with a list
-        std::list<Pickup>::iterator it3;
+        std::list<Pickup*>::iterator it3;
         for (it3 = m_PickupList.begin(); it3 != m_PickupList.end(); it3++)
         {
 
-            m_Window.draw((it3)->getSprite());
+            m_Window.draw((*it3)->getSprite());
         }
         // Draw the pickup with a list
-        std::list<Tools>::iterator it4;
+        std::list<Tools*>::iterator it4;
         for (it4 = m_ResourceList.begin(); it4 != m_ResourceList.end(); it4++)
         {
-            m_Window.draw((it4)->getSprite());
+            m_Window.draw((*it4)->getSprite());
         }
         for (int i = 0; i < 100; i++)
         {

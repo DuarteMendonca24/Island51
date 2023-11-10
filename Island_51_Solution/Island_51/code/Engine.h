@@ -23,10 +23,10 @@ class Engine
 public:
     //int loadLevel(VertexArray& rVA);
 
-    std::list<Zombie> createHorde(int numZombies, IntRect arena);
+    std::list<Zombie*> createHorde(int numZombies, IntRect arena);
     std::list<Zombie> createEnemies(int numZombies, Vector2f position, int type);
-    std::list<Pickup> createPickup(Vector2f position);
-    std::list<Tools> createTools(int numResource, IntRect arena);
+    std::list<Pickup*> createPickup(Vector2f position);
+    std::list<Tools*> createTools(int numResource, IntRect arena);
     Engine(TextureHolder holder);
     void run();
     void input();
@@ -260,9 +260,9 @@ private:
     //Zombie List
     Zombie* zombies = NULL;
 	//changing the array to a list
-	std::list<Zombie> m_EnemiesList;
-    std::list<Pickup> m_PickupList;
-    std::list<Tools> m_ResourceList;
+	std::list<Zombie*> m_EnemiesList;
+    std::list<Pickup*> m_PickupList;
+    std::list<Tools*> m_ResourceList;
 
     // 1000 bullets should do
     Bullet bullets[1000];
