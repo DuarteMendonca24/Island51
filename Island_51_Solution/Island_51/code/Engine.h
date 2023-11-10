@@ -24,7 +24,7 @@ public:
     //int loadLevel(VertexArray& rVA);
 
     std::list<Zombie*> createHorde(int numZombies, IntRect arena);
-    std::list<Zombie> createEnemies(int numZombies, Vector2f position, int type);
+    std::list<Zombie*> createEnemies(int numZombies, Vector2f position, int type);
     std::list<Pickup*> createPickup(Vector2f position);
     std::list<Tools*> createTools(int numResource, IntRect arena);
     Engine(TextureHolder holder);

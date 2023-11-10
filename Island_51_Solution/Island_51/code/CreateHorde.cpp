@@ -152,9 +152,9 @@ Zombie* Engine::createIllusions(Vector2f playerPosition)
 }
 
 //new function created to spawn enemies when one is killed
-std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int type)
+std::list<Zombie*> Engine::createEnemies(int numZombies, Vector2f position, int type)
 {
-	std::list<Zombie> zombiesList;
+	std::list<Zombie*> zombiesList;
 
 	int x = position.x;
 	int y = position.y;
@@ -162,8 +162,8 @@ std::list<Zombie> Engine::createEnemies(int numZombies, Vector2f position, int t
 
 	for (int i = 0; i < numZombies; i++)
 	{
-		Zombie zombie ;
-		zombie.spawn(x, y, type, i);
+		Zombie* zombie = new Zombie() ;
+		zombie->spawn(x, y, type, i);
 		zombiesList.push_back(zombie);
 
 		x += xOffset;

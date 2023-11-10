@@ -52,6 +52,94 @@ void Engine::update(float dtAsSeconds)
             }
         }
 
+        // Have any zombies touched the player
+       // Changed to use a list
+        std::list<Zombie*>::iterator it4;
+        for (it4 = m_EnemiesList.begin(); it4 != m_EnemiesList.end(); it4++)
+        {
+            if (player.getPosition().intersects((*it4)->getPosition()) && (*it4)->isAlive())
+            {
+
+                if (player.hit(gameTimeTotal))
+                {
+
+                    //if it is a chaser
+                    if ((*it4)->getType() == 1) {
+
+                        //decrease hunger bar
+                        currentHunger -= 5;
+                    }
+
+                    // More here later
+                    hit.play();
+                }
+
+                if (player.getHealth() <= 0)
+                {
+                    state = State::GAME_OVER;
+
+                    std::ofstream outputFile("gamedata/scores.txt");
+                    outputFile << hiScore;
+                    outputFile.close();
+                }
+            }
+        } // End player touched
+
+
+        std::list<Zombie*>::iterator it5;
+        for (int i = 0; i < 100; i++)
+        {
+            for (it5 = m_EnemiesList.begin(); it5 != m_EnemiesList.end(); it5++)
+            {
+                if (bullets[i].isInFlight() && (*it5)->isAlive())
+                {
+                    if (bullets[i].getPosition().intersects((*it5)->getPosition()))
+                    {
+                        // Stop the bullet unless the equipped gun is the railgun
+                        bullets[i].stop();
+                        // Register the hit and see if it was a kill
+                        if ((*it5)->hit())
+                        {
+                            //Spawn pickup
+                            std::list<Pickup*> newPickup = createPickup((*it5)->getPosCoordinates());
+                            m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
+                            // Not just a hit but a kill too
+                            // Custom scores for each zombie type
+                            score += (*it5)->killValue();
+                            // spawn another zombie when killed
+                            // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
+                            //  Delete the previously allocated memory (if it exists)
+                            // delete[] zombies;
+                            //  Create new zombies and add them to m_EnemiesList
+
+                            //if zombie is a crawler , create two more enemies
+                            if ((*it5)->getType() == 2) {
+                                std::list<Zombie*> newZombies = createEnemies(2, (*it5)->getPosCoordinates(), 3);
+                                m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
+                            }
+
+                             //numZombiesAlive = numZombies;
+                            if (wave >= hiScore)
+                            {
+                                hiScore = wave;
+                            }
+
+                            numZombiesAlive--;
+
+                            // When all the zombies are dead (again)
+                            if (numZombiesAlive == 0)
+                            {
+                                state = State::LEVELING_UP;
+                            }
+                        }
+
+                        // Make a splat sound
+                        splat.play();
+                    }
+                }
+            }
+        } // End zombie being shot
+
         //make the illusionist look at player
         Illusionist[0].illusionBehaviour(playerPosition);
 
@@ -184,93 +272,9 @@ void Engine::update(float dtAsSeconds)
         // Have any zombies been shot?
         // Changed to use a list
        
-        std::list<Zombie*>::iterator it5;
-        for (int i = 0; i < 100; i++)
-        {
-            for (it5 = m_EnemiesList.begin(); it5 != m_EnemiesList.end(); it5++)
-            {
-                if (bullets[i].isInFlight() && (*it5)->isAlive())
-                {
-                    if (bullets[i].getPosition().intersects((*it5)->getPosition()))
-                    {
-                        // Stop the bullet unless the equipped gun is the railgun
-                        bullets[i].stop();
-                        // Register the hit and see if it was a kill
-                        if ((*it5)->hit())
-                        {
-                            //Spawn pickup
-                            std::list<Pickup*> newPickup = createPickup((*it5)->getPosCoordinates());
-                            m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
-                            // Not just a hit but a kill too
-                            // Custom scores for each zombie type
-                            score += (*it5)->killValue();
-                            // spawn another zombie when killed
-                            // zombies[j].spawn(zombies[j].getPosCoordinates().x, zombies[j].getPosCoordinates().y,3,1);
-                            //  Delete the previously allocated memory (if it exists)
-                            // delete[] zombies;
-                            //  Create new zombies and add them to m_EnemiesList
-                   
-                            //if zombie is a crawler , create two more enemies
-                            //if ((*it5)->getType() == 2) {
-                            //    std::list<Zombie> newZombies = createEnemies(2, (*it5)->getPosCoordinates(), 3);
-                            //    m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
-                            //}
-                         
-                             //numZombiesAlive = numZombies;
-                            if (wave >= hiScore)
-                            {
-                                hiScore = wave;
-                            }
-
-                            numZombiesAlive--;
-
-                            // When all the zombies are dead (again)
-                            if (numZombiesAlive == 0)
-                            {
-                                state = State::LEVELING_UP;
-                            }
-                        }
-
-                        // Make a splat sound
-                        splat.play();
-                    }
-                }
-            }
-        } // End zombie being shot
         
-        // Have any zombies touched the player
-        // Changed to use a list
-        std::list<Zombie*>::iterator it4;
-        for (it4 = m_EnemiesList.begin(); it4 != m_EnemiesList.end(); it4++)
-        {
-            if (player.getPosition().intersects((*it4)->getPosition()) && (*it4)->isAlive())
-            {
-
-                if (player.hit(gameTimeTotal))
-                {
-                    
-                    //if it is a chaser
-                    if ((*it4)->getType() == 1) {
-                        
-                        //decrease hunger bar
-                        currentHunger -= 5;
-                    }
-                 
-                    // More here later
-                    hit.play();
-                }
-
-                if (player.getHealth() <= 0)
-                {
-                    state = State::GAME_OVER;
-
-                    std::ofstream outputFile("gamedata/scores.txt");
-                    outputFile << hiScore;
-                    outputFile.close();
-                }
-            }
-        } // End player touched
         
+ 
         std::list<Pickup*>::iterator it9;
         for (int i = 0; i < 100; i++)
         {
