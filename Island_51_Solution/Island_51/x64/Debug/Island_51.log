@@ -1,5 +1,5 @@
 ﻿  Main.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(92): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(98): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(247): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(94): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(100): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(245): warning C4305: 'initializing': truncation from 'double' to 'float'
   Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

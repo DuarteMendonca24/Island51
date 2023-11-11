@@ -6,11 +6,10 @@ void Engine::draw()
     //Setting Mouse Cursor to be visible in the game
     m_Window.setMouseCursorVisible(true);
 
-    // Load the font
-	Font font;
-	font.loadFromFile("fonts/zombiecontrol.ttf");
+    
+	
 
-    View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
+    //View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 
     hungerBar.setFillColor(Color::Red);
     hungerBar.setPosition((190 / 2) - HungerBarStartWidth / 2, 100);
@@ -20,49 +19,9 @@ void Engine::draw()
 
     
 
-    // Paused
-	pausedText.setFont(font);
-	pausedText.setCharacterSize(155);
-	pausedText.setFillColor(Color::White);
-	pausedText.setPosition(400, 400);
-	pausedText.setString("Press Enter \nto continue");
+ 
 
-	// Game Over
-	gameOverText.setFont(font);
-	gameOverText.setCharacterSize(125);
-	gameOverText.setFillColor(Color::White);
-	gameOverText.setPosition(250, 850);
-	gameOverText.setString("Press Enter to play");
-
-	// Levelling up
-	levelUpText.setFont(font);
-	levelUpText.setCharacterSize(80);
-	levelUpText.setFillColor(Color::White);
-	levelUpText.setPosition(150, 250);
-	std::stringstream levelUpStream;
-	levelUpStream <<
-		"1- Increase rate of fire || 300 points" <<
-		"\n2- Increase clip size by x1.5 || 300 points" <<
-		"\n3- Increase max health by 20HP || 300 points" <<
-		"\n4- Increase run speed by x1.4 || 300 points" <<
-		"\n5- More Pick Ups || 300 points" <<
-		"\n6- SMG Weapon Upgrade || 1000 points"<<
-		"\n7- Refill ammo + health (max)"<<
-		"\n8- RailGun Weapon Upgrade || 4000 points"
-		"\nSpace to Play Game";
-	levelUpText.setString(levelUpStream.str());
-
-	// Ammo
-	ammoText.setFont(font);
-	ammoText.setCharacterSize(55);
-	ammoText.setFillColor(Color::White);
-	ammoText.setPosition(200, 980);
-
-	// Score
-	scoreText.setFont(font);
-	scoreText.setCharacterSize(55);
-	scoreText.setFillColor(Color::White);
-	scoreText.setPosition(20, 0);
+	
 
 	// Load the high score from a text file/
 	std::ifstream inputFile("gamedata/scores.txt");
@@ -73,27 +32,27 @@ void Engine::draw()
 	}
 
 	// Hi Score
-	hiScoreText.setFont(font);
-	hiScoreText.setCharacterSize(55);
-	hiScoreText.setFillColor(Color::White);
-	hiScoreText.setPosition(1400, 0);
-	std::stringstream s;
-	s << "Hi Score:" << hiScore;
-	hiScoreText.setString(s.str());
-
-	// Zombies remaining
-	zombiesRemainingText.setFont(font);
-	zombiesRemainingText.setCharacterSize(55);
-	zombiesRemainingText.setFillColor(Color::White);
-	zombiesRemainingText.setPosition(1500, 980);
-	zombiesRemainingText.setString("Zombies: 100");
-
-    
-	waveNumberText.setFont(font);
-	waveNumberText.setCharacterSize(55);
-	waveNumberText.setFillColor(Color::White);
-	waveNumberText.setPosition(1250, 980);
-	waveNumberText.setString("Wave: 0");
+	//hiScoreText.setFont(font);
+	//hiScoreText.setCharacterSize(55);
+	//hiScoreText.setFillColor(Color::White);
+	//hiScoreText.setPosition(1400, 0);
+	//std::stringstream s;
+	//s << "Hi Score:" << hiScore;
+	//hiScoreText.setString(s.str());
+    //
+	//// Zombies remaining
+	//zombiesRemainingText.setFont(font);
+	//zombiesRemainingText.setCharacterSize(55);
+	//zombiesRemainingText.setFillColor(Color::White);
+	//zombiesRemainingText.setPosition(1500, 980);
+	//zombiesRemainingText.setString("Zombies: 100");
+    //
+    //
+	//waveNumberText.setFont(font);
+	//waveNumberText.setCharacterSize(55);
+	//waveNumberText.setFillColor(Color::White);
+	//waveNumberText.setPosition(1250, 980);
+	//waveNumberText.setString("Wave: 0");
 
     
 	healthBar.setFillColor(Color::Red);
@@ -176,41 +135,41 @@ void Engine::draw()
         m_Window.draw(spriteCrosshair);
 
         // Switch to the HUD view
-        m_Window.setView(hudView);
+        m_Window.setView(m_hudView);
 
         // Draw all the HUD elements
-       //m_Window.draw(spriteAmmoIcon);
-       //m_Window.draw(ammoText);
-       //m_Window.draw(scoreText);
-       //m_Window.draw(hiScoreText);
-       //m_Window.draw(healthBar);
-       //m_Window.draw(waveNumberText);
-       //m_Window.draw(zombiesRemainingText);
-       //m_Window.draw(hungerBar);
+         m_Window.draw(spriteAmmoIcon);
+        m_Window.draw(m_hud.getAmmoText());
+        m_Window.draw(m_hud.getScoreText());
+        //m_Window.draw(m_hud.getHiScoreText());
+        m_Window.draw(healthBar);
+       // m_Window.draw(m_hud.getWaveNumberText());
+        m_Window.draw(m_hud.getZombiesRemainingText());
+        m_Window.draw(hungerBar);
     }
 
     if (state == State::LEVELING_UP)
     {
         m_Window.draw(spriteGameOver);
-        m_Window.draw(levelUpText);
+        m_Window.draw(m_hud.getLevelUpText());
         // Update the score text again
         std::stringstream ssScore;
         ssScore << "Points:" << score;
-        scoreText.setString(ssScore.str());
-        m_Window.draw(scoreText);
+        //scoreText.setString(ssScore.str());
+        //m_Window.draw(scoreText);
     }
 
     if (state == State::PAUSED)
     {
-        m_Window.draw(pausedText);
+        m_Window.draw(m_hud.getPausedText());
     }
 
     if (state == State::GAME_OVER)
     {
         m_Window.draw(spriteGameOver);
-        m_Window.draw(gameOverText);
-        m_Window.draw(scoreText);
-        m_Window.draw(hiScoreText);
+        m_Window.draw(m_hud.getGameOverText());
+        m_Window.draw(m_hud.getScoreText());
+        m_Window.draw(m_hud.getHiScoreText());
     }
 
     if(state == State::MAIN_MENU)

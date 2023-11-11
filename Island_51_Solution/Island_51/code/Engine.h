@@ -16,6 +16,8 @@
 #include "Pickup.h"
 #include "Weapons.h"
 #include "Tools.h"
+#include "HUD.h"
+
 using namespace sf;
 
 class Engine
@@ -133,6 +135,11 @@ private:
     //view for the background
 	View mainView;
 
+    //view for HUD
+    View m_hudView;
+
+    Hud m_hud;
+
     //State ENUM for 
     State state;
 
@@ -195,16 +202,7 @@ private:
     Color exitButtonColor = Color::Red;
     Color hoverOverColor = Color::Magenta;
 
-    //Text Variables
-    Text zombiesRemainingText;
-	Text hiScoreText;
-	Text scoreText;
-	Text ammoText;
-	Text levelUpText;
-	Text gameOverText;
-	Text pausedText;
-	Text waveNumberText;
-
+   
     //Texture Variables
     Texture textureBackground;
     Texture textureAmmoIcon;
@@ -266,7 +264,7 @@ private:
 
     // 1000 bullets should do
     Bullet bullets[1000];
-    
+        
 
 
 };

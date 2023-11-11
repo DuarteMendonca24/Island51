@@ -138,6 +138,7 @@
     <ClInclude Include="code\Collisions.h" />
     <ClInclude Include="code\Engine.h" />
     <ClInclude Include="code\HandleCollisions.h" />
+    <ClInclude Include="code\HUD.h" />
     <ClInclude Include="code\LevelManager.h" />
     <ClInclude Include="code\Pickup.h" />
     <ClInclude Include="code\Player.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="code\Engine.cpp" />
     <ClCompile Include="code\HandleCollisions.cpp" />
     <ClCompile Include="code\HandleInput.cpp" />
+    <ClCompile Include="code\HUD.cpp" />
     <ClCompile Include="code\LevelManager.cpp" />
     <ClCompile Include="code\Main.cpp" />
     <ClCompile Include="code\Pickup.cpp" />

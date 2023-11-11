@@ -320,23 +320,28 @@ void Engine::update(float dtAsSeconds)
 
             // Update the ammo text
             ssAmmo << bulletsInClip << "/" << bulletsSpare;
-            ammoText.setString(ssAmmo.str());
+            //ammoText.setString(ssAmmo.str());
+            m_hud.setAmmoText(ssAmmo.str());
 
             // Update the score text
             ssScore << "Points:" << score;
-            scoreText.setString(ssScore.str());
+           // scoreText.setString(ssScore.str());
+            m_hud.setScoreText(ssScore.str());
 
             // Update the high score text
-            ssHiScore << "Hi Score:" << hiScore;
-            hiScoreText.setString(ssHiScore.str());
+           // ssHiScore << "Hi Score:" << hiScore;
+           // hiScoreText.setString(ssHiScore.str());
+            
 
             // Update the wave
             ssWave << "Wave:" << wave;
-            waveNumberText.setString(ssWave.str());
+            //waveNumberText.setString(ssWave.str());
+            m_hud.setWaveNumberText(ssWave.str());
 
             // Update the high score text
             ssZombiesAlive << "Zombies:" << numZombiesAlive;
-            zombiesRemainingText.setString(ssZombiesAlive.str());
+           // zombiesRemainingText.setString(ssZombiesAlive.str());
+            m_hud.setZombiesRemainingText(ssZombiesAlive.str());
 
             framesSinceLastHUDUpdate = 0;
             timeSinceLastUpdate = Time::Zero;

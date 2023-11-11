@@ -63,6 +63,9 @@
     <ClInclude Include="code\Zombie.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="code\HUD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\Zombie.cpp">
@@ -123,6 +126,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="code\Behaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\HUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

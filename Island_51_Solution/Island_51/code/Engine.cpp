@@ -13,6 +13,8 @@ Engine::Engine(TextureHolder holder){
 
 	// Create a an SFML View for the main action
 	View mainView(sf::FloatRect(0, 0, resolution.x, resolution.y));
+	m_hudView.reset(
+		FloatRect(0, 0, resolution.x, resolution.y));
 	
 	//Load Level
 	TILE_SIZE = manageLevel.loadLevel(background);
