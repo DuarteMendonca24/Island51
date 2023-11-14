@@ -302,7 +302,7 @@ void Engine::update(float dtAsSeconds)
         }
         */
         
-
+        
         
         // Increment the number of frames since the last HUD calculation
         framesSinceLastHUDUpdate++;

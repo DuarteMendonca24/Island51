@@ -1,3 +1,4 @@
+
 #include "Tools.h"
 #include "TextureHolder.h"
 #include <cstdlib>
@@ -7,7 +8,7 @@
 using namespace std;
 
 
-void Tools::spawn(float startX, float startY, int type)
+void Tools::spawn(float startX, float startY, int type , float scale)
 {
 	switch (type)
 	{
@@ -43,7 +44,7 @@ void Tools::spawn(float startX, float startY, int type)
 
 	m_Position.x = startX;
 	m_Position.y = startY;
-	m_Sprite.setScale(1.5,1.5);
+	m_Sprite.setScale(scale,scale);
 	m_Sprite.setOrigin(25, 25);
 	m_Sprite.setPosition(m_Position);
 }

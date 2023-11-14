@@ -17,6 +17,9 @@ private:
 	Text m_gameOverText;
 	Text m_pausedText;
 	Text m_waveNumberText;
+	Text m_woodQuantityText;
+	Text m_stoneQuantityText;
+	Text m_ironQuantityText;
 	//Health bar
 	RectangleShape m_healthBar;
 	float m_healthBarWidth = 100;
@@ -40,6 +43,9 @@ public:
 	Text getGameOverText();
 	Text getPausedText();
 	Text getWaveNumberText();
+	Text getWoodQuantityText();
+	Text getStoneQuantityText();
+	Text getIronQuantityText();
 	RectangleShape getHealthBar();
 	RectangleShape getHungerBar();
 

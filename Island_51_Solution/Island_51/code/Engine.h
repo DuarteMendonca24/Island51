@@ -140,6 +140,10 @@ private:
 
     Hud m_hud;
 
+    //to check if inevntory is active
+    bool m_inventoryActive = false;
+
+
     //State ENUM for 
     State state;
 
@@ -256,6 +260,10 @@ private:
 	std::list<Zombie*> m_EnemiesList;
     std::list<Pickup*> m_PickupList;
     std::list<Tools*> m_ResourceList;
+
+    //array to display inventory resource items
+    Tools m_inventoryIcons[3];
+
 
     // 1000 bullets should do
     Bullet bullets[1000];

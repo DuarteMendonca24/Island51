@@ -245,7 +245,7 @@ std::list<Tools*> Engine::createTools(int numResource, IntRect arena)
 		int type = (rand() % 3);
 
 		Tools* tool = new Tools();
-		tool->spawn(x, y, type);
+		tool->spawn(x, y, type , 1.5);
 		toolsList.push_back(tool);
 
 
