@@ -12,8 +12,8 @@ void Engine::update(float dtAsSeconds)
     if (state == State::PLAYING)
     {
         //Update the Hunger Bar
-        currentHunger -= HungerTickAmount;
-        hungerBar.setSize(Vector2f(currentHunger, HungerBarHeight));
+        m_currentHunger -= m_hungerTickAmount;
+      
 
         // Where is the mouse pointer
         mouseScreenPosition = Mouse::getPosition();
@@ -81,7 +81,7 @@ void Engine::update(float dtAsSeconds)
                     if ((*it2)->getType() == 1) {
 
                         //decrease hunger bar
-                        currentHunger -= 5;
+                        m_currentHunger -= 5;
                     }
 
                     // More here later
@@ -317,6 +317,10 @@ void Engine::update(float dtAsSeconds)
             std::stringstream ssWave;
             std::stringstream ssZombiesAlive;
 
+            
+         
+
+
             // Update the ammo text
             ssAmmo << bulletsInClip << "/" << bulletsSpare;
             //ammoText.setString(ssAmmo.str());
@@ -344,6 +348,8 @@ void Engine::update(float dtAsSeconds)
 
             //health bar width is 300
             m_hud.setHealthSize(player.getHealth());
+
+            m_hud.setHungerSize(m_currentHunger);
 
             framesSinceLastHUDUpdate = 0;
             timeSinceLastUpdate = Time::Zero;

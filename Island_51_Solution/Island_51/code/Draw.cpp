@@ -11,11 +11,8 @@ void Engine::draw()
 
     //View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 
-    hungerBar.setFillColor(Color::Red);
-    hungerBar.setPosition((190 / 2) - HungerBarStartWidth / 2, 100);
 
-    float timeRemaining = 6.0f;
-    float timeBarWidthPerSecond = HungerBarStartWidth / timeRemaining;
+   
 
     
 
@@ -144,7 +141,7 @@ void Engine::draw()
         m_Window.draw(m_hud.getHealthBar());
        // m_Window.draw(m_hud.getWaveNumberText());
         m_Window.draw(m_hud.getZombiesRemainingText());
-        m_Window.draw(hungerBar);
+        m_Window.draw(m_hud.getHungerBar());
     }
 
     if (state == State::LEVELING_UP)

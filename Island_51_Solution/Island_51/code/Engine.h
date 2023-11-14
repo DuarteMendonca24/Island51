@@ -238,12 +238,8 @@ private:
     Sound pickup;
     //Bar Variables
     
-    //Hunger Bar
-    RectangleShape hungerBar;
-    float HungerBarStartWidth = 100;
-    float HungerTickAmount = 0.1;
-    float HungerBarHeight = 40;
-    float currentHunger = HungerBarStartWidth;
+    float m_currentHunger = 100;
+    float m_hungerTickAmount = 0.01;
 
 
 

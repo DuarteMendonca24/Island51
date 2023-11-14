@@ -22,6 +22,13 @@ private:
 	float m_healthBarWidth = 100;
 	float m_healthBarHeight = 40;
 
+	//Hunger Bar
+	RectangleShape m_hungerBar;
+	float m_hungerBarStartWidth = 100;
+	float m_hungerBarHeight = 40;
+	
+	
+
 
 public:
 	Hud();
@@ -34,12 +41,14 @@ public:
 	Text getPausedText();
 	Text getWaveNumberText();
 	RectangleShape getHealthBar();
+	RectangleShape getHungerBar();
 
 	void setZombiesRemainingText(String text);
 	void setScoreText(String text);
 	void setAmmoText(String text);
 	void setWaveNumberText(String text);
 	void setHealthSize(float size);
+	void setHungerSize(float size);
 	
 	
 	
