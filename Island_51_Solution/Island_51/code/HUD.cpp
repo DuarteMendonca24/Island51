@@ -65,6 +65,10 @@ Hud::Hud(){
 	m_zombiesRemainingText.setCharacterSize(55);
 	m_zombiesRemainingText.setFillColor(Color::White);
 	m_zombiesRemainingText.setPosition(1500, 0);
+
+	m_healthBar.setSize(Vector2f(m_healthBarWidth, m_healthBarHeight));
+	m_healthBar.setFillColor(Color::Red);
+	m_healthBar.setPosition(450, 980); 
 }
 
 
@@ -110,6 +114,11 @@ Text Hud::getWaveNumberText() {
 	return m_waveNumberText;
 }
 
+RectangleShape Hud::getHealthBar() {
+
+	return m_healthBar;
+}
+
 
 void Hud::setZombiesRemainingText(String text) {
 
@@ -131,4 +140,9 @@ void Hud::setAmmoText(String text) {
 void Hud::setWaveNumberText(String text) {
 
 	m_waveNumberText.setString(text);
+}
+
+void Hud::setHealthSize(float size)
+{
+	m_healthBar.setSize(Vector2f(size, m_healthBar.getSize().y));
 }

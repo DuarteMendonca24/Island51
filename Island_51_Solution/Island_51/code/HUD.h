@@ -17,6 +17,10 @@ private:
 	Text m_gameOverText;
 	Text m_pausedText;
 	Text m_waveNumberText;
+	//Health bar
+	RectangleShape m_healthBar;
+	float m_healthBarWidth = 100;
+	float m_healthBarHeight = 40;
 
 
 public:
@@ -29,11 +33,13 @@ public:
 	Text getGameOverText();
 	Text getPausedText();
 	Text getWaveNumberText();
+	RectangleShape getHealthBar();
 
 	void setZombiesRemainingText(String text);
 	void setScoreText(String text);
 	void setAmmoText(String text);
 	void setWaveNumberText(String text);
+	void setHealthSize(float size);
 	
 	
 	

@@ -301,8 +301,7 @@ void Engine::update(float dtAsSeconds)
             pickup.play();
         }
         */
-        // size up the health bar
-        healthBar.setSize(Vector2f(player.getHealth() * 3, 70));
+        
 
         
         // Increment the number of frames since the last HUD calculation
@@ -342,6 +341,9 @@ void Engine::update(float dtAsSeconds)
             ssZombiesAlive << "Zombies:" << numZombiesAlive;
            // zombiesRemainingText.setString(ssZombiesAlive.str());
             m_hud.setZombiesRemainingText(ssZombiesAlive.str());
+
+            //health bar width is 300
+            m_hud.setHealthSize(player.getHealth());
 
             framesSinceLastHUDUpdate = 0;
             timeSinceLastUpdate = Time::Zero;

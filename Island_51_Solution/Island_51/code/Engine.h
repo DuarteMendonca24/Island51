@@ -237,8 +237,7 @@ private:
     Sound powerup;
     Sound pickup;
     //Bar Variables
-    // Health bar
-	RectangleShape healthBar;
+    
     //Hunger Bar
     RectangleShape hungerBar;
     float HungerBarStartWidth = 100;

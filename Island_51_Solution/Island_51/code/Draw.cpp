@@ -55,8 +55,7 @@ void Engine::draw()
 	//waveNumberText.setString("Wave: 0");
 
     
-	healthBar.setFillColor(Color::Red);
-	healthBar.setPosition(450, 980);
+	
 
     if (state == State::PLAYING)
     {
@@ -142,7 +141,7 @@ void Engine::draw()
         m_Window.draw(m_hud.getAmmoText());
         m_Window.draw(m_hud.getScoreText());
         //m_Window.draw(m_hud.getHiScoreText());
-        m_Window.draw(healthBar);
+        m_Window.draw(m_hud.getHealthBar());
        // m_Window.draw(m_hud.getWaveNumberText());
         m_Window.draw(m_hud.getZombiesRemainingText());
         m_Window.draw(hungerBar);

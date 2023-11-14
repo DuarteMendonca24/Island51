@@ -40,7 +40,7 @@ Engine::Engine(TextureHolder holder){
 	spriteGameOver.setPosition(0, 0);
 
 	//Setting HungerBar Up 
-	hungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
+	//hungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
 
 
 	//Zombie Amount Decpends on wave number
