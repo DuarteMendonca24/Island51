@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+
 using namespace sf;
 
 class Zombie
@@ -50,6 +51,9 @@ private:
 
 	//type of zombie
 	int m_type;
+
+	
+		
 
 
 

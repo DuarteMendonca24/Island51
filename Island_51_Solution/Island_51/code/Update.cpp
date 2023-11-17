@@ -40,6 +40,18 @@ void Engine::update(float dtAsSeconds)
             {
                 bullets[i].update(dtAsSeconds);
             }
+
+           
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+           
+            if (m_illusionsBullets[i].isInFlight())
+            {
+       
+                m_illusionsBullets[i].update(dtAsSeconds);
+            }
         }
 
       
@@ -152,6 +164,8 @@ void Engine::update(float dtAsSeconds)
         //make the illusionist look at player
         Illusionist[0].illusionBehaviour(playerPosition);
 
+
+
         //if its close to the player create the illusions
         if (Illusionist[0].distanceToPlayer(playerPosition) < 70 && !m_illusions) {
             
@@ -171,11 +185,41 @@ void Engine::update(float dtAsSeconds)
             for (int i = 0; i < 4; i++)
             {
 
-                Illusions[0].illusionBehaviour(playerPosition);
-                Illusions[1].illusionBehaviour(playerPosition);
-                Illusions[2].illusionBehaviour(playerPosition);
-                Illusions[3].illusionBehaviour(playerPosition);
+                Illusions[i].illusionBehaviour(playerPosition);
+                
+               
+;
             }
+
+            m_illusionsFireRate -= dtAsSeconds;
+            if (m_illusionsFireRate < 0)
+            {
+                m_illusionsFireRate = 2;
+
+               
+                
+                m_illusionsBullets[currentBullet].setRange(100);
+                m_illusionsBullets[currentBullet+1].setRange(100);
+                m_illusionsBullets[currentBullet+2].setRange(100);
+                m_illusionsBullets[currentBullet+3].setRange(100);
+                m_illusionsBullets[currentBullet].shoot(Illusions[0].getPosCoordinates().x, Illusions[0].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet+1].shoot(Illusions[1].getPosCoordinates().x, Illusions[1].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet+2].shoot(Illusions[2].getPosCoordinates().x, Illusions[2].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet+3].shoot(Illusions[3].getPosCoordinates().x, Illusions[3].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+
+
+                currentBullet++;
+                if (currentBullet > 99)
+                {
+                    currentBullet = 0;
+                }
+
+               
+                // //shoot.play();
+                // bulletsInClip--;
+            }
+
+                
 
 
             for (int i = 0; i < 100; i++)
@@ -199,7 +243,7 @@ void Engine::update(float dtAsSeconds)
                               
                                 // Not just a hit but a kill too
                                 // Custom scores for each zombie type
-                                score += Illusions[j].killValue();
+                                //score += Illusions[j].killValue();
                             }
                         }
                     }
@@ -236,10 +280,10 @@ void Engine::update(float dtAsSeconds)
                             bullets[i].stop();
                         }
 
-                        // Register the hit and see if it was a kill
-                        if ((*it4)->hit())
-                        {
-                            //Spawn pickup
+                            // Register the hit and see if it was a kill
+                            if ((*it4)->hit())
+                            {
+                                //Spawn pickup
                             std::list<Pickup*> newPickup = createPickup((*it4)->getPosCoordinates());
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
                             numResourceAlive--;

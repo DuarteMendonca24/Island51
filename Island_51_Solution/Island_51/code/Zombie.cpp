@@ -199,7 +199,7 @@ void Zombie::illusionBehaviour(Vector2f playerLocation) {
 	float angle = (atan2(playerY - m_Position.y,
 		playerX - m_Position.x)
 		* 180) / 3.141;
-
+	
 	m_Sprite.setRotation(angle);
 
 	// Move the sprite

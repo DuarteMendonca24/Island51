@@ -267,6 +267,9 @@ private:
 
     // 1000 bullets should do
     Bullet bullets[1000];
+    Bullet m_illusionsBullets[1000];
+
+    float m_illusionsFireRate = 3;
         
 
 
