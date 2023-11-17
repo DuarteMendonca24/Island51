@@ -10,19 +10,8 @@ void Engine::draw()
 	
 
     //View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
-
-    hungerBar.setFillColor(Color::Red);
-    hungerBar.setPosition((190 / 2) - HungerBarStartWidth / 2, 100);
-
-    float timeRemaining = 6.0f;
-    float timeBarWidthPerSecond = HungerBarStartWidth / timeRemaining;
-
+     
     
-
- 
-
-	
-
 	// Load the high score from a text file/
 	std::ifstream inputFile("gamedata/scores.txt");
 	if (inputFile.is_open())
@@ -31,32 +20,6 @@ void Engine::draw()
 		inputFile.close();
 	}
 
-	// Hi Score
-	//hiScoreText.setFont(font);
-	//hiScoreText.setCharacterSize(55);
-	//hiScoreText.setFillColor(Color::White);
-	//hiScoreText.setPosition(1400, 0);
-	//std::stringstream s;
-	//s << "Hi Score:" << hiScore;
-	//hiScoreText.setString(s.str());
-    //
-	//// Zombies remaining
-	//zombiesRemainingText.setFont(font);
-	//zombiesRemainingText.setCharacterSize(55);
-	//zombiesRemainingText.setFillColor(Color::White);
-	//zombiesRemainingText.setPosition(1500, 980);
-	//zombiesRemainingText.setString("Zombies: 100");
-    //
-    //
-	//waveNumberText.setFont(font);
-	//waveNumberText.setCharacterSize(55);
-	//waveNumberText.setFillColor(Color::White);
-	//waveNumberText.setPosition(1250, 980);
-	//waveNumberText.setString("Wave: 0");
-
-    
-	healthBar.setFillColor(Color::Red);
-	healthBar.setPosition(450, 980);
 
     if (state == State::PLAYING)
     {
@@ -68,6 +31,8 @@ void Engine::draw()
 
         // Draw the background
         m_Window.draw(background, &textureBackground);
+
+        
 
         // Draw the zombies
          for (int i = 0; i < 4; i++){
@@ -90,7 +55,7 @@ void Engine::draw()
 
              m_Window.draw((*it2)->getSprite());
          }
-         
+
         // Draw the pickup with a list
         std::list<Pickup*>::iterator it3;
         for (it3 = m_PickupList.begin(); it3 != m_PickupList.end(); it3++)
@@ -109,6 +74,27 @@ void Engine::draw()
             if (bullets[i].isInFlight())
             {
                 m_Window.draw(bullets[i].getShape());
+            }
+
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+         
+
+            if (m_illusionsBullets[i].isInFlight())
+            {
+                m_Window.draw(m_illusionsBullets[i].getShape());
+            }
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+
+
+            if (m_explosionBullets[i].isInFlight())
+            {
+                m_Window.draw(m_explosionBullets[i].getShape());
             }
         }
         
@@ -138,14 +124,31 @@ void Engine::draw()
         m_Window.setView(m_hudView);
 
         // Draw all the HUD elements
+        
          m_Window.draw(spriteAmmoIcon);
         m_Window.draw(m_hud.getAmmoText());
-        //m_Window.draw(m_hud.getScoreText());
+       m_Window.draw(m_hud.getScoreText());
         //m_Window.draw(m_hud.getHiScoreText());
-        m_Window.draw(healthBar);
+        m_Window.draw(m_hud.getHealthBar());
        // m_Window.draw(m_hud.getWaveNumberText());
         m_Window.draw(m_hud.getZombiesRemainingText());
-        m_Window.draw(hungerBar);
+        m_Window.draw(m_hud.getHungerBar());
+        
+
+        if (m_inventoryActive) {
+            //draw the inventory icons
+            for (int i = 0; i < 3; i++)
+            {
+                m_Window.draw(m_inventoryIcons[i].getSprite());
+            }
+            m_Window.draw(m_hud.getWoodQuantityText());
+            m_Window.draw(m_hud.getStoneQuantityText());
+            m_Window.draw(m_hud.getIronQuantityText());
+        }
+
+    
+
+       
     }
 
     if (state == State::LEVELING_UP)
@@ -168,7 +171,7 @@ void Engine::draw()
     {
         m_Window.draw(spriteGameOver);
         m_Window.draw(m_hud.getGameOverText());
-        //m_Window.draw(m_hud.getScoreText());
+        m_Window.draw(m_hud.getScoreText());
         m_Window.draw(m_hud.getHiScoreText());
     }
 
@@ -233,6 +236,10 @@ void Engine::draw()
     }
 
     m_Window.display();
+
+    
+
+
 }
 
 

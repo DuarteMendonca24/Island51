@@ -73,6 +73,25 @@ void Engine::input()
 							reloadFailed.play();
 						}
 					}
+
+                    // Inventory 
+                    if (event.key.code == Keyboard::Tab ) {
+
+                        if (!m_inventoryActive) {
+
+                            m_inventoryActive = true;
+                        }
+                        else if (m_inventoryActive) {
+
+                            m_inventoryActive = false;
+                        }
+                     
+                    }
+
+                  
+                    
+                        
+                    
 				}
 
 			}

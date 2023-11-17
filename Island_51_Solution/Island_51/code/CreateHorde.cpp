@@ -116,7 +116,7 @@ std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
 		// Bloater, crawler, runner, rat
 		srand((int)time(0) * i * 2);
 		//dont spawn the blowter aka The illusionist
-		int type = (rand() % 4) + 1;
+		int type = (rand() % 5) + 1;
 
 		Zombie* zombie = new Zombie();
 		zombie->spawn(x, y, type, i);
@@ -245,7 +245,7 @@ std::list<Tools*> Engine::createTools(int numResource, IntRect arena)
 		int type = (rand() % 3);
 
 		Tools* tool = new Tools();
-		tool->spawn(x, y, type);
+		tool->spawn(x, y, type , 1.5);
 		toolsList.push_back(tool);
 
 

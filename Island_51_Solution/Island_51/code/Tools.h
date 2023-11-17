@@ -49,7 +49,7 @@ public:
 	bool isAlive();
 
 	// Spawn a new zombie
-	void spawn(float startX, float startY, int type);
+	void spawn(float startX, float startY, int type , float scale);
 
 	//Spawn a new boss
 	void spawnBoss(float startX, float startY);

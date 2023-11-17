@@ -12,8 +12,8 @@ void Engine::update(float dtAsSeconds)
     if (state == State::PLAYING)
     {
         //Update the Hunger Bar
-        currentHunger -= HungerTickAmount;
-        hungerBar.setSize(Vector2f(currentHunger, HungerBarHeight));
+        m_currentHunger -= m_hungerTickAmount;
+      
 
         // Where is the mouse pointer
         mouseScreenPosition = Mouse::getPosition();
@@ -40,7 +40,31 @@ void Engine::update(float dtAsSeconds)
             {
                 bullets[i].update(dtAsSeconds);
             }
+
+           
         }
+
+        for (int i = 0; i < 100; i++)
+        {
+           
+            if (m_illusionsBullets[i].isInFlight())
+            {
+       
+                m_illusionsBullets[i].update(dtAsSeconds);
+            }
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+
+            if (m_explosionBullets[i].isInFlight())
+            {
+
+                m_explosionBullets[i].update(dtAsSeconds);
+            }
+        }
+      
+
         //Update code for the enemies
         // ----------------------------------------------------------------------------------------
         
@@ -55,6 +79,35 @@ void Engine::update(float dtAsSeconds)
             {
                 
                 (*it)->update(dtAsSeconds, playerPosition);
+
+                //if its and explosive enemie and its close to the player
+                if ((*it)->getType() == 4 && (*it)->distanceToPlayer(playerPosition) < 300) {
+
+                    m_shootingFireRate -= dtAsSeconds;
+
+                    if (m_shootingFireRate < 0) {
+
+
+                        m_shootingFireRate = 3;
+
+                        currentBullet++;
+
+                        m_explosionBullets[currentBullet].setRange(100);
+                        
+
+                        m_explosionBullets[currentBullet].shoot((*it)->getPosCoordinates().x, (*it)->getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                       
+
+
+                        currentBullet++;
+                        if (currentBullet > 99)
+                        {
+                            currentBullet = 0;
+                        }
+                    }
+                    
+
+                }
             }
             else {
 
@@ -62,6 +115,7 @@ void Engine::update(float dtAsSeconds)
                //m_EnemiesList.erase(it); // Erase the object from the list and get the next valid iterator
             }
         }
+
         // Have any zombies touched the player
        // Changed to use a list
         std::list<Zombie*>::iterator it2;
@@ -77,7 +131,7 @@ void Engine::update(float dtAsSeconds)
                     if ((*it2)->getType() == 1) {
 
                         //decrease hunger bar
-                        currentHunger -= 5;
+                        m_currentHunger -= 5;
                     }
 
                     // More here later
@@ -87,7 +141,7 @@ void Engine::update(float dtAsSeconds)
                 if (player.getHealth() <= 0)
                 {
                     state = State::GAME_OVER;
-                    
+
                     std::ofstream outputFile("gamedata/scores.txt");
                     outputFile << hiScore;
                     outputFile.close();
@@ -122,13 +176,13 @@ void Engine::update(float dtAsSeconds)
                                 std::list<Zombie*> newZombies = createEnemies(2, (*it3)->getPosCoordinates(), 3);
                                 m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
                             }
-                            /*
+
                              //numZombiesAlive = numZombies;
                             if (wave >= hiScore)
                             {
                                 hiScore = wave;
                             }
-                            */
+
                             numZombiesAlive--;
 
                             // When all the zombies are dead (again)
@@ -147,6 +201,8 @@ void Engine::update(float dtAsSeconds)
 
         //make the illusionist look at player
         Illusionist[0].illusionBehaviour(playerPosition);
+
+
 
         //if its close to the player create the illusions
         if (Illusionist[0].distanceToPlayer(playerPosition) < 70 && !m_illusions) {
@@ -167,11 +223,41 @@ void Engine::update(float dtAsSeconds)
             for (int i = 0; i < 4; i++)
             {
 
-                Illusions[0].illusionBehaviour(playerPosition);
-                Illusions[1].illusionBehaviour(playerPosition);
-                Illusions[2].illusionBehaviour(playerPosition);
-                Illusions[3].illusionBehaviour(playerPosition);
+                Illusions[i].illusionBehaviour(playerPosition);
+                
+               
+;
             }
+
+            m_illusionsFireRate -= dtAsSeconds;
+            if (m_illusionsFireRate < 0)
+            {
+                m_illusionsFireRate = 2;
+
+               
+                
+                m_illusionsBullets[currentBullet].setRange(100);
+                m_illusionsBullets[currentBullet+1].setRange(100);
+                m_illusionsBullets[currentBullet+2].setRange(100);
+                m_illusionsBullets[currentBullet+3].setRange(100);
+                m_illusionsBullets[currentBullet].shoot(Illusions[0].getPosCoordinates().x, Illusions[0].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet+1].shoot(Illusions[1].getPosCoordinates().x, Illusions[1].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet+2].shoot(Illusions[2].getPosCoordinates().x, Illusions[2].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet+3].shoot(Illusions[3].getPosCoordinates().x, Illusions[3].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+
+
+                currentBullet++;
+                if (currentBullet > 99)
+                {
+                    currentBullet = 0;
+                }
+
+               
+                // //shoot.play();
+                // bulletsInClip--;
+            }
+
+                
 
 
             for (int i = 0; i < 100; i++)
@@ -195,7 +281,7 @@ void Engine::update(float dtAsSeconds)
                               
                                 // Not just a hit but a kill too
                                 // Custom scores for each zombie type
-                                score += Illusions[j].killValue();
+                                //score += Illusions[j].killValue();
                             }
                         }
                     }
@@ -226,18 +312,21 @@ void Engine::update(float dtAsSeconds)
                     if (bullets[i].getPosition().intersects((*it4)->getPosition()))
                     {
                         // Stop the bullet unless the equipped gun is the railgun
-                        bullets[i].stop();
-                        
-
-                        // Register the hit and see if it was a kill
-                        if ((*it4)->hit())
+                        if (!woodSwordEquipped)
                         {
-                            //Spawn pickup
+                            // Stop the bullet
+                            bullets[i].stop();
+                        }
+
+                            // Register the hit and see if it was a kill
+                            if ((*it4)->hit())
+                            {
+                                //Spawn pickup
                             std::list<Pickup*> newPickup = createPickup((*it4)->getPosCoordinates());
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
                             numResourceAlive--;
                         }
-                        
+
                         // Make a splat sound
                         splat.play();
                     }
@@ -294,9 +383,8 @@ void Engine::update(float dtAsSeconds)
             pickup.play();
         }
         */
-        // size up the health bar
-        healthBar.setSize(Vector2f(player.getHealth() * 3, 70));
-
+        
+        
         
         // Increment the number of frames since the last HUD calculation
         framesSinceLastHUDUpdate++;
@@ -310,6 +398,10 @@ void Engine::update(float dtAsSeconds)
             std::stringstream ssHiScore;
             std::stringstream ssWave;
             std::stringstream ssZombiesAlive;
+
+            
+         
+
 
             // Update the ammo text
             ssAmmo << bulletsInClip << "/" << bulletsSpare;
@@ -335,6 +427,11 @@ void Engine::update(float dtAsSeconds)
             ssZombiesAlive << "Zombies:" << numZombiesAlive;
            // zombiesRemainingText.setString(ssZombiesAlive.str());
             m_hud.setZombiesRemainingText(ssZombiesAlive.str());
+
+            //health bar width is 300
+            m_hud.setHealthSize(player.getHealth());
+
+            m_hud.setHungerSize(m_currentHunger);
 
             framesSinceLastHUDUpdate = 0;
             timeSinceLastUpdate = Time::Zero;

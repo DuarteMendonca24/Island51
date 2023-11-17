@@ -65,6 +65,36 @@ Hud::Hud(){
 	m_zombiesRemainingText.setCharacterSize(55);
 	m_zombiesRemainingText.setFillColor(Color::White);
 	m_zombiesRemainingText.setPosition(1500, 0);
+
+	m_healthBar.setSize(Vector2f(m_healthBarWidth, m_healthBarHeight));
+	m_healthBar.setFillColor(Color::Red);
+	m_healthBar.setPosition(450, 980); 
+
+	m_hungerBar.setFillColor(Color::Red);
+	m_hungerBar.setPosition((190 / 2) - m_hungerBarStartWidth / 2, 100);
+
+	//wood quantity
+	m_woodQuantityText.setFont(m_font);
+	m_woodQuantityText.setCharacterSize(50);
+	m_woodQuantityText.setFillColor(Color::White);
+	m_woodQuantityText.setPosition(110, 330);
+	m_woodQuantityText.setString("x 0");
+
+	//stone quantity
+	m_stoneQuantityText.setFont(m_font);
+	m_stoneQuantityText.setCharacterSize(50);
+	m_stoneQuantityText.setFillColor(Color::White);
+	m_stoneQuantityText.setPosition(110, 415);
+	m_stoneQuantityText.setString("x 0");
+
+	//iron quantity
+	m_ironQuantityText.setFont(m_font);
+	m_ironQuantityText.setCharacterSize(50);
+	m_ironQuantityText.setFillColor(Color::White);
+	m_ironQuantityText.setPosition(110, 515);
+	m_ironQuantityText.setString("x 0");
+
+
 }
 
 
@@ -105,10 +135,39 @@ Text Hud::getPausedText() {
 	return m_pausedText;
 }
 
+Text Hud::getWoodQuantityText() {
+
+	return m_woodQuantityText;
+}
+
+Text Hud::getStoneQuantityText() {
+
+	return m_stoneQuantityText;
+}
+
+
+Text Hud::getIronQuantityText() {
+
+	return m_ironQuantityText;
+}
+
+
 Text Hud::getWaveNumberText() {
 
 	return m_waveNumberText;
 }
+
+
+RectangleShape Hud::getHealthBar() {
+
+	return m_healthBar;
+}
+
+RectangleShape Hud::getHungerBar() {
+
+	return m_hungerBar;
+}
+
 
 
 void Hud::setZombiesRemainingText(String text) {
@@ -131,4 +190,14 @@ void Hud::setAmmoText(String text) {
 void Hud::setWaveNumberText(String text) {
 
 	m_waveNumberText.setString(text);
+}
+
+void Hud::setHealthSize(float size)
+{
+	m_healthBar.setSize(Vector2f(size, m_healthBar.getSize().y));
+}
+
+void Hud::setHungerSize(float size)
+{
+	m_hungerBar.setSize(Vector2f(size, m_healthBar.getSize().y));
 }

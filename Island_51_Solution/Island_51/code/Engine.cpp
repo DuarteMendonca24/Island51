@@ -40,7 +40,7 @@ Engine::Engine(TextureHolder holder){
 	spriteGameOver.setPosition(0, 0);
 
 	//Setting HungerBar Up 
-	hungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
+	//hungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
 
 
 	//Zombie Amount Decpends on wave number
@@ -65,6 +65,11 @@ Engine::Engine(TextureHolder holder){
 
 	Illusionist[0].spawn(200, 200, 0, 1); // Top Illusionist
 	Illusionist[1].spawn(400, 400, 0, 1); // Top Illusionist
+
+	//spawning resources to be icons in the inventory
+	m_inventoryIcons[0].spawn(100, 400, 0 ,3.5);
+	m_inventoryIcons[1].spawn(100, 500, 1 ,3.5);
+	m_inventoryIcons[2].spawn(100, 600, 2 ,3.5);
 	
 
 
