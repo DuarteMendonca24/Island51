@@ -48,6 +48,47 @@ void Pickup::spawn(int type, float startX, float startY)
 
 	m_Sprite.setPosition(startX, startY);
 }
+
+void Pickup::resource(float startX, float startY, int type)
+{
+	switch (type)
+	{
+	case 0:
+		// Tree
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 95,22,18,24 });
+		m_Health = TREE_HEALTH;
+		m_Type = type;
+		break;
+
+	case 1:
+		// Stone
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 64,47,14,14 });
+		m_Health = STONE_HEALTH;
+		m_Type = type;
+
+		break;
+
+	case 2:
+		// Iron
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 80,60,14,14 });
+		m_Health = IRON_HEALTH;
+		m_Type = type;
+		break;
+
+	}
+
+	m_posX = startX;
+	m_posY = startY;
+	//m_Sprite.setScale(1.5,1.5);
+	m_Sprite.setOrigin(25, 25);
+	m_Sprite.setPosition(startX, startY);
+}
 void Pickup::setArena(IntRect arena)
 {
 

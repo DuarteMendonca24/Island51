@@ -90,7 +90,7 @@ void Engine::draw()
 
              m_Window.draw((*it2)->getSprite());
          }
-
+         
         // Draw the pickup with a list
         std::list<Pickup*>::iterator it3;
         for (it3 = m_PickupList.begin(); it3 != m_PickupList.end(); it3++)
@@ -140,7 +140,7 @@ void Engine::draw()
         // Draw all the HUD elements
          m_Window.draw(spriteAmmoIcon);
         m_Window.draw(m_hud.getAmmoText());
-        m_Window.draw(m_hud.getScoreText());
+        //m_Window.draw(m_hud.getScoreText());
         //m_Window.draw(m_hud.getHiScoreText());
         m_Window.draw(healthBar);
        // m_Window.draw(m_hud.getWaveNumberText());
@@ -168,7 +168,7 @@ void Engine::draw()
     {
         m_Window.draw(spriteGameOver);
         m_Window.draw(m_hud.getGameOverText());
-        m_Window.draw(m_hud.getScoreText());
+        //m_Window.draw(m_hud.getScoreText());
         m_Window.draw(m_hud.getHiScoreText());
     }
 
@@ -233,10 +233,6 @@ void Engine::draw()
     }
 
     m_Window.display();
-
-    
-
-
 }
 
 

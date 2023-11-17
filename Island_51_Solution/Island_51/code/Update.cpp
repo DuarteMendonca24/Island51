@@ -41,9 +41,6 @@ void Engine::update(float dtAsSeconds)
                 bullets[i].update(dtAsSeconds);
             }
         }
-
-      
-
         //Update code for the enemies
         // ----------------------------------------------------------------------------------------
         
@@ -65,7 +62,6 @@ void Engine::update(float dtAsSeconds)
                //m_EnemiesList.erase(it); // Erase the object from the list and get the next valid iterator
             }
         }
-
         // Have any zombies touched the player
        // Changed to use a list
         std::list<Zombie*>::iterator it2;
@@ -91,7 +87,7 @@ void Engine::update(float dtAsSeconds)
                 if (player.getHealth() <= 0)
                 {
                     state = State::GAME_OVER;
-
+                    
                     std::ofstream outputFile("gamedata/scores.txt");
                     outputFile << hiScore;
                     outputFile.close();
@@ -126,13 +122,13 @@ void Engine::update(float dtAsSeconds)
                                 std::list<Zombie*> newZombies = createEnemies(2, (*it3)->getPosCoordinates(), 3);
                                 m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
                             }
-
+                            /*
                              //numZombiesAlive = numZombies;
                             if (wave >= hiScore)
                             {
                                 hiScore = wave;
                             }
-
+                            */
                             numZombiesAlive--;
 
                             // When all the zombies are dead (again)
@@ -230,11 +226,8 @@ void Engine::update(float dtAsSeconds)
                     if (bullets[i].getPosition().intersects((*it4)->getPosition()))
                     {
                         // Stop the bullet unless the equipped gun is the railgun
-                        if (!woodSwordEquipped)
-                        {
-                            // Stop the bullet
-                            bullets[i].stop();
-                        }
+                        bullets[i].stop();
+                        
 
                         // Register the hit and see if it was a kill
                         if ((*it4)->hit())
@@ -244,7 +237,7 @@ void Engine::update(float dtAsSeconds)
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
                             numResourceAlive--;
                         }
-
+                        
                         // Make a splat sound
                         splat.play();
                     }

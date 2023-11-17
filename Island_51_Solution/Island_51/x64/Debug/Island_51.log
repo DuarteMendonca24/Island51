@@ -1,5 +1,51 @@
-﻿  Main.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(94): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(100): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(245): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+﻿  CreateHorde.cpp
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(94,21): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(100,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(245,28): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(92,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(93,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(98,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(99,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(104,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(105,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(110,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(111,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(137,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(138,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(144,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(144,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(145,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(145,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(146,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(146,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(147,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(147,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(159,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(160,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(166,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(166,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(219,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(220,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(225,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(226,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(231,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(232,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(237,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(238,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Island_51.vcxproj -> C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

@@ -13,6 +13,17 @@ private:
 	const int START_WAIT_TIME = 10;
 	const int START_SECONDS_TO_LIVE = 5;
 
+	// How tough is each resource type
+	const float TREE_HEALTH = 5;
+	const float STONE_HEALTH = 1;
+	const float IRON_HEALTH = 3;
+
+	// How much health has it got?
+	float m_Health;
+
+	// Is it still alive?
+	bool m_Alive;
+
 	// The sprite that represents this pickup
 	Sprite m_Sprite;
 
@@ -66,6 +77,7 @@ public:
 
 	int getType();
 
+	void resource(float startX, float startY, int type);
 };
 
 

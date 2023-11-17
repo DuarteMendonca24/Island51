@@ -43,7 +43,7 @@ void Tools::spawn(float startX, float startY, int type)
 
 	m_Position.x = startX;
 	m_Position.y = startY;
-	m_Sprite.setScale(1.5,1.5);
+	//m_Sprite.setScale(1.5,1.5);
 	m_Sprite.setOrigin(25, 25);
 	m_Sprite.setPosition(m_Position);
 }
@@ -87,41 +87,38 @@ Sprite Tools::getSprite()
 	return m_Sprite;
 }
 
+
+int Tools::getType()
+{
+	//Returning the score value for this zombie
+	return m_type;
+}
+
 void Tools::update(float elapsedTime, Vector2f playerLocation)
 {
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
 
-	//its using 25 because of pacman being a 50x50 image , dont forget to see player size
-	int x1 = playerX + 25; // center of pacman
-	int y1 = playerY + 25; // center of pacman
-	int x2 = m_Position.x + 25; //centre of the ghost
-	int y2 = m_Position.y + 25;//centre of the ghost
-	int xsquared = (x2 - x1) * (x2 - x1);
-	int ysquared = (y2 - y1) * (y2 - y1);
-	double d = sqrt(xsquared + ysquared);
-
-
 	// Update the zombie position variables
-	if (playerX > m_Position.x && d < 200)
+	if (playerX > m_Position.x)
 	{
 		m_Position.x = m_Position.x +
 			m_Speed * elapsedTime;
 	}
 
-	if (playerY > m_Position.y && d < 200)
+	if (playerY > m_Position.y)
 	{
 		m_Position.y = m_Position.y +
 			m_Speed * elapsedTime;
 	}
 
-	if (playerX < m_Position.x && d < 200)
+	if (playerX < m_Position.x)
 	{
 		m_Position.x = m_Position.x -
 			m_Speed * elapsedTime;
 	}
 
-	if (playerY < m_Position.y && d < 200)
+	if (playerY < m_Position.y)
 	{
 		m_Position.y = m_Position.y -
 			m_Speed * elapsedTime;
@@ -136,12 +133,4 @@ void Tools::update(float elapsedTime, Vector2f playerLocation)
 		* 180) / 3.141;
 
 	m_Sprite.setRotation(angle);
-
-
-}
-
-int Tools::getType()
-{
-	//Returning the score value for this zombie
-	return m_type;
 }
