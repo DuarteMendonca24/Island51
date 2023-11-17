@@ -31,7 +31,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Health = CHASER_HEALTH;
 		m_ScoreValue = CHASER_VALUE;
 		m_type = type;
-	
+
 		break;
 
 	case 2:
@@ -44,7 +44,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_ScoreValue = CRAWLER_VALUE;
 		m_type = type;
 		break;
-	
+
 	case 3:
 		// Rat
 		m_Sprite = Sprite(TextureHolder::GetTexture(
@@ -54,6 +54,19 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Health = RAT_HEALTH;
 		m_ScoreValue = RAT_VALUE;
 		m_type = type;
+		break;
+	
+	case 4:
+
+		// Explosive enemies (sends bullets in all directions)
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+				"graphics/boss.png"));
+
+		m_Speed = CHASER_SPEED;
+		m_Health = CHASER_HEALTH;
+		m_ScoreValue = CHASER_VALUE;
+		m_type = type;
+
 		break;
 	}
 

@@ -87,6 +87,16 @@ void Engine::draw()
                 m_Window.draw(m_illusionsBullets[i].getShape());
             }
         }
+
+        for (int i = 0; i < 100; i++)
+        {
+
+
+            if (m_explosionBullets[i].isInFlight())
+            {
+                m_Window.draw(m_explosionBullets[i].getShape());
+            }
+        }
         
         // Draw the player
         m_Window.draw(player.getSprite());

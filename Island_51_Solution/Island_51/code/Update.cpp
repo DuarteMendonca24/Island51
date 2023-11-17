@@ -54,6 +54,15 @@ void Engine::update(float dtAsSeconds)
             }
         }
 
+        for (int i = 0; i < 100; i++)
+        {
+
+            if (m_explosionBullets[i].isInFlight())
+            {
+
+                m_explosionBullets[i].update(dtAsSeconds);
+            }
+        }
       
 
         //Update code for the enemies
@@ -70,6 +79,35 @@ void Engine::update(float dtAsSeconds)
             {
                 
                 (*it)->update(dtAsSeconds, playerPosition);
+
+                //if its and explosive enemie and its close to the player
+                if ((*it)->getType() == 4 && (*it)->distanceToPlayer(playerPosition) < 300) {
+
+                    m_shootingFireRate -= dtAsSeconds;
+
+                    if (m_shootingFireRate < 0) {
+
+
+                        m_shootingFireRate = 3;
+
+                        currentBullet++;
+
+                        m_explosionBullets[currentBullet].setRange(100);
+                        
+
+                        m_explosionBullets[currentBullet].shoot((*it)->getPosCoordinates().x, (*it)->getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                       
+
+
+                        currentBullet++;
+                        if (currentBullet > 99)
+                        {
+                            currentBullet = 0;
+                        }
+                    }
+                    
+
+                }
             }
             else {
 
