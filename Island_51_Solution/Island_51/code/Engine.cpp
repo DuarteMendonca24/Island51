@@ -1,24 +1,24 @@
 #include "Engine.h"
 
 
-Engine::Engine(TextureHolder holder){
+Engine::Engine(TextureHolder holder) {
 	// Get the screen resolution and create an SFML window and View
-	
+
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 	state = State::GAME_OVER;
 
 
-	m_Window.create(VideoMode(resolution.x, resolution.y), "Island 51",Style::Fullscreen);
+	m_Window.create(VideoMode(resolution.x, resolution.y), "Island 51", Style::Fullscreen);
 
 	// Create a an SFML View for the main action
 	View mainView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 	m_hudView.reset(
 		FloatRect(0, 0, resolution.x, resolution.y));
-	
+
 	//Load Level
 	TILE_SIZE = manageLevel.loadLevel(background);
-	
+
 	textureBackground = holder.GetTexture("graphics/background_sheet.png");
 	textureAmmoIcon = holder.GetTexture("graphics/ammo_icon.png");
 	textureCrosshair = holder.GetTexture("graphics/crosshair.png");
@@ -53,7 +53,7 @@ Engine::Engine(TextureHolder holder){
 	Vector2i worldSize = manageLevel.getLevelSize();
 	m_EnemiesList = createHorde(numZombies, arena);
 	numZombiesAlive = numZombies;
-	m_ResourceList = createTools(numResource, arena);
+	m_PickupList = createResorces(numResource, arena);
 	numResourceAlive = numResource;
 	IntRect arena;
 	arena.width = worldSize.x * TILE_SIZE;
@@ -67,17 +67,17 @@ Engine::Engine(TextureHolder holder){
 	Illusionist[1].spawn(400, 400, 0, 1); // Top Illusionist
 
 	//spawning resources to be icons in the inventory
-	m_inventoryIcons[0].spawn(100, 400, 0 ,3.5);
-	m_inventoryIcons[1].spawn(100, 500, 1 ,3.5);
-	m_inventoryIcons[2].spawn(100, 600, 2 ,3.5);
-	
+	m_inventoryIcons[0].resource(100, 400, 0, 3.5);
+	m_inventoryIcons[1].resource(100, 500, 1, 3.5);
+	m_inventoryIcons[2].resource(100, 600, 2, 3.5);
+
 
 
 }
 
-void Engine::run(){
+void Engine::run() {
 
-    // Timing 	
+	// Timing 	
 	Clock clock;
 
 	while (m_Window.isOpen())
@@ -95,5 +95,5 @@ void Engine::run(){
 
 	}
 
-    
+
 }

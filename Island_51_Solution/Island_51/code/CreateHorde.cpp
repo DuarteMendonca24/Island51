@@ -61,7 +61,7 @@
 			// Spawn the new zombie into the array
 			zombies[i].spawn(x, y, type, i);
 		}
-		
+
 
 	}
 	return zombies;
@@ -162,7 +162,7 @@ std::list<Zombie*> Engine::createEnemies(int numZombies, Vector2f position, int 
 
 	for (int i = 0; i < numZombies; i++)
 	{
-		Zombie* zombie = new Zombie() ;
+		Zombie* zombie = new Zombie();
 		zombie->spawn(x, y, type, i);
 		zombiesList.push_back(zombie);
 
@@ -174,30 +174,30 @@ std::list<Zombie*> Engine::createEnemies(int numZombies, Vector2f position, int 
 
 
 //new function created to spawn enemies when one is killed
-std::list<Pickup*> Engine::createPickup( Vector2f position)
+std::list<Pickup*> Engine::createPickup(Vector2f position)
 {
 	std::list<Pickup*> pickupList;
 
 	float posX = position.x;
 	float posY = position.y;
 	int xOffset = 25;
-	
-		Pickup* pickup = new Pickup();
-		srand((int)time(0));
-		int type = (rand() % 3 +1);
-		pickup->spawn(type, posX, posY);
-		pickupList.push_back(pickup);
 
-		//posX += xOffset;
-	
+	Pickup* pickup = new Pickup();
+	srand((int)time(0));
+	int type = (rand() % 3 + 1);
+	pickup->spawn(type, posX, posY);
+	pickupList.push_back(pickup);
+
+	//posX += xOffset;
+
 
 	return pickupList;
 }
 
 //changing the function to return a list
-std::list<Tools*> Engine::createTools(int numResource, IntRect arena)
+std::list<Pickup*> Engine::createResorces(int numResource, IntRect arena)
 {
-	std::list<Tools*> toolsList;
+	std::list<Pickup*> resorceList;
 
 	int maxY = arena.height - 20;
 	int minY = arena.top + 20;
@@ -244,12 +244,12 @@ std::list<Tools*> Engine::createTools(int numResource, IntRect arena)
 		srand((int)time(0) * i * 2);
 		int type = (rand() % 3);
 
-		Tools* tool = new Tools();
-		tool->spawn(x, y, type , 1.5);
-		toolsList.push_back(tool);
+		Pickup* resource = new Pickup();
+		resource->resource(x, y, type, 1.5);
+		resorceList.push_back(resource);
 
 
 
 	}
-	return toolsList;
+	return resorceList;
 }

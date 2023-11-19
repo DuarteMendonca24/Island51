@@ -7,13 +7,13 @@ using namespace sf;
 
 void Engine::update(float dtAsSeconds)
 {
-    
+
 
     if (state == State::PLAYING)
     {
         //Update the Hunger Bar
         m_currentHunger -= m_hungerTickAmount;
-      
+
 
         // Where is the mouse pointer
         mouseScreenPosition = Mouse::getPosition();
@@ -41,15 +41,15 @@ void Engine::update(float dtAsSeconds)
                 bullets[i].update(dtAsSeconds);
             }
 
-           
+
         }
 
         for (int i = 0; i < 100; i++)
         {
-           
+
             if (m_illusionsBullets[i].isInFlight())
             {
-       
+
                 m_illusionsBullets[i].update(dtAsSeconds);
             }
         }
@@ -63,21 +63,21 @@ void Engine::update(float dtAsSeconds)
                 m_explosionBullets[i].update(dtAsSeconds);
             }
         }
-      
+
 
         //Update code for the enemies
         // ----------------------------------------------------------------------------------------
-        
+
         // changing the loop to use a list
         std::list<Zombie*>::iterator it;
         for (it = m_EnemiesList.begin(); it != m_EnemiesList.end(); it++)
         {
-        
-           // cout << m_EnemiesList.size() <<"\n";
+
+            // cout << m_EnemiesList.size() <<"\n";
 
             if ((*it)->isAlive())
             {
-                
+
                 (*it)->update(dtAsSeconds, playerPosition);
 
                 //if its and explosive enemie and its close to the player
@@ -93,10 +93,10 @@ void Engine::update(float dtAsSeconds)
                         currentBullet++;
 
                         m_explosionBullets[currentBullet].setRange(100);
-                        
+
 
                         m_explosionBullets[currentBullet].shoot((*it)->getPosCoordinates().x, (*it)->getPosCoordinates().y, playerPosition.x, playerPosition.y);
-                       
+
 
 
                         currentBullet++;
@@ -105,7 +105,7 @@ void Engine::update(float dtAsSeconds)
                             currentBullet = 0;
                         }
                     }
-                    
+
 
                 }
             }
@@ -170,14 +170,14 @@ void Engine::update(float dtAsSeconds)
                             // Not just a hit but a kill too
                             // Custom scores for each zombie type
                             score += (*it3)->killValue();
-                 
+
                             //if zombie is a crawler , create two more enemies
                             if ((*it3)->getType() == 2) {
                                 std::list<Zombie*> newZombies = createEnemies(2, (*it3)->getPosCoordinates(), 3);
                                 m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
                             }
 
-                             //numZombiesAlive = numZombies;
+                            //numZombiesAlive = numZombies;
                             if (wave >= hiScore)
                             {
                                 hiScore = wave;
@@ -206,14 +206,14 @@ void Engine::update(float dtAsSeconds)
 
         //if its close to the player create the illusions
         if (Illusionist[0].distanceToPlayer(playerPosition) < 70 && !m_illusions) {
-            
+
             //we delete the illusionist and create a new array with the illusions
             delete[] Illusionist;
             m_test = true;
             //get random numnber betwwen 0 and 3
             m_realOne = rand() % 4;
             Illusions = createIllusions(playerPosition);
-          
+
 
         }
 
@@ -224,9 +224,9 @@ void Engine::update(float dtAsSeconds)
             {
 
                 Illusions[i].illusionBehaviour(playerPosition);
-                
-               
-;
+
+
+                ;
             }
 
             m_illusionsFireRate -= dtAsSeconds;
@@ -234,16 +234,16 @@ void Engine::update(float dtAsSeconds)
             {
                 m_illusionsFireRate = 2;
 
-               
-                
+
+
                 m_illusionsBullets[currentBullet].setRange(100);
-                m_illusionsBullets[currentBullet+1].setRange(100);
-                m_illusionsBullets[currentBullet+2].setRange(100);
-                m_illusionsBullets[currentBullet+3].setRange(100);
+                m_illusionsBullets[currentBullet + 1].setRange(100);
+                m_illusionsBullets[currentBullet + 2].setRange(100);
+                m_illusionsBullets[currentBullet + 3].setRange(100);
                 m_illusionsBullets[currentBullet].shoot(Illusions[0].getPosCoordinates().x, Illusions[0].getPosCoordinates().y, playerPosition.x, playerPosition.y);
-                m_illusionsBullets[currentBullet+1].shoot(Illusions[1].getPosCoordinates().x, Illusions[1].getPosCoordinates().y, playerPosition.x, playerPosition.y);
-                m_illusionsBullets[currentBullet+2].shoot(Illusions[2].getPosCoordinates().x, Illusions[2].getPosCoordinates().y, playerPosition.x, playerPosition.y);
-                m_illusionsBullets[currentBullet+3].shoot(Illusions[3].getPosCoordinates().x, Illusions[3].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet + 1].shoot(Illusions[1].getPosCoordinates().x, Illusions[1].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet + 2].shoot(Illusions[2].getPosCoordinates().x, Illusions[2].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                m_illusionsBullets[currentBullet + 3].shoot(Illusions[3].getPosCoordinates().x, Illusions[3].getPosCoordinates().y, playerPosition.x, playerPosition.y);
 
 
                 currentBullet++;
@@ -252,12 +252,12 @@ void Engine::update(float dtAsSeconds)
                     currentBullet = 0;
                 }
 
-               
+
                 // //shoot.play();
                 // bulletsInClip--;
             }
 
-                
+
 
 
             for (int i = 0; i < 100; i++)
@@ -270,15 +270,15 @@ void Engine::update(float dtAsSeconds)
                         if (bullets[i].getPosition().intersects(Illusions[j].getPosition()) && j == m_realOne)
                         {
                             cout << "Entrou";
-                          
+
 
                             // Register the hit and see if it was a kill
                             if (Illusions[j].hit())
                             {
-                                
+
                                 delete[]Illusions;
                                 m_illusions = false;
-                              
+
                                 // Not just a hit but a kill too
                                 // Custom scores for each zombie type
                                 //score += Illusions[j].killValue();
@@ -290,38 +290,35 @@ void Engine::update(float dtAsSeconds)
 
 
                 }
-              
+
             }
 
         }
-       
-       
 
-        
 
-        //Update code for the tools
+
+
+
+        //Update code for the resource
         // ----------------------------------------------------------------------------------------
-        
-        std::list<Tools*>::iterator it4;
+
+        std::list<Pickup*>::iterator it4;
         for (int i = 0; i < 100; i++)
         {
-            for (it4 = m_ResourceList.begin(); it4 != m_ResourceList.end(); it4++)
+            for (it4 = m_PickupList.begin(); it4 != m_PickupList.end(); it4++)
             {
                 if (bullets[i].isInFlight() && (*it4)->isAlive())
                 {
                     if (bullets[i].getPosition().intersects((*it4)->getPosition()))
                     {
-                        // Stop the bullet unless the equipped gun is the railgun
-                        if (!woodSwordEquipped)
-                        {
-                            // Stop the bullet
-                            bullets[i].stop();
-                        }
 
-                            // Register the hit and see if it was a kill
-                            if ((*it4)->hit())
-                            {
-                                //Spawn pickup
+                        // Stop the bullet
+                        bullets[i].stop();
+
+                        // Register the hit and see if it was a kill
+                        if ((*it4)->hit())
+                        {
+                            //Spawn pickup
                             std::list<Pickup*> newPickup = createPickup((*it4)->getPosCoordinates());
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
                             numResourceAlive--;
@@ -333,29 +330,29 @@ void Engine::update(float dtAsSeconds)
                 }
             }
         } // End zombie being shot
-        
-       
-       
-        
+
+
+
+
         //Update code for the pickups
         //----------------------------------------------------------------------------------------
- 
+
         std::list<Pickup*>::iterator it5;
         for (int i = 0; i < 100; i++)
         {
             for (it5 = m_PickupList.begin(); it5 != m_PickupList.end(); it5++)
             {
-                    if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
+                if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
+                {
+                    if ((*it5)->getType() == 1)
                     {
-                        if ((*it5)->getType() == 1)
-                        {
-                            player.increaseHealthLevel((*it5)->gotIt());
-                            m_PickupList.erase(it5); // This erases the pickup from the list
-                        }
-                       
-                        break;// Break the loop after erasing the pickup
+                        player.increaseHealthLevel((*it5)->gotIt());
+                        m_PickupList.erase(it5); // This erases the pickup from the list
                     }
-                
+
+                    break;// Break the loop after erasing the pickup
+                }
+
             }
         }
         // Has the player touched health pickup
@@ -383,9 +380,9 @@ void Engine::update(float dtAsSeconds)
             pickup.play();
         }
         */
-        
-        
-        
+
+
+
         // Increment the number of frames since the last HUD calculation
         framesSinceLastHUDUpdate++;
         // Calculate FPS every fpsMeasurementFrameInterval frames
@@ -399,8 +396,8 @@ void Engine::update(float dtAsSeconds)
             std::stringstream ssWave;
             std::stringstream ssZombiesAlive;
 
-            
-         
+
+
 
 
             // Update the ammo text
@@ -410,13 +407,13 @@ void Engine::update(float dtAsSeconds)
 
             // Update the score text
             ssScore << "Points:" << score;
-           // scoreText.setString(ssScore.str());
+            // scoreText.setString(ssScore.str());
             m_hud.setScoreText(ssScore.str());
 
             // Update the high score text
            // ssHiScore << "Hi Score:" << hiScore;
            // hiScoreText.setString(ssHiScore.str());
-            
+
 
             // Update the wave
             ssWave << "Wave:" << wave;
@@ -425,7 +422,7 @@ void Engine::update(float dtAsSeconds)
 
             // Update the high score text
             ssZombiesAlive << "Zombies:" << numZombiesAlive;
-           // zombiesRemainingText.setString(ssZombiesAlive.str());
+            // zombiesRemainingText.setString(ssZombiesAlive.str());
             m_hud.setZombiesRemainingText(ssZombiesAlive.str());
 
             //health bar width is 300
@@ -441,28 +438,28 @@ void Engine::update(float dtAsSeconds)
 
 
 
-    if(state == State::MAIN_MENU)
+    if (state == State::MAIN_MENU)
     {
         //Check Collisions Between mouse and buttons
-        if(startButtonHitBox.contains(mouseScreenPosition.x , mouseScreenPosition.y)){
+        if (startButtonHitBox.contains(mouseScreenPosition.x, mouseScreenPosition.y)) {
             startButton.setFillColor(hoverOverColor);
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 state = State::LEVELING_UP;
             }
         }
-        else{
+        else {
             startButton.setFillColor(startButtonColor);
         }
 
-        if(exitButtonHitBox.contains(mouseScreenPosition.x , mouseScreenPosition.y)){
+        if (exitButtonHitBox.contains(mouseScreenPosition.x, mouseScreenPosition.y)) {
             exitButton.setFillColor(hoverOverColor);
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 state = State::EXIT;
             }
         }
-        else{
+        else {
             exitButton.setFillColor(exitButtonColor);
         }
     }

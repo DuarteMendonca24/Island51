@@ -28,19 +28,19 @@ public:
     std::list<Zombie*> createHorde(int numZombies, IntRect arena);
     std::list<Zombie*> createEnemies(int numZombies, Vector2f position, int type);
     std::list<Pickup*> createPickup(Vector2f position);
-    std::list<Tools*> createTools(int numResource, IntRect arena);
+    std::list<Pickup*> createResorces(int numResource, IntRect arena);
     Engine(TextureHolder holder);
     void run();
     void input();
     void draw();
     void loadSounds();
 
-   
 
-   Zombie* createIllusions(Vector2f playerPosition);
-    
+
+    Zombie* createIllusions(Vector2f playerPosition);
+
     // A regular RenderWindow
-	RenderWindow m_Window;
+    RenderWindow m_Window;
 
 
 private:
@@ -50,10 +50,10 @@ private:
     int m_realOne;
 
     bool m_test = false;
-    
+
     //are illusions activated
     bool m_illusions = false;
-   
+
     //array for the number of illusionist enemies
     Zombie* Illusionist = new Zombie[4];
     //this array will handle the illusions created
@@ -75,35 +75,35 @@ private:
     */
     int TILE_SIZE;
     // Prepare for a horde of zombies
-	int numZombies;
-	int numZombiesAlive;
+    int numZombies;
+    int numZombiesAlive;
     // Prepare for a horde of resource
     int numResource;
     int numResourceAlive;
     //Gun Variables
-	int currentBullet = 1;
-	int bulletsSpare = 12;
-	int bulletsInClip = 12;
-	int clipSize = 12;
-	float fireRate = 1;
+    int currentBullet = 1;
+    int bulletsSpare = 12;
+    int bulletsInClip = 12;
+    int clipSize = 12;
+    float fireRate = 1;
     //Hand parameters
-	int handCurrentBullet = 0;
-	int handBulletsSpare = 30;
-	int handBulletsInClip = 15;
-	int handClipSize = 15;
-	float handFireRate = 0.4;
-	//Wood Sword Parameters 
-	int woodSwordCurrentBullet = 0;
-	int woodSwordBulletsSpare = 120;
-	int woodSwordBulletsInClip = 30;
-	int woodSwordClipSize = 30;
-	float woodSwordFireRate = 0.6;
-	//Stone Sword Parameters
-	int stoneSwordCurrentBullet = 0;
-	int stoneSwordBulletsSpare = 20;
-	int stoneSwordBulletsInClip = 5;
-	int stoneSwordClipSize = 5;
-	float stoneSwordFireRate = 1.0;
+    int handCurrentBullet = 0;
+    int handBulletsSpare = 30;
+    int handBulletsInClip = 15;
+    int handClipSize = 15;
+    float handFireRate = 0.4;
+    //Wood Sword Parameters 
+    int woodSwordCurrentBullet = 0;
+    int woodSwordBulletsSpare = 120;
+    int woodSwordBulletsInClip = 30;
+    int woodSwordClipSize = 30;
+    float woodSwordFireRate = 0.6;
+    //Stone Sword Parameters
+    int stoneSwordCurrentBullet = 0;
+    int stoneSwordBulletsSpare = 20;
+    int stoneSwordBulletsInClip = 5;
+    int stoneSwordClipSize = 5;
+    float stoneSwordFireRate = 1.0;
     //Iron Sword Parameters
     int ironSwordCurrentBullet = 0;
     int ironSwordBulletsSpare = 20;
@@ -117,23 +117,23 @@ private:
     int arrowClipSize = 5;
     float arrowFireRate = 0.5;
     // About the game
-	int score = 0;
-	int hiScore = 0;
+    int score = 0;
+    int hiScore = 0;
     int wave = 1;
     // Weapons Equipped
-	bool handEquipped = true;
+    bool handEquipped = true;
     bool woodSwordEquipped = false;
-	bool stoneSwordEquipped = false;
-	bool ironSwordEquipped = false;
+    bool stoneSwordEquipped = false;
+    bool ironSwordEquipped = false;
     bool arrowEquipped = false;
     // Update Function For All Classes
     void update(float dtAsSeconds);
 
     //view for the background
-	View m_BGMainView;
+    View m_BGMainView;
 
     //view for the background
-	View mainView;
+    View mainView;
 
     //view for HUD
     View m_hudView;
@@ -150,49 +150,49 @@ private:
     /**
      * TIME VARIABLES
     */
-	// Here is our clock for timing everything
-	Clock clock;
+    // Here is our clock for timing everything
+    Clock clock;
 
-	// How long has the PLAYING state been active
-	Time gameTimeTotal;
+    // How long has the PLAYING state been active
+    Time gameTimeTotal;
 
     // When was the fire button last pressed?
-	Time lastPressed;
+    Time lastPressed;
 
     // What time was the last update
-	Time timeSinceLastUpdate;
+    Time timeSinceLastUpdate;
 
     //Frame Measurements
     // When did we last update the HUD?
-	int framesSinceLastHUDUpdate = 0;
-	
-	// How often (in frames) should we update the HUD
-	int fpsMeasurementFrameInterval = 1000;
+    int framesSinceLastHUDUpdate = 0;
 
-    /*  
+    // How often (in frames) should we update the HUD
+    int fpsMeasurementFrameInterval = 1000;
+
+    /*
         VECTOR VARIABLES
     */
     // Where is the mouse in relation to world coordinates
-	Vector2f mouseWorldPosition;
+    Vector2f mouseWorldPosition;
 
-	// Where is the mouse in relation to screen coordinates
-	Vector2i mouseScreenPosition;
+    // Where is the mouse in relation to screen coordinates
+    Vector2i mouseScreenPosition;
 
     //Game Resolution
     Vector2f resolution;
 
     // Create an instance of the Player class
-	Player player;
+    Player player;
 
     // The boundaries of the arena
-	IntRect arena;
+    IntRect arena;
 
     // Create the background
-	VertexArray background;
+    VertexArray background;
 
     //Textures
     // Here is the instabce of TextureHolder
-	
+
 
     //Buttons FloatRect objects hitboxes
     FloatRect startButtonHitBox;
@@ -206,7 +206,7 @@ private:
     Color exitButtonColor = Color::Red;
     Color hoverOverColor = Color::Magenta;
 
-   
+
     //Texture Variables
     Texture textureBackground;
     Texture textureAmmoIcon;
@@ -241,7 +241,7 @@ private:
     Sound powerup;
     Sound pickup;
     //Bar Variables
-    
+
     float m_currentHunger = 100;
     float m_hungerTickAmount = 0.01;
 
@@ -250,19 +250,18 @@ private:
     //Create PickUps
     // Create a couple of pickups
     /*
-	Pickup healthPickup = Pickup(1);
-	Pickup ammoPickup = Pickup(2);
-	Pickup moneyPickup = Pickup(3);
+    Pickup healthPickup = Pickup(1);
+    Pickup ammoPickup = Pickup(2);
+    Pickup moneyPickup = Pickup(3);
     */
     //Zombie List
     Zombie* zombies = NULL;
-	//changing the array to a list
-	std::list<Zombie*> m_EnemiesList;
+    //changing the array to a list
+    std::list<Zombie*> m_EnemiesList;
     std::list<Pickup*> m_PickupList;
-    std::list<Tools*> m_ResourceList;
 
     //array to display inventory resource items
-    Tools m_inventoryIcons[3];
+    Pickup m_inventoryIcons[3];
 
 
     // 1000 bullets should do
@@ -272,8 +271,7 @@ private:
 
     float m_illusionsFireRate = 3;
     float m_shootingFireRate = 3;
-        
+
 
 
 };
-    

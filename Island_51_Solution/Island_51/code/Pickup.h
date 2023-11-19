@@ -22,7 +22,7 @@ private:
 	float m_Health;
 
 	// Is it still alive?
-	bool m_Alive;
+	bool m_Alive = true;
 
 	// The sprite that represents this pickup
 	Sprite m_Sprite;
@@ -45,10 +45,9 @@ private:
 	float m_SecondsToWait;
 
 	//Positon pickup
-	float m_posX;
-	float m_posY;
+	Vector2f m_Position;
 	// Public prototypes go here
-public: 
+public:
 
 	//Parameterized Constructor
 	//Pickup(int type);
@@ -77,7 +76,14 @@ public:
 
 	int getType();
 
-	void resource(float startX, float startY, int type);
+	void resource(float startX, float startY, int type, float scale);
+	// Handle when a bullet hits a zombie
+	bool hit();
+
+	// Find out if the zombie is alive
+	bool isAlive();
+
+	Vector2f getPosCoordinates();
 };
 
 

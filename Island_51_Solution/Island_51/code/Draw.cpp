@@ -6,19 +6,19 @@ void Engine::draw()
     //Setting Mouse Cursor to be visible in the game
     m_Window.setMouseCursorVisible(true);
 
-    
-	
+
+
 
     //View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
-     
-    
-	// Load the high score from a text file/
-	std::ifstream inputFile("gamedata/scores.txt");
-	if (inputFile.is_open())
-	{
-		inputFile >> hiScore;
-		inputFile.close();
-	}
+
+
+    // Load the high score from a text file/
+    std::ifstream inputFile("gamedata/scores.txt");
+    if (inputFile.is_open())
+    {
+        inputFile >> hiScore;
+        inputFile.close();
+    }
 
 
     if (state == State::PLAYING)
@@ -32,29 +32,29 @@ void Engine::draw()
         // Draw the background
         m_Window.draw(background, &textureBackground);
 
-        
+
 
         // Draw the zombies
-         for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
 
             if (m_illusions) {
-                
+
                 m_Window.draw(Illusions[i].getSprite());
             }
-            else if(!m_test) {
-                
+            else if (!m_test) {
+
                 m_Window.draw(Illusionist[i].getSprite());
             }
 
-         }
+        }
 
-         // Draw the zombies with a list
-         std::list<Zombie*>::iterator it2;
-         for (it2 = m_EnemiesList.begin(); it2 != m_EnemiesList.end(); it2++)
-         {
+        // Draw the zombies with a list
+        std::list<Zombie*>::iterator it2;
+        for (it2 = m_EnemiesList.begin(); it2 != m_EnemiesList.end(); it2++)
+        {
 
-             m_Window.draw((*it2)->getSprite());
-         }
+            m_Window.draw((*it2)->getSprite());
+        }
 
         // Draw the pickup with a list
         std::list<Pickup*>::iterator it3;
@@ -62,12 +62,6 @@ void Engine::draw()
         {
 
             m_Window.draw((*it3)->getSprite());
-        }
-        // Draw the pickup with a list
-        std::list<Tools*>::iterator it4;
-        for (it4 = m_ResourceList.begin(); it4 != m_ResourceList.end(); it4++)
-        {
-            m_Window.draw((*it4)->getSprite());
         }
         for (int i = 0; i < 100; i++)
         {
@@ -80,7 +74,7 @@ void Engine::draw()
 
         for (int i = 0; i < 100; i++)
         {
-         
+
 
             if (m_illusionsBullets[i].isInFlight())
             {
@@ -97,7 +91,7 @@ void Engine::draw()
                 m_Window.draw(m_explosionBullets[i].getShape());
             }
         }
-        
+
         // Draw the player
         m_Window.draw(player.getSprite());
 
@@ -124,16 +118,16 @@ void Engine::draw()
         m_Window.setView(m_hudView);
 
         // Draw all the HUD elements
-        
-         m_Window.draw(spriteAmmoIcon);
+
+        m_Window.draw(spriteAmmoIcon);
         m_Window.draw(m_hud.getAmmoText());
-       m_Window.draw(m_hud.getScoreText());
+        m_Window.draw(m_hud.getScoreText());
         //m_Window.draw(m_hud.getHiScoreText());
         m_Window.draw(m_hud.getHealthBar());
-       // m_Window.draw(m_hud.getWaveNumberText());
+        // m_Window.draw(m_hud.getWaveNumberText());
         m_Window.draw(m_hud.getZombiesRemainingText());
         m_Window.draw(m_hud.getHungerBar());
-        
+
 
         if (m_inventoryActive) {
             //draw the inventory icons
@@ -146,9 +140,9 @@ void Engine::draw()
             m_Window.draw(m_hud.getIronQuantityText());
         }
 
-    
 
-       
+
+
     }
 
     if (state == State::LEVELING_UP)
@@ -175,9 +169,9 @@ void Engine::draw()
         m_Window.draw(m_hud.getHiScoreText());
     }
 
-    if(state == State::MAIN_MENU)
+    if (state == State::MAIN_MENU)
     {
-        
+
 
         // ScreenSize
         Vector2f screenDimensions;
@@ -212,8 +206,8 @@ void Engine::draw()
         // Initialising Buttons
         startButtonHitBox = FloatRect(startButtonLeft, startButtonTop, buttonWidth, buttonHeight);
         exitButtonHitBox = FloatRect(exitButtonLeft, exitButtonTop, buttonWidth, buttonHeight);
-        startButton.setOrigin(startButtonLeft,startButtonTop);
-        exitButton.setOrigin(exitButtonLeft,exitButtonTop);
+        startButton.setOrigin(startButtonLeft, startButtonTop);
+        exitButton.setOrigin(exitButtonLeft, exitButtonTop);
         startButton.setSize(Vector2f(buttonWidth, buttonHeight));
         exitButton.setSize(Vector2f(buttonWidth, buttonHeight));
 
@@ -237,10 +231,9 @@ void Engine::draw()
 
     m_Window.display();
 
-    
+
 
 
 }
 
 
-	

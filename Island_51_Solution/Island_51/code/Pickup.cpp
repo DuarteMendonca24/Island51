@@ -39,17 +39,17 @@ void Pickup::spawn(int type, float startX, float startY)
 	m_SecondsToLive = START_SECONDS_TO_LIVE;
 	m_SecondsToWait = START_WAIT_TIME;
 
-	m_posX = startX;
-	m_posY = startY;
+	m_Position.x = startX;
+	m_Position.y = startY;
 	// Not currently spawned
 	//m_Spawned = false;
 	m_SecondsSinceSpawn = 0;
 	m_Spawned = true;
 
-	m_Sprite.setPosition(startX, startY);
+	m_Sprite.setPosition(m_Position);
 }
 
-void Pickup::resource(float startX, float startY, int type)
+void Pickup::resource(float startX, float startY, int type, float scale)
 {
 	switch (type)
 	{
@@ -82,12 +82,11 @@ void Pickup::resource(float startX, float startY, int type)
 		break;
 
 	}
-
-	m_posX = startX;
-	m_posY = startY;
-	//m_Sprite.setScale(1.5,1.5);
+	m_Position.x = startX;
+	m_Position.y = startY;
+	m_Sprite.setScale(scale, scale);
 	m_Sprite.setOrigin(25, 25);
-	m_Sprite.setPosition(startX, startY);
+	m_Sprite.setPosition(m_Position);
 }
 void Pickup::setArena(IntRect arena)
 {
@@ -158,7 +157,7 @@ void Pickup::upgrade()
 	{
 		m_Value += (HEALTH_START_VALUE * .5);
 	}
-	else if(m_Type == 2)
+	else if (m_Type == 2)
 	{
 		m_Value += (AMMO_START_VALUE * .5);
 	}
@@ -176,4 +175,32 @@ int Pickup::getType()
 {
 	//Returning the score value for this zombie
 	return m_Type;
+}
+
+bool Pickup::hit()
+{
+	m_Health--;
+
+	if (m_Health <= 0)
+	{
+		//we changed this to true for testing , it should be false
+		m_Alive = false;
+		m_Sprite.setTexture(TextureHolder::GetTexture(
+			"graphics/blood.png"));
+
+		return true;
+	}
+
+	// injured but not dead yet
+	return false;
+}
+
+bool Pickup::isAlive()
+{
+	return m_Alive;
+}
+
+Vector2f Pickup::getPosCoordinates() {
+
+	return m_Position;
 }
