@@ -142,6 +142,7 @@ bool Zombie::isAlive()
 	return m_Alive;
 }
 
+
 FloatRect Zombie::getPosition()
 {
 	return m_Sprite.getGlobalBounds();

@@ -1,81 +1,80 @@
 #include "Engine.h"
-
 void Engine::input()
 {
     Event event;
-    while(m_Window.pollEvent(event))
+    while (m_Window.pollEvent(event))
     {
         if (event.type == Event::KeyPressed)
-		{
-			
+        {
 
-			if (event.type == Event::KeyPressed)
-			{
-				// Pause a game while playing
-				if (event.key.code == Keyboard::Return &&
-					state == State::PLAYING)
-				{
-					state = State::PAUSED;
-				}
 
-				// Restart while paused
-				else if (event.key.code == Keyboard::Return &&
-					state == State::PAUSED)
-				{
-					state = State::PLAYING;
-					// Reset the clock so there isn't a frame jump
-					clock.restart();
-				}
+            if (event.type == Event::KeyPressed)
+            {
+                // Pause a game while playing
+                if (event.key.code == Keyboard::Return &&
+                    state == State::PLAYING)
+                {
+                    state = State::PAUSED;
+                }
 
-				// Start a new game while in GAME_OVER state
-				else if (event.key.code == Keyboard::Return &&
-					state == State::GAME_OVER)
-				{
-					state = State::LEVELING_UP;
-					wave = 0;
-					score = 0;
+                // Restart while paused
+                else if (event.key.code == Keyboard::Return &&
+                    state == State::PAUSED)
+                {
+                    state = State::PLAYING;
+                    // Reset the clock so there isn't a frame jump
+                    clock.restart();
+                }
 
-					// Prepare the gun and ammo for next game
-					currentBullet = 0;
-					bulletsSpare = handBulletsSpare;
-					bulletsInClip = handBulletsInClip;
-					clipSize = handClipSize;
-					fireRate = handFireRate;
-					
-					
+                // Start a new game while in GAME_OVER state
+                else if (event.key.code == Keyboard::Return &&
+                    state == State::GAME_OVER)
+                {
+                    state = State::LEVELING_UP;
+                    wave = 0;
+                    score = 0;
 
-					// Reset the player's stats
-					player.resetPlayerStats();
-				}
+                    // Prepare the gun and ammo for next game
+                    currentBullet = 0;
+                    bulletsSpare = handBulletsSpare;
+                    bulletsInClip = handBulletsInClip;
+                    clipSize = handClipSize;
+                    fireRate = handFireRate;
 
-				if (state == State::PLAYING)
-				{
-					// Reloading
-					if (event.key.code == Keyboard::R)
-					{
-						if (bulletsSpare >= clipSize)
-						{
-							// Plenty of bullets. Reload.
-							bulletsInClip = clipSize;
-							bulletsSpare -= clipSize;		
-							reload.play();
-						}
-						else if (bulletsSpare > 0)
-						{
-							// Only few bullets left
-							bulletsInClip = bulletsSpare;
-							bulletsSpare = 0;				
-							reload.play();
-						}
-						else
-						{
-							// More here soon?!
-							reloadFailed.play();
-						}
-					}
+
+
+                    // Reset the player's stats
+                    player.resetPlayerStats();
+                }
+
+                if (state == State::PLAYING)
+                {
+                    // Reloading
+                    if (event.key.code == Keyboard::R)
+                    {
+                        if (bulletsSpare >= clipSize)
+                        {
+                            // Plenty of bullets. Reload.
+                            bulletsInClip = clipSize;
+                            bulletsSpare -= clipSize;
+                            reload.play();
+                        }
+                        else if (bulletsSpare > 0)
+                        {
+                            // Only few bullets left
+                            bulletsInClip = bulletsSpare;
+                            bulletsSpare = 0;
+                            reload.play();
+                        }
+                        else
+                        {
+                            // More here soon?!
+                            reloadFailed.play();
+                        }
+                    }
 
                     // Inventory 
-                    if (event.key.code == Keyboard::Tab ) {
+                    if (event.key.code == Keyboard::Tab) {
 
                         if (!m_inventoryActive) {
 
@@ -85,21 +84,75 @@ void Engine::input()
 
                             m_inventoryActive = false;
                         }
-                     
+
                     }
 
-                  
-                    
-                        
-                    
-				}
+                    //Craft
+                    if (event.key.code == Keyboard::Q)
+                    {
+                        state = State::CRAFT;
+                    }
 
-			}
-			 
-			
-		}
-    }
+                }
 
+            }
+
+        }
+        //Craft item
+        if (state == State::CRAFT)
+        {
+            // moving up and down
+            if (event.type == Event::KeyReleased)
+            {
+
+                //move up
+                if (event.key.code == Keyboard::W)
+                {
+                    select.MoveUp();
+                }
+                //move down
+                if (event.key.code == Keyboard::S)
+                {
+                    select.MoveDown();
+                }
+
+                // keypress enter to buy
+                if (event.key.code == Keyboard::LShift)
+                {
+                    // buy the bulletsSpare2 for AK 47 
+                    if (select.GetPressed() == 0)
+                    {
+
+                    }
+                    // upgrade player speed
+                    else if (select.GetPressed() == 1)
+                    {
+
+                    }
+                    // buy the health
+                    else if (select.GetPressed() == 2)
+                    {
+
+                    }
+                    // buy the health
+                    else if (select.GetPressed() == 3)
+                    {
+
+                    }
+                    // exit the shop
+                    else if (select.GetPressed() == 4 && state == State::CRAFT)
+                    {
+                        state = State::PLAYING;
+                        clock.restart();
+                    }
+
+
+                }
+            }
+        }
+}
+    
+    
     // Handle the player quitting
     if (Keyboard::isKeyPressed(Keyboard::Escape))
     {
