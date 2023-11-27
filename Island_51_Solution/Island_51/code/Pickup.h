@@ -62,6 +62,19 @@ public:
 	// Upgrade the value of each pickup
 	void upgrade();
 
+<<<<<<< Updated upstream
+=======
+	int getType();
+
+	void spawnResource(float startX, float startY, int type, float scale);
+	// Handle when a bullet hits a zombie
+	bool hit();
+
+	// Find out if the zombie is alive
+	bool isAlive();
+
+	Vector2f getPosCoordinates();
+>>>>>>> Stashed changes
 };
 
 

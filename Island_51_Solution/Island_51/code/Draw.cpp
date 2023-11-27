@@ -104,7 +104,6 @@ void Engine::draw()
         m_Window.clear();
 
         // set the mainView to be displayed in the m_Window
-        // And draw everything related to it
         m_Window.setView(mainView);
 
         // Draw the background

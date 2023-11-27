@@ -1,1 +1,11 @@
+<<<<<<< Updated upstream
 ﻿  Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+=======
+﻿  Pickup.cpp
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(39,20): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(40,20): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(158,34): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(162,32): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(166,33): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+>>>>>>> Stashed changes

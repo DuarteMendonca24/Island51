@@ -38,6 +38,48 @@ Pickup::Pickup(int type)
 	m_SecondsToWait = START_WAIT_TIME;
 }
 
+<<<<<<< Updated upstream
+=======
+void Pickup::spawnResource(float startX, float startY, int type, float scale)
+{
+	switch (type)
+	{
+	case 0:
+		// Tree
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 95,22,18,24 });
+		m_Health = TREE_HEALTH;
+		m_Type = type;
+		break;
+
+	case 1:
+		// Stone
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 64,47,14,14 });
+		m_Health = STONE_HEALTH;
+		m_Type = type;
+
+		break;
+
+	case 2:
+		// Iron
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 80,60,14,14 });
+		m_Health = IRON_HEALTH;
+		m_Type = type;
+		break;
+
+	}
+	m_Position.x = startX;
+	m_Position.y = startY;
+	m_Sprite.setScale(scale, scale);
+	m_Sprite.setOrigin(25, 25);
+	m_Sprite.setPosition(m_Position);
+}
+>>>>>>> Stashed changes
 void Pickup::setArena(IntRect arena)
 {
 

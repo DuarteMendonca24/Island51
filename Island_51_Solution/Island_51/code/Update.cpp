@@ -29,10 +29,11 @@ void Engine::update(float dtAsSeconds)
 
         // Make a note of the players new position
         Vector2f playerPosition(player.getCenter());
-
+        mainView.reset((sf::FloatRect(0, 0, resolution.x, resolution.y)));
         // Make the view centre around the player
         mainView.setCenter(player.getCenter());
 
+<<<<<<< Updated upstream
         // changing the loop to use a list
         std::list<Zombie*>::iterator it;
         for (it = m_EnemiesList.begin(); it != m_EnemiesList.end(); it++)
@@ -158,6 +159,8 @@ void Engine::update(float dtAsSeconds)
         //		zombies[i].update(dt.asSeconds(), playerPosition);
         //	}
         //}
+=======
+>>>>>>> Stashed changes
 
         // Update any bullets that are in-flight
         for (int i = 0; i < 100; i++)

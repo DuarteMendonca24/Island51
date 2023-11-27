@@ -16,8 +16,13 @@ Engine::Engine(TextureHolder holder){
 	
 	//Load Level
 	TILE_SIZE = manageLevel.loadLevel(background);
+<<<<<<< Updated upstream
 	
 	textureBackground = holder.GetTexture("graphics/background_sheet.png");
+=======
+
+	textureBackground = holder.GetTexture("graphics/tiles-sheet.png");
+>>>>>>> Stashed changes
 	textureAmmoIcon = holder.GetTexture("graphics/ammo_icon.png");
 	textureCrosshair = holder.GetTexture("graphics/crosshair.png");
 	textureGameOver = holder.GetTexture("graphics/background.png");
@@ -61,7 +66,16 @@ Engine::Engine(TextureHolder holder){
 
 	Illusionist[0].spawn(200, 200, 0, 1); // Top Illusionist
 	Illusionist[1].spawn(400, 400, 0, 1); // Top Illusionist
+<<<<<<< Updated upstream
 	
+=======
+
+	//spawning resources to be icons in the inventory
+	m_inventoryIcons[0].spawnResource(100, 400, 0, 3.5);
+	m_inventoryIcons[1].spawnResource(100, 500, 1, 3.5);
+	m_inventoryIcons[2].spawnResource(100, 600, 2, 3.5);
+
+>>>>>>> Stashed changes
 
 
 }
