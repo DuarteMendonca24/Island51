@@ -15,7 +15,7 @@ Engine::Engine(TextureHolder holder) {
 	View mainView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 	m_hudView.reset(
 		FloatRect(0, 0, resolution.x, resolution.y));
-	select.position(m_Window.getSize().x, m_Window.getSize().y);
+
 	//Load Level
 	TILE_SIZE = manageLevel.loadLevel(background);
 

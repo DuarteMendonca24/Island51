@@ -94,10 +94,7 @@ Hud::Hud(){
 	m_ironQuantityText.setPosition(110, 515);
 	m_ironQuantityText.setString("x 0");
 
-	//Background Craft
-	m_backgroundCraft.setSize(Vector2f(m_backgroundWidth, m_backgroundHeight));
-	m_backgroundCraft.setFillColor(Color::Blue);
-	m_backgroundCraft.setPosition(600, 0);
+
 }
 
 
@@ -169,11 +166,6 @@ RectangleShape Hud::getHealthBar() {
 RectangleShape Hud::getHungerBar() {
 
 	return m_hungerBar;
-}
-
-RectangleShape Hud::getBackgroudCraft() {
-
-	return m_backgroundCraft;
 }
 
 

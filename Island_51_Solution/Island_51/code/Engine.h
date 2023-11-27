@@ -17,7 +17,7 @@
 #include "Weapons.h"
 #include "Tools.h"
 #include "HUD.h"
-#include "Craft.h"
+
 using namespace sf;
 
 class Engine
@@ -41,6 +41,8 @@ public:
 
     // A regular RenderWindow
     RenderWindow m_Window;
+
+
 private:
 
     int numberOnList = 0;
@@ -269,5 +271,7 @@ private:
 
     float m_illusionsFireRate = 3;
     float m_shootingFireRate = 3;
-    Craft select;
+
+
+
 };

@@ -5,6 +5,5 @@ enum class State{
     GAME_OVER, 
     PLAYING,
     EXIT,
-    CRAFT,
    
 };
