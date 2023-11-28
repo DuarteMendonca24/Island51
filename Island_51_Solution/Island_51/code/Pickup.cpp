@@ -3,37 +3,60 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-void Pickup::spawn(int type, float startX, float startY)
+void Pickup::spawnPickup(int type, float startX, float startY , float scale)
 {
 	// Store the type of this pickup
 	m_Type = type;
-
+	
 	// Associate the texture with the sprite
-	if (m_Type == 1)
-	{
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/health_pickup.png"));
+	switch (m_Type) {
+	case 1:
+		// Health spawns from enemies
+		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/health_pickup.png"));
 
 		// How much is pickup worth
 		m_Value = HEALTH_START_VALUE;
+		break;
 
-	}
-	else if (m_Type == 2)
-	{
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/ammo_pickup.png"));
+	case 2:
+		// This will be food
+		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/ammo_pickup.png"));
 
 		// How much is pickup worth
 		m_Value = AMMO_START_VALUE;
-	}
-	else
-	{
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/moneyBag.png"));
-		//how much is pickup worth
-		m_Value = MONEY_START_VALUE;
+		break;
+
+	case 3:
+		// Tree pickup
+		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 95, 22, 18, 24 });
+		m_Health = TREE_HEALTH;
+		m_Type = type;
+		break;
+
+	case 4:
+		// Stone
+		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 64, 47, 14, 14 });
+		m_Health = STONE_HEALTH;
+		m_Type = type;
+		break;
+
+	case 5:
+		// Iron
+		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/forest__resources.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 80, 60, 14, 14 });
+		m_Health = IRON_HEALTH;
+		m_Type = type;
+		break;
+
+	default:
+		// Handle unexpected type
+		break;
 	}
 
+
+	m_Sprite.setScale(scale, scale);
 	m_Sprite.setOrigin(25, 25);
 
 	m_SecondsToLive = START_SECONDS_TO_LIVE;
@@ -49,45 +72,7 @@ void Pickup::spawn(int type, float startX, float startY)
 	m_Sprite.setPosition(m_Position);
 }
 
-void Pickup::resource(float startX, float startY, int type, float scale)
-{
-	switch (type)
-	{
-	case 0:
-		// Tree
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/forest__resources.png"));
-		m_Sprite.setTextureRect(sf::IntRect{ 95,22,18,24 });
-		m_Health = TREE_HEALTH;
-		m_Type = type;
-		break;
 
-	case 1:
-		// Stone
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/forest__resources.png"));
-		m_Sprite.setTextureRect(sf::IntRect{ 64,47,14,14 });
-		m_Health = STONE_HEALTH;
-		m_Type = type;
-
-		break;
-
-	case 2:
-		// Iron
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/forest__resources.png"));
-		m_Sprite.setTextureRect(sf::IntRect{ 80,60,14,14 });
-		m_Health = IRON_HEALTH;
-		m_Type = type;
-		break;
-
-	}
-	m_Position.x = startX;
-	m_Position.y = startY;
-	m_Sprite.setScale(scale, scale);
-	m_Sprite.setOrigin(25, 25);
-	m_Sprite.setPosition(m_Position);
-}
 void Pickup::setArena(IntRect arena)
 {
 
@@ -185,8 +170,8 @@ bool Pickup::hit()
 	{
 		//we changed this to true for testing , it should be false
 		m_Alive = false;
-		m_Sprite.setTexture(TextureHolder::GetTexture(
-			"graphics/blood.png"));
+		//m_Sprite.setTexture(TextureHolder::GetTexture(
+		//	"graphics/blood.png"));
 
 		return true;
 	}

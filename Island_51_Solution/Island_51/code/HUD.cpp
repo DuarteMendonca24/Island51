@@ -207,3 +207,21 @@ void Hud::setHungerSize(float size)
 {
 	m_hungerBar.setSize(Vector2f(size, m_healthBar.getSize().y));
 }
+
+
+void Hud::setWoodQuantityText(String text) {
+
+	m_woodQuantityText.setString(text);
+}
+
+void Hud::setStoneQuantityText(String text) {
+
+	m_stoneQuantityText.setString(text);
+}
+
+
+void Hud::setIronQuantityText(String text) {
+
+	m_ironQuantityText.setString(text);
+}
+

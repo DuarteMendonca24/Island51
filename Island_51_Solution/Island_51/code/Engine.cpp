@@ -19,7 +19,7 @@ Engine::Engine(TextureHolder holder) {
 	//Load Level
 	TILE_SIZE = manageLevel.loadLevel(background);
 
-	textureBackground = holder.GetTexture("graphics/background_sheet.png");
+	textureBackground = holder.GetTexture("graphics/tiles-sheet.png");
 	textureAmmoIcon = holder.GetTexture("graphics/ammo_icon.png");
 	textureCrosshair = holder.GetTexture("graphics/crosshair.png");
 	textureGameOver = holder.GetTexture("graphics/background.png");
@@ -45,7 +45,9 @@ Engine::Engine(TextureHolder holder) {
 
 	//Zombie Amount Decpends on wave number
 	numZombies = 5 * wave;
-	numResource = 5 * wave;
+	//numResource = 5 * wave;
+
+	numResource = 1;
 	// Delete the previously allocated memory (if it exists)
 	//delete[] zombies;
 
@@ -67,9 +69,9 @@ Engine::Engine(TextureHolder holder) {
 	Illusionist[1].spawn(400, 400, 0, 1); // Top Illusionist
 
 	//spawning resources to be icons in the inventory
-	m_inventoryIcons[0].resource(100, 400, 0, 3.5);
-	m_inventoryIcons[1].resource(100, 500, 1, 3.5);
-	m_inventoryIcons[2].resource(100, 600, 2, 3.5);
+	m_inventoryIcons[0].spawnPickup(3,100, 400, 3.5);
+	m_inventoryIcons[1].spawnPickup(4,100, 500, 3.5);
+	m_inventoryIcons[2].spawnPickup(5,100, 600, 3.5);
 
 
 

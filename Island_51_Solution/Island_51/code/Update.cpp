@@ -30,6 +30,7 @@ void Engine::update(float dtAsSeconds)
         // Make a note of the players new position
         Vector2f playerPosition(player.getCenter());
 
+        mainView.reset((sf::FloatRect(0, 0, resolution.x, resolution.y)));
         // Make the view centre around the player
         mainView.setCenter(player.getCenter());
 
@@ -318,9 +319,26 @@ void Engine::update(float dtAsSeconds)
                         // Register the hit and see if it was a kill
                         if ((*it4)->hit())
                         {
-                            //Spawn pickup
-                            std::list<Pickup*> newPickup = createPickup((*it4)->getPosCoordinates());
-                            m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
+                            //Tree pickup
+                            if ((*it4)->getType() == 3) {
+
+                                numTreePickup++;
+                            }
+
+                            //Stone pickup
+                            if ((*it4)->getType() == 4) {
+
+                                numStonePickup++;
+                            }
+
+                            //Iron pickup
+                            if ((*it4)->getType() == 5) {
+
+                                numIronPickup++;
+                            }
+                            
+                            
+                            
                             numResourceAlive--;
                         }
 
@@ -337,6 +355,7 @@ void Engine::update(float dtAsSeconds)
         //Update code for the pickups
         //----------------------------------------------------------------------------------------
 
+        //When the player collides with the pickups
         std::list<Pickup*>::iterator it5;
         for (int i = 0; i < 100; i++)
         {
@@ -344,45 +363,25 @@ void Engine::update(float dtAsSeconds)
             {
                 if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
                 {
+                    //Health Pickup
                     if ((*it5)->getType() == 1)
                     {
                         player.increaseHealthLevel((*it5)->gotIt());
                         m_PickupList.erase(it5); // This erases the pickup from the list
                     }
 
+                   // //Ammo Pickup
+                   // if ((*it5)->getType() == 2)
+                   // {
+                   //     //Code here
+                   // }
+
                     break;// Break the loop after erasing the pickup
                 }
 
             }
         }
-        // Has the player touched health pickup
-        /*
-        if (player.getPosition().intersects(healthPickup.getPosition()) && healthPickup.isSpawned())
-        {
-            player.increaseHealthLevel(healthPickup.gotIt());
-            // Play a sound
-            pickup.play();
-        }
-
-        // Has the player touched ammo pickup
-        if (player.getPosition().intersects(ammoPickup.getPosition()) && ammoPickup.isSpawned())
-        {
-            bulletsSpare += ammoPickup.gotIt();
-            // Play a sound
-            reload.play();
-        }
-
-        // Has the player touched ammo pickup
-        if (player.getPosition().intersects(moneyPickup.getPosition()) && moneyPickup.isSpawned())
-        {
-            score += moneyPickup.gotIt();
-            // Play a sound
-            pickup.play();
-        }
-        */
-
-
-
+       
         // Increment the number of frames since the last HUD calculation
         framesSinceLastHUDUpdate++;
         // Calculate FPS every fpsMeasurementFrameInterval frames
@@ -395,6 +394,19 @@ void Engine::update(float dtAsSeconds)
             std::stringstream ssHiScore;
             std::stringstream ssWave;
             std::stringstream ssZombiesAlive;
+            //update resources
+            std::stringstream ssNumTreePickups;
+            std::stringstream ssNumStonePickups;
+            std::stringstream ssNumIronPickups;
+            
+            ssNumTreePickups << "x " << numTreePickup;
+            m_hud.setWoodQuantityText(ssNumTreePickups.str());
+
+            ssNumStonePickups << "x " << numStonePickup;
+            m_hud.setStoneQuantityText(ssNumStonePickups.str());
+
+            ssNumIronPickups << "x " << numIronPickup;
+            m_hud.setIronQuantityText(ssNumIronPickups.str());
 
 
 

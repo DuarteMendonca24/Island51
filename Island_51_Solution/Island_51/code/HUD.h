@@ -59,6 +59,9 @@ public:
 	void setWaveNumberText(String text);
 	void setHealthSize(float size);
 	void setHungerSize(float size);
+	void setWoodQuantityText(String text);
+	void setStoneQuantityText(String text);
+	void setIronQuantityText(String text);
 	
 	
 	

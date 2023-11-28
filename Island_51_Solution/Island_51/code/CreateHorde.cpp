@@ -184,8 +184,8 @@ std::list<Pickup*> Engine::createPickup(Vector2f position)
 
 	Pickup* pickup = new Pickup();
 	srand((int)time(0));
-	int type = (rand() % 3 + 1);
-	pickup->spawn(type, posX, posY);
+	int type = (rand() % 2 + 1);
+	pickup->spawnPickup(type, posX, posY,1);
 	pickupList.push_back(pickup);
 
 	//posX += xOffset;
@@ -240,12 +240,13 @@ std::list<Pickup*> Engine::createResorces(int numResource, IntRect arena)
 		}
 
 
-		// Bloater, crawler, runner, rat
-		srand((int)time(0) * i * 2);
-		int type = (rand() % 3);
+	
+		srand((int)time(0));
+		int type = (rand() % 3) + 3; // Generates random numbers 3, 4, or 5
+
 
 		Pickup* resource = new Pickup();
-		resource->resource(x, y, type, 1.5);
+		resource->spawnPickup( type,400, 500, 1.5);
 		resorceList.push_back(resource);
 
 

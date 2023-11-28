@@ -54,7 +54,7 @@ public:
 	// Prepare a new pickup
 	void setArena(IntRect arena);
 
-	void spawn(int type, float startX, float startY);
+	void spawnPickup(int type, float startX, float startY , float scale);
 
 	// Check the position of a pickup
 	FloatRect getPosition();
@@ -76,7 +76,7 @@ public:
 
 	int getType();
 
-	void resource(float startX, float startY, int type, float scale);
+	
 	// Handle when a bullet hits a zombie
 	bool hit();
 

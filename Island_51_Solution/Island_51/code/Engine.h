@@ -65,7 +65,11 @@ private:
     //TextureHolder object
     TextureHolder m_TextureHolder;
 
-    int numPickup;
+    //number of each type of pickup the player has 
+    int numTreePickup = 0;
+    int numStonePickup = 0;
+    int numIronPickup = 0;
+
     Vector2f position;
     //Horde Object
     //CreateHorde
