@@ -136,6 +136,7 @@
     <ClInclude Include="code\Behaviour.h" />
     <ClInclude Include="code\Bullet.h" />
     <ClInclude Include="code\Collisions.h" />
+    <ClInclude Include="code\Craft.h" />
     <ClInclude Include="code\Engine.h" />
     <ClInclude Include="code\HandleCollisions.h" />
     <ClInclude Include="code\HUD.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="code\Behaviour.cpp" />
     <ClCompile Include="code\Bullet.cpp" />
     <ClCompile Include="code\Collisions.cpp" />
+    <ClCompile Include="code\Craft.cpp" />
     <ClCompile Include="code\CreateHorde.cpp" />
     <ClCompile Include="code\Draw.cpp" />
     <ClCompile Include="code\Engine.cpp" />

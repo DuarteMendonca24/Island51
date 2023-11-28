@@ -17,7 +17,7 @@
 #include "Weapons.h"
 #include "Tools.h"
 #include "HUD.h"
-
+#include "Craft.h"
 using namespace sf;
 
 class Engine
@@ -272,6 +272,6 @@ private:
     float m_illusionsFireRate = 3;
     float m_shootingFireRate = 3;
 
-
+    Craft select;
 
 };

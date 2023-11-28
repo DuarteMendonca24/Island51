@@ -229,6 +229,12 @@ void Engine::draw()
         m_Window.draw(exitButton);
     }
 
+    if (state == State::CRAFT)
+    {
+        m_Window.draw(m_hud.getBackgroudCraft());
+        select.draw(m_Window);
+    }
+
     m_Window.display();
 
 
