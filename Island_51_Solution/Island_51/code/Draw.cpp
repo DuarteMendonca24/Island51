@@ -1,5 +1,6 @@
 #include "Engine.h"
 
+
 void Engine::draw()
 {
     //Setting Mouse Cursor to be visible in the game
@@ -227,12 +228,12 @@ void Engine::draw()
         m_Window.draw(startButton);
         m_Window.draw(exitButton);
     }
-    if (state == State::CRAFT)
-    {
-        m_Window.draw(m_hud.getBackgroudCraft());
-        select.draw(m_Window);
-    }
+
     m_Window.display();
+
+
+
+
 }
 
 

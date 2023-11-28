@@ -30,10 +30,7 @@ private:
 	float m_hungerBarStartWidth = 100;
 	float m_hungerBarHeight = 40;
 	
-	// Shop background
-	RectangleShape m_backgroundCraft;
-	float m_backgroundWidth = 700;
-	float m_backgroundHeight = 1000;
+	
 
 
 public:
@@ -51,7 +48,6 @@ public:
 	Text getIronQuantityText();
 	RectangleShape getHealthBar();
 	RectangleShape getHungerBar();
-	RectangleShape getBackgroudCraft();
 
 	void setZombiesRemainingText(String text);
 	void setScoreText(String text);
@@ -59,6 +55,7 @@ public:
 	void setWaveNumberText(String text);
 	void setHealthSize(float size);
 	void setHungerSize(float size);
+	
 	
 	
 	
