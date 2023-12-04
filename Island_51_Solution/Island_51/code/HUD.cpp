@@ -70,6 +70,8 @@ Hud::Hud(){
 	m_healthBar.setFillColor(Color::Red);
 	m_healthBar.setPosition(450, 980); 
 
+
+	m_hungerBar.setSize(Vector2f(100,40));
 	m_hungerBar.setFillColor(Color::Red);
 	m_hungerBar.setPosition((190 / 2) - m_hungerBarStartWidth / 2, 100);
 

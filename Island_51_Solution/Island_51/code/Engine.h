@@ -247,7 +247,7 @@ private:
     //Bar Variables
 
     float m_currentHunger = 100;
-    float m_hungerTickAmount = 0.01;
+    float m_hungerTickAmount = 0.001;
 
 
 

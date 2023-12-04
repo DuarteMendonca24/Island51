@@ -71,7 +71,7 @@ void Engine::update(float dtAsSeconds)
 
         // changing the loop to use a list
         std::list<Zombie*>::iterator it;
-        for (it = m_EnemiesList.begin(); it != m_EnemiesList.end(); it++)
+        for (it = m_EnemiesList.begin(); it != m_EnemiesList.end();)
         {
 
             // cout << m_EnemiesList.size() <<"\n";
@@ -81,6 +81,7 @@ void Engine::update(float dtAsSeconds)
 
                 (*it)->update(dtAsSeconds, playerPosition);
 
+                //I think I should move this to another place , here is more to update each zombioe
                 //if its and explosive enemie and its close to the player
                 if ((*it)->getType() == 4 && (*it)->distanceToPlayer(playerPosition) < 300) {
 
@@ -109,11 +110,13 @@ void Engine::update(float dtAsSeconds)
 
 
                 }
+
+                it++;
             }
             else {
 
-                //need to investigate this more 
-               //m_EnemiesList.erase(it); // Erase the object from the list and get the next valid iterator
+                
+               m_EnemiesList.erase(it++); // Erase the object from the list and get the next valid iterator
             }
         }
 
@@ -291,22 +294,24 @@ void Engine::update(float dtAsSeconds)
 
 
 
-        //Update code for the resource
+        //Update code for the pickups
         // ----------------------------------------------------------------------------------------
 
+        //When a bullet colldies with the pickups(tree,stone,iron)
         std::list<Pickup*>::iterator it4;
         for (int i = 0; i < 100; i++)
         {
-            for (it4 = m_PickupList.begin(); it4 != m_PickupList.end(); it4++)
+            for (it4 = m_PickupList.begin(); it4 != m_PickupList.end();it4++)
             {
                 if (bullets[i].isInFlight() && (*it4)->isAlive())
                 {
-                    if (bullets[i].getPosition().intersects((*it4)->getPosition()))
+                    //check for bullet collision and if its not helath or hunger pickup
+                    if (bullets[i].getPosition().intersects((*it4)->getPosition()) && (*it4)->getType()!=1 && (*it4)->getType() != 2)
                     {
 
                         // Stop the bullet
                         bullets[i].stop();
-
+                        
                         // Register the hit and see if it was a kill
                         if ((*it4)->hit())
                         {
@@ -314,6 +319,7 @@ void Engine::update(float dtAsSeconds)
                             if ((*it4)->getType() == 3) {
 
                                 numTreePickup++;
+                               
                             }
 
                             //Stone pickup
@@ -336,21 +342,19 @@ void Engine::update(float dtAsSeconds)
                         // Make a splat sound
                         splat.play();
                     }
+
+                
                 }
+                
             }
         } // End zombie being shot
 
 
-
-
-        //Update code for the pickups
-        //----------------------------------------------------------------------------------------
-
-        //When the player collides with the pickups
+        //When the player collides with the pickups(health,food)
         std::list<Pickup*>::iterator it5;
         for (int i = 0; i < 100; i++)
         {
-            for (it5 = m_PickupList.begin(); it5 != m_PickupList.end(); it5++)
+            for (it5 = m_PickupList.begin(); it5 != m_PickupList.end();)
             {
                 if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
                 {
@@ -359,7 +363,9 @@ void Engine::update(float dtAsSeconds)
                     if ((*it5)->getType() == 1)
                     {
                         player.increaseHealthLevel((*it5)->gotIt());
-                        m_PickupList.erase(it5); // This erases the pickup from the list
+                        (*it5)->hit();
+
+                        
                     }
                     break;// Break the loop after erasing the pickup
                 }
@@ -369,18 +375,48 @@ void Engine::update(float dtAsSeconds)
                 if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
                 {
 
+<<<<<<< Updated upstream
                     // food Pickup
                     if ((*it5)->getType() == 2)
                     {
                         m_PickupList.erase(it5);
+=======
+                    //Ammo Pickup
+                    if ((*it5)->getType() == 2)
+                    {
+                        m_currentHunger += 1;
+                        (*it5)->hit();
+                        
+>>>>>>> Stashed changes
                     }
 
                     break;// Break the loop after erasing the pickup
                 }
+                else {
+
+                    it5++;
+                }
 
             }
         }
-       
+
+        //loop to delete pickups if they have been killed
+        std::list<Pickup*>::iterator it6;
+        for (it6 = m_PickupList.begin(); it6 != m_PickupList.end();) {
+
+            if ((*it6)->isAlive()) {
+
+                it6++;
+            }
+            else {
+
+                m_PickupList.erase(it6++);
+            }
+        }
+
+        //----------------------------------------------------------------------------------------
+
+
         // Increment the number of frames since the last HUD calculation
         framesSinceLastHUDUpdate++;
         // Calculate FPS every fpsMeasurementFrameInterval frames
