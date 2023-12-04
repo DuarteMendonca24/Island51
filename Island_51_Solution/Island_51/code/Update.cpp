@@ -7,10 +7,11 @@ using namespace sf;
 
 void Engine::update(float dtAsSeconds)
 {
-
+    
 
     if (state == State::PLAYING)
     {
+
         //Update the Hunger Bar
         m_currentHunger -= m_hungerTickAmount;
         // Run Players collision detection
@@ -65,7 +66,7 @@ void Engine::update(float dtAsSeconds)
                 m_explosionBullets[i].update(dtAsSeconds);
             }
         }
-        
+
         //Update code for the enemies
         // ----------------------------------------------------------------------------------------
 
@@ -115,8 +116,8 @@ void Engine::update(float dtAsSeconds)
             }
             else {
 
-                
-               m_EnemiesList.erase(it++); // Erase the object from the list and get the next valid iterator
+
+                m_EnemiesList.erase(it++); // Erase the object from the list and get the next valid iterator
             }
         }
 
@@ -301,17 +302,17 @@ void Engine::update(float dtAsSeconds)
         std::list<Pickup*>::iterator it4;
         for (int i = 0; i < 100; i++)
         {
-            for (it4 = m_PickupList.begin(); it4 != m_PickupList.end();it4++)
+            for (it4 = m_PickupList.begin(); it4 != m_PickupList.end(); it4++)
             {
                 if (bullets[i].isInFlight() && (*it4)->isAlive())
                 {
                     //check for bullet collision and if its not helath or hunger pickup
-                    if (bullets[i].getPosition().intersects((*it4)->getPosition()) && (*it4)->getType()!=1 && (*it4)->getType() != 2)
+                    if (bullets[i].getPosition().intersects((*it4)->getPosition()) && (*it4)->getType() != 1 && (*it4)->getType() != 2)
                     {
 
                         // Stop the bullet
                         bullets[i].stop();
-                        
+
                         // Register the hit and see if it was a kill
                         if ((*it4)->hit())
                         {
@@ -319,7 +320,7 @@ void Engine::update(float dtAsSeconds)
                             if ((*it4)->getType() == 3) {
 
                                 numTreePickup++;
-                               
+
                             }
 
                             //Stone pickup
@@ -333,9 +334,9 @@ void Engine::update(float dtAsSeconds)
 
                                 numIronPickup++;
                             }
-                            
-                            
-                            
+
+
+
                             numResourceAlive--;
                         }
 
@@ -343,13 +344,14 @@ void Engine::update(float dtAsSeconds)
                         splat.play();
                     }
 
-                
+
                 }
-                
+
             }
         } // End zombie being shot
 
 
+        
         //When the player collides with the pickups(health,food)
         std::list<Pickup*>::iterator it5;
         for (int i = 0; i < 100; i++)
@@ -359,35 +361,20 @@ void Engine::update(float dtAsSeconds)
                 if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
                 {
                     //Health Pickup
-                   
                     if ((*it5)->getType() == 1)
                     {
                         player.increaseHealthLevel((*it5)->gotIt());
                         (*it5)->hit();
 
-                        
-                    }
-                    break;// Break the loop after erasing the pickup
-                }
-            }
-            for (it5 = m_PickupList.begin(); it5 != m_PickupList.end(); it5++)
-            {
-                if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
-                {
 
-<<<<<<< Updated upstream
-                    // food Pickup
-                    if ((*it5)->getType() == 2)
-                    {
-                        m_PickupList.erase(it5);
-=======
+                    }
+
                     //Ammo Pickup
                     if ((*it5)->getType() == 2)
                     {
                         m_currentHunger += 1;
                         (*it5)->hit();
-                        
->>>>>>> Stashed changes
+
                     }
 
                     break;// Break the loop after erasing the pickup
@@ -399,91 +386,92 @@ void Engine::update(float dtAsSeconds)
 
             }
         }
+            //loop to delete pickups if they have been killed
+            std::list<Pickup*>::iterator it6;
+            for (it6 = m_PickupList.begin(); it6 != m_PickupList.end();) {
 
-        //loop to delete pickups if they have been killed
-        std::list<Pickup*>::iterator it6;
-        for (it6 = m_PickupList.begin(); it6 != m_PickupList.end();) {
+                if ((*it6)->isAlive()) {
 
-            if ((*it6)->isAlive()) {
+                    it6++;
+                }
+                else {
 
-                it6++;
+                    m_PickupList.erase(it6++);
+                }
             }
-            else {
 
-                m_PickupList.erase(it6++);
-            }
-        }
-
-        //----------------------------------------------------------------------------------------
+            //----------------------------------------------------------------------------------------
 
 
-        // Increment the number of frames since the last HUD calculation
-        framesSinceLastHUDUpdate++;
-        // Calculate FPS every fpsMeasurementFrameInterval frames
-        if (framesSinceLastHUDUpdate > fpsMeasurementFrameInterval)
-        {
+            // Increment the number of frames since the last HUD calculation
+            framesSinceLastHUDUpdate++;
+            // Calculate FPS every fpsMeasurementFrameInterval frames
+            if (framesSinceLastHUDUpdate > fpsMeasurementFrameInterval)
+            {
 
-            // Update game HUD text
-            std::stringstream ssAmmo;
-            std::stringstream ssScore;
-            std::stringstream ssHiScore;
-            std::stringstream ssWave;
-            std::stringstream ssZombiesAlive;
-            //update resources
-            std::stringstream ssNumTreePickups;
-            std::stringstream ssNumStonePickups;
-            std::stringstream ssNumIronPickups;
-            
-            ssNumTreePickups << "x " << numTreePickup;
-            m_hud.setWoodQuantityText(ssNumTreePickups.str());
+                // Update game HUD text
+                std::stringstream ssAmmo;
+                std::stringstream ssScore;
+                std::stringstream ssHiScore;
+                std::stringstream ssWave;
+                std::stringstream ssZombiesAlive;
+                //update resources
+                std::stringstream ssNumTreePickups;
+                std::stringstream ssNumStonePickups;
+                std::stringstream ssNumIronPickups;
 
-            ssNumStonePickups << "x " << numStonePickup;
-            m_hud.setStoneQuantityText(ssNumStonePickups.str());
+                ssNumTreePickups << "x " << numTreePickup;
+                m_hud.setWoodQuantityText(ssNumTreePickups.str());
 
-            ssNumIronPickups << "x " << numIronPickup;
-            m_hud.setIronQuantityText(ssNumIronPickups.str());
+                ssNumStonePickups << "x " << numStonePickup;
+                m_hud.setStoneQuantityText(ssNumStonePickups.str());
+
+                ssNumIronPickups << "x " << numIronPickup;
+                m_hud.setIronQuantityText(ssNumIronPickups.str());
 
 
 
 
 
-            // Update the ammo text
-            ssAmmo << bulletsInClip << "/" << bulletsSpare;
-            //ammoText.setString(ssAmmo.str());
-            m_hud.setAmmoText(ssAmmo.str());
+                // Update the ammo text
+                ssAmmo << bulletsInClip << "/" << bulletsSpare;
+                //ammoText.setString(ssAmmo.str());
+                m_hud.setAmmoText(ssAmmo.str());
 
-            // Update the score text
-            ssScore << "Points:" << score;
-            // scoreText.setString(ssScore.str());
-            m_hud.setScoreText(ssScore.str());
+                // Update the score text
+                ssScore << "Points:" << score;
+                // scoreText.setString(ssScore.str());
+                m_hud.setScoreText(ssScore.str());
 
-            // Update the high score text
-           // ssHiScore << "Hi Score:" << hiScore;
-           // hiScoreText.setString(ssHiScore.str());
+                // Update the high score text
+               // ssHiScore << "Hi Score:" << hiScore;
+               // hiScoreText.setString(ssHiScore.str());
 
 
-            // Update the wave
-            ssWave << "Wave:" << wave;
-            //waveNumberText.setString(ssWave.str());
-            m_hud.setWaveNumberText(ssWave.str());
+                // Update the wave
+                ssWave << "Wave:" << wave;
+                //waveNumberText.setString(ssWave.str());
+                m_hud.setWaveNumberText(ssWave.str());
 
-            // Update the high score text
-            ssZombiesAlive << "Zombies:" << numZombiesAlive;
-            // zombiesRemainingText.setString(ssZombiesAlive.str());
-            m_hud.setZombiesRemainingText(ssZombiesAlive.str());
+                // Update the high score text
+                ssZombiesAlive << "Zombies:" << numZombiesAlive;
+                // zombiesRemainingText.setString(ssZombiesAlive.str());
+                m_hud.setZombiesRemainingText(ssZombiesAlive.str());
 
-            //health bar width is 300
-            m_hud.setHealthSize(player.getHealth());
+                //health bar width is 300
+                m_hud.setHealthSize(player.getHealth());
 
-            m_hud.setHungerSize(m_currentHunger);
+                m_hud.setHungerSize(m_currentHunger);
 
-            framesSinceLastHUDUpdate = 0;
-            timeSinceLastUpdate = Time::Zero;
-        } // End HUD update
+                framesSinceLastHUDUpdate = 0;
+                timeSinceLastUpdate = Time::Zero;
+            } // End HUD update
 
+
+        
     } // End updating the scene
 
-
+    
 
     if (state == State::MAIN_MENU)
     {
@@ -510,4 +498,6 @@ void Engine::update(float dtAsSeconds)
             exitButton.setFillColor(exitButtonColor);
         }
     }
+    
+
 }
