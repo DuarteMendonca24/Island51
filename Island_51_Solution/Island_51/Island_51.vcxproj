@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="code\AnimationSprite.h" />
     <ClInclude Include="code\Behaviour.h" />
     <ClInclude Include="code\Bullet.h" />
     <ClInclude Include="code\Collisions.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="code\Zombie.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="code\AnimationSprite.cpp" />
     <ClCompile Include="code\Behaviour.cpp" />
     <ClCompile Include="code\Bullet.cpp" />
     <ClCompile Include="code\Collisions.cpp" />

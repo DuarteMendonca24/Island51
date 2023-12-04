@@ -11,13 +11,13 @@ private:
 
 	// Where is the player
 	Vector2f m_Position;
-
+	Vector2f m_PositionWeapon;
 	// Of course we will need a sprite
 	Sprite m_Sprite;
-
+	Sprite m_SpriteWeapon;
 	// And a texture
 	// !!Watch this space!!
-	Texture m_Texture;
+	//Texture m_Texture;
 
 	// What is the screen resolution
 	Vector2f m_Resolution;
@@ -45,9 +45,10 @@ private:
 	// Speed in pixels per second
 	float m_Speed;
 
+	int m_Type;
 	// Private variables and functions come next
-	sf::Vector2i sheetCoordinate; // Coordinate on spritesheet
-	sf::Vector2i spriteSize;
+	Vector2i sheetCoordinate; // Coordinate on spritesheet
+	Vector2i spriteSize;
 	int animation_it_limit; //Max animation iterations
 	bool horizontal{ true };
 	int ani_counter{};
@@ -59,6 +60,11 @@ private:
 	//50 ms for each frame
 	float animationTimer = 0;
 
+	// Where are the characters various body parts?
+	FloatRect m_Feet;
+	FloatRect m_Head;
+	FloatRect m_Right;
+	FloatRect m_Left;
 	// All our public functions will come next
 public:
 
@@ -86,6 +92,7 @@ public:
 
 	// Send a copy of the sprite to main
 	Sprite getSprite();
+	Sprite getSpriteWeapon();
 
 	// How much health has the player currently got?
 	int getHealth();
@@ -127,6 +134,18 @@ public:
 	void setSpriteFromSheet(sf::IntRect textureBox);
 	//move the rectangle to the next cell in the animation
 	void moveTextureRect();
+	void getAttack(int type);
+	// A rectangle representing the position of different parts of the sprite
+	FloatRect getFeet();
+	FloatRect getHead();
+	FloatRect getRight();
+	FloatRect getLeft();
+	void updateLeftRightHeadFeet();
+	// Make the character stand firm
+	void stopDown(float position);
+	void stopUp(float position);
+	void stopRight(float position);
+	void stopLeft(float position);
 };
 
 

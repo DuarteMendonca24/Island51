@@ -10,10 +10,16 @@ Player::Player()
 	// Associate a texture with the sprite
 	// !!Watch this space!!
 	m_Sprite = Sprite(TextureHolder::GetTexture(
-		"graphics/player.png"));
+		"graphics/player_2.png"));
+	m_SpriteWeapon = Sprite(TextureHolder::GetTexture(
+		"graphics/melee_weapon2.png"));
+	m_Sprite.setTextureRect(sf::IntRect{ 10, 17, 50, 60 });
+	m_SpriteWeapon.setTextureRect(sf::IntRect{ 24, 10, 16, 42 });
+	ani_counter = 1;
 	// Set the origin of the sprite to the centre, 
 	// for smooth rotation
 	m_Sprite.setOrigin(39/2, 37/2);
+	m_SpriteWeapon.setOrigin(16 / 2, 42/ 2);
 }
 
 void Player::resetPlayerStats()
@@ -51,6 +57,9 @@ Time Player::getLastHitTime()
 
 bool Player::hit(Time timeHit)
 {
+	setSpriteFromSheet(sf::IntRect(15, 309, 180, 55));
+	//move the rectangle to the appropriate cell
+	moveTextureRect();
 	if (timeHit.asMilliseconds() - m_LastHit.asMilliseconds() > 200)// 2 tenths of second
 	{
 		m_LastHit = timeHit;
@@ -84,6 +93,11 @@ float Player::getRotation()
 Sprite Player::getSprite()
 {
 	return m_Sprite;
+}
+
+Sprite Player::getSpriteWeapon()
+{
+	return m_SpriteWeapon;
 }
 
 int Player::getHealth()
@@ -133,7 +147,11 @@ void Player::stopDown()
 
 void Player::update(float elapsedTime, Vector2i mousePosition)
 {
-
+	
+	timeElapsed = elapsedTime;
+	setSpriteFromSheet(sf::IntRect(15, 24, 180, 55));
+	//move the rectangle to the appropriate cell
+	moveTextureRect();
 	if (m_UpPressed)
 	{
 		m_Position.y -= m_Speed * elapsedTime;
@@ -147,18 +165,24 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 	if (m_RightPressed)
 	{
 		m_Position.x += m_Speed * elapsedTime;
+		//2nd row of sprite sheet 3 characters 150 pixels by 50 pixels
+		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
+		//move the rectangle to the appropriate cell
+		moveTextureRect();
 	}
 
 	if (m_LeftPressed)
 	{
 		m_Position.x -= m_Speed * elapsedTime;
+		//1st row of sprite sheet 3 characters
+		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
+		//move the rectangle to the appropriate cell
+		moveTextureRect();
 	}
-
 	m_Sprite.setPosition(m_Position);
 
-
-
 	// Keep the player in the arena
+	/*
 	if (m_Position.x > m_Arena.width - m_TileSize)
 	{
 		m_Position.x = m_Position.x - m_TileSize;
@@ -178,13 +202,56 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 	{
 		m_Position.y = m_Position.y + m_TileSize;
 	}
-
+	*/
 	// Calculate the angle the player is facing
 	float angle = (atan2(mousePosition.y - m_Resolution.y / 2,
 		mousePosition.x - m_Resolution.x / 2)
 		* 180) / 3.141;
 
-	m_Sprite.setRotation(angle);
+	//m_Sprite.setRotation(angle);
+	m_SpriteWeapon.setRotation(angle);
+	// Calculate the offset for the weapon position
+	float weaponOffsetX = 50.0f * cos(angle * 3.14 / 180);
+	float weaponOffsetY = 50.0f * sin(angle * 3.14 / 180);
+
+	// Set the position of the weapon sprite on the side of the player
+	m_PositionWeapon.x = m_Position.x + weaponOffsetX;
+	m_PositionWeapon.y = m_Position.y + weaponOffsetY;
+
+	m_SpriteWeapon.setPosition(m_PositionWeapon);
+	// Flip the weapon sprite horizontally if facing left
+	if (angle > 90 || angle < -90) {
+		m_SpriteWeapon.setScale(1, -1);
+		m_Sprite.setScale(-1, 1);
+	}
+	else {
+		m_SpriteWeapon.setScale(1, 1);
+		m_Sprite.setScale(1, 1);
+		
+	}
+	// Update the rect for all body parts
+	FloatRect r = getPosition();
+	// Feet
+	m_Feet.left = r.left + 3;
+	m_Feet.top = r.top + r.height - 1;
+	m_Feet.width = r.width - 6;
+	m_Feet.height = 1;
+	// Head
+	m_Head.left = r.left;
+	m_Head.top = r.top + (r.height * .3);
+	m_Head.width = r.width;
+	m_Head.height = 1;
+	// Right
+	m_Right.left = r.left + r.width - 2;
+	m_Right.top = r.top + r.height * .35;
+	m_Right.width = 1;
+	m_Right.height = r.height * .3;
+	// Left
+	m_Left.left = r.left;
+	m_Left.top = r.top + r.height * .5;
+	m_Left.width = 1;
+	m_Left.height = r.height * .3;
+	m_Sprite.setPosition(m_Position);
 }
 
 void Player::upgradeSpeed()
@@ -240,10 +307,11 @@ void Player::changePlayerSprite(int type)
 
 void Player::setSpriteFromSheet(sf::IntRect textureBox)
 {
-	LevelManager l;
-	int tile_size = l.TILE_SIZE;
-	sheetCoordinate = sf::Vector2i(textureBox.left, textureBox.top);
-	spriteSize = sf::Vector2i(tile_size, tile_size);
+	//LevelManager l;
+	//int tile_size = l.TILE_SIZE;
+	int tile_size = 60;
+	sheetCoordinate = Vector2i(textureBox.left, textureBox.top);
+	spriteSize = Vector2i(tile_size, tile_size);
 	if (textureBox.width > tile_size)
 	{
 		animation_it_limit = textureBox.width / tile_size;
@@ -278,7 +346,7 @@ void Player::moveTextureRect()
 
 	//increment animation counter to point to the next frame
 	double timePerFrame;
-	timePerFrame = 1.0 / 6.0;
+	timePerFrame = 1.0 / 4.0;
 	animationTimer = animationTimer + timeElapsed;
 	if (animationTimer > timePerFrame)
 	{
@@ -286,4 +354,118 @@ void Player::moveTextureRect()
 		animationTimer = 0;
 	}
 
+}
+void Player::getAttack(int type)
+{
+	// Store the type of this pickup
+	m_Type = type;
+
+	// Associate the texture with the sprite
+	switch (m_Type) {
+	case 1:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 70,75,50,42 });
+		
+		break;
+
+	case 2:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 24, 10, 16, 42 });
+		break;
+
+	case 3:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 90, 10, 16, 42 });
+		break;
+	case 4:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 155, 10, 16, 42 });
+		break;
+	case 5:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 213, 10, 20, 42 });
+		break;
+	case 6:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 70,200,50,42 });
+		break;
+	case 7:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 70,135,50,42 });
+		break;
+	case 8:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 0,258,50,42 });
+		break;
+	case 9:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 85,260,24,24 });
+		break;
+	case 10:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 130,258,43,28 });
+		break;
+	}
+}
+FloatRect Player::getFeet()
+{
+	return m_Feet;
+}
+
+FloatRect Player::getHead()
+{
+	return m_Head;
+}
+
+FloatRect Player::getLeft()
+{
+	return m_Left;
+}
+
+FloatRect Player::getRight()
+{
+	return m_Right;
+}
+void Player::updateLeftRightHeadFeet()
+{
+	FloatRect r = getPosition();
+
+
+	// Feet
+	m_Feet.left = r.left + 7;
+	m_Feet.top = r.top + r.height - 1;
+	m_Feet.width = r.width - 14;
+	m_Feet.height = 1;
+
+	// Head
+	m_Head.left = r.left + 7;
+	m_Head.top = r.top;
+	m_Head.width = r.width - 14;
+	m_Head.height = 1;
+
+	// Right
+	m_Right.left = r.left + r.width - 1;
+	m_Right.top = r.top + r.height * .3;
+	m_Right.width = 1;
+	m_Right.height = r.height * .3;
+
+	// Left
+	m_Left.left = r.left;
+	m_Left.top = r.top + r.height * .3;
+	m_Left.width = 1;
+	m_Left.height = r.height * .3;
+
+}
+void Player::stopUp(float position)
+{
+	m_Position.y = position + getPosition().height;
+	m_Sprite.setPosition(m_Position);
+}
+void Player::stopDown(float position)
+{
+	m_Position.y = position - getPosition().height;
+	m_Sprite.setPosition(m_Position);
+}
+
+void Player::stopRight(float position)
+{
+
+	m_Position.x = position - m_Sprite.getGlobalBounds().width;
+	m_Sprite.setPosition(m_Position);
+}
+
+void Player::stopLeft(float position)
+{
+	m_Position.x = position + m_Sprite.getGlobalBounds().width;
+	m_Sprite.setPosition(m_Position);
 }

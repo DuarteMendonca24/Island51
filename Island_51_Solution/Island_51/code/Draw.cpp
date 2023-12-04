@@ -94,6 +94,7 @@ void Engine::draw()
 
         // Draw the player
         m_Window.draw(player.getSprite());
+        m_Window.draw(player.getSpriteWeapon());
 
         // Draw the pickups is currently spawned
         /*
@@ -144,7 +145,7 @@ void Engine::draw()
 
 
     }
-
+    /*
     if (state == State::LEVELING_UP)
     {
         m_Window.draw(spriteGameOver);
@@ -155,7 +156,7 @@ void Engine::draw()
         //scoreText.setString(ssScore.str());
         //m_Window.draw(scoreText);
     }
-
+    */
     if (state == State::PAUSED)
     {
         m_Window.draw(m_hud.getPausedText());
@@ -187,7 +188,7 @@ void Engine::draw()
         float buttonHeight;
 
         // Background Variables
-        //Texture background_Texture;
+        Texture background_Texture;
         Sprite background_Sprite;
 
         mousePosition = Mouse::getPosition();
@@ -233,6 +234,10 @@ void Engine::draw()
     {
         m_Window.draw(m_hud.getBackgroudCraft());
         select.draw(m_Window);
+        if (m_EnoughResoures)
+        {
+            m_Window.draw(m_hud.getNotEnoughResourse());
+        }
     }
 
     m_Window.display();

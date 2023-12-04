@@ -5,7 +5,7 @@
 #include "LevelManager.h"
 #include <iostream>
 
-int LevelManager::loadLevel(VertexArray& rVaLevel)
+int** LevelManager::loadLevel(VertexArray& rVaLevel)
 {
 	// Anything we do to rVaLevel we are actually doing to background (in the main function)
 
@@ -18,9 +18,8 @@ int LevelManager::loadLevel(VertexArray& rVaLevel)
 	// Load the appropriate level from a text file
 	 
 	//Player start position
-	m_StartPosition.x = -100;
-	m_StartPosition.y = -100; 
-
+	m_StartPosition.x = 500;
+	m_StartPosition.y = 500; 
 	ifstream inputFile(MAP_NAME);
 	ofstream outputFile(NEW_MAP_NAME);
 	string s;
@@ -126,9 +125,10 @@ int LevelManager::loadLevel(VertexArray& rVaLevel)
 		}
 	}
 	//Setting main 2d array to equal the constructed array
-	m_ArrayLevel = arrayLevel; 
+	//m_ArrayLevel = arrayLevel; 
 
-	return TILE_SIZE;
+	//return TILE_SIZE;
+	return arrayLevel;
 }
 
 Vector2i LevelManager::getLevelSize()

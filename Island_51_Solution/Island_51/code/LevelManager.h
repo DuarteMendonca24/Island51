@@ -16,7 +16,7 @@ private:
 	const string NEW_MAP_NAME = "map/Island_51_PostGen.txt";
 	const int MAX_RESOURCE_NUM = 3;
 	const int RESOURCE_VARIATIONS = 2;
-	int** m_ArrayLevel = NULL;
+	//int** m_ArrayLevel = NULL;
 
 public:
 
@@ -27,7 +27,7 @@ public:
 
 	Vector2f getStartPosition();
 
-	int loadLevel(VertexArray& rVaLevel);
+	int** loadLevel(VertexArray& rVaLevel);
 	
 	Vector2i getLevelSize();
 

@@ -29,7 +29,7 @@ public:
     std::list<Zombie*> createEnemies(int numZombies, Vector2f position, int type);
     std::list<Pickup*> createPickup(Vector2f position);
     std::list<Pickup*> createResorces(int numResource, IntRect arena);
-    Engine(TextureHolder holder);
+    Engine();
     void run();
     void input();
     void draw();
@@ -217,7 +217,7 @@ private:
     Texture textureCrosshair;
     Texture textureGameOver;
     Texture GUI_background_Texture;
-
+    
     //Sprites variables
     Sprite spriteCrosshair;
     Sprite spriteGameOver;
@@ -278,4 +278,12 @@ private:
 
     Craft select;
 
+    // Run will call all the private functions
+    bool detectCollisions(Player& character);
+    // The 2d array with the map for the level
+    // A pointer to a pointer
+    int** m_ArrayLevel2 = NULL;
+
+    //Check the Resourse is enough
+    bool m_EnoughResoures = false;
 };

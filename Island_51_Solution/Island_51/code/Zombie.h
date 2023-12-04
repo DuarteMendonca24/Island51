@@ -1,10 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
-
 using namespace sf;
 
-class Zombie
+class Zombie 
 {
 private:
 	// How fast is each zombie type?
@@ -52,11 +50,20 @@ private:
 	//type of zombie
 	int m_type;
 
-	
-		
+	//which direction is the character headed? used to see if we need to reset the animation to first frame as we have changed direction
+	sf::Vector2f direction{ 0, 1 }; //default value is left
+	// Private variables and functions come next
+	Vector2i sheetCoordinate; // Coordinate on spritesheet
+	Vector2i spriteSize;
+	int animation_it_limit; //Max animation iterations
+	bool horizontal{ true };
+	int ani_counter{};
+	//which direction is the character headed? used to see if we need to reset the animation to first frame as we have changed direction
 
-
-
+	Clock clock;
+	float timeElapsed;
+	//50 ms for each frame
+	float animationTimer = 0;
 	// Public prototypes go here	
 public:
 
@@ -70,7 +77,7 @@ public:
 	void spawn(float startX, float startY, int type, int seed);
 
 	//Spawn a new boss
-	void spawnBoss(float startX, float startY);
+	void spawnBoss(float startX, float startY, float elapsedTime);
 
 	// Return a rectangle that is the position in the world
 	FloatRect getPosition();
@@ -84,13 +91,17 @@ public:
 	void update(float elapsedTime, Vector2f playerLocation);
 
 	//behaviour for the Illusionist enemy
-	void illusionBehaviour(Vector2f enemyLocation);
+	void illusionBehaviour(Vector2f enemyLocation, float elapsedTime);
 
 	double distanceToPlayer(Vector2f playerLocation);
 
 	int killValue();
 
 	int getType();
+	//setSprite to use correct animation cell
+	void setSpriteFromSheet(sf::IntRect textureBox);
+	//move the rectangle to the next cell in the animation
+	void moveTextureRect();
 };
 
 

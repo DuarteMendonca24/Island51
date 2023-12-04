@@ -19,11 +19,11 @@ void Pickup::spawnPickup(int type, float startX, float startY , float scale)
 		break;
 
 	case 2:
-		// This will be food
-		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/ammo_pickup.png"));
+		// Food
+		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/food.png"));
 
-		// How much is pickup worth
-		m_Value = AMMO_START_VALUE;
+		m_Value = FOOD_START_VALUE;
+		m_Type = type;
 		break;
 
 	case 3:
@@ -144,11 +144,7 @@ void Pickup::upgrade()
 	}
 	else if (m_Type == 2)
 	{
-		m_Value += (AMMO_START_VALUE * .5);
-	}
-	else
-	{
-		m_Value += (MONEY_START_VALUE * .25);
+		m_Value += (FOOD_START_VALUE * .5);
 	}
 
 	// Make them more frequent and last longer

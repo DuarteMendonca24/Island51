@@ -14,8 +14,8 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	case 0:
 		// Bloater aka the Illusionist 
 		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/bloater.png"));
-
+			"graphics/boss3.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
 		m_Speed = BLOATER_SPEED;
 		m_Health = BLOATER_HEALTH;
 		m_ScoreValue = BLOATER_VALUE;
@@ -25,8 +25,8 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	case 1:
 		// Chaser(takes player hunger bar)
 		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/chaser.png"));
-
+			"graphics/enemy3.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
 		m_Speed = CHASER_SPEED;
 		m_Health = CHASER_HEALTH;
 		m_ScoreValue = CHASER_VALUE;
@@ -37,8 +37,8 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	case 2:
 		// Crawler(spawns 2 rats when killed)
 		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/crawler.png"));
-
+			"graphics/boss2.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
 		m_Speed = CRAWLER_SPEED;
 		m_Health = CRAWLER_HEALTH;
 		m_ScoreValue = CRAWLER_VALUE;
@@ -48,8 +48,8 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	case 3:
 		// Rat
 		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/rat.png"));
-
+			"graphics/enemy4.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
 		m_Speed = RAT_SPEED;
 		m_Health = RAT_HEALTH;
 		m_ScoreValue = RAT_VALUE;
@@ -60,8 +60,8 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 
 		// Explosive enemies (sends bullets in all directions)
 		m_Sprite = Sprite(TextureHolder::GetTexture(
-				"graphics/boss.png"));
-
+				"graphics/acid_boss.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
 		m_Speed = CHASER_SPEED;
 		m_Health = CHASER_HEALTH;
 		m_ScoreValue = CHASER_VALUE;
@@ -86,11 +86,11 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	m_Sprite.setPosition(m_Position);
 }
 
-void Zombie::spawnBoss(float startX, float startY)
+void Zombie::spawnBoss(float startX, float startY, float elapsedTime)
 {
 	m_Sprite = Sprite(TextureHolder::GetTexture(
 		"graphics/boss.png"));
-
+	m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
 	m_Position.x = startX;
 	m_Position.y = startY;
 
@@ -98,7 +98,6 @@ void Zombie::spawnBoss(float startX, float startY)
 	//Incrementing Health of boss by 10 and the bossCount which keeps track of amount of bosses that the player has went through
 	m_bossHealth += 10;
 	bossCount++;
-
 	//Setting The Boss Speed Depending on Round
 	if (bossCount >= 4)
 	{
@@ -122,7 +121,6 @@ void Zombie::spawnBoss(float startX, float startY)
 bool Zombie::hit()
 {
 	m_Health--;
-
 	if (m_Health <= 0)
 	{
 		//we changed this to true for testing , it should be false
@@ -163,13 +161,16 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
 	double d = distanceToPlayer(playerLocation);
-
-
+	timeElapsed = elapsedTime;
+	setSpriteFromSheet(sf::IntRect(15, 80, 180, 65));
+	//move the rectangle to the appropriate cell
+	moveTextureRect();
 	// Update the zombie position variables
 	if (playerX > m_Position.x && d < 200)
 	{
 		m_Position.x = m_Position.x +
 			m_Speed * elapsedTime;
+		m_Sprite.setScale(1, 1);
 	}
 
 	if (playerY > m_Position.y && d < 200)
@@ -182,6 +183,7 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 	{
 		m_Position.x = m_Position.x -
 			m_Speed * elapsedTime;
+		m_Sprite.setScale(-1, 1);
 	}
 
 	if (playerY < m_Position.y && d < 200)
@@ -194,27 +196,35 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 	m_Sprite.setPosition(m_Position);
 
 	// Face the sprite in the correct direction
-	float angle = (atan2(playerY - m_Position.y,
-		playerX - m_Position.x)
-		* 180) / 3.141;
+	//float angle = (atan2(playerY - m_Position.y,
+		//playerX - m_Position.x)
+		//* 180) / 3.141;
 
-	m_Sprite.setRotation(angle);
+	//m_Sprite.setRotation(angle);
 
 
 }
 
-void Zombie::illusionBehaviour(Vector2f playerLocation) {
+void Zombie::illusionBehaviour(Vector2f playerLocation, float elapsedTime) {
 
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
-
+	timeElapsed = elapsedTime;
+	setSpriteFromSheet(sf::IntRect(15, 80, 180, 65));
+	//move the rectangle to the appropriate cell
+	moveTextureRect();
 	// Face the sprite in the correct direction
 	float angle = (atan2(playerY - m_Position.y,
 		playerX - m_Position.x)
 		* 180) / 3.141;
 	
-	m_Sprite.setRotation(angle);
-
+	//m_Sprite.setRotation(angle);
+	if (angle > 90 || angle < -90) {
+		m_Sprite.setScale(-1, 1);
+	}
+	else {
+		m_Sprite.setScale(1, 1);
+	}
 	// Move the sprite
 	m_Sprite.setPosition(m_Position);
 
@@ -249,4 +259,55 @@ int Zombie::getType()
 {
 	//Returning the score value for this zombie
 	return m_type;
+}
+
+void Zombie::setSpriteFromSheet(sf::IntRect textureBox)
+{
+	//LevelManager l;
+	//int tile_size = l.TILE_SIZE;
+	int tile_size = 60;
+	sheetCoordinate = Vector2i(textureBox.left, textureBox.top);
+	spriteSize = Vector2i(tile_size, tile_size);
+	if (textureBox.width > tile_size)
+	{
+		animation_it_limit = textureBox.width / tile_size;
+
+		horizontal = true;
+	}
+	else if (textureBox.height > tile_size)
+	{
+		animation_it_limit = textureBox.height / tile_size;
+		horizontal = false;
+	}
+	else
+		throw std::logic_error("Animation bounding box must contain multiply sprites, setSprite(sf::IntRect )\n");
+	m_Sprite.setTextureRect(sf::IntRect{ sheetCoordinate, spriteSize });
+
+}
+
+void Zombie::moveTextureRect()
+{
+	// if the animation counter is greater than the animation limit reset to 1;
+	if (ani_counter == animation_it_limit)
+	{
+		ani_counter = 0;
+	}
+
+	if (horizontal) {
+		m_Sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(spriteSize.x * ani_counter, 0), spriteSize));
+	}
+	else {
+		m_Sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(0, spriteSize.y * ani_counter), spriteSize));
+	}
+
+	//increment animation counter to point to the next frame
+	double timePerFrame;
+	timePerFrame = 1.0 / 4.0;
+	animationTimer = animationTimer + timeElapsed;
+	if (animationTimer > timePerFrame)
+	{
+		ani_counter++;
+		animationTimer = 0;
+	}
+
 }

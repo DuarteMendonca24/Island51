@@ -1,7 +1,7 @@
 #include "Engine.h"
 
 
-Engine::Engine(TextureHolder holder) {
+Engine::Engine() {
 	// Get the screen resolution and create an SFML window and View
 
 	resolution.x = VideoMode::getDesktopMode().width;
@@ -9,7 +9,7 @@ Engine::Engine(TextureHolder holder) {
 	state = State::GAME_OVER;
 
 	
-	m_Window.create(VideoMode(resolution.x, resolution.y), "Island 51", Style::Fullscreen);
+	m_Window.create(VideoMode(resolution.x, resolution.y), "Island 51", Style::Default);
 
 	// Create a an SFML View for the main action
 	View mainView(sf::FloatRect(0, 0, resolution.x, resolution.y));
@@ -17,13 +17,17 @@ Engine::Engine(TextureHolder holder) {
 		FloatRect(0, 0, resolution.x, resolution.y));
 	select.position(m_Window.getSize().x, m_Window.getSize().y);
 	//Load Level
-	TILE_SIZE = manageLevel.loadLevel(background);
-
+	m_ArrayLevel2 = manageLevel.loadLevel(background);
+	/*
 	textureBackground = holder.GetTexture("graphics/tiles-sheet.png");
 	textureAmmoIcon = holder.GetTexture("graphics/ammo_icon.png");
 	textureCrosshair = holder.GetTexture("graphics/crosshair.png");
 	textureGameOver = holder.GetTexture("graphics/background.png");
-
+	*/
+	textureBackground = TextureHolder::GetTexture("graphics/tiles-sheet.png");
+	textureAmmoIcon = TextureHolder::GetTexture("graphics/ammo_icon.png");
+	textureCrosshair = TextureHolder::GetTexture("graphics/crosshair.png");
+	textureGameOver = TextureHolder::GetTexture("graphics/background.png");
 	//Load Texture for Ammo Icon
 
 	spriteAmmoIcon.setTexture(textureAmmoIcon);
@@ -38,7 +42,7 @@ Engine::Engine(TextureHolder holder) {
 
 	spriteGameOver.setTexture(textureGameOver);
 	spriteGameOver.setPosition(0, 0);
-
+	
 	//Setting HungerBar Up 
 	//hungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
 

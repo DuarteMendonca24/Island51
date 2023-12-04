@@ -12,7 +12,7 @@ private:
 	const int MONEY_START_VALUE = 100;
 	const int START_WAIT_TIME = 10;
 	const int START_SECONDS_TO_LIVE = 5;
-
+	const int FOOD_START_VALUE = 20;
 	// How tough is each resource type
 	const float TREE_HEALTH = 5;
 	const float STONE_HEALTH = 1;

@@ -99,6 +99,12 @@ Hud::Hud(){
 	m_backgroundCraft.setFillColor(Color::Blue);
 	m_backgroundCraft.setPosition(600, 0);
 
+	m_notEnoughResourse.setFont(m_font);
+	m_notEnoughResourse.setCharacterSize(50);
+	m_notEnoughResourse.setFillColor(Color::Yellow);
+	m_notEnoughResourse.setPosition(500, 500);
+	m_notEnoughResourse.setString("You don't have Sufficient Resources to Craft ");
+
 }
 
 
@@ -161,6 +167,10 @@ Text Hud::getWaveNumberText() {
 	return m_waveNumberText;
 }
 
+Text Hud::getNotEnoughResourse() {
+
+	return m_notEnoughResourse;
+}
 
 RectangleShape Hud::getHealthBar() {
 

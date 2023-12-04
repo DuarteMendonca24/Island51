@@ -117,19 +117,19 @@ void Engine::input()
                 if (event.key.code == Keyboard::LShift)
                 {
                     // craft wood sword
-                    if (select.GetPressed() == 0)
+                    if (select.GetPressed() == 0 && numTreePickup == 3)
                     {
                     }
                     // craft stone sword
-                    else if (select.GetPressed() == 1)
+                    else if (select.GetPressed() == 1 && numTreePickup == 1 && numStonePickup == 2)
                     {
                     }
                     // craft iron sword
-                    else if (select.GetPressed() == 2)
+                    else if (select.GetPressed() == 2 && numTreePickup == 1 && numIronPickup == 2)
                     {
                     }
                     // craft arrow
-                    else if (select.GetPressed() == 3)
+                    else if (select.GetPressed() == 3 && numTreePickup == 1 && numStonePickup == 1)
                     {
                     }
                     // exit the craft
@@ -137,6 +137,17 @@ void Engine::input()
                     {
                         state = State::PLAYING;
                         clock.restart();
+                    }
+                    else
+                    {
+                        if (!m_EnoughResoures) {
+
+                            m_EnoughResoures = true;
+                        }
+                        else if (m_EnoughResoures) {
+
+                            m_EnoughResoures = false;
+                        }
                     }
                 }
             }
@@ -190,9 +201,9 @@ void Engine::input()
         }
         
         // Fire a bullet
-        
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
+            player.getAttack(10);
             if (gameTimeTotal.asMilliseconds() - lastPressed.asMilliseconds() > 1000 / fireRate && bulletsInClip > 0)
             {
 
@@ -201,8 +212,7 @@ void Engine::input()
                 bullets[currentBullet].shoot(
                     player.getCenter().x, player.getCenter().y,
                     mouseWorldPosition.x, mouseWorldPosition.y);
-                bullets[currentBullet].setRange(20);
-                
+                bullets[currentBullet].setRange(35);
                 currentBullet++;
                 if (currentBullet > 99)
                 {
@@ -214,11 +224,14 @@ void Engine::input()
             }
 
         } // End fire a bullet
-        
+        else
+        {
+            player.getAttack(9);
+        }
         if (Keyboard::isKeyPressed(Keyboard::Num1))
         {
             // Equip Hand
-            player.changePlayerSprite(1);
+            player.getAttack(9);
             handEquipped = true;
             woodSwordEquipped = false;
             stoneSwordEquipped = false;
@@ -235,7 +248,7 @@ void Engine::input()
         if (Keyboard::isKeyPressed(Keyboard::Num2))
         {
             // Equip Wood Sword if unlocked
-            player.changePlayerSprite(2);
+            player.getAttack(2);
             handEquipped = false;
             woodSwordEquipped = true;
             stoneSwordEquipped = false;
@@ -253,7 +266,7 @@ void Engine::input()
         if (Keyboard::isKeyPressed(Keyboard::Num3))
         {
             // Equip Stone Sword if unlocked
-            player.changePlayerSprite(3);
+            player.getAttack(3);
             handEquipped = false;
             woodSwordEquipped = false;
             stoneSwordEquipped = true;
@@ -270,7 +283,7 @@ void Engine::input()
         if (Keyboard::isKeyPressed(Keyboard::Num4))
         {
             // Equip Iron Sword if unlocked
-            player.changePlayerSprite(3);
+            player.getAttack(4);
             handEquipped = false;
             woodSwordEquipped = false;
             stoneSwordEquipped = false;
@@ -284,11 +297,11 @@ void Engine::input()
             clipSize = ironSwordClipSize;
             fireRate = ironSwordFireRate;
         }
-
+        
         if (Keyboard::isKeyPressed(Keyboard::Num5))
         {
             // Equip arrow if unlocked
-            player.changePlayerSprite(3);
+            player.getAttack(5);
             handEquipped = false;
             woodSwordEquipped = false;
             stoneSwordEquipped = false;
@@ -310,7 +323,15 @@ void Engine::input()
             handBulletsInClip = bulletsInClip;
             handClipSize = clipSize;
             handFireRate = fireRate;
-            bullets[currentBullet].setRange(20);
+            bullets[currentBullet].setRange(35);
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                player.getAttack(10);
+            }
+            else
+            {
+                player.getAttack(9);
+            }
         }
         else if (woodSwordEquipped)
         {
@@ -320,6 +341,14 @@ void Engine::input()
             woodSwordClipSize = clipSize;
             woodSwordFireRate = fireRate;
             bullets[currentBullet].setRange(50);
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                player.getAttack(1);
+            }
+            else
+            {
+                player.getAttack(2);
+            }
         }
         else if (stoneSwordEquipped)
         {
@@ -328,7 +357,15 @@ void Engine::input()
             stoneSwordBulletsInClip = bulletsInClip;
             stoneSwordClipSize = clipSize;
             stoneSwordFireRate = fireRate;
-            bullets[currentBullet].setRange(60);
+            bullets[currentBullet].setRange(60); 
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                player.getAttack(7);
+            }
+            else
+            {
+                player.getAttack(3);
+            }
         }
         else if (ironSwordEquipped)
         {
@@ -338,6 +375,15 @@ void Engine::input()
             ironSwordClipSize = clipSize;
             ironSwordFireRate = fireRate;
             bullets[currentBullet].setRange(66);
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                player.getAttack(6);
+            }
+            else
+            {
+                player.getAttack(4);
+            }
+            
         }
         else if (arrowEquipped)
         {
@@ -347,6 +393,14 @@ void Engine::input()
             arrowClipSize = clipSize;
             arrowFireRate = fireRate;
             bullets[currentBullet].setRange(1000);
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+            {
+                player.getAttack(8);
+            }
+            else
+            {
+                player.getAttack(5);
+            }
         }
     }
 

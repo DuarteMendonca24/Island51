@@ -13,7 +13,8 @@ void Engine::update(float dtAsSeconds)
     {
         //Update the Hunger Bar
         m_currentHunger -= m_hungerTickAmount;
-
+        // Run Players collision detection
+        detectCollisions(player);
 
         // Where is the mouse pointer
         mouseScreenPosition = Mouse::getPosition();
@@ -64,8 +65,7 @@ void Engine::update(float dtAsSeconds)
                 m_explosionBullets[i].update(dtAsSeconds);
             }
         }
-
-
+        
         //Update code for the enemies
         // ----------------------------------------------------------------------------------------
 
@@ -127,7 +127,6 @@ void Engine::update(float dtAsSeconds)
 
                 if (player.hit(gameTimeTotal))
                 {
-
                     //if it is a chaser
                     if ((*it2)->getType() == 1) {
 
@@ -177,7 +176,6 @@ void Engine::update(float dtAsSeconds)
                                 std::list<Zombie*> newZombies = createEnemies(2, (*it3)->getPosCoordinates(), 3);
                                 m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
                             }
-
                             //numZombiesAlive = numZombies;
                             if (wave >= hiScore)
                             {
@@ -187,10 +185,11 @@ void Engine::update(float dtAsSeconds)
                             numZombiesAlive--;
 
                             // When all the zombies are dead (again)
+                            /*
                             if (numZombiesAlive == 0)
                             {
                                 state = State::LEVELING_UP;
-                            }
+                            }*/
                         }
 
                         // Make a splat sound
@@ -201,7 +200,7 @@ void Engine::update(float dtAsSeconds)
         } // End zombie being shot
 
         //make the illusionist look at player
-        Illusionist[0].illusionBehaviour(playerPosition);
+        Illusionist[0].illusionBehaviour(playerPosition, dtAsSeconds);
 
 
 
@@ -224,10 +223,8 @@ void Engine::update(float dtAsSeconds)
             for (int i = 0; i < 4; i++)
             {
 
-                Illusions[i].illusionBehaviour(playerPosition);
+                Illusions[i].illusionBehaviour(playerPosition, dtAsSeconds);
 
-
-                ;
             }
 
             m_illusionsFireRate -= dtAsSeconds;
@@ -276,20 +273,14 @@ void Engine::update(float dtAsSeconds)
                             // Register the hit and see if it was a kill
                             if (Illusions[j].hit())
                             {
-
-                                delete[]Illusions;
+                                delete[] Illusions;
                                 m_illusions = false;
-
                                 // Not just a hit but a kill too
                                 // Custom scores for each zombie type
                                 //score += Illusions[j].killValue();
                             }
                         }
                     }
-
-
-
-
                 }
 
             }
@@ -364,17 +355,25 @@ void Engine::update(float dtAsSeconds)
                 if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
                 {
                     //Health Pickup
+                   
                     if ((*it5)->getType() == 1)
                     {
                         player.increaseHealthLevel((*it5)->gotIt());
                         m_PickupList.erase(it5); // This erases the pickup from the list
                     }
+                    break;// Break the loop after erasing the pickup
+                }
+            }
+            for (it5 = m_PickupList.begin(); it5 != m_PickupList.end(); it5++)
+            {
+                if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
+                {
 
-                   // //Ammo Pickup
-                   // if ((*it5)->getType() == 2)
-                   // {
-                   //     //Code here
-                   // }
+                    // food Pickup
+                    if ((*it5)->getType() == 2)
+                    {
+                        m_PickupList.erase(it5);
+                    }
 
                     break;// Break the loop after erasing the pickup
                 }
