@@ -342,6 +342,9 @@ void Engine::update(float dtAsSeconds)
 
                         // Make a splat sound
                         splat.play();
+
+                        // Make a enemy sound
+                        enemysound.play();
                     }
 
 

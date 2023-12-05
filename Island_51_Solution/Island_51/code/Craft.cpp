@@ -42,6 +42,7 @@ void Craft::draw(sf::RenderWindow& window)
 	{
 		window.draw(select[i]);
 	}
+
 }
 
 // move up 
@@ -70,4 +71,5 @@ void Craft::MoveDown()
 int Craft::GetPressed()
 {
 	return selectCraft;
+
 }

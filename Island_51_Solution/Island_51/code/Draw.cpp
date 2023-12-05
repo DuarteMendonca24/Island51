@@ -1,4 +1,8 @@
 #include "Engine.h"
+#include <SFML/Audio.hpp>
+sf::Music music;
+
+using namespace sf;
 
 
 void Engine::draw()
@@ -6,8 +10,12 @@ void Engine::draw()
     //Setting Mouse Cursor to be visible in the game
     m_Window.setMouseCursorVisible(true);
 
-
-
+    // Playing background music inside the game 
+    if (!music.openFromFile("sound/Backgroundmusic/backgroundmusic.wav"))
+    {
+        return; // error
+        music.play();
+    }
 
     //View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 
@@ -160,6 +168,7 @@ void Engine::draw()
     if (state == State::PAUSED)
     {
         m_Window.draw(m_hud.getPausedText());
+        guiseletionsound.play();
     }
 
     if (state == State::GAME_OVER)
@@ -168,6 +177,7 @@ void Engine::draw()
         m_Window.draw(m_hud.getGameOverText());
         m_Window.draw(m_hud.getScoreText());
         m_Window.draw(m_hud.getHiScoreText());
+        gameoversound.play();
     }
 
     if (state == State::MAIN_MENU)
@@ -228,6 +238,7 @@ void Engine::draw()
         m_Window.draw(background_Sprite);
         m_Window.draw(startButton);
         m_Window.draw(exitButton);
+        guiseletionsound.play();
     }
 
     if (state == State::CRAFT)
@@ -237,7 +248,9 @@ void Engine::draw()
         if (m_EnoughResoures)
         {
             m_Window.draw(m_hud.getNotEnoughResourse());
+          
         }
+        guiseletionsound.play();
     }
 
     m_Window.display();

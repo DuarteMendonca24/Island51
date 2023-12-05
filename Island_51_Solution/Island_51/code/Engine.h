@@ -233,6 +233,16 @@ private:
     SoundBuffer buySuccessBuffer;
     SoundBuffer powerupBuffer;
     SoundBuffer pickupBuffer;
+    SoundBuffer enemysoundBuffer;
+    SoundBuffer playergruntBuffer;
+    SoundBuffer grasswalkingBuffer;
+    SoundBuffer sandwalkingBuffer;
+    SoundBuffer breakingironBuffer;
+    SoundBuffer breakstoneBuffer;
+    SoundBuffer breakingwoodBuffer;
+    SoundBuffer guiseletionBuffer;
+    SoundBuffer metalclashBuffer;
+    SoundBuffer gameoverBuffer;
 
     //Sound Variables
     Sound hit;
@@ -244,6 +254,19 @@ private:
     Sound buySuccess;
     Sound powerup;
     Sound pickup;
+    Sound enemysound;
+    Sound playergruntsound;
+    Sound grasswalkingsound;
+    Sound sandwalkingsound;
+    Sound breakingironsound;
+    Sound breakstoneingsound;
+    Sound breakingwoodsound;
+    Sound guiseletionsound;
+    Sound metalclashsound;
+    Sound gameoversound;
+
+
+
     //Bar Variables
 
     float m_currentHunger = 100;

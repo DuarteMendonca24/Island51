@@ -36,4 +36,44 @@ void Engine::loadSounds(){
 	// Prepare the pickup sound
 	pickupBuffer.loadFromFile("sound/pickup.wav");
 	pickup.setBuffer(pickupBuffer);
+
+	// Prepare the Enemy sound
+	enemysoundBuffer.loadFromFile("sound/EnemySound/enemysound1.wav");
+	enemysound.setBuffer(enemysoundBuffer);
+
+	// Prepare the player grunts sound
+	playergruntBuffer.loadFromFile("sound/playergrunts/playergrunt1.wav");
+	playergruntsound.setBuffer(playergruntBuffer);
+
+	// Prepare the walking grass sound
+	grasswalkingBuffer.loadFromFile("sound/walkingsounds/grassound1.wav");
+	grasswalkingsound.setBuffer(grasswalkingBuffer);
+
+	// Prepare the walking sand sound
+	sandwalkingBuffer.loadFromFile("sound/walkingsounds/Sandsound1.wav");
+	sandwalkingsound.setBuffer(sandwalkingBuffer);
+
+	// Prepare the breaking iron sound
+	breakingironBuffer.loadFromFile("sound/breakironsound.wav");
+	breakingironsound.setBuffer(breakingironBuffer);
+
+	// Prepare the breaks stone sound
+	breakstoneBuffer.loadFromFile("sound/breakstonesound.wav");
+	breakstoneingsound.setBuffer(breakstoneBuffer);
+
+	// Prepare the breaks wood sound
+	breakingwoodBuffer.loadFromFile("sound/breakwoodsound.wav");
+	breakingwoodsound.setBuffer(breakingwoodBuffer);
+
+	// Prepare the GUI select sound
+	guiseletionBuffer.loadFromFile("sound/guiselectionsounds.wav");
+	guiseletionsound.setBuffer(guiseletionBuffer);
+
+	// Prepare the Metal clashing sound
+	metalclashBuffer.loadFromFile("sound/metalclashingsounds.wav");
+	metalclashsound.setBuffer(metalclashBuffer);
+
+	// Prepare the game over sound
+	gameoverBuffer.loadFromFile("sound/gameoversound.wav");
+	gameoversound.setBuffer(gameoverBuffer);
 }
