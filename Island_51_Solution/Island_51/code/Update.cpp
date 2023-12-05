@@ -92,7 +92,7 @@ void Engine::update(float dtAsSeconds)
 
 
                         m_shootingFireRate = 3;
-
+ 
                         currentBullet++;
 
                         m_explosionBullets[currentBullet].setRange(100);

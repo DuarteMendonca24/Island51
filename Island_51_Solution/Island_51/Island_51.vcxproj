@@ -162,7 +162,7 @@
     <ClCompile Include="code\CreateHorde.cpp" />
     <ClCompile Include="code\Draw.cpp" />
     <ClCompile Include="code\Engine.cpp" />
-    <ClCompile Include="code\HandleCollisions.cpp" />
+    <ClCompile Include="code\DetectCollisions.cpp" />
     <ClCompile Include="code\HandleInput.cpp" />
     <ClCompile Include="code\HUD.cpp" />
     <ClCompile Include="code\LevelManager.cpp" />

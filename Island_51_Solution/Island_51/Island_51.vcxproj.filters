@@ -113,7 +113,7 @@
     <ClCompile Include="code\HandleInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="code\HandleCollisions.cpp">
+    <ClCompile Include="code\DetectCollisions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="code\Engine.cpp">

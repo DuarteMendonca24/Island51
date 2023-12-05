@@ -77,7 +77,7 @@ private:
     /*
         LIST OF VARIABLES NEEDED FOR OTHER CLASSES
     */
-    int TILE_SIZE;
+    const int TILE_SIZE = 50;
     // Prepare for a horde of zombies
     int numZombies;
     int numZombiesAlive;
@@ -309,4 +309,6 @@ private:
 
     //Check the Resourse is enough
     bool m_EnoughResoures = false;
+
+    
 };

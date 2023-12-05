@@ -466,6 +466,6 @@ void Player::stopRight(float position)
 
 void Player::stopLeft(float position)
 {
-	m_Position.x = position + m_Sprite.getGlobalBounds().width;
+	m_Position.x = position  + m_Sprite.getGlobalBounds().width + 50;
 	m_Sprite.setPosition(m_Position);
 }
