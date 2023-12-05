@@ -243,6 +243,7 @@ private:
     SoundBuffer guiseletionBuffer;
     SoundBuffer metalclashBuffer;
     SoundBuffer gameoverBuffer;
+    SoundBuffer musicBuffer;
 
     //Sound Variables
     Sound hit;
@@ -264,6 +265,7 @@ private:
     Sound guiseletionsound;
     Sound metalclashsound;
     Sound gameoversound;
+    Sound music;
 
 
 

@@ -10,12 +10,14 @@ void Engine::draw()
     //Setting Mouse Cursor to be visible in the game
     m_Window.setMouseCursorVisible(true);
 
-    // Playing background music inside the game 
-    if (!music.openFromFile("sound/Backgroundmusic/backgroundmusic.wav"))
-    {
-        return; // error
-        music.play();
-    }
+    //// Playing background music inside the game 
+    //if (!music.openFromFile("sound/backgroundmusic.wav"))
+    //{
+    //    return; // error
+    //
+    //    
+    //    music.play();
+    //}
 
     //View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 
@@ -177,7 +179,7 @@ void Engine::draw()
         m_Window.draw(m_hud.getGameOverText());
         m_Window.draw(m_hud.getScoreText());
         m_Window.draw(m_hud.getHiScoreText());
-        gameoversound.play();
+        //gameoversound.play();
     }
 
     if (state == State::MAIN_MENU)

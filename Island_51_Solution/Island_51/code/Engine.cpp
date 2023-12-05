@@ -3,7 +3,7 @@
 
 Engine::Engine() {
 	// Get the screen resolution and create an SFML window and View
-
+	loadSounds();
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 	state = State::GAME_OVER;
@@ -77,6 +77,8 @@ Engine::Engine() {
 	m_inventoryIcons[1].spawnPickup(4,100, 500, 3.5);
 	m_inventoryIcons[2].spawnPickup(5,100, 600, 3.5);
 
+	music.play();
+
 
 
 }
@@ -88,6 +90,7 @@ void Engine::run() {
 
 	while (m_Window.isOpen())
 	{
+	
 		Time dt = clock.restart();
 		// Update the total game time
 		gameTimeTotal += dt;

@@ -119,7 +119,7 @@ std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
 		int type = (rand() % 5) + 1;
 
 		Zombie* zombie = new Zombie();
-		zombie->spawn(x, y, type, i);
+		zombie->spawn(1200, 500, type, i);
 		zombiesList.push_back(zombie);
 
 

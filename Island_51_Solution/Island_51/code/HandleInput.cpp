@@ -448,7 +448,7 @@ void Engine::input()
         //
 
         // Play the powerup sound
-        powerup.play();
+       // powerup.play();
 
         // Reset the clock so there isn't a frame jump
         clock.restart();
