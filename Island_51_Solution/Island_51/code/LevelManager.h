@@ -1,6 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <random>
+
 using namespace sf;
 using namespace std;
 
@@ -16,10 +18,14 @@ private:
 	const string NEW_MAP_NAME = "map/Island_51_PostGen.txt";
 	const int MAX_RESOURCE_NUM = 3;
 	const int RESOURCE_VARIATIONS = 2;
+	
 	//int** m_ArrayLevel = NULL;
 
 public:
 
+	static const int MAX_SPAWNERS_AVAILABLE = 1000;
+	int current_spawn_block_counter = 0;
+	Vector2i m_SpawnPoisitons[MAX_SPAWNERS_AVAILABLE];
 	const int TILE_SIZE = 50;
 	const int VERTS_IN_QUAD = 4;
 
@@ -39,5 +45,12 @@ public:
 	char randomiseTile(char tile);
 
 	char randomiseGrassTile(char tile);
-	 
+
+	void createNewSpawner(int x, int y);
+	
+	Vector2i getSpawner(int i);
+
+	int getSpawnerCount();
+
+	int RandomBetween(int min, int max);
 };

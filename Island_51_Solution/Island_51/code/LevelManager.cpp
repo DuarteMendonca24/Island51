@@ -62,6 +62,16 @@ int** LevelManager::loadLevel(VertexArray& rVaLevel)
 			else if (val == '1')
 			{
 				val = randomiseGrassTile(val);
+				//Making Spawner
+				if (current_spawn_block_counter != MAX_SPAWNERS_AVAILABLE && val == '3')
+				{
+					int randomNum = RandomBetween(1, 5);
+					if (randomNum == 1)
+					{
+						createNewSpawner(x, y);
+					}
+				}
+				
 			}
 			cout << val << " ";
 			arrayLevel[y][x] = atoi(&val);
@@ -161,7 +171,7 @@ Vector2f LevelManager::getStartPosition()
 char LevelManager::randomiseTile(char tile)
 {
 	char newTile;
-	int resourceNum = rand() % MAX_RESOURCE_NUM + 1;
+	int resourceNum = RandomBetween(1, 3);;
 	/*
 		Resources Generated:
 		1. Wood = 7
@@ -188,7 +198,7 @@ char LevelManager::randomiseTile(char tile)
 char LevelManager::randomiseGrassTile(char tile)
 {
 	char newTile;
-	int grassNum = rand() % MAX_RESOURCE_NUM + 1;
+	int grassNum = RandomBetween(1,3);
 	/*
 		Resources Generated:
 		1. Variation 1 = 1
@@ -209,4 +219,35 @@ char LevelManager::randomiseGrassTile(char tile)
 	}
 
 	return newTile;
+}
+
+void LevelManager::createNewSpawner(int x, int y)
+{
+	int randomNum = RandomBetween(1, 150);
+	int coords_x = x * TILE_SIZE + randomNum;
+	randomNum = RandomBetween(1, 150);
+	int coords_y = y * TILE_SIZE + randomNum;
+
+	Vector2i spawnerCoords = Vector2i(coords_x, coords_y);
+	m_SpawnPoisitons[current_spawn_block_counter] = spawnerCoords;
+	current_spawn_block_counter++;
+}
+
+Vector2i LevelManager::getSpawner(int i)
+{
+	return m_SpawnPoisitons[i];
+}
+
+int LevelManager::getSpawnerCount()
+{
+	return current_spawn_block_counter;
+}
+
+int LevelManager::RandomBetween(int min, int max)
+{
+	//Generating Random Number 
+	std::random_device rd;
+	std::uniform_int_distribution<int> dist(min, max);
+
+	return dist(rd);
 }

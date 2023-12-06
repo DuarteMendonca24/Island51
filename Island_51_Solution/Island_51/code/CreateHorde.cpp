@@ -3,74 +3,13 @@
 #include "Pickup.h"
 #include <list>
 
-/*Zombie* createHorde(int numZombies, IntRect arena)
-{
-	Zombie* zombies = new Zombie[numZombies];
 
-	int maxY = arena.height - 20;
-	int minY = arena.top + 20;
-	int maxX = arena.width - 20;
-	int minX = arena.left + 20;
-
-	for (int i = 0; i < numZombies; i++)
-	{
-
-		// Which side should the zombie spawn
-		srand((int)time(0) * i);
-		int side = (rand() % 4);
-		float x, y;
-
-		switch (side)
-		{
-		case 0:
-			// left
-			x = minX;
-			y = (rand() % maxY) + minY;
-			break;
-
-		case 1:
-			// right
-			x = maxX;
-			y = (rand() % maxY) + minY;
-			break;
-
-		case 2:
-			// top
-			x = (rand() % maxX) + minX;
-			y = minY;
-			break;
-
-		case 3:
-			// bottom
-			x = (rand() % maxX) + minX;
-			y = maxY;
-			break;
-		}
-
-		if (numZombies == 1)
-		{
-			//Spawn Boss Enemy
-			zombies[i].spawnBoss(x, y);
-		}
-		else
-		{
-			// Bloater, crawler, runner, rat
-			srand((int)time(0) * i * 2);
-			int type = (rand() % 4);
-
-			// Spawn the new zombie into the array
-			zombies[i].spawn(x, y, type, i);
-		}
-
-
-	}
-	return zombies;
-}*/
 
 //changing the function to return a list
 std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
 {
 	std::list<Zombie*> zombiesList;
+	int spawnersAvailable = manageLevel.getSpawnerCount();
 
 	int maxY = arena.height - 20;
 	int minY = arena.top + 20;
@@ -119,7 +58,11 @@ std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
 		int type = (rand() % 5) + 1;
 
 		Zombie* zombie = new Zombie();
-		zombie->spawn(1200, 500, type, i);
+		//Getting Spawner Location To Spawn Zombie
+		int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
+		Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
+
+		zombie->spawn(spawnLocation.x, spawnLocation.y, type, i);
 		zombiesList.push_back(zombie);
 
 
@@ -155,9 +98,13 @@ Zombie* Engine::createIllusions(Vector2f playerPosition)
 std::list<Zombie*> Engine::createEnemies(int numZombies, Vector2f position, int type)
 {
 	std::list<Zombie*> zombiesList;
+	int spawnersAvailable = manageLevel.getSpawnerCount();
+	int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
+	Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
 
-	int x = position.x;
-	int y = position.y;
+	
+	int x = spawnLocation.x;
+	int y = spawnLocation.y;
 	int xOffset = 25;
 
 	for (int i = 0; i < numZombies; i++)
@@ -254,3 +201,4 @@ std::list<Pickup*> Engine::createResorces(int numResource, IntRect arena)
 	}
 	return resorceList;
 }
+

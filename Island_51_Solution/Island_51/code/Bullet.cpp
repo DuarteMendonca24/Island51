@@ -1,6 +1,5 @@
 #include "Bullet.h"
 
-
 // The constructor
 Bullet::Bullet()
 {

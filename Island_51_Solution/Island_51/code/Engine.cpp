@@ -69,8 +69,13 @@ Engine::Engine() {
 	// Spawn the player in the middle of the arena
 	player.spawn(arena, resolution, TILE_SIZE);
 
-	Illusionist[0].spawn(200, 200, 0, 1); // Top Illusionist
-	Illusionist[1].spawn(400, 400, 0, 1); // Top Illusionist
+
+	int spawnersAvailable = manageLevel.getSpawnerCount();
+	int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
+	Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
+
+	Illusionist[0].spawn(spawnLocation.x, spawnLocation.y, 0, 1); // Top Illusionist
+	Illusionist[1].spawn(spawnLocation.x, spawnLocation.y, 0, 1); // Top Illusionist
 
 	//spawning resources to be icons in the inventory
 	m_inventoryIcons[0].spawnPickup(3,100, 400, 3.5);

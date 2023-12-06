@@ -102,6 +102,8 @@ public:
 	void setSpriteFromSheet(sf::IntRect textureBox);
 	//move the rectangle to the next cell in the animation
 	void moveTextureRect();
+
+	Vector2i selectSpawner();
 };
 
 

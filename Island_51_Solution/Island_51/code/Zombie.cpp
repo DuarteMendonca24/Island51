@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
+#include <random>
+#include "LevelManager.h"
 
 using namespace std;
 
@@ -311,3 +313,6 @@ void Zombie::moveTextureRect()
 	}
 
 }
+
+
+
