@@ -58,25 +58,25 @@ bool Engine::detectCollisions(Player& character)
 				//cout << "COLLISION";
 				if (character.getRight().intersects(block))
 				{
-					cout << "COLLISION RIGHT" << "\n";
+					//cout << "COLLISION RIGHT" << "\n";
 					character.stopRight(block.left);
 					break;
 				}
 				else if (character.getLeft().intersects(block))
 				{
-					cout << "COLLISION LEFT" <<"\n";
+					//cout << "COLLISION LEFT" <<"\n";
 					character.stopLeft(block.left);
 					break;
 				}
 				else if (character.getFeet().intersects(block))
 				{
-					cout << "COLLISION FEET" << "\n";
+					//cout << "COLLISION FEET" << "\n";
 					character.stopDown(block.top);
 					break;
 				}
 				 else if (character.getHead().intersects(block))
 				{
-					cout << "COLLISION HEAD" << "\n";
+					//cout << "COLLISION HEAD" << "\n";
 					character.stopUp((block.top));
 					break;
 				}

@@ -1,35 +1,43 @@
-﻿  Engine.cpp
+﻿  Update.cpp
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(98): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(275): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(7,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(406,47): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(493,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(510,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
+          [
+              T=int
+          ]
+          and
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(8,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(510,59): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
+          [
+              T=int
+          ]
+          and
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(12,52): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(521,81): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
+          [
+              T=int
+          ]
+          and
           [
               T=float
           ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(12,38): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(521,58): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
+          [
+              T=int
+          ]
+          and
           [
               T=float
-          ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(18,58): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(18,36): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
           ]
   Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

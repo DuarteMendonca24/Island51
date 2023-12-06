@@ -60,10 +60,10 @@ void Engine::update(float dtAsSeconds)
         for (int i = 0; i < 100; i++)
         {
 
-            if (m_explosionBullets[i].isInFlight())
+            if (m_enemyBullets[i].isInFlight())
             {
 
-                m_explosionBullets[i].update(dtAsSeconds);
+                m_enemyBullets[i].update(dtAsSeconds);
             }
         }
 
@@ -84,7 +84,7 @@ void Engine::update(float dtAsSeconds)
 
                 //I think I should move this to another place , here is more to update each zombioe
                 //if its and explosive enemie and its close to the player
-                if ((*it)->getType() == 4 && (*it)->distanceToPlayer(playerPosition) < 300) {
+                if ((*it)->getType() == 4 && (*it)->distanceToPlayer(playerPosition) < 500) {
 
                     m_shootingFireRate -= dtAsSeconds;
 
@@ -95,10 +95,10 @@ void Engine::update(float dtAsSeconds)
  
                         currentBullet++;
 
-                        m_explosionBullets[currentBullet].setRange(100);
+                        m_enemyBullets[currentBullet].setRange(500);
 
 
-                        m_explosionBullets[currentBullet].shoot((*it)->getPosCoordinates().x, (*it)->getPosCoordinates().y, playerPosition.x, playerPosition.y);
+                        m_enemyBullets[currentBullet].shoot((*it)->getPosCoordinates().x, (*it)->getPosCoordinates().y, playerPosition.x, playerPosition.y);
 
 
 
@@ -142,17 +142,18 @@ void Engine::update(float dtAsSeconds)
                     hit.play();
                 }
 
-                if (player.getHealth() <= 0)
-                {
-                    state = State::GAME_OVER;
-
-                    std::ofstream outputFile("gamedata/scores.txt");
-                    outputFile << hiScore;
-                    outputFile.close();
-                }
+                
             }
         } // End player touched
 
+        if (player.getHealth() <= 0)
+        {
+            state = State::GAME_OVER;
+
+            std::ofstream outputFile("gamedata/scores.txt");
+            outputFile << hiScore;
+            outputFile.close();
+        }
 
         std::list<Zombie*>::iterator it3;
         for (int i = 0; i < 100; i++)
@@ -205,7 +206,12 @@ void Engine::update(float dtAsSeconds)
         } // End zombie being shot
 
         //make the illusionist look at player
-        Illusionist[0].illusionBehaviour(playerPosition, dtAsSeconds);
+        if (m_illusionist) {
+           
+            Illusionist[0].illusionBehaviour(playerPosition, dtAsSeconds);
+            
+        }
+
 
 
 
@@ -214,7 +220,7 @@ void Engine::update(float dtAsSeconds)
 
             //we delete the illusionist and create a new array with the illusions
             delete[] Illusionist;
-            m_test = true;
+            m_illusionist = false;
             //get random numnber betwwen 0 and 3
             m_realOne = rand() % 4;
             Illusions = createIllusions(playerPosition);
@@ -239,14 +245,14 @@ void Engine::update(float dtAsSeconds)
 
 
 
-                m_illusionsBullets[currentBullet].setRange(100);
-                m_illusionsBullets[currentBullet + 1].setRange(100);
-                m_illusionsBullets[currentBullet + 2].setRange(100);
-                m_illusionsBullets[currentBullet + 3].setRange(100);
-                m_illusionsBullets[currentBullet].shoot(Illusions[0].getPosCoordinates().x, Illusions[0].getPosCoordinates().y, playerPosition.x, playerPosition.y);
-                m_illusionsBullets[currentBullet + 1].shoot(Illusions[1].getPosCoordinates().x, Illusions[1].getPosCoordinates().y, playerPosition.x, playerPosition.y);
-                m_illusionsBullets[currentBullet + 2].shoot(Illusions[2].getPosCoordinates().x, Illusions[2].getPosCoordinates().y, playerPosition.x, playerPosition.y);
-                m_illusionsBullets[currentBullet + 3].shoot(Illusions[3].getPosCoordinates().x, Illusions[3].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+               m_illusionsBullets[currentBullet].setRange(100);
+               m_illusionsBullets[currentBullet + 1].setRange(100);
+               m_illusionsBullets[currentBullet + 2].setRange(100);
+               m_illusionsBullets[currentBullet + 3].setRange(100);
+               m_illusionsBullets[currentBullet].shoot(Illusions[0].getPosCoordinates().x, Illusions[0].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+               m_illusionsBullets[currentBullet + 1].shoot(Illusions[1].getPosCoordinates().x, Illusions[1].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+               m_illusionsBullets[currentBullet + 2].shoot(Illusions[2].getPosCoordinates().x, Illusions[2].getPosCoordinates().y, playerPosition.x, playerPosition.y);
+               m_illusionsBullets[currentBullet + 3].shoot(Illusions[3].getPosCoordinates().x, Illusions[3].getPosCoordinates().y, playerPosition.x, playerPosition.y);
 
 
                 currentBullet++;
@@ -265,7 +271,7 @@ void Engine::update(float dtAsSeconds)
 
             for (int i = 0; i < 100; i++)
             {
-                for (int j = 0; j < 100; j++) {
+                for (int j = 0; j < 4; j++) {
 
                     if (bullets[i].isInFlight() && Illusions[j].isAlive())
                     {
@@ -280,9 +286,7 @@ void Engine::update(float dtAsSeconds)
                             {
                                 delete[] Illusions;
                                 m_illusions = false;
-                                // Not just a hit but a kill too
-                                // Custom scores for each zombie type
-                                //score += Illusions[j].killValue();
+                                
                             }
                         }
                     }
@@ -292,7 +296,30 @@ void Engine::update(float dtAsSeconds)
 
         }
 
+        //check if enemie bullets are colliding with player
+        for (int i = 0; i < 100; i++)
+        {
+            if (m_enemyBullets[i].isInFlight() && m_enemyBullets[i].getPosition().intersects(player.getPosition())) {
 
+                player.hit(gameTimeTotal);
+                hit.play();
+                m_enemyBullets[i].stop();
+              
+          
+
+            }
+
+            if (m_illusionsBullets[i].isInFlight() && m_illusionsBullets[i].getPosition().intersects(player.getPosition())) {
+
+                player.hit(gameTimeTotal);
+                hit.play();
+                m_illusionsBullets[i].stop();
+               
+       
+
+            }
+
+        }
 
 
 
@@ -376,7 +403,7 @@ void Engine::update(float dtAsSeconds)
                     //Ammo Pickup
                     if ((*it5)->getType() == 2)
                     {
-                        m_currentHunger += 1;
+                        m_currentHunger += 0.1;
                         (*it5)->hit();
 
                     }

@@ -49,7 +49,7 @@ private:
     //variable to store in which position of the array is the real illusionist
     int m_realOne;
 
-    bool m_test = false;
+    bool m_illusionist = true;
 
     //are illusions activated
     bool m_illusions = false;
@@ -296,7 +296,7 @@ private:
     // 1000 bullets should do
     Bullet bullets[1000];
     Bullet m_illusionsBullets[100];
-    Bullet m_explosionBullets[100];
+    Bullet m_enemyBullets[100];
 
     float m_illusionsFireRate = 3;
     float m_shootingFireRate = 3;
