@@ -436,6 +436,13 @@ void Engine::input()
         state = State::PLAYING;
     }
 
+   if (event.key.code == Keyboard::G)
+    {
+        // Continuing to the game after pressing space bar
+       std::cout << "G";
+        state = State::RULE;
+    }
+
     if (state == State::PLAYING)
     {
         // Increase the wave number

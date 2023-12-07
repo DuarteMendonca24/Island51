@@ -124,6 +124,9 @@ public:
 	// Give the player some health
 	void upgradeHealth();
 
+	// Here is the health for the player
+	void setHealth(int x);
+
 	// Increase the maximum amount of health the player can have
 	void increaseHealthLevel(int amount);
 

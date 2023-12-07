@@ -21,6 +21,7 @@ private:
 	Text m_stoneQuantityText;
 	Text m_ironQuantityText;
 	Text m_notEnoughResourcse;
+	Text m_gameruleText;
 	//Health bar
 	RectangleShape m_healthBar;
 	float m_healthBarWidth = 100;
@@ -52,6 +53,7 @@ public:
 	Text getStoneQuantityText();
 	Text getIronQuantityText();
 	Text getNotEnoughResourcse();
+	Text getgameruleText();
 	RectangleShape getHealthBar();
 	RectangleShape getHungerBar();
 	RectangleShape getBackgroudCraft();

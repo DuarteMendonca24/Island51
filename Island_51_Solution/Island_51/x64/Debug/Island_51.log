@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+﻿  LINK : C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe not found or not built by the last incremental link; performing full link
+  Island_51.vcxproj -> C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+=======
 ﻿  Zombie.cpp
 C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(79,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(289,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
@@ -14,3 +18,7 @@ C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zom
               T=float
           ]
   Island_51.vcxproj -> C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+<<<<<<< Updated upstream
+=======
+>>>>>>> 0c250dc4bfee6b7fca2e43a79e8b928d0f9bc9cb
+>>>>>>> Stashed changes

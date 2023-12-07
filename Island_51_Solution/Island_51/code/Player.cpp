@@ -279,6 +279,14 @@ void Player::upgradeHealth()
 
 }
 
+void Player::setHealth(int x)
+{
+	// Health 
+	m_Health =  x;
+}
+
+
+
 void Player::increaseHealthLevel(int amount)
 {
 	m_Health += amount;

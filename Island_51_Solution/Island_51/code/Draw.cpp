@@ -162,22 +162,28 @@ void Engine::draw()
             m_Window.draw(m_hud.getIronQuantityText());
         }
 
+    }
 
-
+    if (state == State::RULE)
+    {
+        // here is the rules for the rules 
+        m_Window.draw(m_hud.getgameruleText());
 
     }
-    /*
+
     if (state == State::LEVELING_UP)
     {
         m_Window.draw(spriteGameOver);
+        
         m_Window.draw(m_hud.getLevelUpText());
+                
         // Update the score text again
         std::stringstream ssScore;
         ssScore << "Points:" << score;
         //scoreText.setString(ssScore.str());
         //m_Window.draw(scoreText);
     }
-    */
+    
     if (state == State::PAUSED)
     {
         m_Window.draw(m_hud.getPausedText());

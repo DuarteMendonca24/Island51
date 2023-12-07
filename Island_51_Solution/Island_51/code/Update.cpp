@@ -14,6 +14,21 @@ void Engine::update(float dtAsSeconds)
 
         //Update the Hunger Bar
         m_currentHunger -= m_hungerTickAmount;
+        
+  
+        if (m_currentHunger <= 0)
+        {
+            int health = player.getHealth();
+            health -= m_hungerTickAmount;
+            player.setHealth(health);
+        }
+        else
+        {
+            //Update the Hunger Bar
+            m_currentHunger -= m_hungerTickAmount;
+        }
+
+
         // Run Players collision detection
         detectCollisions(player);
 
@@ -497,7 +512,7 @@ void Engine::update(float dtAsSeconds)
 
                 //health bar width is 300
                 m_hud.setHealthSize(player.getHealth());
-
+                // Hunger bar width is 
                 m_hud.setHungerSize(m_currentHunger);
 
                 framesSinceLastHUDUpdate = 0;

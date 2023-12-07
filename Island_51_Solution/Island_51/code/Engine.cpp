@@ -27,7 +27,16 @@ Engine::Engine() {
 	textureBackground = TextureHolder::GetTexture("graphics/tiles-sheet.png");
 	textureAmmoIcon = TextureHolder::GetTexture("graphics/ammo_icon.png");
 	textureCrosshair = TextureHolder::GetTexture("graphics/crosshair.png");
+<<<<<<< Updated upstream
 	textureGameOver = TextureHolder::GetTexture("graphics/MainMenu.png");
+=======
+<<<<<<< HEAD
+	textureGameOver = TextureHolder::GetTexture("graphics/background.png");
+
+=======
+	textureGameOver = TextureHolder::GetTexture("graphics/MainMenu.png");
+>>>>>>> 0c250dc4bfee6b7fca2e43a79e8b928d0f9bc9cb
+>>>>>>> Stashed changes
 	//Load Texture for Ammo Icon
 
 	spriteAmmoIcon.setTexture(textureAmmoIcon);
@@ -42,7 +51,7 @@ Engine::Engine() {
 
 	spriteGameOver.setTexture(textureGameOver);
 	spriteGameOver.setPosition(0, 0);
-	
+
 	//Setting HungerBar Up 
 	//hungerBar.setSize(Vector2f(HungerBarStartWidth, HungerBarHeight));
 

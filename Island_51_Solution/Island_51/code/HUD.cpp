@@ -31,16 +31,29 @@ Hud::Hud(){
 	m_levelUpText.setPosition(150, 250);
 	std::stringstream levelUpStream;
 	levelUpStream <<
-		"1- Increase rate of fire || 300 points" <<
-		"\n2- Increase clip size by x1.5 || 300 points" <<
-		"\n3- Increase max health by 20HP || 300 points" <<
-		"\n4- Increase run speed by x1.4 || 300 points" <<
-		"\n5- More Pick Ups || 300 points" <<
-		"\n6- SMG Weapon Upgrade || 1000 points" <<
-		"\n7- Refill ammo + health (max)" <<
-		"\n8- RailGun Weapon Upgrade || 4000 points"
-		"\nSpace to Play Game";
+		"Island 51" <<
+		"Space to Play Game" <<
+		"\n Press this button G to view the Rule";
 	m_levelUpText.setString(levelUpStream.str());
+
+
+	// Rule of the Survival game
+	m_gameruleText.setFont(m_font);
+	m_gameruleText.setCharacterSize(80);
+	m_gameruleText.setFillColor(Color::White);
+	m_gameruleText.setPosition(150, 250);
+	std::stringstream ruleStream;
+	ruleStream <<
+		"Here is the rule of the Survival game " <<
+		"\n1- Player has 5 different wepons you can choose from by change wepons from 1 to 5  " <<
+		"\n3- After killing the Enemy they will drop item " <<
+		"\n4- The player can create new wepons using the craft system" <<
+		"\n5- If the hunger reach 0, the player heath bar re is life from heath bar down 0" <<
+		"\n6-  " <<
+		"\n7-  " <<
+		"\n8-  " <<
+		"\n press space key to play the game";
+	m_gameruleText.setString(ruleStream.str());
 
 	// Ammo
 	m_ammoText.setFont(m_font);
@@ -140,7 +153,12 @@ Text Hud::getAmmoText() {
 
 Text Hud::getLevelUpText() {
 
-	return m_levelUpText;
+	return m_levelUpText; 
+}
+
+Text Hud::getgameruleText() {
+
+	return m_gameruleText;
 }
 
 Text Hud::getGameOverText() {
