@@ -3,6 +3,7 @@
 void Engine::input()
 {
     Event event;
+    
     while (m_Window.pollEvent(event))
     {
         if (event.type == Event::KeyPressed)
@@ -92,7 +93,6 @@ void Engine::input()
                     if (event.key.code == Keyboard::Q)
                     {
                         state = State::CRAFT;
-
                     }
                 }
             }
@@ -100,6 +100,19 @@ void Engine::input()
         //Craft item
         if (state == State::CRAFT)
         {
+            // Inventory 
+            if (event.key.code == Keyboard::Tab) {
+
+                if (!m_inventoryActive) {
+
+                    m_inventoryActive = true;
+                }
+                else if (m_inventoryActive) {
+
+                    m_inventoryActive = false;
+                }
+
+            }
             // moving up and down
             if (event.type == Event::KeyReleased)
             {
@@ -117,20 +130,31 @@ void Engine::input()
                 if (event.key.code == Keyboard::LShift)
                 {
                     // craft wood sword
-                    if (select.GetPressed() == 0 && numTreePickup == 3)
+                    if (select.GetPressed() == 0 && numTreePickup >= 3)
                     {
+                        woodSwordCurrentBullet = woodSwordCurrentBullet + 30;
+                        numTreePickup = numTreePickup - 3;
                     }
                     // craft stone sword
-                    else if (select.GetPressed() == 1 && numTreePickup == 1 && numStonePickup == 2)
+                    else if (select.GetPressed() == 1 && numTreePickup >= 1 && numStonePickup >= 2)
                     {
+                        stoneSwordCurrentBullet = stoneSwordCurrentBullet + 50;
+                        numTreePickup = numTreePickup - 1;
+                        numStonePickup = numStonePickup - 2;
                     }
                     // craft iron sword
-                    else if (select.GetPressed() == 2 && numTreePickup == 1 && numIronPickup == 2)
+                    else if (select.GetPressed() == 2 && numTreePickup >= 1 && numIronPickup >= 2)
                     {
+                        ironSwordCurrentBullet = ironSwordCurrentBullet + 70;
+                        numTreePickup = numTreePickup - 1;
+                        numIronPickup = numIronPickup - 2;
                     }
                     // craft arrow
-                    else if (select.GetPressed() == 3 && numTreePickup == 1 && numStonePickup == 1)
+                    else if (select.GetPressed() == 3 && numTreePickup >= 1 && numStonePickup >= 1)
                     {
+                        arrowCurrentBullet = arrowCurrentBullet + 20;
+                        numTreePickup = numTreePickup - 1;
+                        numStonePickup = numStonePickup - 1;
                     }
                     // exit the craft
                     else if (select.GetPressed() == 4 && state == State::CRAFT)
@@ -140,20 +164,21 @@ void Engine::input()
                     }
                     else
                     {
-                        if (!m_EnoughResoures) {
-
-                            m_EnoughResoures = true;
+                        if (m_EnoughResources)
+                        {
+                            m_EnoughResources = false;
                         }
-                        else if (m_EnoughResoures) {
-
-                            m_EnoughResoures = false;
+                        else if (!m_EnoughResources)
+                        {
+                            m_EnoughResources = true;
                         }
+                        
                     }
                 }
             }
         }
     }
-
+    
     // Handle the player quitting
     if (Keyboard::isKeyPressed(Keyboard::Escape))
     {
@@ -212,7 +237,7 @@ void Engine::input()
                 bullets[currentBullet].shoot(
                     player.getCenter().x, player.getCenter().y,
                     mouseWorldPosition.x, mouseWorldPosition.y);
-                bullets[currentBullet].setRange(35);
+                bullets[currentBullet].setRange(40);
                 currentBullet++;
                 if (currentBullet > 99)
                 {
@@ -323,7 +348,7 @@ void Engine::input()
             handBulletsInClip = bulletsInClip;
             handClipSize = clipSize;
             handFireRate = fireRate;
-            bullets[currentBullet].setRange(35);
+            bullets[currentBullet].setRange(40);
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 player.getAttack(10);

@@ -142,63 +142,42 @@ std::list<Pickup*> Engine::createPickup(Vector2f position)
 }
 
 //changing the function to return a list
-std::list<Pickup*> Engine::createResorces(int numResource, IntRect arena)
+std::list<Pickup*> Engine::createResorces(int numResource)
 {
-	std::list<Pickup*> resorceList;
-
-	int maxY = arena.height - 20;
-	int minY = arena.top + 20;
-	int maxX = arena.width - 20;
-	int minX = arena.left + 20;
-
+	std::list<Pickup*> resourceList;
 	for (int i = 0; i < numResource; i++)
 	{
-
-		// Which side should the zombie spawn
 		srand((int)time(0) * i);
-		int side = (rand() % 3);
-		float x, y;
+		int type = (rand() % 3) + 3;
+		float posX = (rand() % 3251) + 2380;
+		float posY = (rand() % 1951) + 450;
 
-		switch (side)
-		{
-		case 0:
-			// left
-			x = minX;
-			y = (rand() % maxY) + minY;
-			break;
-
-		case 1:
-			// right
-			x = maxX;
-			y = (rand() % maxY) + minY;
-			break;
-
-		case 2:
-			// top
-			x = (rand() % maxX) + minX;
-			y = minY;
-			break;
-
-		case 3:
-			// bottom
-			x = (rand() % maxX) + minX;
-			y = maxY;
-			break;
-		}
-
-
-	
-		srand((int)time(0));
-		int type = (rand() % 3) + 3; // Generates random numbers 3, 4, or 5
-
-
+		// Create a new Pickup object for each resource
 		Pickup* resource = new Pickup();
-		resource->spawnPickup( type,400, 500, 1.5);
-		resorceList.push_back(resource);
-
-
-
+		resource->spawnPickup(type, posX, posY, 2.5);
+		resourceList.push_back(resource);
+		cout << "Pickup_Position.x  " << posX << "\n";
+		cout << "Pickup_Position.y  " << posY << "\n";
 	}
-	return resorceList;
+	return resourceList;
 }
 
+std::list<Pickup*> Engine::createRespawnResorces(int numResource, float positionX, float positionY,int type)
+{
+	std::list<Pickup*> resourceList;
+	for (int i = 0; i < numResource; i++)
+	{
+		int m_type = type;
+		float posX = positionX;
+		float posY = positionY;
+
+		// Create a new Pickup object for each resource
+		Pickup* resource = new Pickup();
+		resource->spawnPickup(m_type, posX, posY, 2.5);
+		resourceList.push_back(resource);
+		cout << "Pickup_Position.x  " << posX << "\n";
+		cout << "Pickup_Position.y  " << posY << "\n";
+	}
+
+	return resourceList;
+}

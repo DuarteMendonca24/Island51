@@ -99,13 +99,13 @@ Hud::Hud(){
 	//Background Craft
 	m_backgroundCraft.setSize(Vector2f(m_backgroundWidth, m_backgroundHeight));
 	m_backgroundCraft.setFillColor(Color::Blue);
-	m_backgroundCraft.setPosition(600, 0);
+	m_backgroundCraft.setPosition(490, 0);
 
-	m_notEnoughResourse.setFont(m_font);
-	m_notEnoughResourse.setCharacterSize(50);
-	m_notEnoughResourse.setFillColor(Color::Yellow);
-	m_notEnoughResourse.setPosition(500, 500);
-	m_notEnoughResourse.setString("You don't have Sufficient Resources to Craft ");
+	m_notEnoughResourcse.setFont(m_font);
+	m_notEnoughResourcse.setCharacterSize(50);
+	m_notEnoughResourcse.setFillColor(Color::Yellow);
+	m_notEnoughResourcse.setPosition(500, 500);
+	m_notEnoughResourcse.setString("You don't have Sufficient Resources to Craft ");
 
 }
 
@@ -169,9 +169,9 @@ Text Hud::getWaveNumberText() {
 	return m_waveNumberText;
 }
 
-Text Hud::getNotEnoughResourse() {
+Text Hud::getNotEnoughResourcse() {
 
-	return m_notEnoughResourse;
+	return m_notEnoughResourcse;
 }
 
 RectangleShape Hud::getHealthBar() {

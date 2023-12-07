@@ -28,7 +28,8 @@ public:
     std::list<Zombie*> createHorde(int numZombies, IntRect arena);
     std::list<Zombie*> createEnemies(int numZombies, Vector2f position, int type);
     std::list<Pickup*> createPickup(Vector2f position);
-    std::list<Pickup*> createResorces(int numResource, IntRect arena);
+    std::list<Pickup*> createResorces(int numResource);
+    std::list<Pickup*> createRespawnResorces(int numResource, float positionX, float positionY, int type);
     Engine();
     void run();
     void input();
@@ -310,7 +311,7 @@ private:
     int** m_ArrayLevel2 = NULL;
 
     //Check the Resourse is enough
-    bool m_EnoughResoures = false;
-
+    bool m_EnoughResources = false;
+    float m_SecondsSince = 0;
     
 };

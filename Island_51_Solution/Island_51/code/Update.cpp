@@ -35,7 +35,7 @@ void Engine::update(float dtAsSeconds)
         mainView.reset((sf::FloatRect(0, 0, resolution.x, resolution.y)));
         // Make the view centre around the player
         mainView.setCenter(player.getCenter());
-
+        
         // Update any bullets that are in-flight
         for (int i = 0; i < 100; i++)
         {
@@ -344,6 +344,12 @@ void Engine::update(float dtAsSeconds)
                         // Register the hit and see if it was a kill
                         if ((*it4)->hit())
                         {
+                            srand((int)time(0)* i);
+                            float posX = (rand() % 3651) + 2380;
+                            float posY = (rand() % 1951) + 450;
+                            float m_type = (rand() % 3) + 3;
+                            std::list<Pickup*> newPickup = createRespawnResorces(1,posX,posY,m_type);
+                            m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
                             //Tree pickup
                             if ((*it4)->getType() == 3) {
 
@@ -530,5 +536,19 @@ void Engine::update(float dtAsSeconds)
         }
     }
     
+    if (state == State::CRAFT)
+    {
+        // Check if m_EnoughResources is true
+        if (m_EnoughResources)
+        {
+            m_SecondsSince += dtAsSeconds;
+            cout << "m_SecondsSince " << m_SecondsSince;
+        }
 
+        if (m_SecondsSince >= 1 && m_EnoughResources)
+        {
+            m_EnoughResources = false;
+            m_SecondsSince = 0;
+        }
+    }
 }

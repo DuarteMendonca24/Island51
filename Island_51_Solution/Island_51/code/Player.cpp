@@ -1,6 +1,6 @@
 #include "Player.h"
 #include "TextureHolder.h"
-
+#include <iostream>
 Player::Player()
 {
 	m_Speed = START_SPEED;
@@ -155,11 +155,21 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 	if (m_UpPressed)
 	{
 		m_Position.y -= m_Speed * elapsedTime;
+		//2nd row of sprite sheet 3 characters 150 pixels by 50 pixels
+		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
+		//move the rectangle to the appropriate cell
+		moveTextureRect();
+		cout << "m_Position.y  " << m_Position.y << "\n";
 	}
 
 	if (m_DownPressed)
 	{
 		m_Position.y += m_Speed * elapsedTime;
+		//2nd row of sprite sheet 3 characters 150 pixels by 50 pixels
+		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
+		//move the rectangle to the appropriate cell
+		moveTextureRect();
+		cout << "m_Position.y  " << m_Position.y << "\n";
 	}
 
 	if (m_RightPressed)
@@ -169,6 +179,7 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
+		cout << "m_Position.x  " << m_Position.x << "\n";
 	}
 
 	if (m_LeftPressed)
@@ -178,6 +189,7 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
+		cout << "m_Position.x  " << m_Position.x << "\n";
 	}
 	m_Sprite.setPosition(m_Position);
 

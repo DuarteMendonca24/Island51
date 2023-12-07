@@ -20,7 +20,7 @@ private:
 	Text m_woodQuantityText;
 	Text m_stoneQuantityText;
 	Text m_ironQuantityText;
-	Text m_notEnoughResourse;
+	Text m_notEnoughResourcse;
 	//Health bar
 	RectangleShape m_healthBar;
 	float m_healthBarWidth = 100;
@@ -33,7 +33,7 @@ private:
 	
 	// Shop background
 	RectangleShape m_backgroundCraft;
-	float m_backgroundWidth = 700;
+	float m_backgroundWidth = 1000;
 	float m_backgroundHeight = 1000;
 
 
@@ -50,7 +50,7 @@ public:
 	Text getWoodQuantityText();
 	Text getStoneQuantityText();
 	Text getIronQuantityText();
-	Text getNotEnoughResourse();
+	Text getNotEnoughResourcse();
 	RectangleShape getHealthBar();
 	RectangleShape getHungerBar();
 	RectangleShape getBackgroudCraft();

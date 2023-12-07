@@ -257,12 +257,22 @@ void Engine::draw()
     {
         m_Window.draw(m_hud.getBackgroudCraft());
         select.draw(m_Window);
-        if (m_EnoughResoures)
+        if (m_EnoughResources)
         {
-            m_Window.draw(m_hud.getNotEnoughResourse());
+            m_Window.draw(m_hud.getNotEnoughResourcse());
           
         }
         guiseletionsound.play();
+        if (m_inventoryActive) {
+            //draw the inventory icons
+            for (int i = 0; i < 3; i++)
+            {
+                m_Window.draw(m_inventoryIcons[i].getSprite());
+            }
+            m_Window.draw(m_hud.getWoodQuantityText());
+            m_Window.draw(m_hud.getStoneQuantityText());
+            m_Window.draw(m_hud.getIronQuantityText());
+        }
     }
 
     m_Window.display();

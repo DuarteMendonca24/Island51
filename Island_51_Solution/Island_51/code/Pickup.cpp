@@ -32,7 +32,7 @@ void Pickup::spawnPickup(int type, float startX, float startY , float scale)
 		m_Sprite.setTextureRect(sf::IntRect{ 95, 22, 18, 24 });
 		m_Health = TREE_HEALTH;
 		m_Type = type;
-		break;
+		break; 
 
 	case 4:
 		// Stone
@@ -45,7 +45,7 @@ void Pickup::spawnPickup(int type, float startX, float startY , float scale)
 	case 5:
 		// Iron
 		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/forest__resources.png"));
-		m_Sprite.setTextureRect(sf::IntRect{ 80, 60, 14, 14 });
+		m_Sprite.setTextureRect(sf::IntRect{ 80, 65, 14, 14 });
 		m_Health = IRON_HEALTH;
 		m_Type = type;
 		break;

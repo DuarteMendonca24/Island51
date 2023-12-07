@@ -51,7 +51,7 @@ Engine::Engine() {
 	numZombies = 5 * wave;
 	//numResource = 5 * wave;
 
-	numResource = 1;
+	numResource = 20;
 	// Delete the previously allocated memory (if it exists)
 	//delete[] zombies;
 
@@ -59,7 +59,7 @@ Engine::Engine() {
 	Vector2i worldSize = manageLevel.getLevelSize();
 	m_EnemiesList = createHorde(numZombies, arena);
 	numZombiesAlive = numZombies;
-	m_PickupList = createResorces(numResource, arena);
+	m_PickupList = createResorces(numResource);
 	numResourceAlive = numResource;
 	IntRect arena;
 	arena.width = worldSize.x * TILE_SIZE;
@@ -87,7 +87,6 @@ Engine::Engine() {
 
 
 }
-
 void Engine::run() {
 
 	// Timing 	

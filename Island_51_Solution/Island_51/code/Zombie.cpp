@@ -17,7 +17,7 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		// Bloater aka the Illusionist 
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/boss3.png"));
-		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
+		m_Sprite.setTextureRect(sf::IntRect{ 205, 11, 30, 58 });
 		m_Speed = BLOATER_SPEED;
 		m_Health = BLOATER_HEALTH;
 		m_ScoreValue = BLOATER_VALUE;
