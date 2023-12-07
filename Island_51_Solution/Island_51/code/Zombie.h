@@ -32,8 +32,13 @@ private:
 	const int MAX_VARRIANCE = 30;
 	const int OFFSET = 101 - MAX_VARRIANCE;
 
+	
+
 	// Where is this zombie?
 	Vector2f m_Position;
+
+	//Where is this zombie wandering to?
+	Vector2f walkPoint;
 
 	// A sprite for the zombie
 	Sprite m_Sprite;
@@ -66,6 +71,14 @@ private:
 	float animationTimer = 0;
 	// Public prototypes go here	
 public:
+	//States of enemy
+	enum EnemyState {
+		WANDERING,
+		TARGETING,
+	};
+
+	EnemyState enemyState = EnemyState::TARGETING;
+
 
 	// Handle when a bullet hits a zombie
 	bool hit();
@@ -89,6 +102,9 @@ public:
 
 	// Update the zombie each frame
 	void update(float elapsedTime, Vector2f playerLocation);
+
+	//Creating a position to wander to
+	Vector2f createWalkPoint();
 
 	//behaviour for the Illusionist enemy
 	void illusionBehaviour(Vector2f enemyLocation, float elapsedTime);

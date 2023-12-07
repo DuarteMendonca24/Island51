@@ -36,6 +36,7 @@ private:
 	float m_backgroundWidth = 1000;
 	float m_backgroundHeight = 1000;
 
+	RectangleShape darkness;
 
 public:
 	Hud();
@@ -54,6 +55,7 @@ public:
 	RectangleShape getHealthBar();
 	RectangleShape getHungerBar();
 	RectangleShape getBackgroudCraft();
+	RectangleShape getDarkness();
 
 	void setZombiesRemainingText(String text);
 	void setScoreText(String text);
@@ -64,6 +66,7 @@ public:
 	void setWoodQuantityText(String text);
 	void setStoneQuantityText(String text);
 	void setIronQuantityText(String text);
+	void setDarkness(float darknessLevel);
 	
 	
 	

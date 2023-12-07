@@ -148,6 +148,7 @@ void Engine::draw()
         // m_Window.draw(m_hud.getWaveNumberText());
         m_Window.draw(m_hud.getZombiesRemainingText());
         m_Window.draw(m_hud.getHungerBar());
+        m_Window.draw(m_hud.getDarkness());
 
 
         if (m_inventoryActive) {
@@ -242,7 +243,7 @@ void Engine::draw()
         sf::Vector2f targetSize(screenDimensions.x, screenDimensions.y);
 
         background_Sprite.setScale(
-            targetSize.x / background_Sprite.getLocalBounds().width,
+            targetSize.x / background_Sprite.getLocalBounds().width * 2,
             targetSize.y / background_Sprite.getLocalBounds().height);
 
 

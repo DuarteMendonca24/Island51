@@ -27,7 +27,7 @@ Engine::Engine() {
 	textureBackground = TextureHolder::GetTexture("graphics/tiles-sheet.png");
 	textureAmmoIcon = TextureHolder::GetTexture("graphics/ammo_icon.png");
 	textureCrosshair = TextureHolder::GetTexture("graphics/crosshair.png");
-	textureGameOver = TextureHolder::GetTexture("graphics/background.png");
+	textureGameOver = TextureHolder::GetTexture("graphics/MainMenu.png");
 	//Load Texture for Ammo Icon
 
 	spriteAmmoIcon.setTexture(textureAmmoIcon);
@@ -98,15 +98,29 @@ void Engine::run() {
 		Time dt = clock.restart();
 		// Update the total game time
 		gameTimeTotal += dt;
-		timeSinceLastUpdate = dt;
 		// Make a decimal fraction from the delta time
 		float dtAsSeconds = dt.asSeconds();
+		dtSinceDrawUpdate += dt.asSeconds();
+		timeSinceLastUpdate = dt;
 
 		input();
-		update(dtAsSeconds);
-		draw();
+		if (dtSinceDrawUpdate > 0.01)
+		{
+			update(dtAsSeconds);
+		}
+		if (dtSinceDrawUpdate > 0.02)
+		{
+			draw();
+			dtSinceDrawUpdate = 0;
+		}
+		
 
 	}
 
 
+}
+
+int** Engine::getArrayLevel()
+{
+	return m_ArrayLevel2;
 }

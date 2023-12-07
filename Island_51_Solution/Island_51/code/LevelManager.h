@@ -19,7 +19,7 @@ private:
 	const int MAX_RESOURCE_NUM = 3;
 	const int RESOURCE_VARIATIONS = 2;
 	
-	//int** m_ArrayLevel = NULL;
+	int** m_ArrayLevel;
 
 public:
 
@@ -53,4 +53,6 @@ public:
 	int getSpawnerCount();
 
 	int RandomBetween(int min, int max);
+
+	int** getArray();
 };

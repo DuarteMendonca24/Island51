@@ -1,16 +1,16 @@
 ﻿  Zombie.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(79,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(219,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(241,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(242,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(243,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(79,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(289,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(311,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(312,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(313,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(244,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(314,9): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-  Island_51.vcxproj -> C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+  Island_51.vcxproj -> C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

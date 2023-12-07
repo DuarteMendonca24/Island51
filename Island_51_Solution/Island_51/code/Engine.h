@@ -20,7 +20,7 @@
 #include "Craft.h"
 using namespace sf;
 
-class Engine
+static class Engine
 {
 public:
     //int loadLevel(VertexArray& rVA);
@@ -35,6 +35,7 @@ public:
     void input();
     void draw();
     void loadSounds();
+    int** getArrayLevel();
 
 
 
@@ -274,6 +275,7 @@ private:
 
     float m_currentHunger = 100;
     float m_hungerTickAmount = 0.001;
+    float dtSinceDrawUpdate;
 
 
 

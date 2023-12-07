@@ -321,7 +321,7 @@ void Player::setSpriteFromSheet(sf::IntRect textureBox)
 {
 	//LevelManager l;
 	//int tile_size = l.TILE_SIZE;
-	int tile_size = 60;
+	int tile_size = 70;
 	sheetCoordinate = Vector2i(textureBox.left, textureBox.top);
 	spriteSize = Vector2i(tile_size, tile_size);
 	if (textureBox.width > tile_size)

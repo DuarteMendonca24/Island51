@@ -135,7 +135,7 @@ int** LevelManager::loadLevel(VertexArray& rVaLevel)
 		}
 	}
 	//Setting main 2d array to equal the constructed array
-	//m_ArrayLevel = arrayLevel; 
+	m_ArrayLevel = arrayLevel; 
 
 	//return TILE_SIZE;
 	return arrayLevel;
@@ -250,4 +250,9 @@ int LevelManager::RandomBetween(int min, int max)
 	std::uniform_int_distribution<int> dist(min, max);
 
 	return dist(rd);
+}
+
+int** LevelManager::getArray()
+{
+	return m_ArrayLevel;
 }

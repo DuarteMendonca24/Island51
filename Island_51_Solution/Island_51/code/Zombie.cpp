@@ -86,6 +86,8 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 
 	m_Sprite.setOrigin(25, 25);
 	m_Sprite.setPosition(m_Position);
+	//Initialising walk point
+	walkPoint = createWalkPoint();
 }
 
 void Zombie::spawnBoss(float startX, float startY, float elapsedTime)
@@ -160,49 +162,117 @@ Sprite Zombie::getSprite()
 
 void Zombie::update(float elapsedTime,Vector2f playerLocation)
 {
-	float playerX = playerLocation.x;
-	float playerY = playerLocation.y;
 	double d = distanceToPlayer(playerLocation);
-	timeElapsed = elapsedTime;
-	setSpriteFromSheet(sf::IntRect(15, 80, 180, 65));
-	//move the rectangle to the appropriate cell
-	moveTextureRect();
-	// Update the zombie position variables
-	if (playerX > m_Position.x && d < 200)
+	if (d <= 250)
 	{
-		m_Position.x = m_Position.x +
-			m_Speed * elapsedTime;
-		m_Sprite.setScale(1, 1);
+		enemyState = EnemyState::TARGETING;
+	}
+	else
+	{
+		enemyState = EnemyState::WANDERING;
 	}
 
-	if (playerY > m_Position.y && d < 200)
+
+	if (enemyState == EnemyState::TARGETING)
 	{
-		m_Position.y = m_Position.y +
-			m_Speed * elapsedTime;
+		float playerX = playerLocation.x;
+		float playerY = playerLocation.y;
+		timeElapsed = elapsedTime;
+		setSpriteFromSheet(sf::IntRect(15, 80, 180, 65));
+		//move the rectangle to the appropriate cell
+		moveTextureRect();
+		// Update the zombie position variables
+		if (playerX > m_Position.x)
+		{
+			m_Position.x = m_Position.x +
+				m_Speed * elapsedTime;
+			m_Sprite.setScale(1, 1);
+		}
+
+		if (playerY > m_Position.y)
+		{
+			m_Position.y = m_Position.y +
+				m_Speed * elapsedTime;
+		}
+
+		if (playerX < m_Position.x)
+		{
+			m_Position.x = m_Position.x -
+				m_Speed * elapsedTime;
+			m_Sprite.setScale(-1, 1);
+		}
+
+		if (playerY < m_Position.y)
+		{
+			m_Position.y = m_Position.y -
+				m_Speed * elapsedTime;
+		}
+
+		// Move the sprite
+		m_Sprite.setPosition(m_Position);
+
+		// Face the sprite in the correct direction
+		//float angle = (atan2(playerY - m_Position.y,
+			//playerX - m_Position.x)
+			//* 180) / 3.141;
+
+		//m_Sprite.setRotation(angle);
+		
 	}
 
-	if (playerX < m_Position.x && d < 200)
+	//Function to make the enemy wander around 
+	if (enemyState == EnemyState::WANDERING) 
 	{
-		m_Position.x = m_Position.x -
-			m_Speed * elapsedTime;
-		m_Sprite.setScale(-1, 1);
+		if (m_Position.x < walkPoint.x + 10 &&
+			m_Position.x > walkPoint.x - 10
+			&& m_Position.y < walkPoint.y + 10 &&
+			m_Position.y > walkPoint.y - 10)
+		{
+			walkPoint = createWalkPoint();
+		}
+		else
+		{
+			float walkPoint_x = walkPoint.x;
+			float walkPoint_y = walkPoint.y;
+			timeElapsed = elapsedTime;
+			setSpriteFromSheet(sf::IntRect(15, 80, 180, 65));
+			//move the rectangle to the appropriate cell
+			moveTextureRect();
+			// Update the zombie position variables
+			if (walkPoint_x > m_Position.x)
+			{
+				m_Position.x = m_Position.x +
+					m_Speed * elapsedTime;
+				m_Sprite.setScale(1, 1);
+			}
+
+			if (walkPoint_y > m_Position.y)
+			{
+				m_Position.y = m_Position.y +
+					m_Speed * elapsedTime;
+			}
+
+			if (walkPoint_x < m_Position.x)
+			{
+				m_Position.x = m_Position.x -
+					m_Speed * elapsedTime;
+				m_Sprite.setScale(-1, 1);
+			}
+
+			if (walkPoint_y < m_Position.y)
+			{
+				m_Position.y = m_Position.y -
+					m_Speed * elapsedTime;
+			}
+
+
+			m_Sprite.setPosition(m_Position);
+		}
+		
+		
 	}
-
-	if (playerY < m_Position.y && d < 200)
-	{
-		m_Position.y = m_Position.y -
-			m_Speed * elapsedTime;
-	}
-
-	// Move the sprite
-	m_Sprite.setPosition(m_Position);
-
-	// Face the sprite in the correct direction
-	//float angle = (atan2(playerY - m_Position.y,
-		//playerX - m_Position.x)
-		//* 180) / 3.141;
-
-	//m_Sprite.setRotation(angle);
+	
+	
 
 
 }
@@ -312,6 +382,37 @@ void Zombie::moveTextureRect()
 		animationTimer = 0;
 	}
 
+}
+
+Vector2f Zombie::createWalkPoint()
+{
+	
+	float x_pos = m_Position.x;
+	float y_pos = m_Position.y;
+
+	int radius = 400;
+	bool isWater = true;
+
+	//int temp_x = (int)x_pos;
+	//int temp_y = (int)y_pos;
+	//while (!isWater)
+	//{
+		//Generating Random Values
+		std::random_device rd;
+		std::uniform_int_distribution<int> dist(-radius, radius);
+
+		//Adding Random values to current position
+		x_pos += (float)dist(rd);
+		y_pos += (float)dist(rd);
+
+		//if()
+
+
+	//}
+	
+	//x_pos = temp_x;
+	//y_pos = temp_y;
+	return Vector2f(x_pos, y_pos);
 }
 
 

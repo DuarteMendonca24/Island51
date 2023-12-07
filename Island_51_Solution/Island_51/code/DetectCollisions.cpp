@@ -52,7 +52,7 @@ bool Engine::detectCollisions(Player& character)
 
 		
 			// Is character colliding with a regular block i.e platform
-			if (m_ArrayLevel2[y][x] == 4)
+			if (m_ArrayLevel2[y][x] == 0)
 			{
 				
 				//cout << "COLLISION";
@@ -80,6 +80,7 @@ bool Engine::detectCollisions(Player& character)
 					character.stopUp((block.top));
 					break;
 				}
+
 			}
 
 		}

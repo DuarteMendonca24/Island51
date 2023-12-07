@@ -98,7 +98,7 @@ Hud::Hud(){
 
 	//Background Craft
 	m_backgroundCraft.setSize(Vector2f(m_backgroundWidth, m_backgroundHeight));
-	m_backgroundCraft.setFillColor(Color::Blue);
+	m_backgroundCraft.setFillColor(Color::Color(0,0,255,1));
 	m_backgroundCraft.setPosition(490, 0);
 
 	m_notEnoughResourcse.setFont(m_font);
@@ -106,6 +106,12 @@ Hud::Hud(){
 	m_notEnoughResourcse.setFillColor(Color::Yellow);
 	m_notEnoughResourcse.setPosition(500, 500);
 	m_notEnoughResourcse.setString("You don't have Sufficient Resources to Craft ");
+
+	//darkness
+	darkness.setFillColor(Color::Color(0,0,0, 125));
+	darkness.setOrigin(Vector2f(0, 0));
+	darkness.setSize(Vector2f(3000.0f,3000.0f));
+
 
 }
 
@@ -186,6 +192,16 @@ RectangleShape Hud::getHungerBar() {
 
 RectangleShape Hud::getBackgroudCraft() {
 	return m_backgroundCraft;
+}
+
+RectangleShape Hud::getDarkness()
+{
+	return darkness;
+}
+
+void Hud::setDarkness(float darknessLevel)
+{
+	darkness.setFillColor(Color::Color(0, 0, 0, darknessLevel));
 }
 
 void Hud::setZombiesRemainingText(String text) {
