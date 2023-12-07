@@ -7,5 +7,6 @@ enum class State{
     PLAYING,
     EXIT,
     CRAFT,
+    HIGHSCORE,
    
 };

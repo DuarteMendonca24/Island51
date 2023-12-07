@@ -22,15 +22,6 @@ void Engine::draw()
     //View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 
 
-    // Load the high score from a text file/
-    std::ifstream inputFile("gamedata/scores.txt");
-    if (inputFile.is_open())
-    {
-        inputFile >> hiScore;
-        inputFile.close();
-    }
-
-
     if (state == State::PLAYING)
     {
         m_Window.clear();

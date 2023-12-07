@@ -47,6 +47,9 @@ public:
 
 private:
 
+    //used to write to file
+    bool m_scoreFile = false;
+
     int numberOnList = 0;
     //variable to store in which position of the array is the real illusionist
     int m_realOne;
@@ -123,9 +126,11 @@ private:
     int arrowClipSize = 5;
     float arrowFireRate = 0.5;
     // About the game
-    int score = 0;
-    int hiScore = 0;
+    int m_score = 0;
+    int m_hiScore = 0;
     int wave = 1;
+    //array to get the scores from the file
+    int m_scores[5];
     // Weapons Equipped
     bool handEquipped = true;
     bool woodSwordEquipped = false;

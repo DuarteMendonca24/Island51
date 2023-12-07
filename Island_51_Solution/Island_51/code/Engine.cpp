@@ -93,6 +93,25 @@ Engine::Engine() {
 
 	music.play();
 
+	//Reading the highscores from the file
+	std::ifstream readFile;
+	readFile.open("scores/Highscore.txt");
+
+	if (readFile.is_open()) {
+
+		while (!readFile.eof()) {
+
+			for (int i = 0; i < 5; i++)
+			{
+				readFile >> m_scores[i];
+
+			}
+
+		}
+	}
+
+	readFile.close();
+
 
 
 }

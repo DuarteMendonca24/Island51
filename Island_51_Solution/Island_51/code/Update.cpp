@@ -165,9 +165,6 @@ void Engine::update(float dtAsSeconds)
         {
             state = State::GAME_OVER;
 
-            std::ofstream outputFile("gamedata/scores.txt");
-            outputFile << hiScore;
-            outputFile.close();
         }
 
         std::list<Zombie*>::iterator it3;
@@ -189,7 +186,7 @@ void Engine::update(float dtAsSeconds)
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
                             // Not just a hit but a kill too
                             // Custom scores for each zombie type
-                            score += (*it3)->killValue();
+                            m_score += (*it3)->killValue();
 
                             //if zombie is a crawler , create two more enemies
                             if ((*it3)->getType() == 2) {
@@ -197,9 +194,9 @@ void Engine::update(float dtAsSeconds)
                                 m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
                             }
                             //numZombiesAlive = numZombies;
-                            if (wave >= hiScore)
+                            if (wave >= m_hiScore)
                             {
-                                hiScore = wave;
+                                m_hiScore = wave;
                             }
 
                             numZombiesAlive--;
@@ -491,7 +488,7 @@ void Engine::update(float dtAsSeconds)
                 m_hud.setAmmoText(ssAmmo.str());
 
                 // Update the score text
-                ssScore << "Points:" << score;
+                ssScore << "Score:" << m_score;
                 // scoreText.setString(ssScore.str());
                 m_hud.setScoreText(ssScore.str());
 
@@ -522,8 +519,6 @@ void Engine::update(float dtAsSeconds)
 
         
     } // End updating the scene
-
-    
 
     if (state == State::MAIN_MENU)
     {
@@ -565,5 +560,45 @@ void Engine::update(float dtAsSeconds)
             m_EnoughResources = false;
             m_SecondsSince = 0;
         }
+    }
+
+
+    if (state == State::GAME_OVER) {
+        
+        //stringstream ssGameOver;
+
+        //m_finalScore = int(m_score - m_GameTime) + 1;
+        //// Update the highscore text
+        //ssGameOver << "\n\tGame Over" <<
+        //    "\n\n\nTime: " << (int)m_GameTime << " s" <<
+        //    "\n\nScore: " << m_score << " pts" <<
+        //    "\n\nFinal Score: " << m_finalScore << " pts";
+        //
+        //m_Hud.setGameOver(ssGameOver.str());
+
+        std::ofstream writeFile;
+        writeFile.open("scores/Highscore.txt");
+
+        if (writeFile.is_open()) {
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (m_score > m_scores[i] && !m_scoreFile) {
+
+                    m_scores[i] = m_score;
+
+                    m_scoreFile = true;
+
+
+                }
+
+                writeFile << m_scores[i] << "\n";
+            }
+
+
+        }
+
+        writeFile.close();
+
     }
 }

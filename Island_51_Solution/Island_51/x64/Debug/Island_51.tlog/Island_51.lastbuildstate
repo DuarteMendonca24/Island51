@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.37.32822:TargetPlatformVersion=10.0.22621.0:
 <<<<<<< Updated upstream
 Debug|x64|C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\|
@@ -7,4 +8,8 @@ Debug|x64|C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_
 =======
 Debug|x64|C:\Users\student\Documents\GitHub\Island51\Island_51_Solution\|
 >>>>>>> 0c250dc4bfee6b7fca2e43a79e8b928d0f9bc9cb
+>>>>>>> Stashed changes
+=======
+PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.35.32215:TargetPlatformVersion=10.0.22000.0:
+Debug|x64|C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\|
 >>>>>>> Stashed changes
