@@ -51,8 +51,8 @@ Hud::Hud(){
 		"\n5- If the hunger reach 0, the player heath bar re is life from heath bar down 0" <<
 		"\n6-  " <<
 		"\n7-  " <<
-		"\n8-  " <<
-		"\n press space key to play the game";
+		"\n8-  " ;
+		
 	m_gameruleText.setString(ruleStream.str());
 
 	// Ammo
@@ -139,7 +139,18 @@ Hud::Hud(){
 		"\n\n\n4 - Exit";
 	m_mainMenuText.setString(mainMenuStream.str());
 
+	//instruction to tell the player what key to press to go back to menu
+	m_goBackMenuText.setFont(m_font);
+	m_goBackMenuText.setCharacterSize(50);
+	m_goBackMenuText.setFillColor(Color::White);
+	m_goBackMenuText.setPosition(10, 10);
+	m_goBackMenuText.setString("Press Escape to go back to main menu");
 
+	//instruction to tell the player what key to press to go back to menu
+	m_highScoreText.setFont(m_font);
+	m_highScoreText.setCharacterSize(50);
+	m_highScoreText.setFillColor(Color::White);
+	m_highScoreText.setPosition(700, 60);
 }
 
 
@@ -149,11 +160,6 @@ Text Hud::getZombiesRemainingText() {
 	return m_zombiesRemainingText;
 }
 
-
-Text Hud::getHiScoreText() {
-
-	return m_hiScoreText;
-}
 
 Text Hud::getScoreText() {
 
@@ -217,6 +223,15 @@ Text Hud::getMainMenuText() {
 	return m_mainMenuText;
 }
 
+Text Hud::getGoBackMenuText() {
+
+	return m_goBackMenuText;
+}
+
+Text Hud::getHighscoreText() {
+
+	return m_highScoreText;
+}
 
 RectangleShape Hud::getHealthBar() {
 
@@ -289,5 +304,10 @@ void Hud::setStoneQuantityText(String text) {
 void Hud::setIronQuantityText(String text) {
 
 	m_ironQuantityText.setString(text);
+}
+
+void Hud::setHighScore(String text)
+{
+	m_highScoreText.setString(text);
 }
 

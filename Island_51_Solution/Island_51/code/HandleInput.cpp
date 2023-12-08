@@ -65,6 +65,11 @@ void Engine::input()
 					state = State::CRAFT;
 				}
 
+				//close game
+				if (event.key.code == Keyboard::Escape)
+				{
+					m_Window.close();
+				}
 
 
 			}
@@ -121,15 +126,33 @@ void Engine::input()
 					m_Window.close();
 				}
 
+				//close game
+				if (event.key.code == Keyboard::Escape)
+				{
+					m_Window.close();
+				}
 
+
+			}
+			else if (state == State::RULE) {
+
+				//to go back to main menu
+				if (event.key.code == Keyboard::Escape)
+				{
+					state = State::MAIN_MENU;
+				}
+			}
+			else if (state == State::HIGHSCORE) {
+
+				//to go back to main menu
+				if (event.key.code == Keyboard::Escape)
+				{
+					state = State::MAIN_MENU;
+				}
 			}
 
 
-			// Handle the player quitting
-			if (event.key.code == Keyboard::Escape)
-			{
-				m_Window.close();
-			}
+			
 
 
 			

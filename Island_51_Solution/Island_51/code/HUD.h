@@ -10,7 +10,6 @@ private:
 	Font m_font;
 	//Text Variables
 	Text m_zombiesRemainingText;
-	Text m_hiScoreText;
 	Text m_scoreText;
 	Text m_ammoText;
 	Text m_levelUpText;
@@ -22,6 +21,8 @@ private:
 	Text m_ironQuantityText;
 	Text m_notEnoughResourcse;
 	Text m_gameruleText;
+	Text m_goBackMenuText;
+	Text m_highScoreText;
 
 	Text m_mainMenuText;
 	
@@ -46,7 +47,6 @@ private:
 public:
 	Hud();
 	Text getZombiesRemainingText();
-	Text getHiScoreText();
 	Text getScoreText();
 	Text getAmmoText();
 	Text getLevelUpText();
@@ -59,6 +59,8 @@ public:
 	Text getNotEnoughResourcse();
 	Text getgameruleText();
 	Text getMainMenuText();
+	Text getGoBackMenuText();
+	Text getHighscoreText();
 	RectangleShape getHealthBar();
 	RectangleShape getHungerBar();
 	RectangleShape getBackgroudCraft();
@@ -74,6 +76,7 @@ public:
 	void setStoneQuantityText(String text);
 	void setIronQuantityText(String text);
 	void setDarkness(float darknessLevel);
+	void setHighScore(String text);
 	
 	
 	

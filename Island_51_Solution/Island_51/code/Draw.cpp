@@ -157,7 +157,13 @@ void Engine::draw()
 
     if (state == State::RULE)
     {
+        m_Window.clear(sf::Color(52, 43, 55));  // Black color with full alpha
+
+        
+        // Switch to the HUD view
+        m_Window.setView(m_hudView);
         // here is the rules for the rules 
+        m_Window.draw(m_hud.getGoBackMenuText());
         m_Window.draw(m_hud.getgameruleText());
 
     }
@@ -187,8 +193,21 @@ void Engine::draw()
         m_Window.draw(spriteMainMenu);
         m_Window.draw(m_hud.getGameOverText());
         m_Window.draw(m_hud.getScoreText());
-        m_Window.draw(m_hud.getHiScoreText());
+        m_Window.draw(m_hud.getHighscoreText());
         //gameoversound.play();
+    }
+
+    if (state == State::HIGHSCORE) {
+
+        m_Window.clear(sf::Color(52, 43, 55));  // Black color with full alpha
+
+
+        // Switch to the HUD view
+        m_Window.setView(m_hudView);
+        // here is the rules for the rules 
+        m_Window.draw(m_hud.getGoBackMenuText());
+        m_Window.draw(m_hud.getHighscoreText());
+
     }
 
     if (state == State::MAIN_MENU)
