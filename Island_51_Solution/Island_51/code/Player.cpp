@@ -279,7 +279,7 @@ void Player::upgradeHealth()
 
 }
 
-void Player::setHealth(int x)
+void Player::setHealth(float x)
 {
 	// Health 
 	m_Health =  x;
@@ -290,6 +290,17 @@ void Player::setHealth(int x)
 void Player::increaseHealthLevel(int amount)
 {
 	m_Health += amount;
+
+	// But not beyond the maximum
+	if (m_Health > m_MaxHealth)
+	{
+		m_Health = m_MaxHealth;
+	}
+}
+
+void Player::decreaseHealthLevel(float amount)
+{
+	m_Health -= amount;
 
 	// But not beyond the maximum
 	if (m_Health > m_MaxHealth)

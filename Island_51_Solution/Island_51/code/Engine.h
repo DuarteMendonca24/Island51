@@ -222,13 +222,13 @@ private:
     Texture textureBackground;
     Texture textureAmmoIcon;
     Texture textureCrosshair;
-    Texture textureGameOver;
+    Texture textureMainMenu;
     Texture GUI_background_Texture;
     Texture textureRule;
     
     //Sprites variables
     Sprite spriteCrosshair;
-    Sprite spriteGameOver;
+    Sprite spriteMainMenu;
     Sprite spriteAmmoIcon;
 
     //SoundBuffer Variables
@@ -280,15 +280,13 @@ private:
     //Bar Variables
 
     float m_currentHunger = 100;
-<<<<<<< HEAD
-    float m_hungerTickAmount = 0.011;
-=======
-    float m_hungerTickAmount = 0.001;
+
+    float m_hungerTickAmount = 10;
+
+
     float dtSinceDrawUpdate;
-<<<<<<< Updated upstream
-=======
->>>>>>> 0c250dc4bfee6b7fca2e43a79e8b928d0f9bc9cb
->>>>>>> Stashed changes
+
+
 
 
 

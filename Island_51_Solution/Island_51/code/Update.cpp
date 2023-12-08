@@ -13,19 +13,20 @@ void Engine::update(float dtAsSeconds)
     {
 
         //Update the Hunger Bar
-        m_currentHunger -= m_hungerTickAmount;
+      //  m_currentHunger -= m_hungerTickAmount;
         
   
         if (m_currentHunger <= 0)
         {
-            int health = player.getHealth();
-            health -= m_hungerTickAmount;
-            player.setHealth(health);
+            //float health = player.getHealth();
+            //health -= m_hungerTickAmount ;
+            //player.setHealth(health);
+            player.decreaseHealthLevel(m_hungerTickAmount * dtAsSeconds);
         }
         else
         {
             //Update the Hunger Bar
-            m_currentHunger -= m_hungerTickAmount;
+            m_currentHunger -= m_hungerTickAmount * dtAsSeconds;
         }
 
 
@@ -163,6 +164,7 @@ void Engine::update(float dtAsSeconds)
 
         if (player.getHealth() <= 0)
         {
+            
             state = State::GAME_OVER;
 
         }
@@ -421,7 +423,7 @@ void Engine::update(float dtAsSeconds)
                     //Ammo Pickup
                     if ((*it5)->getType() == 2)
                     {
-                        m_currentHunger += 0.1;
+                        m_currentHunger += 0.5;
                         (*it5)->hit();
 
                     }

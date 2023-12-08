@@ -35,9 +35,9 @@ private:
 	bool m_RightPressed;
 
 	// How much health has the player got?
-	int m_Health;
+	float m_Health;
 	// What is the maximum health the player can have
-	int m_MaxHealth;
+	float m_MaxHealth;
 
 	// When was the player last hit
 	Time m_LastHit;
@@ -125,10 +125,11 @@ public:
 	void upgradeHealth();
 
 	// Here is the health for the player
-	void setHealth(int x);
+	void setHealth(float x);
 
 	// Increase the maximum amount of health the player can have
 	void increaseHealthLevel(int amount);
+	void decreaseHealthLevel(float amount);
 
 	// Change Player Sprite to hold new weapons
 	void changePlayerSprite(int type);

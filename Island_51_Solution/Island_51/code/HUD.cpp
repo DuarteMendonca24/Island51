@@ -125,6 +125,20 @@ Hud::Hud(){
 	darkness.setOrigin(Vector2f(0, 0));
 	darkness.setSize(Vector2f(3000.0f,3000.0f));
 
+	//main menu text
+	m_mainMenuText.setFont(m_font);
+	m_mainMenuText.setCharacterSize(60);
+	m_mainMenuText.setFillColor(Color::White);
+	m_mainMenuText.setPosition(500, 60);
+	std::stringstream mainMenuStream;
+	mainMenuStream <<
+		"ISLAND 51" <<
+		"\n\n\n1 - Play Game" <<
+		"\n\n\n2 - Rules " <<
+		"\n\n\n3 - High Scores " <<
+		"\n\n\n4 - Exit";
+	m_mainMenuText.setString(mainMenuStream.str());
+
 
 }
 
@@ -197,6 +211,12 @@ Text Hud::getNotEnoughResourcse() {
 
 	return m_notEnoughResourcse;
 }
+
+Text Hud::getMainMenuText() {
+
+	return m_mainMenuText;
+}
+
 
 RectangleShape Hud::getHealthBar() {
 
