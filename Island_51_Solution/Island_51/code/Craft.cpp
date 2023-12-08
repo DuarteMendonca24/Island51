@@ -6,7 +6,7 @@ Craft::Craft()
 void Craft::position(float width, float height)
 {
 	// load the font
-	font.loadFromFile("fonts/zombiecontrol.ttf");
+	font.loadFromFile("fonts/Roboto-Light.ttf");
 	select[0].setFont(font);// set the font    
 	select[0].setFillColor(Color::Red);// color red in text
 	select[0].setString("Wood Sword \nWoods : 3");// print the text
@@ -29,8 +29,13 @@ void Craft::position(float width, float height)
 
 	select[4].setFont(font);// set the font 
 	select[4].setFillColor(Color::White);// color white in text
-	select[4].setString("Exit");// print the text
-	select[4].setPosition(Vector2f(width / 2, height / (MAX_NUMBER_OF_CRAFT + 1) * 5));// set the position
+	select[4].setString("Boat \nSouls: 30");// print the text
+	select[4].setPosition(sf::Vector2f(800, height / (MAX_NUMBER_OF_CRAFT + 1) * 5));// set the position
+
+	select[5].setFont(font);// set the font 
+	select[5].setFillColor(Color::White);// color white in text
+	select[5].setString("Exit");// print the text
+	select[5].setPosition(Vector2f(width / 2, height / (MAX_NUMBER_OF_CRAFT + 1) * 6));// set the position
 
 	selectCraft = 0; //start at 0
 

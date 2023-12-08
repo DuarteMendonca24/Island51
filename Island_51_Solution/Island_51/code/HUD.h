@@ -8,6 +8,7 @@ class Hud
 private:
 	
 	Font m_font;
+	Font m_font2;
 	//Text Variables
 	Text m_scoreText;
 	Text m_ammoText;

@@ -74,6 +74,7 @@ private:
     int numTreePickup = 0;
     int numStonePickup = 0;
     int numIronPickup = 0;
+    int numSoulPickup = 0;
 
     Vector2f position;
     //Horde Object

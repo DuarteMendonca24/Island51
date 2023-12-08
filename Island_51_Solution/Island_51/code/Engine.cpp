@@ -3,7 +3,7 @@
 
 Engine::Engine() {
 	// Get the screen resolution and create an SFML window and View
-	loadSounds();
+	//loadSounds();
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 	state = State::MAIN_MENU;

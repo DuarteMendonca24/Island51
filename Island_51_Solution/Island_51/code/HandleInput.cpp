@@ -150,16 +150,6 @@ void Engine::input()
 					state = State::MAIN_MENU;
 				}
 			}
-
-
-			
-
-
-			
-
-			
-
-
 		}
 
 		//Craft item needs to be outside because it checks for key release events
@@ -167,7 +157,6 @@ void Engine::input()
 		{
 			// Inventory 
 			if (event.key.code == Keyboard::Tab) {
-
 				if (!m_inventoryActive) {
 
 					m_inventoryActive = true;
@@ -221,8 +210,14 @@ void Engine::input()
 						numTreePickup = numTreePickup - 1;
 						numStonePickup = numStonePickup - 1;
 					}
+					else if (select.GetPressed() == 4 && numTreePickup >= 1 && numStonePickup >= 1)
+					{
+						arrowCurrentBullet = arrowCurrentBullet + 20;
+						numTreePickup = numTreePickup - 1;
+						numStonePickup = numStonePickup - 1;
+					}
 					// exit the craft
-					else if (select.GetPressed() == 4 && state == State::CRAFT)
+					else if (select.GetPressed() == 5 && state == State::CRAFT)
 					{
 						state = State::PLAYING;
 						clock.restart();

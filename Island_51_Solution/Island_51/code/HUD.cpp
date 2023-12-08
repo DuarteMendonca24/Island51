@@ -9,7 +9,7 @@ Hud::Hud(){
 
 	//load the font
 	m_font.loadFromFile("fonts/zombiecontrol.ttf");
-
+	m_font2.loadFromFile("fonts/Roboto-Light.ttf");
 	// Paused
 	m_pausedText.setFont(m_font);
 	m_pausedText.setCharacterSize(155);
@@ -120,7 +120,7 @@ Hud::Hud(){
 	m_backgroundCraft.setFillColor(Color::Color(0,0,255,1));
 	m_backgroundCraft.setPosition(490, 0);
 
-	m_notEnoughResourcse.setFont(m_font);
+	m_notEnoughResourcse.setFont(m_font2);
 	m_notEnoughResourcse.setCharacterSize(50);
 	m_notEnoughResourcse.setFillColor(Color::Yellow);
 	m_notEnoughResourcse.setPosition(500, 500);
