@@ -98,13 +98,13 @@ Zombie* Engine::createIllusions(Vector2f playerPosition)
 std::list<Zombie*> Engine::createEnemies(int numZombies, Vector2f position, int type)
 {
 	std::list<Zombie*> zombiesList;
-	int spawnersAvailable = manageLevel.getSpawnerCount();
-	int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
-	Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
+	//int spawnersAvailable = manageLevel.getSpawnerCount();
+	//int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
+	//Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
 
 	
-	int x = spawnLocation.x;
-	int y = spawnLocation.y;
+	int x = position.x;
+	int y = position.y;
 	int xOffset = 25;
 
 	for (int i = 0; i < numZombies; i++)

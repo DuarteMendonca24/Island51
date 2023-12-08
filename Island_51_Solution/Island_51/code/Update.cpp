@@ -26,9 +26,9 @@ void Engine::update(float dtAsSeconds)
         else
         {
             //Update the Hunger Bar
-            cout << "BeforeHunger: " << m_currentHunger;
+           
             m_currentHunger -= m_hungerTickAmount * dtAsSeconds;
-            cout << "AfterHunger: " << m_currentHunger;
+       
         }
 
 
@@ -257,7 +257,7 @@ void Engine::update(float dtAsSeconds)
             m_illusionsFireRate -= dtAsSeconds;
             if (m_illusionsFireRate < 0)
             {
-                m_illusionsFireRate = 2;
+                m_illusionsFireRate = 1;
 
 
 
@@ -346,62 +346,73 @@ void Engine::update(float dtAsSeconds)
         std::list<Pickup*>::iterator it4;
         for (int i = 0; i < 100; i++)
         {
-            for (it4 = m_PickupList.begin(); it4 != m_PickupList.end(); it4++)
+            for (it4 = m_PickupList.begin(); it4 != m_PickupList.end();it4++)
             {
                 if (bullets[i].isInFlight() && (*it4)->isAlive())
                 {
-                    //check for bullet collision and if its not helath or hunger pickup
+                    // Check for bullet collision and if it's not a health or hunger pickup
                     if (bullets[i].getPosition().intersects((*it4)->getPosition()) && (*it4)->getType() != 1 && (*it4)->getType() != 2)
                     {
-
                         // Stop the bullet
                         bullets[i].stop();
 
                         // Register the hit and see if it was a kill
                         if ((*it4)->hit())
                         {
-                            srand((int)time(0)* i);
+                            srand((int)time(0) * i);
                             float posX = (rand() % 3651) + 2380;
                             float posY = (rand() % 1951) + 450;
                             float m_type = (rand() % 3) + 3;
-                            std::list<Pickup*> newPickup = createRespawnResorces(1,posX,posY,m_type);
+                            std::list<Pickup*> newPickup = createRespawnResorces(1, posX, posY, m_type);
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
-                            //Tree pickup
-                            if ((*it4)->getType() == 3) {
 
+                            // Tree pickup
+                            if ((*it4)->getType() == 3)
+                            {
                                 numTreePickup++;
-
+                             
+                               
                             }
 
-                            //Stone pickup
-                            if ((*it4)->getType() == 4) {
-
+                            // Stone pickup
+                            else if ((*it4)->getType() == 4)
+                            {
                                 numStonePickup++;
+                                
+                                
                             }
 
-                            //Iron pickup
-                            if ((*it4)->getType() == 5) {
-
+                            // Iron pickup
+                            else if ((*it4)->getType() == 5)
+                            {
                                 numIronPickup++;
+                              
+                                
                             }
 
+                           
 
-
+                            // Erase the pickup
+                          
                             numResourceAlive--;
+                           
                         }
+                      
 
                         // Make a splat sound
                         splat.play();
 
-                        // Make a enemy sound
+                        // Make an enemy sound
                         //enemysound.play();
                     }
-
-
                 }
-
+                
+                
+              
+            
             }
         } // End zombie being shot
+
 
 
         
@@ -422,7 +433,7 @@ void Engine::update(float dtAsSeconds)
                     // Ammo Pickup
                     else if ((*it5)->getType() == 2)
                     {
-                        (*it5)->hit();
+                       
                        
                         m_currentHunger += 30;
                         it5 = m_PickupList.erase(it5);
@@ -443,9 +454,21 @@ void Engine::update(float dtAsSeconds)
             }
         }
 
-        
+        //loop to delete pickups if they have been killed
+        std::list<Pickup*>::iterator it6;
+        for (it6 = m_PickupList.begin(); it6 != m_PickupList.end();) {
 
-            //----------------------------------------------------------------------------------------
+            if ((*it6)->isAlive()) {
+
+                it6++;
+            }
+            else {
+
+                m_PickupList.erase(it6++);
+            }
+        }
+
+        //----------------------------------------------------------------------------------------
 
 
             // Increment the number of frames since the last HUD calculation
@@ -474,10 +497,6 @@ void Engine::update(float dtAsSeconds)
                 ssNumIronPickups << "x " << numIronPickup;
                 m_hud.setIronQuantityText(ssNumIronPickups.str());
 
-
-
-
-
                 // Update the ammo text
                 ssAmmo << bulletsInClip << "/" << bulletsSpare;
                 //ammoText.setString(ssAmmo.str());
@@ -498,10 +517,8 @@ void Engine::update(float dtAsSeconds)
                 //waveNumberText.setString(ssWave.str());
                 m_hud.setWaveNumberText(ssWave.str());
 
-                // Update the high score text
-                ssZombiesAlive << "Zombies:" << numZombiesAlive;
-                // zombiesRemainingText.setString(ssZombiesAlive.str());
-                m_hud.setZombiesRemainingText(ssZombiesAlive.str());
+                
+             
 
                 //health bar width is 300
                 m_hud.setHealthSize(player.getHealth());

@@ -1,3 +1,43 @@
 ﻿  HUD.cpp
-C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(257,46): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(79,60): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(79,41): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(84,69): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(84,51): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(89,62): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(89,43): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(95,73): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(95,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.cpp(266,46): warning C4244: 'argument': conversion from 'float' to 'sf::Uint8', possible loss of data
   Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

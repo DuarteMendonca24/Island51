@@ -312,7 +312,7 @@ private:
     Bullet m_illusionsBullets[100];
     Bullet m_enemyBullets[100];
 
-    float m_illusionsFireRate = 3;
+    float m_illusionsFireRate = 1;
     float m_shootingFireRate = 3;
 
     Craft select;

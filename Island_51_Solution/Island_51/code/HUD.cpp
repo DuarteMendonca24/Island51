@@ -73,20 +73,26 @@ Hud::Hud(){
 	m_waveNumberText.setFillColor(Color::White);
 	m_waveNumberText.setPosition(800, 0);
 
-	// wave
-	m_zombiesRemainingText.setFont(m_font);
-	m_zombiesRemainingText.setCharacterSize(55);
-	m_zombiesRemainingText.setFillColor(Color::White);
-	m_zombiesRemainingText.setPosition(1500, 0);
 
 	m_healthBar.setSize(Vector2f(m_healthBarWidth, m_healthBarHeight));
 	m_healthBar.setFillColor(Color::Red);
-	m_healthBar.setPosition(450, 980); 
+	m_healthBar.setPosition(resolution.x/2 - 80, resolution.y - 90);
+
+	//background of health bar
+	m_healthBarBackground.setSize(Vector2f(m_healthBarWidth, m_healthBarHeight));
+	m_healthBarBackground.setFillColor(Color(52, 43, 55));
+	m_healthBarBackground.setPosition(resolution.x/2 -80 , resolution.y-90);
 
 
-	m_hungerBar.setSize(Vector2f(100,40));
-	m_hungerBar.setFillColor(Color::Red);
-	m_hungerBar.setPosition((190 / 2) - m_hungerBarStartWidth / 2, 100);
+	m_hungerBar.setSize(Vector2f(m_hungerBarStartWidth,m_hungerBarHeight));
+	m_hungerBar.setFillColor(Color(205, 133, 63));
+	m_hungerBar.setPosition(resolution.x / 2 + 80, resolution.y - 90);
+
+
+	//background of hunger bar
+	m_hungerBarBackground.setSize(Vector2f(m_hungerBarStartWidth, m_hungerBarHeight));
+	m_hungerBarBackground.setFillColor(Color(52, 43, 55));
+	m_hungerBarBackground.setPosition(resolution.x / 2 + 80 , resolution.y - 90);
 
 	//wood quantity
 	m_woodQuantityText.setFont(m_font);
@@ -151,13 +157,6 @@ Hud::Hud(){
 	m_highScoreText.setCharacterSize(50);
 	m_highScoreText.setFillColor(Color::White);
 	m_highScoreText.setPosition(700, 60);
-}
-
-
-
-Text Hud::getZombiesRemainingText() {
-
-	return m_zombiesRemainingText;
 }
 
 
@@ -238,9 +237,19 @@ RectangleShape Hud::getHealthBar() {
 	return m_healthBar;
 }
 
+RectangleShape Hud::getHealthBarBackground() {
+
+	return m_healthBarBackground;
+}
+
 RectangleShape Hud::getHungerBar() {
 
 	return m_hungerBar;
+}
+
+RectangleShape Hud::getHungerBarBackground() {
+
+	return m_hungerBarBackground;
 }
 
 RectangleShape Hud::getBackgroudCraft() {
@@ -257,11 +266,6 @@ void Hud::setDarkness(float darknessLevel)
 	darkness.setFillColor(Color::Color(0, 0, 0, darknessLevel));
 }
 
-void Hud::setZombiesRemainingText(String text) {
-
-	m_zombiesRemainingText.setString(text);
-	
-}
 
 void Hud::setScoreText(String text) {
 

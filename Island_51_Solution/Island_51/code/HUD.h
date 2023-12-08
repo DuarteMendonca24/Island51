@@ -9,7 +9,6 @@ private:
 	
 	Font m_font;
 	//Text Variables
-	Text m_zombiesRemainingText;
 	Text m_scoreText;
 	Text m_ammoText;
 	Text m_levelUpText;
@@ -32,10 +31,18 @@ private:
 	float m_healthBarWidth = 100;
 	float m_healthBarHeight = 40;
 
+	//Health bar background
+	RectangleShape m_healthBarBackground;
+	
+
 	//Hunger Bar
 	RectangleShape m_hungerBar;
 	float m_hungerBarStartWidth = 100;
 	float m_hungerBarHeight = 40;
+
+	//Hunger Bar
+	RectangleShape m_hungerBarBackground;
+	
 	
 	// Shop background
 	RectangleShape m_backgroundCraft;
@@ -46,7 +53,6 @@ private:
 
 public:
 	Hud();
-	Text getZombiesRemainingText();
 	Text getScoreText();
 	Text getAmmoText();
 	Text getLevelUpText();
@@ -62,11 +68,12 @@ public:
 	Text getGoBackMenuText();
 	Text getHighscoreText();
 	RectangleShape getHealthBar();
+	RectangleShape getHealthBarBackground();
 	RectangleShape getHungerBar();
+	RectangleShape getHungerBarBackground();
 	RectangleShape getBackgroudCraft();
 	RectangleShape getDarkness();
 
-	void setZombiesRemainingText(String text);
 	void setScoreText(String text);
 	void setAmmoText(String text);
 	void setWaveNumberText(String text);

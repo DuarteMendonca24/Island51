@@ -135,9 +135,10 @@ void Engine::draw()
         m_Window.draw(m_hud.getAmmoText());
         m_Window.draw(m_hud.getScoreText());
         //m_Window.draw(m_hud.getHiScoreText());
+        m_Window.draw(m_hud.getHealthBarBackground());
         m_Window.draw(m_hud.getHealthBar());
         // m_Window.draw(m_hud.getWaveNumberText());
-        m_Window.draw(m_hud.getZombiesRemainingText());
+        m_Window.draw(m_hud.getHungerBarBackground());
         m_Window.draw(m_hud.getHungerBar());
         m_Window.draw(m_hud.getDarkness());
 
