@@ -159,7 +159,7 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
-		cout << "m_Position.y  " << m_Position.y << "\n";
+		//cout << "m_Position.y  " << m_Position.y << "\n";
 	}
 
 	if (m_DownPressed)
@@ -169,7 +169,7 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
-		cout << "m_Position.y  " << m_Position.y << "\n";
+		//cout << "m_Position.y  " << m_Position.y << "\n";
 	}
 
 	if (m_RightPressed)
@@ -179,7 +179,7 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
-		cout << "m_Position.x  " << m_Position.x << "\n";
+		//cout << "m_Position.x  " << m_Position.x << "\n";
 	}
 
 	if (m_LeftPressed)
@@ -189,7 +189,7 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
-		cout << "m_Position.x  " << m_Position.x << "\n";
+		//cout << "m_Position.x  " << m_Position.x << "\n";
 	}
 	m_Sprite.setPosition(m_Position);
 

@@ -73,7 +73,7 @@ int** LevelManager::loadLevel(VertexArray& rVaLevel)
 				}
 				
 			}
-			cout << val << " ";
+			//cout << val << " ";
 			arrayLevel[y][x] = atoi(&val);
 			outputFile << val;
 

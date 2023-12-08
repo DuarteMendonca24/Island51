@@ -26,7 +26,9 @@ void Engine::update(float dtAsSeconds)
         else
         {
             //Update the Hunger Bar
+            cout << "BeforeHunger: " << m_currentHunger;
             m_currentHunger -= m_hungerTickAmount * dtAsSeconds;
+            cout << "AfterHunger: " << m_currentHunger;
         }
 
 
@@ -292,7 +294,7 @@ void Engine::update(float dtAsSeconds)
 
                         if (bullets[i].getPosition().intersects(Illusions[j].getPosition()) && j == m_realOne)
                         {
-                            cout << "Entrou";
+                           // cout << "Entrou";
 
 
                             // Register the hit and see if it was a kill
@@ -411,45 +413,37 @@ void Engine::update(float dtAsSeconds)
             {
                 if (player.getPosition().intersects((*it5)->getPosition()) && (*it5)->isSpawned())
                 {
-                    //Health Pickup
+                    // Health Pickup
                     if ((*it5)->getType() == 1)
                     {
                         player.increaseHealthLevel((*it5)->gotIt());
-                        (*it5)->hit();
-
-
+                        it5 = m_PickupList.erase(it5);
                     }
-
-                    //Ammo Pickup
-                    if ((*it5)->getType() == 2)
+                    // Ammo Pickup
+                    else if ((*it5)->getType() == 2)
                     {
-                        m_currentHunger += 0.5;
                         (*it5)->hit();
-
+                       
+                        m_currentHunger += 30;
+                        it5 = m_PickupList.erase(it5);
+                    
+                    }
+                    else
+                    {
+                        it5++;  // Increment here only if neither condition is met
                     }
 
-                    break;// Break the loop after erasing the pickup
+                    // Break the loop after handling the pickup
+                    break;
                 }
-                else {
-
+                else
+                {
                     it5++;
                 }
-
             }
         }
-            //loop to delete pickups if they have been killed
-            std::list<Pickup*>::iterator it6;
-            for (it6 = m_PickupList.begin(); it6 != m_PickupList.end();) {
 
-                if ((*it6)->isAlive()) {
-
-                    it6++;
-                }
-                else {
-
-                    m_PickupList.erase(it6++);
-                }
-            }
+        
 
             //----------------------------------------------------------------------------------------
 
@@ -554,7 +548,7 @@ void Engine::update(float dtAsSeconds)
         if (m_EnoughResources)
         {
             m_SecondsSince += dtAsSeconds;
-            cout << "m_SecondsSince " << m_SecondsSince;
+           // cout << "m_SecondsSince " << m_SecondsSince;
         }
 
         if (m_SecondsSince >= 1 && m_EnoughResources)

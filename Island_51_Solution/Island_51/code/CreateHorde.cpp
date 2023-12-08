@@ -156,8 +156,8 @@ std::list<Pickup*> Engine::createResorces(int numResource)
 		Pickup* resource = new Pickup();
 		resource->spawnPickup(type, posX, posY, 2.5);
 		resourceList.push_back(resource);
-		cout << "Pickup_Position.x  " << posX << "\n";
-		cout << "Pickup_Position.y  " << posY << "\n";
+		//cout << "Pickup_Position.x  " << posX << "\n";
+		//cout << "Pickup_Position.y  " << posY << "\n";
 	}
 	return resourceList;
 }
@@ -175,8 +175,8 @@ std::list<Pickup*> Engine::createRespawnResorces(int numResource, float position
 		Pickup* resource = new Pickup();
 		resource->spawnPickup(m_type, posX, posY, 2.5);
 		resourceList.push_back(resource);
-		cout << "Pickup_Position.x  " << posX << "\n";
-		cout << "Pickup_Position.y  " << posY << "\n";
+		//cout << "Pickup_Position.x  " << posX << "\n";
+		//cout << "Pickup_Position.y  " << posY << "\n";
 	}
 
 	return resourceList;
