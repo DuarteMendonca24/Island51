@@ -143,6 +143,7 @@
     <ClInclude Include="code\Player.h" />
     <ClInclude Include="code\State.h" />
     <ClInclude Include="code\TextureHolder.h" />
+    <ClInclude Include="code\Weapons.h" />
     <ClInclude Include="code\Zombie.h" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <ClCompile Include="code\SoundEngine.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
     <ClCompile Include="code\Update.cpp" />
+    <ClCompile Include="code\Weapons.cpp" />
     <ClCompile Include="code\Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>

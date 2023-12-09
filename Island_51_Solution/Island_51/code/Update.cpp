@@ -163,14 +163,12 @@ void Engine::update(float dtAsSeconds)
                 
             }
         } // End player touched
-
         if (player.getHealth() <= 0)
         {
             
             state = State::GAME_OVER;
 
         }
-
         std::list<Zombie*>::iterator it3;
         for (int i = 0; i < 100; i++)
         {
@@ -373,12 +371,12 @@ void Engine::update(float dtAsSeconds)
                             srand((int)time(0) * i);
                             float posX = (rand() % 3651) + 2380;
                             float posY = (rand() % 1951) + 450;
-                            float m_type = (rand() % 3) + 3;
+                            float m_type = (rand() % 3) + 4;
                             std::list<Pickup*> newPickup = createRespawnResorces(1, posX, posY, m_type);
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
 
                             // Tree pickup
-                            if ((*it4)->getType() == 3)
+                            if ((*it4)->getType() == 4)
                             {
                                 numTreePickup++;
                              
@@ -386,7 +384,7 @@ void Engine::update(float dtAsSeconds)
                             }
 
                             // Stone pickup
-                            else if ((*it4)->getType() == 4)
+                            else if ((*it4)->getType() == 5)
                             {
                                 numStonePickup++;
                                 
@@ -394,7 +392,7 @@ void Engine::update(float dtAsSeconds)
                             }
 
                             // Iron pickup
-                            else if ((*it4)->getType() == 5)
+                            else if ((*it4)->getType() == 6)
                             {
                                 numIronPickup++;
                               
@@ -444,11 +442,15 @@ void Engine::update(float dtAsSeconds)
                     // Ammo Pickup
                     else if ((*it5)->getType() == 2)
                     {
-                       
-                       
                         m_currentHunger += 30;
                         it5 = m_PickupList.erase(it5);
                     
+                    }
+                    else if ((*it5)->getType() == 3)
+                    {
+                        numSoulPickup++;
+                        it5 = m_PickupList.erase(it5);
+
                     }
                     else
                     {
@@ -498,6 +500,7 @@ void Engine::update(float dtAsSeconds)
                 std::stringstream ssNumTreePickups;
                 std::stringstream ssNumStonePickups;
                 std::stringstream ssNumIronPickups;
+                std::stringstream ssNumSoulPickups;
 
                 ssNumTreePickups << "x " << numTreePickup;
                 m_hud.setWoodQuantityText(ssNumTreePickups.str());
@@ -507,6 +510,9 @@ void Engine::update(float dtAsSeconds)
 
                 ssNumIronPickups << "x " << numIronPickup;
                 m_hud.setIronQuantityText(ssNumIronPickups.str());
+
+                ssNumSoulPickups << "x " << numSoulPickup;
+                m_hud.setSoulQuantityText(ssNumSoulPickups.str());
 
                 // Update the ammo text
                 ssAmmo << bulletsInClip << "/" << bulletsSpare;

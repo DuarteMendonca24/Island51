@@ -48,6 +48,9 @@
     <ClInclude Include="code\Craft.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="code\Weapons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\Zombie.cpp">
@@ -99,6 +102,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="code\Craft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Weapons.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -94,6 +94,31 @@ Hud::Hud(){
 	m_hungerBarBackground.setFillColor(Color(52, 43, 55));
 	m_hungerBarBackground.setPosition(resolution.x / 2 + 80 , resolution.y - 90);
 
+	//background of weapon
+	m_backgroundWeapon.setSize(Vector2f(m_backgroundWeaponWidth, m_backgroundWeaponHeight));
+	m_backgroundWeapon.setFillColor(Color(52, 43, 55));
+	m_backgroundWeapon.setPosition(resolution.x / 2 - 110, resolution.y - 190);
+
+	//background of weapon square
+	m_backgroundWeaponSquare.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare.setPosition(resolution.x / 2 - 100, resolution.y - 175);
+
+	m_backgroundWeaponSquare2.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare2.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare2.setPosition(resolution.x / 2 - 30, resolution.y - 175);
+	
+	m_backgroundWeaponSquare3.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare3.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare3.setPosition(resolution.x / 2 + 40, resolution.y - 175);
+
+	m_backgroundWeaponSquare4.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare4.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare4.setPosition(resolution.x / 2 + 110, resolution.y - 175);
+
+	m_backgroundWeaponSquare5.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare5.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare5.setPosition(resolution.x / 2 + 180, resolution.y - 175);
 	//wood quantity
 	m_woodQuantityText.setFont(m_font);
 	m_woodQuantityText.setCharacterSize(50);
@@ -114,6 +139,13 @@ Hud::Hud(){
 	m_ironQuantityText.setFillColor(Color::White);
 	m_ironQuantityText.setPosition(110, 515);
 	m_ironQuantityText.setString("x 0");
+
+	//soul quantity
+	m_soulQuantityText.setFont(m_font);
+	m_soulQuantityText.setCharacterSize(50);
+	m_soulQuantityText.setFillColor(Color::White);
+	m_soulQuantityText.setPosition(110, 615);
+	m_soulQuantityText.setString("x 0");
 
 	//Background Craft
 	m_backgroundCraft.setSize(Vector2f(m_backgroundWidth, m_backgroundHeight));
@@ -157,6 +189,13 @@ Hud::Hud(){
 	m_highScoreText.setCharacterSize(50);
 	m_highScoreText.setFillColor(Color::White);
 	m_highScoreText.setPosition(700, 60);
+
+	//Numberes of weapons
+	m_numWeaponText.setFont(m_font2);
+	m_numWeaponText.setCharacterSize(20);
+	m_numWeaponText.setFillColor(Color::White);
+	m_numWeaponText.setPosition(resolution.x / 2 - 110, resolution.y - 190);
+	m_numWeaponText.setString("1			2			3			4			5");
 }
 
 
@@ -206,6 +245,10 @@ Text Hud::getIronQuantityText() {
 	return m_ironQuantityText;
 }
 
+Text Hud::getSoulQuantityText() {
+
+	return m_soulQuantityText;
+}
 
 Text Hud::getWaveNumberText() {
 
@@ -232,6 +275,11 @@ Text Hud::getHighscoreText() {
 	return m_highScoreText;
 }
 
+Text Hud::getNumWeaponText() {
+
+	return m_numWeaponText;
+}
+
 RectangleShape Hud::getHealthBar() {
 
 	return m_healthBar;
@@ -250,6 +298,36 @@ RectangleShape Hud::getHungerBar() {
 RectangleShape Hud::getHungerBarBackground() {
 
 	return m_hungerBarBackground;
+}
+
+RectangleShape Hud::getBackgroudWeapon() {
+
+	return m_backgroundWeapon;
+}
+
+RectangleShape Hud::getBackgroudWeaponSquare() {
+
+	return m_backgroundWeaponSquare;
+}
+
+RectangleShape Hud::getBackgroudWeaponSquare2() {
+
+	return m_backgroundWeaponSquare2;
+}
+
+RectangleShape Hud::getBackgroudWeaponSquare3() {
+
+	return m_backgroundWeaponSquare3;
+}
+
+RectangleShape Hud::getBackgroudWeaponSquare4() {
+
+	return m_backgroundWeaponSquare4;
+}
+
+RectangleShape Hud::getBackgroudWeaponSquare5() {
+
+	return m_backgroundWeaponSquare5;
 }
 
 RectangleShape Hud::getBackgroudCraft() {
@@ -308,6 +386,11 @@ void Hud::setStoneQuantityText(String text) {
 void Hud::setIronQuantityText(String text) {
 
 	m_ironQuantityText.setString(text);
+}
+
+void Hud::setSoulQuantityText(String text) {
+
+	m_soulQuantityText.setString(text);
 }
 
 void Hud::setHighScore(String text)

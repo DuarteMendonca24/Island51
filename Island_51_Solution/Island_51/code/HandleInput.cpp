@@ -144,7 +144,7 @@ void Engine::input()
 				}
 			}
 		}
-
+		
 		//Craft item needs to be outside because it checks for key release events
 		if (state == State::CRAFT)
 		{
@@ -181,14 +181,14 @@ void Engine::input()
 					// craft wood sword
 					if (select.GetPressed() == 0 && numTreePickup >= 3)
 					{
-						woodSwordCurrentBullet = woodSwordCurrentBullet + 30;
+						woodSwordBulletsInClip = woodSwordBulletsInClip + 30;
 						numTreePickup = numTreePickup - 3;
 						pickup.play();
 					}
 					// craft stone sword
 					else if (select.GetPressed() == 1 && numTreePickup >= 1 && numStonePickup >= 2)
 					{
-						stoneSwordCurrentBullet = stoneSwordCurrentBullet + 50;
+						stoneSwordBulletsInClip = stoneSwordBulletsInClip + 50;
 						numTreePickup = numTreePickup - 1;
 						numStonePickup = numStonePickup - 2;
 						pickup.play();
@@ -196,7 +196,7 @@ void Engine::input()
 					// craft iron sword
 					else if (select.GetPressed() == 2 && numTreePickup >= 1 && numIronPickup >= 2)
 					{
-						ironSwordCurrentBullet = ironSwordCurrentBullet + 70;
+						ironSwordBulletsInClip = ironSwordBulletsInClip + 70;
 						numTreePickup = numTreePickup - 1;
 						numIronPickup = numIronPickup - 2;
 						pickup.play();
@@ -204,17 +204,21 @@ void Engine::input()
 					// craft arrow
 					else if (select.GetPressed() == 3 && numTreePickup >= 1 && numStonePickup >= 1)
 					{
-						arrowCurrentBullet = arrowCurrentBullet + 20;
+						arrowBulletsInClip = arrowBulletsInClip + 20;
 						numTreePickup = numTreePickup - 1;
 						numStonePickup = numStonePickup - 1;
 						pickup.play();
 					}
-					else if (select.GetPressed() == 4 && numTreePickup >= 1 && numStonePickup >= 1)
+					else if (select.GetPressed() == 4 && numSoulPickup >= 30)
 					{
+
 						arrowCurrentBullet = arrowCurrentBullet + 20;
 						numTreePickup = numTreePickup - 1;
 						numStonePickup = numStonePickup - 1;
 						pickup.play();
+
+						
+
 					}
 					// exit the craft
 					else if (select.GetPressed() == 5 && state == State::CRAFT)
@@ -340,6 +344,12 @@ void Engine::input()
 				ironSwordEquipped = false;
 				arrowEquipped = false;
 
+				m_HandWeaponActive2 = false;
+				m_WoodWeaponActive2 = true;
+				m_StoneWeaponActive2 = true;
+				m_IronWeaponActive2 = true;
+				m_BowWeaponActive2 = true;
+
 				currentBullet = handCurrentBullet;
 				bulletsSpare = handBulletsSpare;
 				bulletsInClip = handBulletsInClip;
@@ -357,6 +367,11 @@ void Engine::input()
 				ironSwordEquipped = false;
 				arrowEquipped = false;
 
+				m_HandWeaponActive2 = true;
+				m_WoodWeaponActive2 = false;
+				m_StoneWeaponActive2 = true;
+				m_IronWeaponActive2 = true;
+				m_BowWeaponActive2 = true;
 				// Equipping the correct parameters for the Wood Sword
 				currentBullet = woodSwordCurrentBullet;
 				bulletsSpare = woodSwordBulletsSpare;
@@ -374,6 +389,12 @@ void Engine::input()
 				stoneSwordEquipped = true;
 				ironSwordEquipped = false;
 				arrowEquipped = false;
+
+				m_HandWeaponActive2 = true;
+				m_WoodWeaponActive2 = true;
+				m_StoneWeaponActive2 = false;
+				m_IronWeaponActive2 = true;
+				m_BowWeaponActive2 = true;
 				// Equipping the correct parameters for the Stone Sword
 				currentBullet = stoneSwordCurrentBullet;
 				bulletsSpare = stoneSwordBulletsSpare;
@@ -392,6 +413,11 @@ void Engine::input()
 				ironSwordEquipped = true;
 				arrowEquipped = false;
 
+				m_HandWeaponActive2 = true;
+				m_WoodWeaponActive2 = true;
+				m_StoneWeaponActive2 = true;
+				m_IronWeaponActive2 = false;
+				m_BowWeaponActive2 = true;
 				// Equipping the correct parameters for the Iron Sword
 				currentBullet = ironSwordCurrentBullet;
 				bulletsSpare = ironSwordBulletsSpare;
@@ -410,6 +436,11 @@ void Engine::input()
 				ironSwordEquipped = false;
 				arrowEquipped = true;
 
+				m_HandWeaponActive2 = true;
+				m_WoodWeaponActive2 = true;
+				m_StoneWeaponActive2 = true;
+				m_IronWeaponActive2 = true;
+				m_BowWeaponActive2 = false;
 				// Equipping the correct parameters for the arrow
 				currentBullet = arrowCurrentBullet;
 				bulletsSpare = arrowBulletsSpare;
@@ -434,6 +465,24 @@ void Engine::input()
 				{
 					player.getAttack(9);
 				}
+				if (handBulletsInClip == 0)
+				{
+					handEquipped = true;
+					woodSwordEquipped = false;
+					stoneSwordEquipped = false;
+					ironSwordEquipped = false;
+					arrowEquipped = false;
+					m_HandWeaponActive2 = true;
+					currentBullet = handCurrentBullet;
+					bulletsSpare = handBulletsSpare;
+					bulletsInClip = handBulletsInClip;
+					clipSize = handClipSize;
+					fireRate = handFireRate;
+				}
+				else
+				{
+					m_HandWeaponActive2 = false;
+				}
 			}
 			else if (woodSwordEquipped)
 			{
@@ -450,6 +499,25 @@ void Engine::input()
 				else
 				{
 					player.getAttack(2);
+				}
+				// Check if bullets are zero, switch to handEquipped
+				if (woodSwordBulletsInClip == 0)
+				{
+					handEquipped = true;
+					woodSwordEquipped = false;
+					stoneSwordEquipped = false;
+					ironSwordEquipped = false;
+					arrowEquipped = false;
+					m_WoodWeaponActive2 = true;
+					currentBullet = handCurrentBullet;
+					bulletsSpare = handBulletsSpare;
+					bulletsInClip = handBulletsInClip;
+					clipSize = handClipSize;
+					fireRate = handFireRate;
+				}
+				else
+				{
+					m_WoodWeaponActive2 = false;
 				}
 			}
 			else if (stoneSwordEquipped)
@@ -468,6 +536,25 @@ void Engine::input()
 				{
 					player.getAttack(3);
 				}
+				// Check if bullets are zero, switch to handEquipped
+				if (stoneSwordBulletsInClip == 0)
+				{
+					handEquipped = true;
+					woodSwordEquipped = false;
+					stoneSwordEquipped = false;
+					ironSwordEquipped = false;
+					arrowEquipped = false;
+					m_StoneWeaponActive2 = true;
+					currentBullet = handCurrentBullet;
+					bulletsSpare = handBulletsSpare;
+					bulletsInClip = handBulletsInClip;
+					clipSize = handClipSize;
+					fireRate = handFireRate;
+				}
+				else
+				{
+					m_StoneWeaponActive2 = false;
+				}
 			}
 			else if (ironSwordEquipped)
 			{
@@ -477,6 +564,7 @@ void Engine::input()
 				ironSwordClipSize = clipSize;
 				ironSwordFireRate = fireRate;
 				bullets[currentBullet].setRange(66);
+				m_IronWeaponActive2 = false;
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
 					player.getAttack(6);
@@ -485,7 +573,25 @@ void Engine::input()
 				{
 					player.getAttack(4);
 				}
-
+				// Check if bullets are zero, switch to handEquipped
+				if (ironSwordBulletsInClip == 0)
+				{
+					handEquipped = true;
+					woodSwordEquipped = false;
+					stoneSwordEquipped = false;
+					ironSwordEquipped = false;
+					arrowEquipped = false;
+					m_IronWeaponActive2 = true;
+					currentBullet = handCurrentBullet;
+					bulletsSpare = handBulletsSpare;
+					bulletsInClip = handBulletsInClip;
+					clipSize = handClipSize;
+					fireRate = handFireRate;
+				}
+				else
+				{
+					m_IronWeaponActive2 = false;
+				}
 			}
 			else if (arrowEquipped)
 			{
@@ -495,6 +601,7 @@ void Engine::input()
 				arrowClipSize = clipSize;
 				arrowFireRate = fireRate;
 				bullets[currentBullet].setRange(1000);
+				m_BowWeaponActive2 = false;
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 				{
 					player.getAttack(8);
@@ -503,7 +610,64 @@ void Engine::input()
 				{
 					player.getAttack(5);
 				}
+				// Check if bullets are zero, switch to handEquipped
+				if (arrowBulletsInClip == 0)
+				{
+					handEquipped = true;
+					woodSwordEquipped = false;
+					stoneSwordEquipped = false;
+					ironSwordEquipped = false;
+					arrowEquipped = false;
+
+					m_BowWeaponActive2 = true;
+
+					currentBullet = handCurrentBullet;
+					bulletsSpare = handBulletsSpare;
+					bulletsInClip = handBulletsInClip;
+					clipSize = handClipSize;
+					fireRate = handFireRate;
+				}
+				else
+				{
+					m_BowWeaponActive2 = false;
+				}
 			}
+			// Check if bullets are zero, display melee weapon
+			if (woodSwordBulletsInClip == 0)
+			{
+				m_WoodWeaponActive = true;
+			}
+			else
+			{
+				m_WoodWeaponActive = false;
+			}
+			if (stoneSwordBulletsInClip == 0)
+			{
+				m_StoneWeaponActive = true;
+			}
+			else
+			{
+				m_StoneWeaponActive = false;
+			}
+			if (ironSwordBulletsInClip == 0 )
+			{
+				m_IronWeaponActive = true;
+			}
+			else
+			{
+				m_IronWeaponActive = false;
+			}
+			if (arrowBulletsInClip == 0)
+			{
+				m_BowWeaponActive = true;
+			}
+			else
+			{
+				m_BowWeaponActive = false;
+			}
+
+			
+			
 		}
 	}
 

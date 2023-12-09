@@ -131,10 +131,10 @@ std::list<Pickup*> Engine::createPickup(Vector2f position)
 
 	Pickup* pickup = new Pickup();
 	srand((int)time(0));
-	int type = (rand() % 2 + 1);
+	int type = (rand() % 3) + 1;
 	pickup->spawnPickup(type, posX, posY,1);
 	pickupList.push_back(pickup);
-
+	cout << "Pickup Type: " << type << "\n";
 	//posX += xOffset;
 
 
@@ -148,7 +148,7 @@ std::list<Pickup*> Engine::createResorces(int numResource)
 	for (int i = 0; i < numResource; i++)
 	{
 		srand((int)time(0) * i);
-		int type = (rand() % 3) + 3;
+		int type = (rand() % 3) + 4;
 		float posX = (rand() % 3251) + 2380;
 		float posY = (rand() % 1951) + 450;
 
@@ -170,7 +170,6 @@ std::list<Pickup*> Engine::createRespawnResorces(int numResource, float position
 		int m_type = type;
 		float posX = positionX;
 		float posY = positionY;
-
 		// Create a new Pickup object for each resource
 		Pickup* resource = new Pickup();
 		resource->spawnPickup(m_type, posX, posY, 2.5);

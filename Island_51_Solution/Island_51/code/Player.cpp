@@ -454,3 +454,31 @@ void Player::stopLeft(float position)
 	m_Position.x = position  + m_Sprite.getGlobalBounds().width + 50;
 	m_Sprite.setPosition(m_Position);
 }
+
+void Player::getWeaponSpawn(int type, float scale, float posX, float posY)
+{
+	// Store the type of this pickup
+	m_Type = type;
+	switch (m_Type) {
+	case 1:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 85,260,24,24 });
+		break;
+	case 2:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 24, 10, 16, 42 });
+		break;
+	case 3:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 90, 10, 16, 42 });
+		break;
+	case 4:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 155, 10, 16, 42 });
+		break;
+	case 5:
+		m_SpriteWeapon.setTextureRect(sf::IntRect{ 213, 10, 20, 42 });
+		break;
+	
+	}
+	m_Position.x = posX;
+	m_Position.y = posY;
+	m_Sprite.setScale(scale, scale);
+	m_Sprite.setPosition(m_Position);
+}

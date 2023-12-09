@@ -150,6 +150,8 @@ public:
 	void stopUp(float position);
 	void stopRight(float position);
 	void stopLeft(float position);
+
+	void getWeaponSpawn(int type, float scale, float posX, float posY);
 };
 
 

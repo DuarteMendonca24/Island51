@@ -130,8 +130,27 @@ void Engine::draw()
         m_Window.setView(m_hudView);
 
         // Draw all the HUD elements
-
-        m_Window.draw(spriteAmmoIcon);
+        if (!m_HandWeaponActive2)
+        {
+            m_Window.draw(m_weaponIcons2[0].getSprite());
+        }
+        if (!m_WoodWeaponActive2)
+        {
+            m_Window.draw(m_weaponIcons2[1].getSprite());
+        }
+        if (!m_StoneWeaponActive2)
+        {
+            m_Window.draw(m_weaponIcons2[2].getSprite());
+        }
+        if (!m_IronWeaponActive2)
+        {
+            m_Window.draw(m_weaponIcons2[3].getSprite());
+        }
+        if (!m_BowWeaponActive2)
+        {
+            m_Window.draw(m_weaponIcons2[4].getSprite());
+        }
+        //m_Window.draw(spriteAmmoIcon);
         m_Window.draw(m_hud.getAmmoText());
         m_Window.draw(m_hud.getScoreText());
         //m_Window.draw(m_hud.getHiScoreText());
@@ -145,15 +164,39 @@ void Engine::draw()
 
         if (m_inventoryActive) {
             //draw the inventory icons
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 m_Window.draw(m_inventoryIcons[i].getSprite());
             }
+            m_Window.draw(m_hud.getSoulQuantityText());
             m_Window.draw(m_hud.getWoodQuantityText());
             m_Window.draw(m_hud.getStoneQuantityText());
             m_Window.draw(m_hud.getIronQuantityText());
         }
-
+        m_Window.draw(m_hud.getBackgroudWeapon());
+        m_Window.draw(m_hud.getBackgroudWeaponSquare());
+        m_Window.draw(m_hud.getBackgroudWeaponSquare2());
+        m_Window.draw(m_hud.getBackgroudWeaponSquare3());
+        m_Window.draw(m_hud.getBackgroudWeaponSquare4());
+        m_Window.draw(m_hud.getBackgroudWeaponSquare5());
+        m_Window.draw(m_weaponIcons[0].getSprite());
+        if (!m_WoodWeaponActive)
+        {
+            m_Window.draw(m_weaponIcons[1].getSprite());
+        }
+        if (!m_StoneWeaponActive)
+        {
+            m_Window.draw(m_weaponIcons[2].getSprite());
+        }
+        if (!m_IronWeaponActive)
+        {
+            m_Window.draw(m_weaponIcons[3].getSprite());
+        }
+        if (!m_BowWeaponActive)
+        {
+            m_Window.draw(m_weaponIcons[4].getSprite());
+        }
+        m_Window.draw(m_hud.getNumWeaponText());
     }
 
     if (state == State::RULE)
@@ -288,10 +331,11 @@ void Engine::draw()
         guiseletionsound.play();
         if (m_inventoryActive) {
             //draw the inventory icons
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 m_Window.draw(m_inventoryIcons[i].getSprite());
             }
+            m_Window.draw(m_hud.getSoulQuantityText());
             m_Window.draw(m_hud.getWoodQuantityText());
             m_Window.draw(m_hud.getStoneQuantityText());
             m_Window.draw(m_hud.getIronQuantityText());

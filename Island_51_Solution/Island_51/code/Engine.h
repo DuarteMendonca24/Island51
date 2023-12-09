@@ -16,6 +16,7 @@
 #include "Pickup.h"
 #include "HUD.h"
 #include "Craft.h"
+#include "Weapons.h"
 using namespace sf;
 
 static class Engine
@@ -98,31 +99,31 @@ private:
     //Hand parameters
     int handCurrentBullet = 0;
     int handBulletsSpare = 30;
-    int handBulletsInClip = 15;
+    int handBulletsInClip = 99999999;
     int handClipSize = 15;
     float handFireRate = 0.4;
     //Wood Sword Parameters 
     int woodSwordCurrentBullet = 0;
     int woodSwordBulletsSpare = 120;
-    int woodSwordBulletsInClip = 30;
+    int woodSwordBulletsInClip = 0;
     int woodSwordClipSize = 30;
     float woodSwordFireRate = 0.6;
     //Stone Sword Parameters
     int stoneSwordCurrentBullet = 0;
     int stoneSwordBulletsSpare = 20;
-    int stoneSwordBulletsInClip = 5;
+    int stoneSwordBulletsInClip = 0;
     int stoneSwordClipSize = 5;
     float stoneSwordFireRate = 1.0;
     //Iron Sword Parameters
     int ironSwordCurrentBullet = 0;
     int ironSwordBulletsSpare = 20;
-    int ironSwordBulletsInClip = 5;
+    int ironSwordBulletsInClip =0;
     int ironSwordClipSize = 5;
     float ironSwordFireRate = 3.0;
     //Arrow Parameters
     int arrowCurrentBullet = 0;
     int arrowBulletsSpare = 20;
-    int arrowBulletsInClip = 5;
+    int arrowBulletsInClip = 0;
     int arrowClipSize = 5;
     float arrowFireRate = 0.5;
     // About the game
@@ -314,8 +315,11 @@ private:
     std::list<Pickup*> m_PickupList;
 
     //array to display inventory resource items
-    Pickup m_inventoryIcons[3];
+    Pickup m_inventoryIcons[4];
 
+    //array to display inventory weapon items
+    Weapons m_weaponIcons[5];
+    Weapons m_weaponIcons2[5];
 
     // 1000 bullets should do
     Bullet bullets[1000];
@@ -336,5 +340,16 @@ private:
     //Check the Resourse is enough
     bool m_EnoughResources = false;
     float m_SecondsSince = 0;
-    
+
+    //Check the weapons in inventory
+    bool m_WoodWeaponActive = false;
+    bool m_StoneWeaponActive = false;
+    bool m_IronWeaponActive = false;
+    bool m_BowWeaponActive = false;
+    //Check the weapons in icon
+    bool m_HandWeaponActive2 = false;
+    bool m_WoodWeaponActive2 = false;
+    bool m_StoneWeaponActive2 = false;
+    bool m_IronWeaponActive2 = false;
+    bool m_BowWeaponActive2 = false;
 };

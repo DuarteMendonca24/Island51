@@ -3,7 +3,7 @@
 
 Engine::Engine() {
 	// Get the screen resolution and create an SFML window and View
-	//loadSounds();
+	loadSounds();
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 	state = State::MAIN_MENU;
@@ -29,8 +29,6 @@ Engine::Engine() {
 	textureCrosshair = TextureHolder::GetTexture("graphics/crosshair.png");
 
 	textureMainMenu = TextureHolder::GetTexture("graphics/MainMenu.png");
-
-
 
 	//Load Texture for Ammo Icon
 
@@ -82,9 +80,27 @@ Engine::Engine() {
 	Illusionist[1].spawn(spawnLocation.x, spawnLocation.y, 0, 1); // Top Illusionist
 
 	//spawning resources to be icons in the inventory
-	m_inventoryIcons[0].spawnPickup(3,100, 400, 3.5);
-	m_inventoryIcons[1].spawnPickup(4,100, 500, 3.5);
-	m_inventoryIcons[2].spawnPickup(5,100, 600, 3.5);
+
+
+
+	m_inventoryIcons[0].spawnPickup(4,100, 400, 3.5);
+	m_inventoryIcons[1].spawnPickup(5,100, 500, 3.5);
+	m_inventoryIcons[2].spawnPickup(6,100, 600, 3.5);
+	m_inventoryIcons[3].spawnPickup(3,70, 680, 2.5);
+	music.play();
+
+	//spawning weapon to be icons in the inventory
+	m_weaponIcons[0].spawn(1, 1.1, resolution.x / 2 - 90, resolution.y - 165);
+	m_weaponIcons[1].spawn(2, 1.1, resolution.x / 2 - 15, resolution.y - 175);
+	m_weaponIcons[2].spawn(3, 1.1, resolution.x / 2 + 55, resolution.y - 175);
+	m_weaponIcons[3].spawn(4, 1.1, resolution.x / 2 + 125, resolution.y - 175);
+	m_weaponIcons[4].spawn(5, 1.1, resolution.x / 2 + 190, resolution.y - 175);
+	//spawning weapon to be icons 
+	m_weaponIcons2[0].spawn(1, 2.5, 50, 1000);
+	m_weaponIcons2[1].spawn(2, 2, 50, 950);
+	m_weaponIcons2[2].spawn(3, 2, 50, 950);
+	m_weaponIcons2[3].spawn(4, 2, 50, 950);
+	m_weaponIcons2[4].spawn(5, 2, 50, 950);
 
 	//Reading the highscores from the file
 	std::ifstream readFile;

@@ -19,11 +19,12 @@ private:
 	Text m_woodQuantityText;
 	Text m_stoneQuantityText;
 	Text m_ironQuantityText;
+	Text m_soulQuantityText;
 	Text m_notEnoughResourcse;
 	Text m_gameruleText;
 	Text m_goBackMenuText;
 	Text m_highScoreText;
-
+	Text m_numWeaponText;
 	Text m_mainMenuText;
 	
 
@@ -45,10 +46,24 @@ private:
 	RectangleShape m_hungerBarBackground;
 	
 	
-	// Shop background
+	// Craft background
 	RectangleShape m_backgroundCraft;
 	float m_backgroundWidth = 1000;
 	float m_backgroundHeight = 1000;
+
+	// Weapon background
+	RectangleShape m_backgroundWeapon;
+	float m_backgroundWeaponWidth = 360;
+	float m_backgroundWeaponHeight = 80;
+
+	// Weapon Square background
+	RectangleShape m_backgroundWeaponSquare;
+	RectangleShape m_backgroundWeaponSquare2;
+	RectangleShape m_backgroundWeaponSquare3;
+	RectangleShape m_backgroundWeaponSquare4;
+	RectangleShape m_backgroundWeaponSquare5;
+	float m_backgroundWeaponSquareWidth = 50;
+	float m_backgroundWeaponSquareHeight = 50;
 
 	RectangleShape darkness;
 
@@ -63,17 +78,25 @@ public:
 	Text getWoodQuantityText();
 	Text getStoneQuantityText();
 	Text getIronQuantityText();
+	Text getSoulQuantityText();
 	Text getNotEnoughResourcse();
 	Text getgameruleText();
 	Text getMainMenuText();
 	Text getGoBackMenuText();
 	Text getHighscoreText();
+	Text getNumWeaponText();
 	RectangleShape getHealthBar();
 	RectangleShape getHealthBarBackground();
 	RectangleShape getHungerBar();
 	RectangleShape getHungerBarBackground();
 	RectangleShape getBackgroudCraft();
+	RectangleShape getBackgroudWeapon();
 	RectangleShape getDarkness();
+	RectangleShape getBackgroudWeaponSquare();
+	RectangleShape getBackgroudWeaponSquare2();
+	RectangleShape getBackgroudWeaponSquare3();
+	RectangleShape getBackgroudWeaponSquare4();
+	RectangleShape getBackgroudWeaponSquare5();
 
 	void setScoreText(String text);
 	void setAmmoText(String text);
@@ -83,8 +106,10 @@ public:
 	void setWoodQuantityText(String text);
 	void setStoneQuantityText(String text);
 	void setIronQuantityText(String text);
+	void setSoulQuantityText(String text);
 	void setDarkness(float darknessLevel);
 	void setHighScore(String text);
+	void setNumWeapon(int num);
 	
 	
 	
