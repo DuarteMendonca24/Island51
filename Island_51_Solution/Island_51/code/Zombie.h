@@ -120,6 +120,7 @@ public:
 	void moveTextureRect();
 
 	Vector2i selectSpawner();
+
 };
 
 

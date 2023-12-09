@@ -1,3 +1,5 @@
+
+#include <SFML/Audio.hpp>
 #include "zombie.h"
 #include "TextureHolder.h"
 #include <cstdlib>
@@ -131,7 +133,7 @@ bool Zombie::hit()
 		m_Alive = false;
 		m_Sprite.setTexture(TextureHolder::GetTexture(
 			"graphics/blood.png"));
-
+		
 		return true;
 	}
 
@@ -166,6 +168,14 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 	if (d <= 250)
 	{
 		enemyState = EnemyState::TARGETING;
+		SoundBuffer spottedBuffer;
+		spottedBuffer.loadFromFile("sound/SpottedGrowl.wav");
+		Sound spotted;
+		spotted.setBuffer(spottedBuffer);
+		spotted.setAttenuation(90);
+		spotted.setPosition(Vector3f(m_Position.x,m_Position.y,0));
+		spotted.setVolume(25);
+		spotted.play();
 	}
 	else
 	{
@@ -393,27 +403,17 @@ Vector2f Zombie::createWalkPoint()
 	int radius = 400;
 	bool isWater = true;
 
-	//int temp_x = (int)x_pos;
-	//int temp_y = (int)y_pos;
-	//while (!isWater)
-	//{
-		//Generating Random Values
-		std::random_device rd;
-		std::uniform_int_distribution<int> dist(-radius, radius);
+	//Generating Random Values
+	std::random_device rd;
+	std::uniform_int_distribution<int> dist(-radius, radius);
 
-		//Adding Random values to current position
-		x_pos += (float)dist(rd);
-		y_pos += (float)dist(rd);
+	//Adding Random values to current position
+	x_pos += (float)dist(rd);
+	y_pos += (float)dist(rd);
 
-		//if()
-
-
-	//}
-	
-	//x_pos = temp_x;
-	//y_pos = temp_y;
 	return Vector2f(x_pos, y_pos);
 }
+
 
 
 

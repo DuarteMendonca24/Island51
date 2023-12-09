@@ -133,27 +133,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="code\Behaviour.h" />
     <ClInclude Include="code\Bullet.h" />
     <ClInclude Include="code\Collisions.h" />
     <ClInclude Include="code\Craft.h" />
     <ClInclude Include="code\Engine.h" />
-    <ClInclude Include="code\HandleCollisions.h" />
     <ClInclude Include="code\HUD.h" />
     <ClInclude Include="code\LevelManager.h" />
     <ClInclude Include="code\Pickup.h" />
     <ClInclude Include="code\Player.h" />
-    <ClInclude Include="code\SoundEngine.h" />
-    <ClInclude Include="code\Sprites.h" />
     <ClInclude Include="code\State.h" />
-    <ClInclude Include="code\StatsManager.h" />
     <ClInclude Include="code\TextureHolder.h" />
-    <ClInclude Include="code\Tools.h" />
-    <ClInclude Include="code\Weapons.h" />
     <ClInclude Include="code\Zombie.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="code\Behaviour.cpp" />
     <ClCompile Include="code\Bullet.cpp" />
     <ClCompile Include="code\Collisions.cpp" />
     <ClCompile Include="code\Craft.cpp" />
@@ -168,12 +160,8 @@
     <ClCompile Include="code\Pickup.cpp" />
     <ClCompile Include="code\Player.cpp" />
     <ClCompile Include="code\SoundEngine.cpp" />
-    <ClCompile Include="code\Sprites.cpp" />
-    <ClCompile Include="code\StatsManager.cpp" />
     <ClCompile Include="code\TextureHolder.cpp" />
-    <ClCompile Include="code\Tools.cpp" />
     <ClCompile Include="code\Update.cpp" />
-    <ClCompile Include="code\Weapons.cpp" />
     <ClCompile Include="code\Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>

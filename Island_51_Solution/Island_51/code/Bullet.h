@@ -39,6 +39,8 @@ public:
 	// The constructor
 	Bullet();
 
+	
+
 	// Stop the bullet
 	void stop();
 
@@ -60,5 +62,7 @@ public:
 	
 	int getRange();
 	void setRange(int range);
+
+	void changeColor(Color color);
 	
 };

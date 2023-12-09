@@ -86,8 +86,6 @@ Engine::Engine() {
 	m_inventoryIcons[1].spawnPickup(4,100, 500, 3.5);
 	m_inventoryIcons[2].spawnPickup(5,100, 600, 3.5);
 
-	music.play();
-
 	//Reading the highscores from the file
 	std::ifstream readFile;
 	readFile.open("scores/Highscore.txt");
@@ -106,7 +104,10 @@ Engine::Engine() {
 	}
 
 	readFile.close();
-
+	for (int i = 0; i != 100; ++i)
+	{
+		m_illusionsBullets[i].changeColor(Color::Color(255, 0, 0));
+	}
 
 
 }
@@ -114,7 +115,7 @@ void Engine::run() {
 
 	// Timing 	
 	Clock clock;
-
+	loadSounds();
 	while (m_Window.isOpen())
 	{
 	

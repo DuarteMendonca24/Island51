@@ -14,8 +14,6 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Pickup.h"
-#include "Weapons.h"
-#include "Tools.h"
 #include "HUD.h"
 #include "Craft.h"
 using namespace sf;
@@ -36,6 +34,7 @@ public:
     void draw();
     void loadSounds();
     int** getArrayLevel();
+    int RandomBetween(int min, int max);
 
 
 
@@ -234,7 +233,8 @@ private:
 
     //SoundBuffer Variables
     SoundBuffer splatBuffer;
-    SoundBuffer shootBuffer;
+    SoundBuffer punchBuffer;
+    SoundBuffer bowShotBuffer;
     SoundBuffer hitBuffer;
     SoundBuffer reloadBuffer;
     SoundBuffer reloadFailedBuffer;
@@ -253,11 +253,16 @@ private:
     SoundBuffer metalclashBuffer;
     SoundBuffer gameoverBuffer;
     SoundBuffer musicBuffer;
+    SoundBuffer spottedBuffer;
+    SoundBuffer gameStartBuffer;
+    SoundBuffer swordBuffer;
+    SoundBuffer UI_SoundBuffer;
 
     //Sound Variables
     Sound hit;
-    Sound splat; //sf::
-    Sound shoot;
+    Sound splat; 
+    Sound punch;
+    Sound bowShot;
     Sound reload;
     Sound reloadFailed;
     Sound buyFailed;
@@ -275,6 +280,10 @@ private:
     Sound metalclashsound;
     Sound gameoversound;
     Sound music;
+    Sound spotted;
+    Sound gameStart;
+    Sound sword;
+    Sound UI_Sound;
 
 
 
@@ -282,7 +291,7 @@ private:
 
     float m_currentHunger = 100;
 
-    float m_hungerTickAmount = 10;
+    float m_hungerTickAmount = 2.5;
 
 
     float dtSinceDrawUpdate;

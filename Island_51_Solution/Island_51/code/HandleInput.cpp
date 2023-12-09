@@ -68,7 +68,8 @@ void Engine::input()
 				//close game
 				if (event.key.code == Keyboard::Escape)
 				{
-					m_Window.close();
+					//m_Window.close();
+					state = State::MAIN_MENU;
 				}
 
 
@@ -85,26 +86,10 @@ void Engine::input()
 			}
 			else if (state == State::GAME_OVER) {
 
-				// Restart while paused
-				if (event.key.code == Keyboard::Enter)
-				{
-					//need to check if this code is doing something 
-					state = State::LEVELING_UP;
-					wave = 0;
-					m_score = 0;
-
-					// Prepare the gun and ammo for next game
-					currentBullet = 0;
-					bulletsSpare = handBulletsSpare;
-					bulletsInClip = handBulletsInClip;
-					clipSize = handClipSize;
-					fireRate = handFireRate;
-
-
-
-					// Reset the player's stats
-					player.resetPlayerStats();
-				}
+				state = State::MAIN_MENU;
+				// Reset the player's stats
+				player.resetPlayerStats();
+				
 			}
 			else if (state == State::MAIN_MENU) {
 
@@ -112,18 +97,24 @@ void Engine::input()
 				if (event.key.code == Keyboard::Num1) {
 
 					state = State::PLAYING;
+					gameStart.play();
+					music.play();
 				}
 				else if (event.key.code == Keyboard::Num2) {
 
 					state = State::RULE;
+					UI_Sound.play();
 				}
 				else if (event.key.code == Keyboard::Num3) {
 
 					state = State::HIGHSCORE;
+					UI_Sound.play();
 				}
 				else if (event.key.code == Keyboard::Num4) {
 
+					UI_Sound.play();
 					m_Window.close();
+
 				}
 
 				//close game
@@ -140,6 +131,7 @@ void Engine::input()
 				if (event.key.code == Keyboard::Escape)
 				{
 					state = State::MAIN_MENU;
+					UI_Sound.play();
 				}
 			}
 			else if (state == State::HIGHSCORE) {
@@ -148,6 +140,7 @@ void Engine::input()
 				if (event.key.code == Keyboard::Escape)
 				{
 					state = State::MAIN_MENU;
+					UI_Sound.play();
 				}
 			}
 		}
@@ -174,11 +167,13 @@ void Engine::input()
 				if (event.key.code == Keyboard::W)
 				{
 					select.MoveUp();
+					UI_Sound.play();
 				}
 				//move down
 				if (event.key.code == Keyboard::S)
 				{
 					select.MoveDown();
+					UI_Sound.play();
 				}
 				// keypress enter to craft
 				if (event.key.code == Keyboard::LShift)
@@ -188,6 +183,7 @@ void Engine::input()
 					{
 						woodSwordCurrentBullet = woodSwordCurrentBullet + 30;
 						numTreePickup = numTreePickup - 3;
+						pickup.play();
 					}
 					// craft stone sword
 					else if (select.GetPressed() == 1 && numTreePickup >= 1 && numStonePickup >= 2)
@@ -195,6 +191,7 @@ void Engine::input()
 						stoneSwordCurrentBullet = stoneSwordCurrentBullet + 50;
 						numTreePickup = numTreePickup - 1;
 						numStonePickup = numStonePickup - 2;
+						pickup.play();
 					}
 					// craft iron sword
 					else if (select.GetPressed() == 2 && numTreePickup >= 1 && numIronPickup >= 2)
@@ -202,6 +199,7 @@ void Engine::input()
 						ironSwordCurrentBullet = ironSwordCurrentBullet + 70;
 						numTreePickup = numTreePickup - 1;
 						numIronPickup = numIronPickup - 2;
+						pickup.play();
 					}
 					// craft arrow
 					else if (select.GetPressed() == 3 && numTreePickup >= 1 && numStonePickup >= 1)
@@ -209,12 +207,14 @@ void Engine::input()
 						arrowCurrentBullet = arrowCurrentBullet + 20;
 						numTreePickup = numTreePickup - 1;
 						numStonePickup = numStonePickup - 1;
+						pickup.play();
 					}
 					else if (select.GetPressed() == 4 && numTreePickup >= 1 && numStonePickup >= 1)
 					{
 						arrowCurrentBullet = arrowCurrentBullet + 20;
 						numTreePickup = numTreePickup - 1;
 						numStonePickup = numStonePickup - 1;
+						pickup.play();
 					}
 					// exit the craft
 					else if (select.GetPressed() == 5 && state == State::CRAFT)
@@ -283,7 +283,7 @@ void Engine::input()
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
 				player.getAttack(10);
-				if (gameTimeTotal.asMilliseconds() - lastPressed.asMilliseconds() > 1000 / fireRate && bulletsInClip > 0)
+				if (gameTimeTotal.asMilliseconds() - lastPressed.asMilliseconds() > 500 / fireRate && bulletsInClip > 0)
 				{
 
 					// Pass the centre of the player and the centre of the crosshair
@@ -298,8 +298,31 @@ void Engine::input()
 						currentBullet = 0;
 					}
 					lastPressed = gameTimeTotal;
-					shoot.play();
-					bulletsInClip--;
+					//Playing Accurate Sounds
+					if (handEquipped)
+					{
+						punch.play();
+					}
+					else if (woodSwordEquipped)
+					{
+						sword.play();
+					}
+					else if (stoneSwordEquipped)
+					{
+						sword.play();
+					}
+					else if (ironSwordEquipped)
+					{
+						sword.play();
+					}
+					else if (arrowEquipped)
+					{
+						bowShot.play();
+					}
+					else
+					{
+						pickup.play();
+					}
 				}
 
 			} // End fire a bullet

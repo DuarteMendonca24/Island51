@@ -197,6 +197,17 @@ void Engine::update(float dtAsSeconds)
                                 std::list<Zombie*> newZombies = createEnemies(2, (*it3)->getPosCoordinates(), 3);
                                 m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
                             }
+                            // Otherwise respawn a brand new enemy
+                            else
+                            {
+                                int type = RandomBetween(0, 4);
+                                int spawner = RandomBetween(0, manageLevel.current_spawn_block_counter);
+                                float x = (float)manageLevel.m_SpawnPoisitons[spawner].x;
+                                float y = (float)manageLevel.m_SpawnPoisitons[spawner].y;
+                                Vector2f location = Vector2f(x, y);
+                                std::list<Zombie*> newZombies = createEnemies(1, location, type);
+                                m_EnemiesList.insert(m_EnemiesList.end(), newZombies.begin(), newZombies.end());
+                            }
                             //numZombiesAlive = numZombies;
                             if (wave >= m_hiScore)
                             {
@@ -572,6 +583,7 @@ void Engine::update(float dtAsSeconds)
         {
             m_EnoughResources = false;
             m_SecondsSince = 0;
+            pickup.play();
         }
     }
 
@@ -630,4 +642,13 @@ void Engine::update(float dtAsSeconds)
         m_hud.setHighScore(ssHighScore.str());
 
     }
+}
+
+int Engine::RandomBetween(int min, int max)
+{
+    //Generating Random Number 
+    std::random_device rd;
+    std::uniform_int_distribution<int> dist(min, max);
+
+    return dist(rd);
 }

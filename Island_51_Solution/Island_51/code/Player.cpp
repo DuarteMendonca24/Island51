@@ -193,28 +193,7 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 	}
 	m_Sprite.setPosition(m_Position);
 
-	// Keep the player in the arena
-	/*
-	if (m_Position.x > m_Arena.width - m_TileSize)
-	{
-		m_Position.x = m_Position.x - m_TileSize;
-	}
-
-	if (m_Position.x < m_Arena.left + m_TileSize)
-	{
-		m_Position.x = m_Position.x + m_TileSize;
-	}
-
-	if (m_Position.y > m_Arena.height - m_TileSize)  
-	{
-		m_Position.y = m_Position.y - m_TileSize;
-	}
-
-	if (m_Position.y < m_Arena.top + m_TileSize)
-	{
-		m_Position.y = m_Position.y + m_TileSize;
-	}
-	*/
+	
 	// Calculate the angle the player is facing
 	float angle = (atan2(mousePosition.y - m_Resolution.y / 2,
 		mousePosition.x - m_Resolution.x / 2)
@@ -309,32 +288,7 @@ void Player::decreaseHealthLevel(float amount)
 	}
 }
 
-void Player::changePlayerSprite(int type)
-{
 
-	//Checking which sprite to equip
-	if (type == 1)
-	{
-		//Handgun
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/player.png"));
-		m_Sprite.setOrigin(39/2,37/2);
-	}
-	else if (type == 2)
-	{
-		//SMG
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/playerSmg.png"));
-		m_Sprite.setOrigin(46 / 2, 37 / 2);
-	}
-	else
-	{
-		//Railgun
-		m_Sprite = Sprite(TextureHolder::GetTexture(
-			"graphics/playerRailgun.png"));
-		m_Sprite.setOrigin(44 / 2, 37 / 2);
-	}
-}
 
 void Player::setSpriteFromSheet(sf::IntRect textureBox)
 {

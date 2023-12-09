@@ -20,9 +20,9 @@ Hud::Hud(){
 	// Game Over
 	m_gameOverText.setFont(m_font);
 	m_gameOverText.setCharacterSize(125);
-	m_gameOverText.setFillColor(Color::White);
+	m_gameOverText.setFillColor(Color::Color(255,50,0));
 	m_gameOverText.setPosition(250, 850);
-	m_gameOverText.setString("Press Enter to play");
+	m_gameOverText.setString("YOU DIED, PRESS SPACE TO CONTINUE");
 
 	// Levelling up
 	m_levelUpText.setFont(m_font);

@@ -104,3 +104,8 @@ int Bullet::getRange()
 {
 	return m_Range;
 }
+
+void Bullet::changeColor(Color color)
+{
+	m_BulletShape.setFillColor(color);
+}
