@@ -9,12 +9,13 @@ private:
 	Vector2f m_Position;
 	// Of course we will need a sprite
 	Sprite m_Sprite;
+	//What type of weapon
 	int m_Type;
 	// All our public functions will come next
 public:
 
 	Weapons();
-
+	//Spawn the weapon
 	void spawn(int type, float scale, float posX, float posY);
 	// Where is the player
 	FloatRect getPosition();

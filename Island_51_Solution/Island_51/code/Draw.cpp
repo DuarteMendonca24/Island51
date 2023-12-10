@@ -10,18 +10,6 @@ void Engine::draw()
     //Setting Mouse Cursor to be visible in the game
     m_Window.setMouseCursorVisible(true);
 
-    //// Playing background music inside the game 
-    //if (!music.openFromFile("sound/backgroundmusic.wav"))
-    //{
-    //    return; // error
-    //
-    //    
-    //    music.play();
-    //}
-
-    //View hudView(sf::FloatRect(0, 0, resolution.x, resolution.y));
-
-
     if (state == State::PLAYING)
     {
         // Clear the window to preaper for rendering 
@@ -56,9 +44,6 @@ void Engine::draw()
                }
               
            }
-
-        
-
         // Draw the zombies with a list
         std::list<Zombie*>::iterator it2;
         for (it2 = m_EnemiesList.begin(); it2 != m_EnemiesList.end(); it2++)
@@ -85,8 +70,6 @@ void Engine::draw()
 
         for (int i = 0; i < 100; i++)
         {
-
-
             if (m_illusionsBullets[i].isInFlight())
             {
                 m_Window.draw(m_illusionsBullets[i].getShape());
@@ -95,8 +78,6 @@ void Engine::draw()
 
         for (int i = 0; i < 100; i++)
         {
-
-
             if (m_enemyBullets[i].isInFlight())
             {
                 m_Window.draw(m_enemyBullets[i].getShape());
@@ -106,23 +87,6 @@ void Engine::draw()
         // Draw the player
         m_Window.draw(player.getSprite());
         m_Window.draw(player.getSpriteWeapon());
-
-        // Draw the pickups is currently spawned
-        /*
-        if (ammoPickup.isSpawned())
-        {
-            m_Window.draw(ammoPickup.getSprite());
-        }
-        if (healthPickup.isSpawned())
-        {
-            m_Window.draw(healthPickup.getSprite());
-        }
-        if (moneyPickup.isSpawned())
-        {
-            m_Window.draw(moneyPickup.getSprite());
-        }
-        */
-
         // Draw the crosshair
         m_Window.draw(spriteCrosshair);
 
@@ -152,7 +116,6 @@ void Engine::draw()
         }
 
         // Draw ammo and score information
-        //m_Window.draw(spriteAmmoIcon);
         m_Window.draw(m_hud.getAmmoText());
         m_Window.draw(m_hud.getScoreText());
 
@@ -162,10 +125,6 @@ void Engine::draw()
         m_Window.draw(m_hud.getHungerBarBackground());
         m_Window.draw(m_hud.getHungerBar());
         m_Window.draw(m_hud.getDarkness());
-
-        //m_Window.draw(m_hud.getHiScoreText());
-        // m_Window.draw(m_hud.getWaveNumberText());
-        
         //Draw inventory icons and quantities if the inventory is active
 
         if (m_inventoryActive) {
@@ -222,19 +181,6 @@ void Engine::draw()
 
     }
 
-    //if (state == State::LEVELING_UP)
-    //{
-    //    m_Window.draw(spriteMainMenu);
-    //    
-    //    m_Window.draw(m_hud.getLevelUpText());
-    //            
-    //    // Update the score text again
-    //    std::stringstream ssScore;
-    //    ssScore << "Points:" << m_score;
-    //    //scoreText.setString(ssScore.str());
-    //    //m_Window.draw(scoreText);
-    //}
-    
     // Check if hte game state is paused
     if (state == State::PAUSED)
     {
@@ -263,7 +209,6 @@ void Engine::draw()
 
         m_Window.clear(sf::Color(52, 43, 55));  // Black color with full alpha
 
-
         // Switch to the HUD view
         m_Window.setView(m_hudView);
         // here is the rules for the rules 
@@ -276,63 +221,6 @@ void Engine::draw()
     // Check if the game state is Main menu
     if (state == State::MAIN_MENU)
     {
-
-        // ScreenSize
-       // Vector2f screenDimensions;
-       //
-       // Vector2i mousePosition;
-       //
-       // // Button Coordinates
-       // float startButtonTop;
-       // float startButtonLeft;
-       // float exitButtonTop;
-       // float exitButtonLeft;
-       // float buttonWidth;
-       // float buttonHeight;
-       //
-       // // Background Variables
-       // Texture background_Texture;
-       // Sprite background_Sprite;
-       //
-       // mousePosition = Mouse::getPosition();
-       // screenDimensions.x = VideoMode::getDesktopMode().width;
-       // screenDimensions.y = VideoMode::getDesktopMode().height;
-       //
-       // // Calculate positioning of the Buttons
-       // float buttonSpacing = screenDimensions.x / 20;
-       // buttonWidth = screenDimensions.x / 10;
-       // buttonHeight = screenDimensions.y / 10;
-       // startButtonTop = screenDimensions.y / 4;
-       // startButtonLeft = screenDimensions.x / 4;
-       // exitButtonTop = (screenDimensions.y / 4) + buttonSpacing;
-       // exitButtonLeft = (screenDimensions.x / 4) + buttonSpacing;
-       //
-       // // Initialising Buttons
-       // startButtonHitBox = FloatRect(startButtonLeft, startButtonTop, buttonWidth, buttonHeight);
-       // exitButtonHitBox = FloatRect(exitButtonLeft, exitButtonTop, buttonWidth, buttonHeight);
-       // startButton.setOrigin(startButtonLeft, startButtonTop);
-       // exitButton.setOrigin(exitButtonLeft, exitButtonTop);
-       // startButton.setSize(Vector2f(buttonWidth, buttonHeight));
-       // exitButton.setSize(Vector2f(buttonWidth, buttonHeight));
-       //
-       //
-       // // Initialising Textures for GUI
-       // background_Sprite = Sprite(GUI_background_Texture);
-       //
-       // // Setting Size Of Textures to fit the screen
-       // sf::Vector2f targetSize(screenDimensions.x, screenDimensions.y);
-       //
-       // background_Sprite.setScale(
-       //     targetSize.x / background_Sprite.getLocalBounds().width * 2,
-       //     targetSize.y / background_Sprite.getLocalBounds().height);
-
-
-
-       // m_Window.draw(background_Sprite);
-       // m_Window.draw(startButton);
-       // m_Window.draw(exitButton);
-       // guiseletionsound.play();
-
         //draw the background image and the text
         m_Window.draw(spriteMainMenu);
         m_Window.draw(m_hud.getMainMenuText());

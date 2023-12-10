@@ -178,7 +178,6 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
-		//cout << "m_Position.y  " << m_Position.y << "\n";
 	}
 
 	if (m_RightPressed)
@@ -188,7 +187,6 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
-		//cout << "m_Position.x  " << m_Position.x << "\n";
 	}
 
 	if (m_LeftPressed)
@@ -198,7 +196,6 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		setSpriteFromSheet(sf::IntRect(15, 95, 180, 55));
 		//move the rectangle to the appropriate cell
 		moveTextureRect();
-		//cout << "m_Position.x  " << m_Position.x << "\n";
 	}
 	// Set the position of the player sprite
 	m_Sprite.setPosition(m_Position);
@@ -301,8 +298,6 @@ void Player::decreaseHealthLevel(float amount)
 // Seting player ond the spirite heet with a specified texture box 
 void Player::setSpriteFromSheet(sf::IntRect textureBox)
 {
-	//LevelManager l;
-	//int tile_size = l.TILE_SIZE;
 	//Seting the tile size for the sprite sheet
 	int tile_size = 70;
 	sheetCoordinate = Vector2i(textureBox.left, textureBox.top);
@@ -472,37 +467,5 @@ void Player::stopRight(float position)
 void Player::stopLeft(float position)
 {
 	m_Position.x = position  + m_Sprite.getGlobalBounds().width + 50;
-	m_Sprite.setPosition(m_Position);
-}
-
-// Setting the weapon 
-void Player::getWeaponSpawn(int type, float scale, float posX, float posY)
-{
-	// Store the type of this pickup
-	m_Type = type;
-	// Associate the texture with the sprite based on the weapon type 
-	switch (m_Type) {
-	case 1:
-		m_SpriteWeapon.setTextureRect(sf::IntRect{ 85,260,24,24 });
-		break;
-	case 2:
-		m_SpriteWeapon.setTextureRect(sf::IntRect{ 24, 10, 16, 42 });
-		break;
-	case 3:
-		m_SpriteWeapon.setTextureRect(sf::IntRect{ 90, 10, 16, 42 });
-		break;
-	case 4:
-		m_SpriteWeapon.setTextureRect(sf::IntRect{ 155, 10, 16, 42 });
-		break;
-	case 5:
-		m_SpriteWeapon.setTextureRect(sf::IntRect{ 213, 10, 20, 42 });
-		break;
-	
-	}
-
-	// Setting posotion for the weapon sprite 
-	m_Position.x = posX;
-	m_Position.y = posY;
-	m_Sprite.setScale(scale, scale);
 	m_Sprite.setPosition(m_Position);
 }

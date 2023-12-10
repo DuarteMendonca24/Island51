@@ -22,29 +22,6 @@ void Engine::input()
 					state = State::PAUSED;
 				}
 
-				// Reloading
-				if (event.key.code == Keyboard::R)
-				{
-					if (bulletsSpare >= clipSize)
-					{
-						// Plenty of bullets. Reload.
-						bulletsInClip = clipSize;
-						bulletsSpare -= clipSize;
-						reload.play();
-					}
-					else if (bulletsSpare > 0)
-					{
-						// Only few bullets left
-						bulletsInClip = bulletsSpare;
-						bulletsSpare = 0;
-						reload.play();
-					}
-					else
-					{
-						// More here soon?!
-						reloadFailed.play();
-					}
-				}
 
 				// Inventory 
 				if (event.key.code == Keyboard::Tab) {
@@ -204,13 +181,13 @@ void Engine::input()
 					// craft iron sword
 					else if (select.GetPressed() == 2 && numTreePickup >= 1 && numIronPickup >= 2)
 					{
-						ironSwordBulletsInClip = ironSwordBulletsInClip + 70;
+						ironSwordBulletsInClip = ironSwordBulletsInClip + 60;
 						numTreePickup = numTreePickup - 1;
 						numIronPickup = numIronPickup - 2;
 						pickup.play();
 					}
 					// craft arrow
-					else if (select.GetPressed() == 3 && numTreePickup >= 1 && numStonePickup >= 1)
+					else if (select.GetPressed() == 3 && numTreePickup >= 2 && numStonePickup >= 2)
 					{
 						arrowBulletsInClip = arrowBulletsInClip + 20;
 						numTreePickup = numTreePickup - 1;
@@ -334,6 +311,7 @@ void Engine::input()
 					{
 						pickup.play();
 					}
+					bulletsInClip--;
 				}
 
 			} // End fire a bullet
@@ -358,9 +336,7 @@ void Engine::input()
 				m_BowWeaponActive2 = true;
 
 				currentBullet = handCurrentBullet;
-				bulletsSpare = handBulletsSpare;
 				bulletsInClip = handBulletsInClip;
-				clipSize = handClipSize;
 				fireRate = handFireRate;
 			}
 
@@ -381,9 +357,7 @@ void Engine::input()
 				m_BowWeaponActive2 = true;
 				// Equipping the correct parameters for the Wood Sword
 				currentBullet = woodSwordCurrentBullet;
-				bulletsSpare = woodSwordBulletsSpare;
 				bulletsInClip = woodSwordBulletsInClip;
-				clipSize = woodSwordClipSize;
 				fireRate = woodSwordFireRate;
 			}
 
@@ -404,9 +378,7 @@ void Engine::input()
 				m_BowWeaponActive2 = true;
 				// Equipping the correct parameters for the Stone Sword
 				currentBullet = stoneSwordCurrentBullet;
-				bulletsSpare = stoneSwordBulletsSpare;
 				bulletsInClip = stoneSwordBulletsInClip;
-				clipSize = stoneSwordClipSize;
 				fireRate = stoneSwordFireRate;
 			}
 
@@ -427,9 +399,7 @@ void Engine::input()
 				m_BowWeaponActive2 = true;
 				// Equipping the correct parameters for the Iron Sword
 				currentBullet = ironSwordCurrentBullet;
-				bulletsSpare = ironSwordBulletsSpare;
 				bulletsInClip = ironSwordBulletsInClip;
-				clipSize = ironSwordClipSize;
 				fireRate = ironSwordFireRate;
 			}
 
@@ -450,18 +420,14 @@ void Engine::input()
 				m_BowWeaponActive2 = false;
 				// Equipping the correct parameters for the arrow
 				currentBullet = arrowCurrentBullet;
-				bulletsSpare = arrowBulletsSpare;
 				bulletsInClip = arrowBulletsInClip;
-				clipSize = arrowClipSize;
 				fireRate = arrowFireRate;
 			}
 			// Update ammo to corresponding gun
 			if (handEquipped)
 			{
 				handCurrentBullet = currentBullet;
-				handBulletsSpare = bulletsSpare;
 				handBulletsInClip = bulletsInClip;
-				handClipSize = clipSize;
 				handFireRate = fireRate;
 				bullets[currentBullet].setRange(40);
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -481,9 +447,7 @@ void Engine::input()
 					arrowEquipped = false;
 					m_HandWeaponActive2 = true;
 					currentBullet = handCurrentBullet;
-					bulletsSpare = handBulletsSpare;
 					bulletsInClip = handBulletsInClip;
-					clipSize = handClipSize;
 					fireRate = handFireRate;
 				}
 				else
@@ -494,9 +458,7 @@ void Engine::input()
 			else if (woodSwordEquipped)
 			{
 				woodSwordCurrentBullet = currentBullet;
-				woodSwordBulletsSpare = bulletsSpare;
 				woodSwordBulletsInClip = bulletsInClip;
-				woodSwordClipSize = clipSize;
 				woodSwordFireRate = fireRate;
 				bullets[currentBullet].setRange(50);
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -517,9 +479,7 @@ void Engine::input()
 					arrowEquipped = false;
 					m_WoodWeaponActive2 = true;
 					currentBullet = handCurrentBullet;
-					bulletsSpare = handBulletsSpare;
 					bulletsInClip = handBulletsInClip;
-					clipSize = handClipSize;
 					fireRate = handFireRate;
 				}
 				else
@@ -530,9 +490,7 @@ void Engine::input()
 			else if (stoneSwordEquipped)
 			{
 				stoneSwordCurrentBullet = currentBullet;
-				stoneSwordBulletsSpare = bulletsSpare;
 				stoneSwordBulletsInClip = bulletsInClip;
-				stoneSwordClipSize = clipSize;
 				stoneSwordFireRate = fireRate;
 				bullets[currentBullet].setRange(60);
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -553,9 +511,7 @@ void Engine::input()
 					arrowEquipped = false;
 					m_StoneWeaponActive2 = true;
 					currentBullet = handCurrentBullet;
-					bulletsSpare = handBulletsSpare;
 					bulletsInClip = handBulletsInClip;
-					clipSize = handClipSize;
 					fireRate = handFireRate;
 				}
 				else
@@ -566,9 +522,7 @@ void Engine::input()
 			else if (ironSwordEquipped)
 			{
 				ironSwordCurrentBullet = currentBullet;
-				ironSwordBulletsSpare = bulletsSpare;
 				ironSwordBulletsInClip = bulletsInClip;
-				ironSwordClipSize = clipSize;
 				ironSwordFireRate = fireRate;
 				bullets[currentBullet].setRange(66);
 				m_IronWeaponActive2 = false;
@@ -590,9 +544,7 @@ void Engine::input()
 					arrowEquipped = false;
 					m_IronWeaponActive2 = true;
 					currentBullet = handCurrentBullet;
-					bulletsSpare = handBulletsSpare;
 					bulletsInClip = handBulletsInClip;
-					clipSize = handClipSize;
 					fireRate = handFireRate;
 				}
 				else
@@ -603,9 +555,7 @@ void Engine::input()
 			else if (arrowEquipped)
 			{
 				arrowCurrentBullet = currentBullet;
-				arrowBulletsSpare = bulletsSpare;
 				arrowBulletsInClip = bulletsInClip;
-				arrowClipSize = clipSize;
 				arrowFireRate = fireRate;
 				bullets[currentBullet].setRange(1000);
 				m_BowWeaponActive2 = false;
@@ -629,9 +579,7 @@ void Engine::input()
 					m_BowWeaponActive2 = true;
 
 					currentBullet = handCurrentBullet;
-					bulletsSpare = handBulletsSpare;
 					bulletsInClip = handBulletsInClip;
-					clipSize = handClipSize;
 					fireRate = handFireRate;
 				}
 				else

@@ -97,28 +97,28 @@ Hud::Hud(){
 	//background of weapon
 	m_backgroundWeapon.setSize(Vector2f(m_backgroundWeaponWidth, m_backgroundWeaponHeight));
 	m_backgroundWeapon.setFillColor(Color(52, 43, 55));
-	m_backgroundWeapon.setPosition(resolution.x / 2 - 110, resolution.y - 190);
+	m_backgroundWeapon.setPosition(resolution.x / 2 + 350, resolution.y - 100);
 
 	//background of weapon square
 	m_backgroundWeaponSquare.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare.setFillColor(Color(126, 132, 247));
-	m_backgroundWeaponSquare.setPosition(resolution.x / 2 - 100, resolution.y - 175);
+	m_backgroundWeaponSquare.setPosition(resolution.x / 2 + 360, resolution.y - 85);
 
 	m_backgroundWeaponSquare2.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare2.setFillColor(Color(126, 132, 247));
-	m_backgroundWeaponSquare2.setPosition(resolution.x / 2 - 30, resolution.y - 175);
+	m_backgroundWeaponSquare2.setPosition(resolution.x / 2 + 430, resolution.y - 85);
 	
 	m_backgroundWeaponSquare3.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare3.setFillColor(Color(126, 132, 247));
-	m_backgroundWeaponSquare3.setPosition(resolution.x / 2 + 40, resolution.y - 175);
+	m_backgroundWeaponSquare3.setPosition(resolution.x / 2 + 500, resolution.y - 85);
 
 	m_backgroundWeaponSquare4.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare4.setFillColor(Color(126, 132, 247));
-	m_backgroundWeaponSquare4.setPosition(resolution.x / 2 + 110, resolution.y - 175);
+	m_backgroundWeaponSquare4.setPosition(resolution.x / 2 + 570, resolution.y - 85);
 
 	m_backgroundWeaponSquare5.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare5.setFillColor(Color(126, 132, 247));
-	m_backgroundWeaponSquare5.setPosition(resolution.x / 2 + 180, resolution.y - 175);
+	m_backgroundWeaponSquare5.setPosition(resolution.x / 2 + 640, resolution.y - 85);
 	//wood quantity
 	m_woodQuantityText.setFont(m_font);
 	m_woodQuantityText.setCharacterSize(50);
@@ -194,7 +194,7 @@ Hud::Hud(){
 	m_numWeaponText.setFont(m_font2);
 	m_numWeaponText.setCharacterSize(20);
 	m_numWeaponText.setFillColor(Color::White);
-	m_numWeaponText.setPosition(resolution.x / 2 - 110, resolution.y - 190);
+	m_numWeaponText.setPosition(resolution.x / 2 + 350, resolution.y - 100);
 	m_numWeaponText.setString("1			2			3			4			5");
 }
 

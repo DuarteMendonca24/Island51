@@ -4,7 +4,6 @@
 Weapons::Weapons()
 {
 	// Associate a texture with the sprite
-	// !!Watch this space!!
 	m_Sprite = Sprite(TextureHolder::GetTexture(
 		"graphics/melee_weapon2.png"));
 	m_Sprite.setTextureRect(sf::IntRect{ 24, 10, 16, 42 });
@@ -32,23 +31,29 @@ void Weapons::spawn(int type, float scale, float posX, float posY)
 		break;
 
 	}
+	// Assuming these variables are declared and initialized
 	m_Position.x = posX;
 	m_Position.y = posY;
+	//Set the scale size of the sprite
 	m_Sprite.setScale(scale, scale);
+	// Set the position of the sprite using the m_Position 
 	m_Sprite.setPosition(m_Position);
 }
 
 FloatRect Weapons::getPosition()
 {
+	//Return the position global bounds
 	return m_Sprite.getGlobalBounds();
 }
 
 Vector2f Weapons::getCenter()
 {
+	//Return the sprite position
 	return m_Position;
 }
 
 Sprite Weapons::getSprite()
 {
+	//Return the sprite
 	return m_Sprite;
 }

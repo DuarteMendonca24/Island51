@@ -19,9 +19,9 @@ private:
 	////Start value for food pickups
 	const int FOOD_START_VALUE = 50;
 	// How tough is each resource type
-	const float TREE_HEALTH = 5;
-	const float STONE_HEALTH = 1;
-	const float IRON_HEALTH = 3;
+	const float TREE_HEALTH = 4;
+	const float STONE_HEALTH = 6;
+	const float IRON_HEALTH = 7;
 
 	// How much health has it got?
 	float m_Health;
@@ -91,6 +91,4 @@ public:
 	// Declaraton the function that respresgntinh positon coordinates 
 	Vector2f getPosCoordinates();
 };
-
-
-
+#pragma once

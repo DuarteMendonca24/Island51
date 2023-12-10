@@ -56,8 +56,6 @@ private:
 	int animation_it_limit; //Max animation iterations
 	bool horizontal{ true };
 	int ani_counter{};
-	//which direction is the character headed? used to see if we need to reset the animation to first frame as we have changed direction
-	sf::Vector2f direction{ 0, 1 }; //default value is left
 
 	// Called the function for clock object to measuers the time 
 	Clock clock;
@@ -139,9 +137,6 @@ public:
 	// Decrease the maximum amount of health the player can have
 	void decreaseHealthLevel(float amount);
 
-	// Change Player Sprite to hold new weapons
-	void changePlayerSprite(int type);
-
 	//setSprite to use correct animation cell
 	void setSpriteFromSheet(sf::IntRect textureBox);
 
@@ -162,8 +157,6 @@ public:
 	void stopRight(float position);
 	void stopLeft(float position);
 
-	// Function declaration for spawning a weapon in a game
-	void getWeaponSpawn(int type, float scale, float posX, float posY);
 };
 
 

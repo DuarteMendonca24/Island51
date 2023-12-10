@@ -16,47 +16,47 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	switch (type)
 	{
 	case 0:
-		// Bloater aka the Illusionist 
+		// the Illusionist 
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/boss3.png"));
 		m_Sprite.setTextureRect(sf::IntRect{ 205, 11, 30, 58 });
-		m_Speed = BLOATER_SPEED;
-		m_Health = BLOATER_HEALTH;
-		m_ScoreValue = BLOATER_VALUE;
+		m_Speed = ILLUSIONIST_SPEED;
+		m_Health = ILLUSIONIST_HEALTH;
+		m_ScoreValue = ILLUSIONIST_VALUE;
 		m_type = type;
 		break;
 
 	case 1:
-		// Chaser(takes player hunger bar)
+		// Hunger Taker(takes player hunger bar)
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/enemy3.png"));
 		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
-		m_Speed = CHASER_SPEED;
-		m_Health = CHASER_HEALTH;
-		m_ScoreValue = CHASER_VALUE;
+		m_Speed = HUNGERTAKER_SPEED;
+		m_Health = HUNGERTAKER_HEALTH;
+		m_ScoreValue = HUNGERTAKER_VALUE;
 		m_type = type;
 
 		break;
 
 	case 2:
-		// Crawler(spawns 2 rats when killed)
+		// Mushroom Golem(spawns 2 rats when killed)
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/boss2.png"));
 		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
-		m_Speed = CRAWLER_SPEED;
-		m_Health = CRAWLER_HEALTH;
-		m_ScoreValue = CRAWLER_VALUE;
+		m_Speed = MUSHROOMGOLEM_SPEED;
+		m_Health = MUSHROOMGOLEM_HEALTH;
+		m_ScoreValue = MUSHROOMGOLEM_VALUE;
 		m_type = type;
 		break;
 
 	case 3:
-		// Rat
+		// Small murshroom
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 			"graphics/enemy4.png"));
 		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
-		m_Speed = RAT_SPEED;
-		m_Health = RAT_HEALTH;
-		m_ScoreValue = RAT_VALUE;
+		m_Speed = SMALLMUSHROOM_SPEED;
+		m_Health = SMALLMUSHROOM_HEALTH;
+		m_ScoreValue = SMALLMUSHROOM_VALUE;
 		m_type = type;
 		break;
 	
@@ -66,9 +66,9 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_Sprite = Sprite(TextureHolder::GetTexture(
 				"graphics/acid_boss.png"));
 		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
-		m_Speed = CHASER_SPEED;
-		m_Health = CHASER_HEALTH;
-		m_ScoreValue = CHASER_VALUE;
+		m_Speed = HUNGERTAKER_SPEED;
+		m_Health = HUNGERTAKER_HEALTH;
+		m_ScoreValue = HUNGERTAKER_VALUE;
 		m_type = type;
 
 		break;
@@ -82,11 +82,14 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 	// Express as a fraction of 1
 	modifier /= 100; // Now equals between .7 and 1
 	m_Speed *= modifier;
-
+	// Assuming these variables are declared and initialized
 	m_Position.x = startX;
 	m_Position.y = startY;
 
+	// Set the origin of the sprite (assumed to be a circle with a radius of 25)
 	m_Sprite.setOrigin(25, 25);
+
+	// Set the position of the sprite using the m_Position coordinates
 	m_Sprite.setPosition(m_Position);
 	//Initialising walk point
 	walkPoint = createWalkPoint();
@@ -94,15 +97,17 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 
 void Zombie::spawnBoss(float startX, float startY, float elapsedTime)
 {
+	// Load boss texture and set sprite properties
 	m_Sprite = Sprite(TextureHolder::GetTexture(
 		"graphics/boss.png"));
 	m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
+	// Set initial position of the boss
 	m_Position.x = startX;
 	m_Position.y = startY;
-
-	m_Health = m_bossHealth;
+	// Set initial health of the boss (m_orcHealth is a member variable)
+	m_Health = m_orcHealth;
 	//Incrementing Health of boss by 10 and the bossCount which keeps track of amount of bosses that the player has went through
-	m_bossHealth += 10;
+	m_orcHealth += 10;
 	bossCount++;
 	//Setting The Boss Speed Depending on Round
 	if (bossCount >= 4)
@@ -120,6 +125,7 @@ void Zombie::spawnBoss(float startX, float startY, float elapsedTime)
 	{
 		m_Speed = 10;
 	}
+	// Set the origin and position of the boss sprite
 	m_Sprite.setOrigin(32, 32);
 	m_Sprite.setPosition(m_Position);
 }
@@ -143,55 +149,74 @@ bool Zombie::hit()
 
 bool Zombie::isAlive()
 {
+	//Return the enemies is alive
 	return m_Alive;
 }
 
 FloatRect Zombie::getPosition()
 {
+	//Return the enemies position global bounds
 	return m_Sprite.getGlobalBounds();
 }
 
 Vector2f Zombie::getPosCoordinates() {
-
+	//Return the position
 	return m_Position;
 }
 
 
 Sprite Zombie::getSprite()
 {
+	//Return the sprite
 	return m_Sprite;
 }
 
 void Zombie::update(float elapsedTime,Vector2f playerLocation)
 {
+	//variables are declared 
 	double d = distanceToPlayer(playerLocation);
 	if (d <= 250)
 	{
+		// If the distance between the enemies and the player is less than or equal to 250:
+		// Set the state of the enemies to targeting mode
 		enemyState = EnemyState::TARGETING;
+		// Create a sound buffer to load the sound file
 		SoundBuffer spottedBuffer;
+		// Load the sound file "SpottedGrowl.wav" into the sound buffer
 		spottedBuffer.loadFromFile("sound/SpottedGrowl.wav");
+		// Create a sound object
 		Sound spotted;
+		// Set the sound buffer for the sound object
 		spotted.setBuffer(spottedBuffer);
+		// Set the attenuation of the sound (gradual decrease in volume as listener moves away)
 		spotted.setAttenuation(90);
-		spotted.setPosition(Vector3f(m_Position.x,m_Position.y,0));
+		// Set the position of the sound source (assumed to be in 2D space, z-coordinate set to 0)
+		spotted.setPosition(Vector3f(m_Position.x, m_Position.y, 0));
+		// Set the volume of the sound
 		spotted.setVolume(25);
+		// Play the sound
 		spotted.play();
 	}
 	else
 	{
+		// If the distance is greater than 250:
+		// Set the state of the zombie to wandering mode
 		enemyState = EnemyState::WANDERING;
 	}
 
-
+	// If the enemies is in targeting 
 	if (enemyState == EnemyState::TARGETING)
 	{
+		// Get the x and y coordinates of the player
 		float playerX = playerLocation.x;
 		float playerY = playerLocation.y;
+		// Store the elapsed time
 		timeElapsed = elapsedTime;
+		// Set the sprite from a sprite sheet with the specified texture coordinates
 		setSpriteFromSheet(sf::IntRect(15, 80, 180, 65));
-		//move the rectangle to the appropriate cell
+		// Move the rectangle to the appropriate cell (assuming this is related to sprite animation)
 		moveTextureRect();
-		// Update the zombie position variables
+		// Update the enemies position variables
 		if (playerX > m_Position.x)
 		{
 			m_Position.x = m_Position.x +
@@ -217,80 +242,69 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 			m_Position.y = m_Position.y -
 				m_Speed * elapsedTime;
 		}
-
 		// Move the sprite
 		m_Sprite.setPosition(m_Position);
-
-		// Face the sprite in the correct direction
-		//float angle = (atan2(playerY - m_Position.y,
-			//playerX - m_Position.x)
-			//* 180) / 3.141;
-
-		//m_Sprite.setRotation(angle);
-		
 	}
 
 	//Function to make the enemy wander around 
 	if (enemyState == EnemyState::WANDERING) 
-	{
+	{// If the enemies is in wandering mode:
+
 		if (m_Position.x < walkPoint.x + 10 &&
-			m_Position.x > walkPoint.x - 10
-			&& m_Position.y < walkPoint.y + 10 &&
+			m_Position.x > walkPoint.x - 10 &&
+			m_Position.y < walkPoint.y + 10 &&
 			m_Position.y > walkPoint.y - 10)
 		{
+			// If the zombie is close to the current walking point
+			// Generate a new random walking point
 			walkPoint = createWalkPoint();
 		}
 		else
 		{
+			// If the enemies is not close to the current walking point
+			// Store the x and y coordinates of the current walking point
 			float walkPoint_x = walkPoint.x;
 			float walkPoint_y = walkPoint.y;
+			// Store the elapsed time
 			timeElapsed = elapsedTime;
+			// Set the sprite from a sprite sheet with the specified texture coordinates
 			setSpriteFromSheet(sf::IntRect(15, 80, 180, 65));
-			//move the rectangle to the appropriate cell
+			// Move the rectangle to the appropriate cell
 			moveTextureRect();
-			// Update the zombie position variables
+			// Update the enemies position variables
 			if (walkPoint_x > m_Position.x)
 			{
 				m_Position.x = m_Position.x +
 					m_Speed * elapsedTime;
 				m_Sprite.setScale(1, 1);
 			}
-
 			if (walkPoint_y > m_Position.y)
 			{
 				m_Position.y = m_Position.y +
 					m_Speed * elapsedTime;
 			}
-
 			if (walkPoint_x < m_Position.x)
 			{
 				m_Position.x = m_Position.x -
 					m_Speed * elapsedTime;
 				m_Sprite.setScale(-1, 1);
 			}
-
 			if (walkPoint_y < m_Position.y)
 			{
 				m_Position.y = m_Position.y -
 					m_Speed * elapsedTime;
 			}
-
-
+			//move the sprite
 			m_Sprite.setPosition(m_Position);
 		}
-		
-		
 	}
-	
-	
-
-
 }
 
 void Zombie::illusionBehaviour(Vector2f playerLocation, float elapsedTime) {
-
+	// Get the x and y coordinates of the player
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
+	// Store the elapsed time
 	timeElapsed = elapsedTime;
 	setSpriteFromSheet(sf::IntRect(15, 80, 180, 65));
 	//move the rectangle to the appropriate cell
@@ -299,8 +313,7 @@ void Zombie::illusionBehaviour(Vector2f playerLocation, float elapsedTime) {
 	float angle = (atan2(playerY - m_Position.y,
 		playerX - m_Position.x)
 		* 180) / 3.141;
-	
-	//m_Sprite.setRotation(angle);
+	//Flip sprite if the is 90 angle
 	if (angle > 90 || angle < -90) {
 		m_Sprite.setScale(-1, 1);
 	}
@@ -313,15 +326,15 @@ void Zombie::illusionBehaviour(Vector2f playerLocation, float elapsedTime) {
 }
 
 double Zombie::distanceToPlayer(Vector2f playerLocation) {
-
+	// Get the x and y coordinates of the player
 	float playerX = playerLocation.x;
 	float playerY = playerLocation.y;
 
-	//its using 25 because of pacman being a 50x50 image , dont forget to see player size
-	int x1 = playerX + 25; // center of pacman
-	int y1 = playerY + 25; // center of pacman
-	int x2 = m_Position.x + 25; //centre of the ghost
-	int y2 = m_Position.y + 25;//centre of the ghost
+	//its using 25 because of player being a 50x50 image , dont forget to see player size
+	int x1 = playerX + 25; // center of player
+	int y1 = playerY + 25; // center of player
+	int x2 = m_Position.x + 25; //centre of the enemies
+	int y2 = m_Position.y + 25;//centre of the enemies
 	int xsquared = (x2 - x1) * (x2 - x1);
 	int ysquared = (y2 - y1) * (y2 - y1);
 	double d = sqrt(xsquared + ysquared);
@@ -345,36 +358,41 @@ int Zombie::getType()
 
 void Zombie::setSpriteFromSheet(sf::IntRect textureBox)
 {
-	//LevelManager l;
-	//int tile_size = l.TILE_SIZE;
 	int tile_size = 60;
+	// Extract the left-top coordinates of the texture region
 	sheetCoordinate = Vector2i(textureBox.left, textureBox.top);
+	// Specify the size of each sprite in the sprite sheet
 	spriteSize = Vector2i(tile_size, tile_size);
 	if (textureBox.width > tile_size)
 	{
+		// If the specified region is wider than a single sprite, determine the number of sprites horizontally
 		animation_it_limit = textureBox.width / tile_size;
-
 		horizontal = true;
 	}
 	else if (textureBox.height > tile_size)
 	{
+		// If the specified region is taller than a single sprite, determine the number of sprites vertically
 		animation_it_limit = textureBox.height / tile_size;
 		horizontal = false;
 	}
 	else
-		throw std::logic_error("Animation bounding box must contain multiply sprites, setSprite(sf::IntRect )\n");
+	{
+		// If the specified region is too small, throw an exception
+		throw std::logic_error("Animation bounding box must contain multiple sprites. setSprite(sf::IntRect )\n");
+	}
+	// Set the texture rectangle for the sprite based on the calculated coordinates and size
 	m_Sprite.setTextureRect(sf::IntRect{ sheetCoordinate, spriteSize });
-
 }
 
 void Zombie::moveTextureRect()
 {
-	// if the animation counter is greater than the animation limit reset to 1;
+	// If the animation counter exceeds the animation limit, reset it to 0
 	if (ani_counter == animation_it_limit)
 	{
 		ani_counter = 0;
 	}
 
+	// Update the texture rectangle based on whether the animation is horizontal or vertical
 	if (horizontal) {
 		m_Sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(spriteSize.x * ani_counter, 0), spriteSize));
 	}
@@ -382,24 +400,23 @@ void Zombie::moveTextureRect()
 		m_Sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(0, spriteSize.y * ani_counter), spriteSize));
 	}
 
-	//increment animation counter to point to the next frame
+	// Increment the animation counter to point to the next frame
 	double timePerFrame;
-	timePerFrame = 1.0 / 4.0;
+	timePerFrame = 1.0 / 4.0; // Assuming 4 frames per second, adjust accordingly
 	animationTimer = animationTimer + timeElapsed;
 	if (animationTimer > timePerFrame)
 	{
 		ani_counter++;
-		animationTimer = 0;
+		animationTimer = 0; // Reset the animation timer
 	}
-
 }
 
 Vector2f Zombie::createWalkPoint()
 {
-	
+	// Get the current position of the enemies
 	float x_pos = m_Position.x;
 	float y_pos = m_Position.y;
-
+	// Set the radius within which the zombie can randomly walk
 	int radius = 400;
 	bool isWater = true;
 
@@ -410,7 +427,7 @@ Vector2f Zombie::createWalkPoint()
 	//Adding Random values to current position
 	x_pos += (float)dist(rd);
 	y_pos += (float)dist(rd);
-
+	// Return the new random position as a Vector2f
 	return Vector2f(x_pos, y_pos);
 }
 

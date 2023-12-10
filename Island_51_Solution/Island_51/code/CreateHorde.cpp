@@ -7,18 +7,19 @@
 
 //changing the function to return a list
 std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
-{
+{ 
+	// Create an empty list to store Zombie pointers
 	std::list<Zombie*> zombiesList;
+	// Get the number of available spawners
 	int spawnersAvailable = manageLevel.getSpawnerCount();
-
+	// Define boundaries for random spawn locations within the arena
 	int maxY = arena.height - 20;
 	int minY = arena.top + 20;
 	int maxX = arena.width - 20;
 	int minX = arena.left + 20;
-
+	// Loop to create the specified number of zombies
 	for (int i = 0; i < numZombies; i++)
 	{
-
 		// Which side should the zombie spawn
 		srand((int)time(0) * i);
 		int side = (rand() % 4);
@@ -52,28 +53,27 @@ std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
 		}
 
 
-		// Bloater, crawler, runner, rat
+		// enemies randomly 
 		srand((int)time(0) * i * 2);
-		//dont spawn the blowter aka The illusionist
+		//dont spawn the The illusionist
 		int type = (rand() % 5) + 1;
-
+		// Create a new Enemy object and spawn it
 		Zombie* zombie = new Zombie();
 		//Getting Spawner Location To Spawn Zombie
 		int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
 		Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
-
+		//sapwn the enemies
 		zombie->spawn(spawnLocation.x, spawnLocation.y, type, i);
+		// Add the zombie to the list
 		zombiesList.push_back(zombie);
-
-
-
-
 	}
+	// Return the list of Zombie pointers
 	return zombiesList;
 }
 
 Zombie* Engine::createIllusions(Vector2f playerPosition)
 {
+	// Create an array of four Zombie objects representing illusionists
 	Zombie* illusion = new Zombie[4];
 
 	// Reference Illusionist position
@@ -88,34 +88,35 @@ Zombie* Engine::createIllusions(Vector2f playerPosition)
 	illusion[1].spawn(refX, refY + offset, 0, 1);     // Bottom Illusionist
 	illusion[2].spawn(refX, refY - offset, 0, 1);       // top
 	illusion[3].spawn(refX + offset, refY, 0, 1);      // Right Illusionist
-
+	// Set the flag indicating that illusions are active
 	m_illusions = true;
 
+	// Return the array of Zombie pointers representing illusionists
 	return illusion;
 }
 
 //new function created to spawn enemies when one is killed
 std::list<Zombie*> Engine::createEnemies(int numZombies, Vector2f position, int type)
 {
+	// Create an empty list to store Zombie pointers
 	std::list<Zombie*> zombiesList;
-	//int spawnersAvailable = manageLevel.getSpawnerCount();
-	//int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
-	//Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
-
-	
+	// Initial position for spawning enemies
 	int x = position.x;
 	int y = position.y;
+	// Offset between the X positions of enemies
 	int xOffset = 25;
-
+	// Loop to create the specified number of enemies
 	for (int i = 0; i < numZombies; i++)
 	{
+		// Create a new Zombie object and spawn it at the current position
 		Zombie* zombie = new Zombie();
 		zombie->spawn(x, y, type, i);
+		// Add the zombie to the list
 		zombiesList.push_back(zombie);
-
+		// Update the X position for the next enemy
 		x += xOffset;
 	}
-
+	// Return the list of Zombie pointers representing enemies
 	return zombiesList;
 }
 
@@ -123,60 +124,68 @@ std::list<Zombie*> Engine::createEnemies(int numZombies, Vector2f position, int 
 //new function created to spawn enemies when one is killed
 std::list<Pickup*> Engine::createPickup(Vector2f position)
 {
+	// Create an empty list to store Pickup pointers
 	std::list<Pickup*> pickupList;
-
+	// Extract X and Y coordinates from the specified position
 	float posX = position.x;
 	float posY = position.y;
+	// Offset between consecutive pickups along the X-axis
 	int xOffset = 25;
-
+	// Create a new Pickup object
 	Pickup* pickup = new Pickup();
-	srand((int)time(0));
+	// Generate a random type for the pickup (1 to 3)
+	srand(static_cast<int>(time(0)));
 	int type = (rand() % 3) + 1;
-	pickup->spawnPickup(type, posX, posY,1);
+	// Spawn the pickup at the specified position with the random type
+	pickup->spawnPickup(type, posX, posY, 1);
+	// Add the pickup to the list
 	pickupList.push_back(pickup);
-	cout << "Pickup Type: " << type << "\n";
-	//posX += xOffset;
-
-
+	// Return the list of Pickup pointers representing the spawned pickup
 	return pickupList;
 }
 
 //changing the function to return a list
-std::list<Pickup*> Engine::createResorces(int numResource)
+std::list<Pickup*> Engine::createResorces(int numResources)
 {
+	// Create an empty list to store Pickup pointers
 	std::list<Pickup*> resourceList;
-	for (int i = 0; i < numResource; i++)
+
+	// Loop to create the specified number of resources
+	for (int i = 0; i < numResources; i++)
 	{
-		srand((int)time(0) * i);
+		// Generate a random type for the resource (4 to 6)
+		srand(static_cast<int>(time(0)) * i);
 		int type = (rand() % 3) + 4;
+		// Generate random positions for the resource within specified ranges
 		float posX = (rand() % 3251) + 2380;
 		float posY = (rand() % 1951) + 450;
-
 		// Create a new Pickup object for each resource
 		Pickup* resource = new Pickup();
 		resource->spawnPickup(type, posX, posY, 2.5);
+		// Add the resource to the list
 		resourceList.push_back(resource);
-		//cout << "Pickup_Position.x  " << posX << "\n";
-		//cout << "Pickup_Position.y  " << posY << "\n";
 	}
+	// Return the list of Pickup pointers representing the spawned resources
 	return resourceList;
 }
 
-std::list<Pickup*> Engine::createRespawnResorces(int numResource, float positionX, float positionY,int type)
+std::list<Pickup*> Engine::createRespawnResorces(int numResources, float positionX, float positionY,int type)
 {
+	// Create an empty list to store Pickup pointers
 	std::list<Pickup*> resourceList;
-	for (int i = 0; i < numResource; i++)
+	// Loop to create the specified number of resources
+	for (int i = 0; i < numResources; i++)
 	{
+		// Copy the specified type and position for the resource
 		int m_type = type;
 		float posX = positionX;
 		float posY = positionY;
 		// Create a new Pickup object for each resource
 		Pickup* resource = new Pickup();
 		resource->spawnPickup(m_type, posX, posY, 2.5);
+		// Add the resource to the list
 		resourceList.push_back(resource);
-		//cout << "Pickup_Position.x  " << posX << "\n";
-		//cout << "Pickup_Position.y  " << posY << "\n";
 	}
-
+	// Return the list of Pickup pointers representing the spawned resources
 	return resourceList;
 }

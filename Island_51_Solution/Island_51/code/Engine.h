@@ -22,8 +22,13 @@ using namespace sf;
 static class Engine
 {
 public:
-    //int loadLevel(VertexArray& rVA);
-
+    //Horde Object
+    //CreateHorde
+    //Zombie List
+    //Pickup List
+    /*
+        LIST OF VARIABLES NEEDED FOR OTHER CLASSES
+    */
     std::list<Zombie*> createHorde(int numZombies, IntRect arena);
     std::list<Zombie*> createEnemies(int numZombies, Vector2f position, int type);
     std::list<Pickup*> createPickup(Vector2f position);
@@ -36,8 +41,6 @@ public:
     void loadSounds();
     int** getArrayLevel();
     int RandomBetween(int min, int max);
-
-
 
     Zombie* createIllusions(Vector2f playerPosition);
 
@@ -76,13 +79,7 @@ private:
     int numIronPickup = 0;
     int numSoulPickup = 0;
 
-    Vector2f position;
-    //Horde Object
-    //CreateHorde
-    //Zombie List
-    /*
-        LIST OF VARIABLES NEEDED FOR OTHER CLASSES
-    */
+    //the tile size
     const int TILE_SIZE = 50;
     // Prepare for a horde of zombies
     int numZombies;
@@ -92,39 +89,27 @@ private:
     int numResourceAlive;
     //Gun Variables
     int currentBullet = 1;
-    int bulletsSpare = 12;
     int bulletsInClip = 12;
-    int clipSize = 12;
     float fireRate = 1;
     //Hand parameters
     int handCurrentBullet = 0;
-    int handBulletsSpare = 30;
-    int handBulletsInClip = 99999999;
-    int handClipSize = 15;
+    int handBulletsInClip = 99999999999;
     float handFireRate = 0.4;
     //Wood Sword Parameters 
     int woodSwordCurrentBullet = 0;
-    int woodSwordBulletsSpare = 120;
     int woodSwordBulletsInClip = 0;
-    int woodSwordClipSize = 30;
     float woodSwordFireRate = 0.6;
     //Stone Sword Parameters
     int stoneSwordCurrentBullet = 0;
-    int stoneSwordBulletsSpare = 20;
     int stoneSwordBulletsInClip = 0;
-    int stoneSwordClipSize = 5;
     float stoneSwordFireRate = 1.0;
     //Iron Sword Parameters
     int ironSwordCurrentBullet = 0;
-    int ironSwordBulletsSpare = 20;
     int ironSwordBulletsInClip =0;
-    int ironSwordClipSize = 5;
     float ironSwordFireRate = 3.0;
     //Arrow Parameters
     int arrowCurrentBullet = 0;
-    int arrowBulletsSpare = 20;
     int arrowBulletsInClip = 0;
-    int arrowClipSize = 5;
     float arrowFireRate = 0.5;
     // About the game
     int m_score = 0;
@@ -293,21 +278,8 @@ private:
     float m_currentHunger = 100;
 
     float m_hungerTickAmount = 2.5;
-
-
     float dtSinceDrawUpdate;
 
-
-
-
-
-    //Create PickUps
-    // Create a couple of pickups
-    /*
-    Pickup healthPickup = Pickup(1);
-    Pickup ammoPickup = Pickup(2);
-    Pickup moneyPickup = Pickup(3);
-    */
     //Zombie List
     Zombie* zombies = NULL;
     //changing the array to a list
@@ -325,10 +297,10 @@ private:
     Bullet bullets[1000];
     Bullet m_illusionsBullets[100];
     Bullet m_enemyBullets[100];
-
+    //illusions fire rate
     float m_illusionsFireRate = 1;
     float m_shootingFireRate = 3;
-
+    //craft item select
     Craft select;
 
     // Run will call all the private functions
@@ -339,6 +311,7 @@ private:
 
     //Check the Resourse is enough
     bool m_EnoughResources = false;
+    //Set time to display
     float m_SecondsSince = 0;
 
     //Check the weapons in inventory

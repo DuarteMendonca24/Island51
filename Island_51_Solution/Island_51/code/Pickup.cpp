@@ -196,7 +196,7 @@ bool Pickup::hit()
 	return false;
 }
 
-// if the 
+// if the pickup is alive
 bool Pickup::isAlive()
 {
 	return m_Alive;

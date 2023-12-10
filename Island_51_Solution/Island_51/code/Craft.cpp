@@ -24,7 +24,7 @@ void Craft::position(float width, float height)
 
 	select[3].setFont(font);// set the font 
 	select[3].setFillColor(Color::White);// color white in text
-	select[3].setString("Arrow \nWoods : 1		Stones : 1");// print the text
+	select[3].setString("Arrow \nWoods : 2		Stones : 2");// print the text
 	select[3].setPosition(sf::Vector2f(800, height / (MAX_NUMBER_OF_CRAFT + 1) * 4));// set the position
 
 	select[4].setFont(font);// set the font 

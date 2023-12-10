@@ -51,33 +51,36 @@ bool Engine::detectCollisions(Player& character)
 			block.top = y * TILE_SIZE;
 
 		
-			// Is character colliding with a regular block i.e platform
+			// Is player colliding with a water block i.e platform
 			if (m_ArrayLevel2[y][x] == 0)
 			{
-				
-				//cout << "COLLISION";
+				//if the player right body colliding the water
 				if (character.getRight().intersects(block))
 				{
-					//cout << "COLLISION RIGHT" << "\n";
+					//Stop right
 					character.stopRight(block.left);
+					//Break the loop
 					break;
 				}
-				else if (character.getLeft().intersects(block))
+				else if (character.getLeft().intersects(block))//if the player left body colliding the water
 				{
-					//cout << "COLLISION LEFT" <<"\n";
+					//Stop Left
 					character.stopLeft(block.left);
+					//Break the loop
 					break;
 				}
-				else if (character.getFeet().intersects(block))
+				else if (character.getFeet().intersects(block))//if the player feet body colliding the water
 				{
-					//cout << "COLLISION FEET" << "\n";
+					//Stop down
 					character.stopDown(block.top);
+					//Break the loop
 					break;
 				}
-				 else if (character.getHead().intersects(block))
+				 else if (character.getHead().intersects(block))//if the player head body colliding the water
 				{
-					//cout << "COLLISION HEAD" << "\n";
+					//stop up
 					character.stopUp((block.top));
+					//Break the loop
 					break;
 				}
 
@@ -86,7 +89,6 @@ bool Engine::detectCollisions(Player& character)
 		}
 
 	}
-
 	// All done, return, a new level might be required
 	return reachedGoal;
 }
