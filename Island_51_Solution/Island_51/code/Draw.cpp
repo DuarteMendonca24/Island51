@@ -24,6 +24,7 @@ void Engine::draw()
 
     if (state == State::PLAYING)
     {
+        // Clear the window to preaper for rendering 
         m_Window.clear();
 
         // set the mainView to be displayed in the m_Window
@@ -34,18 +35,17 @@ void Engine::draw()
         m_Window.draw(background, &textureBackground);
 
 
-
-      
+           // Draw the zombie illusions if they are active 
            if (m_illusions) {
                // Draw the zombies
                for (int i = 0; i < 4; i++) {
-                   
                    
                    m_Window.draw(Illusions[i].getSprite());
            
                }
            }
            
+           // Make sure that it active in the game
            if (m_illusionist) {
            
                for (int i = 0; i < 4; i++) {
@@ -150,17 +150,23 @@ void Engine::draw()
         {
             m_Window.draw(m_weaponIcons2[4].getSprite());
         }
+
+        // Draw ammo and score information
         //m_Window.draw(spriteAmmoIcon);
         m_Window.draw(m_hud.getAmmoText());
         m_Window.draw(m_hud.getScoreText());
-        //m_Window.draw(m_hud.getHiScoreText());
+
+        // drawing the Health and Hunger bars in the game
         m_Window.draw(m_hud.getHealthBarBackground());
         m_Window.draw(m_hud.getHealthBar());
-        // m_Window.draw(m_hud.getWaveNumberText());
         m_Window.draw(m_hud.getHungerBarBackground());
         m_Window.draw(m_hud.getHungerBar());
         m_Window.draw(m_hud.getDarkness());
 
+        //m_Window.draw(m_hud.getHiScoreText());
+        // m_Window.draw(m_hud.getWaveNumberText());
+        
+        //Draw inventory icons and quantities if the inventory is active
 
         if (m_inventoryActive) {
             //draw the inventory icons
@@ -173,6 +179,7 @@ void Engine::draw()
             m_Window.draw(m_hud.getStoneQuantityText());
             m_Window.draw(m_hud.getIronQuantityText());
         }
+        //
         m_Window.draw(m_hud.getBackgroudWeapon());
         m_Window.draw(m_hud.getBackgroudWeaponSquare());
         m_Window.draw(m_hud.getBackgroudWeaponSquare2());
@@ -196,14 +203,17 @@ void Engine::draw()
         {
             m_Window.draw(m_weaponIcons[4].getSprite());
         }
+
+        // Draw the number of weapons the player can use
         m_Window.draw(m_hud.getNumWeaponText());
     }
 
+    // Check if the game state have rules for the game
     if (state == State::RULE)
     {
+        // Here is to add the colour for the background
         m_Window.clear(sf::Color(52, 43, 55));  // Black color with full alpha
 
-        
         // Switch to the HUD view
         m_Window.setView(m_hudView);
         // here is the rules for the rules 
@@ -225,22 +235,30 @@ void Engine::draw()
     //    //m_Window.draw(scoreText);
     //}
     
+    // Check if hte game state is paused
     if (state == State::PAUSED)
     {
-       
+       // Draw the pased text on the window
         m_Window.draw(m_hud.getPausedText());
+        // Play the puase sound effect
         guiseletionsound.play();
     }
 
+   // Check if the game state is Game Over
     if (state == State::GAME_OVER)
     {
+        // Draw the main menu background
         m_Window.draw(spriteMainMenu);
+        // Draw the Game Over text on the window
         m_Window.draw(m_hud.getGameOverText());
+        // Draw the player's socre 
         m_Window.draw(m_hud.getScoreText());
+        // Draw the high score 
         m_Window.draw(m_hud.getHighscoreText());
         //gameoversound.play();
     }
 
+    // Check if the game state is High Score
     if (state == State::HIGHSCORE) {
 
         m_Window.clear(sf::Color(52, 43, 55));  // Black color with full alpha
@@ -250,13 +268,14 @@ void Engine::draw()
         m_Window.setView(m_hudView);
         // here is the rules for the rules 
         m_Window.draw(m_hud.getGoBackMenuText());
+        // here is the high score
         m_Window.draw(m_hud.getHighscoreText());
 
     }
 
+    // Check if the game state is Main menu
     if (state == State::MAIN_MENU)
     {
-
 
         // ScreenSize
        // Vector2f screenDimensions;
@@ -319,22 +338,33 @@ void Engine::draw()
         m_Window.draw(m_hud.getMainMenuText());
     }
 
+    // Check if the game state is Craft
     if (state == State::CRAFT)
     {
+        // draw the background for the crafting 
         m_Window.draw(m_hud.getBackgroudCraft());
+
+        // Draw the creafting selction
         select.draw(m_Window);
+
+        // check if the player have't enohgy resources
         if (m_EnoughResources)
         {
+            // Show a notification that player does;t have enough resources 
             m_Window.draw(m_hud.getNotEnoughResourcse());
           
         }
+        // Play a sound effect gui seletion
         guiseletionsound.play();
+
+        // Check if the inventory is active
         if (m_inventoryActive) {
             //draw the inventory icons
             for (int i = 0; i < 4; i++)
             {
                 m_Window.draw(m_inventoryIcons[i].getSprite());
             }
+            //Draw text displaying th qunaitity of different resources in the invenory
             m_Window.draw(m_hud.getSoulQuantityText());
             m_Window.draw(m_hud.getWoodQuantityText());
             m_Window.draw(m_hud.getStoneQuantityText());
@@ -342,6 +372,7 @@ void Engine::draw()
         }
     }
 
+    // Update the game winow to disaply any change made during the process 
     m_Window.display();
 
 

@@ -4,9 +4,10 @@ void Engine::input()
 {
 	Event event;
 
+	
 	while (m_Window.pollEvent(event))
 	{
-
+		// Checking that the key has be pressed
 		if (event.type == Event::KeyPressed)
 		{
 
@@ -17,7 +18,7 @@ void Engine::input()
 				// Pause a game while playing
 				if (event.key.code == Keyboard::Enter)
 				{
-					
+					// Showing the pasued game
 					state = State::PAUSED;
 				}
 
@@ -47,7 +48,7 @@ void Engine::input()
 
 				// Inventory 
 				if (event.key.code == Keyboard::Tab) {
-
+					
 					if (!m_inventoryActive) {
 
 						m_inventoryActive = true;
@@ -74,6 +75,7 @@ void Engine::input()
 
 
 			}
+			// Showing the paused game 
 			else if (state == State::PAUSED) {
 			
 				// Restart while paused
@@ -84,6 +86,7 @@ void Engine::input()
 					clock.restart();
 				}
 			}
+			// Game Over
 			else if (state == State::GAME_OVER) {
 
 				state = State::MAIN_MENU;
@@ -91,25 +94,29 @@ void Engine::input()
 				player.resetPlayerStats();
 				
 			}
+			// Going to the Main Menu
 			else if (state == State::MAIN_MENU) {
 
-				
+				// If 1 press play game from the menu
 				if (event.key.code == Keyboard::Num1) {
 
 					state = State::PLAYING;
 					gameStart.play();
 					music.play();
 				}
+				// If 2 press Check rule from the menu
 				else if (event.key.code == Keyboard::Num2) {
 
 					state = State::RULE;
 					UI_Sound.play();
 				}
+				// If 3 press Check High Score from the menu
 				else if (event.key.code == Keyboard::Num3) {
 
 					state = State::HIGHSCORE;
 					UI_Sound.play();
 				}
+				// If 4 press Check High Score from the menu
 				else if (event.key.code == Keyboard::Num4) {
 
 					UI_Sound.play();
@@ -123,8 +130,8 @@ void Engine::input()
 					m_Window.close();
 				}
 
-
 			}
+			// Ruels state
 			else if (state == State::RULE) {
 
 				//to go back to main menu
@@ -134,6 +141,7 @@ void Engine::input()
 					UI_Sound.play();
 				}
 			}
+			// Highs Score state
 			else if (state == State::HIGHSCORE) {
 
 				//to go back to main menu
@@ -217,8 +225,6 @@ void Engine::input()
 						numStonePickup = numStonePickup - 1;
 						pickup.play();
 
-						
-
 					}
 					// exit the craft
 					else if (select.GetPressed() == 5 && state == State::CRAFT)
@@ -228,6 +234,7 @@ void Engine::input()
 					}
 					else
 					{
+						// having enough resources for the crafting 
 						if (m_EnoughResources)
 						{
 							m_EnoughResources = false;

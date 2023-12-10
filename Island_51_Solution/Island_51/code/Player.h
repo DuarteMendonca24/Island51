@@ -6,14 +6,18 @@ using namespace sf;
 class Player
 {
 private:
+	// The starting of the speed for player in the entity of the game 
 	const float START_SPEED = 990;
+	// The starting of the health for player in the entity of the game 
 	const float START_HEALTH = 100;
 
 	// Where is the player
 	Vector2f m_Position;
+	// where the player might hold the weapon
 	Vector2f m_PositionWeapon;
 	// Of course we will need a sprite
 	Sprite m_Sprite;
+
 	Sprite m_SpriteWeapon;
 	// And a texture
 	// !!Watch this space!!
@@ -55,7 +59,9 @@ private:
 	//which direction is the character headed? used to see if we need to reset the animation to first frame as we have changed direction
 	sf::Vector2f direction{ 0, 1 }; //default value is left
 
+	// Called the function for clock object to measuers the time 
 	Clock clock;
+	// This stone
 	float timeElapsed;
 	//50 ms for each frame
 	float animationTimer = 0;
@@ -67,12 +73,13 @@ private:
 	FloatRect m_Left;
 	// All our public functions will come next
 public:
-
+	// The function from the player class
 	Player();
 
 	// Call this at the end of every game
 	void resetPlayerStats();
 
+	// Function declarartion for spawning game elements within a specified araea 
 	void spawn(IntRect arena, Vector2f resolution, int tileSize);
 
 	// Handle the player getting hit by a zombie
@@ -129,6 +136,7 @@ public:
 
 	// Increase the maximum amount of health the player can have
 	void increaseHealthLevel(int amount);
+	// Decrease the maximum amount of health the player can have
 	void decreaseHealthLevel(float amount);
 
 	// Change Player Sprite to hold new weapons
@@ -136,21 +144,25 @@ public:
 
 	//setSprite to use correct animation cell
 	void setSpriteFromSheet(sf::IntRect textureBox);
+
 	//move the rectangle to the next cell in the animation
 	void moveTextureRect();
 	void getAttack(int type);
+
 	// A rectangle representing the position of different parts of the sprite
 	FloatRect getFeet();
 	FloatRect getHead();
 	FloatRect getRight();
 	FloatRect getLeft();
 	void updateLeftRightHeadFeet();
+
 	// Make the character stand firm
 	void stopDown(float position);
 	void stopUp(float position);
 	void stopRight(float position);
 	void stopLeft(float position);
 
+	// Function declaration for spawning a weapon in a game
 	void getWeaponSpawn(int type, float scale, float posX, float posY);
 };
 

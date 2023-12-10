@@ -3,8 +3,11 @@
 #include <iostream>
 Player::Player()
 {
+	// Set speed for the player 
 	m_Speed = START_SPEED;
+	// Set Health for the player 
 	m_Health = START_HEALTH;
+	// Set max Health for the player 
 	m_MaxHealth = START_HEALTH;
 
 	// Associate a texture with the sprite
@@ -22,6 +25,7 @@ Player::Player()
 	m_SpriteWeapon.setOrigin(16 / 2, 42/ 2);
 }
 
+// Reset stats for the player each game
 void Player::resetPlayerStats()
 {
 	m_Speed = START_SPEED;
@@ -49,14 +53,17 @@ void Player::spawn(IntRect arena, Vector2f resolution, int tileSize)
 	m_Resolution.y = resolution.y;
 
 }
-
+// The time when the player was last hit 
 Time Player::getLastHitTime()
 {
+	// Return the of last hit on the player in the game
 	return m_LastHit;
 }
 
+// handle a hit on the player 
 bool Player::hit(Time timeHit)
 {
+	// Set the sprite for the hit animation 
 	setSpriteFromSheet(sf::IntRect(15, 309, 180, 55));
 	//move the rectangle to the appropriate cell
 	moveTextureRect();
@@ -74,72 +81,72 @@ bool Player::hit(Time timeHit)
 	}
 
 }
-
+// Return the global bounding of the player's sprite
 FloatRect Player::getPosition()
 {
 	return m_Sprite.getGlobalBounds();
 }
-
+// Return the center of the player
 Vector2f Player::getCenter()
 {
 	return m_Position;
-}
-
+} 
+// Return the rotation angle of the player's sprite
 float Player::getRotation()
 {
 	return m_Sprite.getRotation();
 }
-
+// Return a copy of the player's sprite
 Sprite Player::getSprite()
 {
 	return m_Sprite;
 }
-
+// Return a of the player's weapon sprite
 Sprite Player::getSpriteWeapon()
 {
 	return m_SpriteWeapon;
 }
-
+// Return the current health of the player
 int Player::getHealth()
 {
 	return m_Health;
 }
-
+// Set the movement for player to go left
 void Player::moveLeft()
 {
 	m_LeftPressed = true;
 }
-
+// Set the movement for player to go right
 void Player::moveRight()
 {
 	m_RightPressed = true;
 }
-
+// Set the movement for player to go upward 
 void Player::moveUp()
 {
 	m_UpPressed = true;
 }
-
+//Set the movement for player to go downward
 void Player::moveDown()
 {
 	m_DownPressed = true;
 }
-
+// player stop moving at the left 
 void Player::stopLeft()
 {
 	m_LeftPressed = false;
 }
-
+// player stop moving at the right 
 void Player::stopRight()
 {
 	m_RightPressed = false;
 }
-
+// player stop moving up
 void Player::stopUp()
 {
 	m_UpPressed = false;
 }
-
+// player stop moving down
 void Player::stopDown()
 {
 	m_DownPressed = false;
@@ -149,9 +156,11 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 {
 	
 	timeElapsed = elapsedTime;
+
 	setSpriteFromSheet(sf::IntRect(15, 24, 180, 55));
 	//move the rectangle to the appropriate cell
 	moveTextureRect();
+	// Handle movement based on pressed keys
 	if (m_UpPressed)
 	{
 		m_Position.y -= m_Speed * elapsedTime;
@@ -191,8 +200,8 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 		moveTextureRect();
 		//cout << "m_Position.x  " << m_Position.x << "\n";
 	}
+	// Set the position of the player sprite
 	m_Sprite.setPosition(m_Position);
-
 	
 	// Calculate the angle the player is facing
 	float angle = (atan2(mousePosition.y - m_Resolution.y / 2,
@@ -245,27 +254,27 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 	m_Sprite.setPosition(m_Position);
 }
 
+// Upgrade player speed by 40%
 void Player::upgradeSpeed()
 {
 	// 40% speed upgrade
 	m_Speed += (START_SPEED * .4);
 }
-
+// Upgrade player maximum health by 20%
 void Player::upgradeHealth()
 {
 	// 20HP max health upgrade
 	m_MaxHealth = m_MaxHealth + 20;
 
 }
-
+// Seting player health to a specific value 
 void Player::setHealth(float x)
 {
 	// Health 
 	m_Health =  x;
 }
 
-
-
+// Increase player health by a certain amount
 void Player::increaseHealthLevel(int amount)
 {
 	m_Health += amount;
@@ -277,6 +286,7 @@ void Player::increaseHealthLevel(int amount)
 	}
 }
 
+//Decrease player health by a certain amount
 void Player::decreaseHealthLevel(float amount)
 {
 	m_Health -= amount;
@@ -288,15 +298,17 @@ void Player::decreaseHealthLevel(float amount)
 	}
 }
 
-
-
+// Seting player ond the spirite heet with a specified texture box 
 void Player::setSpriteFromSheet(sf::IntRect textureBox)
 {
 	//LevelManager l;
 	//int tile_size = l.TILE_SIZE;
+	//Seting the tile size for the sprite sheet
 	int tile_size = 70;
 	sheetCoordinate = Vector2i(textureBox.left, textureBox.top);
 	spriteSize = Vector2i(tile_size, tile_size);
+
+	// Check whether the animation bounding box is horizontal or verical  
 	if (textureBox.width > tile_size)
 	{
 		animation_it_limit = textureBox.width / tile_size;
@@ -310,10 +322,12 @@ void Player::setSpriteFromSheet(sf::IntRect textureBox)
 	}
 	else
 		throw std::logic_error("Animation bounding box must contain multiply sprites, setSprite(sf::IntRect )\n");
+	// Set the texture rectangel for the sprite 
 	m_Sprite.setTextureRect(sf::IntRect{ sheetCoordinate, spriteSize });
 
 }
 
+// Update the sprite texture rectangele to animation
 void Player::moveTextureRect()
 {
 	// if the animation counter is greater than the animation limit reset to 1;
@@ -329,7 +343,7 @@ void Player::moveTextureRect()
 		m_Sprite.setTextureRect(sf::IntRect(sheetCoordinate + sf::Vector2i(0, spriteSize.y * ani_counter), spriteSize));
 	}
 
-	//increment animation counter to point to the next frame
+	//Increment animation counter to point to the next frame
 	double timePerFrame;
 	timePerFrame = 1.0 / 4.0;
 	animationTimer = animationTimer + timeElapsed;
@@ -340,6 +354,8 @@ void Player::moveTextureRect()
 	}
 
 }
+
+// Set the attack tpye and addocaite the appropriate texture rectangle with the wepson sprite 
 void Player::getAttack(int type)
 {
 	// Store the type of this pickup
@@ -382,21 +398,22 @@ void Player::getAttack(int type)
 		break;
 	}
 }
+// Get the bounding box for the player feet
 FloatRect Player::getFeet()
 {
 	return m_Feet;
 }
-
+// Get the bounding box for the player head
 FloatRect Player::getHead()
 {
 	return m_Head;
 }
-
+// Get the bounding box for the player lefts side 
 FloatRect Player::getLeft()
 {
 	return m_Left;
 }
-
+// Get the bouding box for the player right side
 FloatRect Player::getRight()
 {
 	return m_Right;
@@ -431,34 +448,39 @@ void Player::updateLeftRightHeadFeet()
 	m_Left.height = r.height * .3;
 
 }
+
+// Setting the player postiton to stop moving upwards 
 void Player::stopUp(float position)
 {
 	m_Position.y = position + getPosition().height;
 	m_Sprite.setPosition(m_Position);
 }
+// Setting the player postiton to stop moving downwards
 void Player::stopDown(float position)
 {
 	m_Position.y = position - getPosition().height;
 	m_Sprite.setPosition(m_Position);
 }
-
+// Setting the player postiion to stop moving to the right side
 void Player::stopRight(float position)
 {
 
 	m_Position.x = position - m_Sprite.getGlobalBounds().width;
 	m_Sprite.setPosition(m_Position);
 }
-
+// Setting the player postiion to stop moving to the left side
 void Player::stopLeft(float position)
 {
 	m_Position.x = position  + m_Sprite.getGlobalBounds().width + 50;
 	m_Sprite.setPosition(m_Position);
 }
 
+// Setting the weapon 
 void Player::getWeaponSpawn(int type, float scale, float posX, float posY)
 {
 	// Store the type of this pickup
 	m_Type = type;
+	// Associate the texture with the sprite based on the weapon type 
 	switch (m_Type) {
 	case 1:
 		m_SpriteWeapon.setTextureRect(sf::IntRect{ 85,260,24,24 });
@@ -477,6 +499,8 @@ void Player::getWeaponSpawn(int type, float scale, float posX, float posY)
 		break;
 	
 	}
+
+	// Setting posotion for the weapon sprite 
 	m_Position.x = posX;
 	m_Position.y = posY;
 	m_Sprite.setScale(scale, scale);

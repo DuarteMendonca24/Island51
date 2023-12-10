@@ -1,2 +1,72 @@
-﻿  Weapons.cpp
-  Island_51.vcxproj -> C:\Users\Administrador\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+﻿  HandleInput.cpp
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(110,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(355,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
+  Pickup.cpp
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(71,20): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(74,20): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(159,34): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.cpp(164,32): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+  Player.cpp
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(39,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(40,30): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(112,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(207,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(214,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(215,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(241,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(246,22): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(248,28): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(251,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(253,27): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(261,26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(440,22): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(442,28): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(446,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(448,27): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+  Island_51.vcxproj -> C:\Users\K00275987\OneDrive - TUS MM\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

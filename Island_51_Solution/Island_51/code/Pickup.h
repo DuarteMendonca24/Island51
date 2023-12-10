@@ -8,10 +8,15 @@ class Pickup
 private:
 	//Start value for health pickups
 	const int HEALTH_START_VALUE = 50;
+	//Start value for ammo pickups
 	const int AMMO_START_VALUE = 12;
+	//Start value for money pickups
 	const int MONEY_START_VALUE = 100;
+	//Start value for wait time
 	const int START_WAIT_TIME = 10;
+	// //Start value for Live
 	const int START_SECONDS_TO_LIVE = 5;
+	////Start value for food pickups
 	const int FOOD_START_VALUE = 50;
 	// How tough is each resource type
 	const float TREE_HEALTH = 5;
@@ -53,7 +58,7 @@ public:
 	//Pickup(int type);
 	// Prepare a new pickup
 	void setArena(IntRect arena);
-
+	// Here is the function that call spawing for the pickip in a game
 	void spawnPickup(int type, float startX, float startY , float scale);
 
 	// Check the position of a pickup
@@ -74,15 +79,16 @@ public:
 	// Upgrade the value of each pickup
 	void upgrade();
 
+	// this will allow the player to pick up the item 
 	int getType();
 
-	
 	// Handle when a bullet hits a zombie
 	bool hit();
 
 	// Find out if the zombie is alive
 	bool isAlive();
-
+	
+	// Declaraton the function that respresgntinh positon coordinates 
 	Vector2f getPosCoordinates();
 };
 
