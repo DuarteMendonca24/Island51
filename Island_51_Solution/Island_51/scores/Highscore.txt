@@ -1,5 +1,10 @@
 400
+<<<<<<< Updated upstream
 220
 100
+=======
+240
+150
+>>>>>>> Stashed changes
 60
 50

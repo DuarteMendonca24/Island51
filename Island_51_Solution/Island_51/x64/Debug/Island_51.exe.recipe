@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< Updated upstream
       <FullPath>C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\x64\Debug\Island_51.exe</FullPath>
+=======
+      <FullPath>C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe</FullPath>
+>>>>>>> Stashed changes
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
