@@ -115,18 +115,14 @@ Hud::Hud(){
 
 	//background of weapon
 	m_backgroundWeapon.setSize(Vector2f(m_backgroundWeaponWidth, m_backgroundWeaponHeight));
-<<<<<<< Updated upstream
 	m_backgroundWeapon.setFillColor(Color(52, 43, 55));
 	m_backgroundWeapon.setPosition(resolution.x / 2 + 350, resolution.y - 100);
-=======
 	m_backgroundWeapon.setFillColor(Color(52, 43, 55, 150));
 	m_backgroundWeapon.setPosition(resolution.x / 2 - 110, resolution.y - m_backgroundWeaponHeight - 5);
->>>>>>> Stashed changes
 
 	//background of weapon square
 	m_backgroundWeaponSquare.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare.setFillColor(Color(126, 132, 247));
-<<<<<<< Updated upstream
 	m_backgroundWeaponSquare.setPosition(resolution.x / 2 + 360, resolution.y - 85);
 
 	m_backgroundWeaponSquare2.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
@@ -144,7 +140,6 @@ Hud::Hud(){
 	m_backgroundWeaponSquare5.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare5.setFillColor(Color(126, 132, 247));
 	m_backgroundWeaponSquare5.setPosition(resolution.x / 2 + 640, resolution.y - 85);
-=======
 	m_backgroundWeaponSquare.setPosition(resolution.x / 2 - 100, resolution.y - m_backgroundWeaponSquareHeight - 20);
 
 	m_backgroundWeaponSquare2.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
@@ -162,7 +157,6 @@ Hud::Hud(){
 	m_backgroundWeaponSquare5.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare5.setFillColor(Color(126, 132, 247));
 	m_backgroundWeaponSquare5.setPosition(resolution.x / 2 + 180, resolution.y - m_backgroundWeaponSquareHeight - 20);
->>>>>>> Stashed changes
 	//wood quantity
 	m_woodQuantityText.setFont(m_font);
 	m_woodQuantityText.setCharacterSize(50);
@@ -240,11 +234,8 @@ Hud::Hud(){
 	m_numWeaponText.setFont(m_font2);
 	m_numWeaponText.setCharacterSize(20);
 	m_numWeaponText.setFillColor(Color::White);
-<<<<<<< Updated upstream
 	m_numWeaponText.setPosition(resolution.x / 2 + 350, resolution.y - 100);
-=======
 	m_numWeaponText.setPosition(resolution.x / 2 - 110, resolution.y - m_backgroundWeaponHeight - 5);
->>>>>>> Stashed changes
 	m_numWeaponText.setString("1			2			3			4			5");
 
 	//Bar Background

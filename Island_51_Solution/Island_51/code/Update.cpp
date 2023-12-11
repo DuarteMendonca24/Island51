@@ -12,9 +12,7 @@ using namespace sf;
 
 void Engine::update(float dtAsSeconds)
 {
-<<<<<<< Updated upstream
     // Check if the game is in the playing state
-=======
     if (state == State::INTRO)
     {
         if (introVoice.getStatus() != Sound::Playing)
@@ -26,7 +24,6 @@ void Engine::update(float dtAsSeconds)
         
     }
 
->>>>>>> Stashed changes
     if (state == State::PLAYING)
     {
         // Check if the player's hunger is zero or below

@@ -77,7 +77,7 @@ private:
     LevelManager manageLevel;
 
     //TextureHolder object
-    TextureHolder m_TextureHolder;
+    //TextureHolder m_TextureHolder;
 
     //number of each type of pickup the player has 
     int numTreePickup = 0;

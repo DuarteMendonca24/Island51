@@ -1,36 +1,35 @@
-﻿  Behaviour.cpp
-  Bullet.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Bullet.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
-  Collisions.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Collisions.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+﻿  Bullet.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Bullet.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  Craft.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Craft.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   CreateHorde.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(6,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Draw.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(6,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Engine.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
-  HandleCollisions.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(6,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  DetectCollisions.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(6,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   HandleInput.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(6,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  HUD.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\HUD.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   LevelManager.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(1,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\LevelManager.cpp(1,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Main.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(6,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Pickup.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Pickup.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Player.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   SoundEngine.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
-  Sprites.cpp
-  StatsManager.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(6,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   TextureHolder.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\TextureHolder.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
-  Tools.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Tools.h(3,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\TextureHolder.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Update.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(5,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(6,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Weapons.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Weapons.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
   Zombie.cpp
-C:\Users\wongk\OneDrive\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\zombie.h(2,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Zombie.cpp(2,10): fatal  error C1083: Cannot open include file: 'SFML/Audio.hpp': No such file or directory
   Generating Code...

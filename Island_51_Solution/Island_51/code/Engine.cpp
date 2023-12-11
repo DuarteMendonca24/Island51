@@ -51,11 +51,9 @@ Engine::Engine() {
 
 
 	//Zombie Amount Decpends on wave number
-<<<<<<< Updated upstream
 	numZombies = 5 * wave;
 	//the number of resource to spawn
 	numResource = 20;
-=======
 	numZombies = 10;
 	//numResource = 5 * wave;
 
@@ -64,7 +62,6 @@ Engine::Engine() {
 	//delete[] zombies;
 
 	//m_EnemiesList = createHorde(numZombies, arena);
->>>>>>> Stashed changes
 	Vector2i worldSize = manageLevel.getLevelSize();
 	m_EnemiesList = createHorde(numZombies, arena);
 	numZombiesAlive = numZombies;
@@ -95,19 +92,16 @@ Engine::Engine() {
 	music.play();
 
 	//spawning weapon to be icons in the inventory
-<<<<<<< Updated upstream
 	m_weaponIcons[0].spawn(1, 1.1, resolution.x / 2 + 375, resolution.y - 73);
 	m_weaponIcons[1].spawn(2, 1.1, resolution.x / 2 + 445, resolution.y - 85);
 	m_weaponIcons[2].spawn(3, 1.1, resolution.x / 2 + 515, resolution.y - 85);
 	m_weaponIcons[3].spawn(4, 1.1, resolution.x / 2 + 585, resolution.y - 85);
 	m_weaponIcons[4].spawn(5, 1.1, resolution.x / 2 + 650, resolution.y - 85);
-=======
-	m_weaponIcons[0].spawn(1, 1.1, resolution.x / 2 - 90, resolution.y - 65);
-	m_weaponIcons[1].spawn(2, 1.1, resolution.x / 2 - 15, resolution.y - 85);
-	m_weaponIcons[2].spawn(3, 1.1, resolution.x / 2 + 55, resolution.y - 85);
-	m_weaponIcons[3].spawn(4, 1.1, resolution.x / 2 + 125, resolution.y - 85);
-	m_weaponIcons[4].spawn(5, 1.1, resolution.x / 2 + 190, resolution.y - 85);
->>>>>>> Stashed changes
+	//m_weaponIcons[0].spawn(1, 1.1, resolution.x / 2 - 90, resolution.y - 65);
+	//m_weaponIcons[1].spawn(2, 1.1, resolution.x / 2 - 15, resolution.y - 85);
+	//m_weaponIcons[2].spawn(3, 1.1, resolution.x / 2 + 55, resolution.y - 85);
+	//m_weaponIcons[3].spawn(4, 1.1, resolution.x / 2 + 125, resolution.y - 85);
+	//m_weaponIcons[4].spawn(5, 1.1, resolution.x / 2 + 190, resolution.y - 85);
 	//spawning weapon to be icons 
 	m_weaponIcons2[0].spawn(1, 2.5, 50, 1000);
 	m_weaponIcons2[1].spawn(2, 2, 50, 950);
