@@ -215,7 +215,7 @@ void Engine::input()
 						numStonePickup = numStonePickup - 1;
 						pickup.play();
 					}
-					else if (select.GetPressed() == 4 && numSoulPickup >= 1)
+					else if (select.GetPressed() == 4 && numSoulPickup >= 30)
 					{
 						state = State::WIN;
 						numSoulPickup -= 30;
