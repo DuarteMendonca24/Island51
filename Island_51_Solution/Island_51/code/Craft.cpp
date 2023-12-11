@@ -50,7 +50,7 @@ void Craft::draw(sf::RenderWindow& window)
 
 }
 
-// move up in the menu screen
+// move up 
 void Craft::MoveUp()
 {
 	if (selectCraft - 1 >= 0)
@@ -61,7 +61,7 @@ void Craft::MoveUp()
 	}
 }
 
-//move down in the menu screen
+//move down
 void Craft::MoveDown()
 {
 	if (selectCraft + 1 < MAX_NUMBER_OF_CRAFT)

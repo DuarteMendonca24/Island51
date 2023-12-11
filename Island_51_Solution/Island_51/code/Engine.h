@@ -1,6 +1,5 @@
 #pragma once
 //Including All Header files and libraries needed
-#include <time.h>
 #include <sstream>
 #include <fstream>
 #include <SFML/Graphics.hpp>
@@ -48,11 +47,6 @@ public:
     // A regular RenderWindow
     RenderWindow m_Window;
 
-    //Cooldown timer
-    clock_t start;
-    clock_t period;
-    clock_t elapsed;
-
 
 private:
 
@@ -77,7 +71,7 @@ private:
     LevelManager manageLevel;
 
     //TextureHolder object
-    //TextureHolder m_TextureHolder;
+    TextureHolder m_TextureHolder;
 
     //number of each type of pickup the player has 
     int numTreePickup = 0;
@@ -212,20 +206,23 @@ private:
 
     //Texture Variables
     Texture textureBackground;
+    Texture textureIntroComic;
     Texture textureAmmoIcon;
     Texture textureCrosshair;
     Texture textureMainMenu;
-    Texture textureIntroComic;
     Texture GUI_background_Texture;
     Texture textureRule;
+    Texture textureWin;
     
     //Sprites variables
     Sprite spriteCrosshair;
     Sprite spriteMainMenu;
     Sprite spriteAmmoIcon;
     Sprite spriteIntroComic;
+    Sprite spriteWinComic;
 
     //SoundBuffer Variables
+
     SoundBuffer introVoiceBuffer;
     SoundBuffer splatBuffer;
     SoundBuffer punchBuffer;
@@ -252,6 +249,7 @@ private:
     SoundBuffer gameStartBuffer;
     SoundBuffer swordBuffer;
     SoundBuffer UI_SoundBuffer;
+    SoundBuffer winVoiceBuffer;
 
     //Sound Variables
     Sound introVoice;
@@ -280,8 +278,8 @@ private:
     Sound gameStart;
     Sound sword;
     Sound UI_Sound;
+    Sound winVoice;
 
-    
 
 
     //Bar Variables

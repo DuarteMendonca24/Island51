@@ -9,7 +9,6 @@ void Engine::draw()
 {
     //Setting Mouse Cursor to be visible in the game
     m_Window.setMouseCursorVisible(true);
-
     //Setting Up Intro cutscene
     if (state == State::INTRO)
     {
@@ -17,6 +16,15 @@ void Engine::draw()
 
         //draw the background image and the text
         m_Window.draw(spriteIntroComic);
+        m_Window.draw(m_hud.getIntroText());
+
+    }
+    if (state == State::WIN)
+    {
+        m_Window.clear();
+
+        //draw the background image and the text
+        m_Window.draw(spriteWinComic);
         m_Window.draw(m_hud.getIntroText());
 
     }
@@ -97,8 +105,6 @@ void Engine::draw()
         // Draw the player
         m_Window.draw(player.getSprite());
         m_Window.draw(player.getSpriteWeapon());
-
-
         // Draw the crosshair
         m_Window.draw(spriteCrosshair);
 
@@ -109,6 +115,11 @@ void Engine::draw()
         if (!m_HandWeaponActive2)
         {
             m_Window.draw(m_weaponIcons2[0].getSprite());
+        }
+        else
+        {
+
+            m_Window.draw(m_hud.getAmmoText());
         }
         if (!m_WoodWeaponActive2)
         {
@@ -128,14 +139,13 @@ void Engine::draw()
         }
 
         // Draw ammo and score information
-        m_Window.draw(m_hud.getAmmoText());
         m_Window.draw(m_hud.getScoreText());
 
-        // drawing the Health and Hunger bars in the game
 
         //Drawing Bar Background first
         m_Window.draw(m_hud.getBarBackground());
 
+        // drawing the Health and Hunger bars in the game
         m_Window.draw(m_hud.getHealthBarBackground());
         m_Window.draw(m_hud.getHealthBar());
         m_Window.draw(m_hud.getHungerBarBackground());

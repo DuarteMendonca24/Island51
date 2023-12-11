@@ -2,13 +2,12 @@
 
 
 Engine::Engine() {
-	//Loading Sounds
-	loadSounds();
 	// Get the screen resolution and create an SFML window and View
+	loadSounds();
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
-	//state = State::MAIN_MENU;
 	state = State::INTRO;
+
 	
 	m_Window.create(VideoMode(resolution.x, resolution.y), "Island 51", Style::Fullscreen);
 
@@ -24,15 +23,17 @@ Engine::Engine() {
 	textureCrosshair = TextureHolder::GetTexture("graphics/crosshair.png");
 	textureMainMenu = TextureHolder::GetTexture("graphics/MainMenu.png");
 	textureIntroComic = TextureHolder::GetTexture("graphics/introComic.png");
-
+	textureWin = TextureHolder::GetTexture("graphics/winComic.png");
 	//Load Texture for Intro Comic
 	spriteIntroComic.setTexture(textureIntroComic);
-	spriteIntroComic.setPosition(resolution.x/2 - 271, resolution.y / 2 - 394.5);
-	spriteIntroComic.setScale(Vector2f(resolution.x/1920, resolution.y / 1080));
+	spriteIntroComic.setPosition(resolution.x / 2 - 271, resolution.y / 2 - 394.5);
+	spriteIntroComic.setScale(Vector2f(resolution.x / 1920, resolution.y / 1080));
 
-	//Load Text For Skipping Into
+	//Load texture for Win comic
 
-
+	spriteWinComic.setTexture(textureWin);
+	spriteWinComic.setPosition(resolution.x / 2 - 348, resolution.y / 2 - 521.5);
+	spriteWinComic.setScale(Vector2f(resolution.x / 2112, resolution.y / 1188));
 
 	//Load Texture for Ammo Icon
 
@@ -54,14 +55,6 @@ Engine::Engine() {
 	numZombies = 5 * wave;
 	//the number of resource to spawn
 	numResource = 20;
-	numZombies = 10;
-	//numResource = 5 * wave;
-
-	numResource = 30;
-	// Delete the previously allocated memory (if it exists)
-	//delete[] zombies;
-
-	//m_EnemiesList = createHorde(numZombies, arena);
 	Vector2i worldSize = manageLevel.getLevelSize();
 	m_EnemiesList = createHorde(numZombies, arena);
 	numZombiesAlive = numZombies;
@@ -92,16 +85,11 @@ Engine::Engine() {
 	music.play();
 
 	//spawning weapon to be icons in the inventory
-	m_weaponIcons[0].spawn(1, 1.1, resolution.x / 2 + 375, resolution.y - 73);
-	m_weaponIcons[1].spawn(2, 1.1, resolution.x / 2 + 445, resolution.y - 85);
-	m_weaponIcons[2].spawn(3, 1.1, resolution.x / 2 + 515, resolution.y - 85);
-	m_weaponIcons[3].spawn(4, 1.1, resolution.x / 2 + 585, resolution.y - 85);
-	m_weaponIcons[4].spawn(5, 1.1, resolution.x / 2 + 650, resolution.y - 85);
-	//m_weaponIcons[0].spawn(1, 1.1, resolution.x / 2 - 90, resolution.y - 65);
-	//m_weaponIcons[1].spawn(2, 1.1, resolution.x / 2 - 15, resolution.y - 85);
-	//m_weaponIcons[2].spawn(3, 1.1, resolution.x / 2 + 55, resolution.y - 85);
-	//m_weaponIcons[3].spawn(4, 1.1, resolution.x / 2 + 125, resolution.y - 85);
-	//m_weaponIcons[4].spawn(5, 1.1, resolution.x / 2 + 190, resolution.y - 85);
+	m_weaponIcons[0].spawn(1, 1.1, resolution.x / 2 - 90, resolution.y - 55);
+	m_weaponIcons[1].spawn(2, 1.1, resolution.x / 2 - 15, resolution.y - 65);
+	m_weaponIcons[2].spawn(3, 1.1, resolution.x / 2 + 55, resolution.y - 65);
+	m_weaponIcons[3].spawn(4, 1.1, resolution.x / 2 + 125, resolution.y - 65);
+	m_weaponIcons[4].spawn(5, 1.1, resolution.x / 2 + 190, resolution.y - 65);
 	//spawning weapon to be icons 
 	m_weaponIcons2[0].spawn(1, 2.5, 50, 1000);
 	m_weaponIcons2[1].spawn(2, 2, 50, 950);
@@ -113,7 +101,6 @@ Engine::Engine() {
 	std::ifstream readFile;
 	readFile.open("scores/Highscore.txt");
 
-	//Reading in saved high score variables
 	if (readFile.is_open()) {
 
 		while (!readFile.eof()) {
@@ -128,7 +115,6 @@ Engine::Engine() {
 	}
 
 	readFile.close();
-
 	//Changing color of illusionist bullets to red
 	for (int i = 0; i != 100; ++i)
 	{
@@ -138,11 +124,9 @@ Engine::Engine() {
 
 }
 void Engine::run() {
-	
 
 	// Timing 	
 	Clock clock;
-	//Loading All sounds
 	loadSounds();
 	while (m_Window.isOpen())
 	{
@@ -161,12 +145,17 @@ void Engine::run() {
 		{
 			draw();
 			update(gameTimeTotal.asSeconds());
-			
+
+		}
+		else if (state == State::WIN)
+		{
+			draw();
+			update(gameTimeTotal.asSeconds());
 		}
 		//Otherwise update game 100 times a seconds and draw 50 times a second
 		else
 		{
-			
+
 			if (dtSinceDrawUpdate > 0.01)
 			{
 				update(dtAsSeconds);
@@ -177,7 +166,6 @@ void Engine::run() {
 				dtSinceDrawUpdate = 0;
 			}
 		}
-		
 		
 
 	}

@@ -21,6 +21,17 @@ void Engine::input()
 					UI_Sound.play();
 				}
 			}
+			if (state == State::WIN)
+			{
+				//Close Cutscene if enter is pressed
+				if (event.key.code == Keyboard::Enter)
+				{
+
+					state = State::MAIN_MENU;
+					winVoice.stop();
+					UI_Sound.play();
+				}
+			}
 			//Input for when the game is being played
 			if (state == State::PLAYING) {
 
@@ -204,13 +215,12 @@ void Engine::input()
 						numStonePickup = numStonePickup - 1;
 						pickup.play();
 					}
-					else if (select.GetPressed() == 4 && numSoulPickup >= 30)
+					else if (select.GetPressed() == 4 && numSoulPickup >= 1)
 					{
-
-						arrowCurrentBullet = arrowCurrentBullet + 20;
-						numTreePickup = numTreePickup - 1;
-						numStonePickup = numStonePickup - 1;
+						state = State::WIN;
+						numSoulPickup -= 30;
 						pickup.play();
+
 
 					}
 					// exit the craft

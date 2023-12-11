@@ -6,7 +6,7 @@ using namespace sf;
 class Hud
 {
 private:
-	//Font Variables
+	
 	Font m_font;
 	Font m_font2;
 	Font m_font3;
@@ -28,7 +28,6 @@ private:
 	Text m_numWeaponText;
 	Text m_mainMenuText;
 	Text m_introSkipText;
-	
 
 	//Health bar
 	RectangleShape m_healthBar;
@@ -47,9 +46,7 @@ private:
 	//Hunger Bar
 	RectangleShape m_hungerBarBackground;
 	
-	//Background color offset for the hunger bar and health bar
-	RectangleShape m_barBackground;
-
+	
 	// Craft background
 	RectangleShape m_backgroundCraft;
 	float m_backgroundWidth = 1000;
@@ -70,10 +67,10 @@ private:
 	float m_backgroundWeaponSquareHeight = 50;
 
 	RectangleShape darkness;
+	RectangleShape m_barBackground;
 
 public:
 	Hud();
-	//Text get functions
 	Text getScoreText();
 	Text getAmmoText();
 	Text getLevelUpText();
@@ -91,7 +88,6 @@ public:
 	Text getHighscoreText();
 	Text getNumWeaponText();
 	Text getIntroText();
-	//Rectangle Shape get functions
 	RectangleShape getHealthBar();
 	RectangleShape getHealthBarBackground();
 	RectangleShape getHungerBar();
@@ -106,7 +102,7 @@ public:
 	RectangleShape getBackgroudWeaponSquare5();
 	RectangleShape getBarBackground();
 
-	//Setter Functions
+	//Setter Function
 	void setScoreText(String text);
 	void setAmmoText(String text);
 	void setWaveNumberText(String text);

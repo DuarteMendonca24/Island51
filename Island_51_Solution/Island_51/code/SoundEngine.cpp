@@ -6,6 +6,9 @@ void Engine::loadSounds(){
 	introVoiceBuffer.loadFromFile("sound/introVoice.wav");
 	introVoice.setBuffer(introVoiceBuffer);
 
+	winVoiceBuffer.loadFromFile("sound/winVoice.wav");
+	winVoice.setBuffer(winVoiceBuffer);
+
     // Prepare the hit sound
 	hitBuffer.loadFromFile("sound/hit.wav");
 	hit.setBuffer(hitBuffer);

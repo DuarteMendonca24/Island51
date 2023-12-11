@@ -4,8 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <map>
-#include <sstream>
-
+#include<sstream>
 
 class TextureHolder
 {

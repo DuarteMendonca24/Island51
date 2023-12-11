@@ -8,6 +8,7 @@ class Player
 private:
 	// The starting of the speed for player in the entity of the game 
 	const float START_SPEED = 500;
+	// The starting of the health for player in the entity of the game 
 	const float START_HEALTH = 200;
 
 	// Where is the player
