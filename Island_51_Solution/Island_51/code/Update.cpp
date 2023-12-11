@@ -2,12 +2,31 @@
 #include "Zombie.h"
 #include <SFML/Graphics.hpp>
 #include <sstream>
+#include <time.h>
+#include <stdio.h>
+#include <time.h>
+#include <dos.h>
+#include <windows.h>
 
 using namespace sf;
 
 void Engine::update(float dtAsSeconds)
 {
+<<<<<<< Updated upstream
     // Check if the game is in the playing state
+=======
+    if (state == State::INTRO)
+    {
+        if (introVoice.getStatus() != Sound::Playing)
+        {
+
+            introVoice.play();
+            introVoice.setVolume(100);
+        }
+        
+    }
+
+>>>>>>> Stashed changes
     if (state == State::PLAYING)
     {
         // Check if the player's hunger is zero or below

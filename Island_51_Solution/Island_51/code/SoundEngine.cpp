@@ -2,6 +2,9 @@
 
 
 void Engine::loadSounds(){
+	//Ai Voice Over Intro
+	introVoiceBuffer.loadFromFile("sound/introVoice.wav");
+	introVoice.setBuffer(introVoiceBuffer);
 
     // Prepare the hit sound
 	hitBuffer.loadFromFile("sound/hit.wav");

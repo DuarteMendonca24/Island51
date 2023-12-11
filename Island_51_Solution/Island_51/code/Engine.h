@@ -1,5 +1,6 @@
 #pragma once
 //Including All Header files and libraries needed
+#include <time.h>
 #include <sstream>
 #include <fstream>
 #include <SFML/Graphics.hpp>
@@ -46,6 +47,11 @@ public:
 
     // A regular RenderWindow
     RenderWindow m_Window;
+
+    //Cooldown timer
+    clock_t start;
+    clock_t period;
+    clock_t elapsed;
 
 
 private:
@@ -209,6 +215,7 @@ private:
     Texture textureAmmoIcon;
     Texture textureCrosshair;
     Texture textureMainMenu;
+    Texture textureIntroComic;
     Texture GUI_background_Texture;
     Texture textureRule;
     
@@ -216,8 +223,10 @@ private:
     Sprite spriteCrosshair;
     Sprite spriteMainMenu;
     Sprite spriteAmmoIcon;
+    Sprite spriteIntroComic;
 
     //SoundBuffer Variables
+    SoundBuffer introVoiceBuffer;
     SoundBuffer splatBuffer;
     SoundBuffer punchBuffer;
     SoundBuffer bowShotBuffer;
@@ -245,6 +254,7 @@ private:
     SoundBuffer UI_SoundBuffer;
 
     //Sound Variables
+    Sound introVoice;
     Sound hit;
     Sound splat; 
     Sound punch;
@@ -271,11 +281,12 @@ private:
     Sound sword;
     Sound UI_Sound;
 
+    
 
 
     //Bar Variables
 
-    float m_currentHunger = 100;
+    float m_currentHunger = 200;
 
     float m_hungerTickAmount = 2.5;
     float dtSinceDrawUpdate;

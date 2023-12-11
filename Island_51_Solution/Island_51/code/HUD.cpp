@@ -7,9 +7,21 @@ Hud::Hud(){
 	resolution.x = VideoMode::getDesktopMode().width;
 	resolution.y = VideoMode::getDesktopMode().height;
 
+	
+
 	//load the font
 	m_font.loadFromFile("fonts/zombiecontrol.ttf");
 	m_font2.loadFromFile("fonts/Roboto-Light.ttf");
+	m_font3.loadFromFile("fonts/ammo.otf");
+
+
+	//Intro Text
+	m_introSkipText.setFont(m_font);
+	m_introSkipText.setCharacterSize(30);
+	m_introSkipText.setFillColor(Color::White);
+	m_introSkipText.setPosition(Vector2f(resolution.x - 300, resolution.y - 100));
+	m_introSkipText.setString("ENTER to skip");
+
 	// Paused
 	m_pausedText.setFont(m_font);
 	m_pausedText.setCharacterSize(155);
@@ -39,27 +51,34 @@ Hud::Hud(){
 
 	// Rule of the Survival game
 	m_gameruleText.setFont(m_font);
-	m_gameruleText.setCharacterSize(80);
+	m_gameruleText.setCharacterSize(40);
 	m_gameruleText.setFillColor(Color::White);
 	m_gameruleText.setPosition(150, 250);
 	std::stringstream ruleStream;
 	ruleStream <<
 		"Here is the rule of the Survival game " <<
-		"\n1- Player has 5 different wepons you can choose from by change wepons from 1 to 5  " <<
-		"\n3- After killing the Enemy they will drop item " <<
-		"\n4- The player can create new wepons using the craft system" <<
-		"\n5- If the hunger reach 0, the player heath bar re is life from heath bar down 0" <<
-		"\n6-  " <<
-		"\n7-  " <<
-		"\n8-  " ;
+		"\n1- After killing the Enemy they will drop item " <<
+		"\n2- The player can create new wepons using the craft system" <<
+		"\n3- If the hunger reach 0, the player heath bar will start decreasing" <<
+		"\n4- When the player dies, they can continue from where they died but their score is set to 0 " <<
+		"\n5- Enemies sometimes drop their soul which is needed to create the boat to escape " <<
+		"\n Credits: Kamil, Duarte, Jeff and Emmanuel "<<
+		"\n" <<
+		"\n Controls:"<<
+		"\n WASD - Move Around"<<
+		"\n Q - Open Crafting" <<
+		"\n Left Shift - Confirm Crafting" <<
+		"\n TAB - Open Inventory" <<
+		"\n Left Mouse Button - Shoot/Punch" <<
+		"\n 1-5 - Select Weapon";
 		
 	m_gameruleText.setString(ruleStream.str());
 
 	// Ammo
-	m_ammoText.setFont(m_font);
-	m_ammoText.setCharacterSize(55);
+	m_ammoText.setFont(m_font3);
+	m_ammoText.setCharacterSize(20);
 	m_ammoText.setFillColor(Color::White);
-	m_ammoText.setPosition(200, 980);
+	m_ammoText.setPosition(200, 1000);
 
 	// Score
 	m_scoreText.setFont(m_font);
@@ -76,32 +95,38 @@ Hud::Hud(){
 
 	m_healthBar.setSize(Vector2f(m_healthBarWidth, m_healthBarHeight));
 	m_healthBar.setFillColor(Color::Red);
-	m_healthBar.setPosition(resolution.x/2 - 80, resolution.y - 90);
+	m_healthBar.setPosition(resolution.x - m_healthBarWidth - 5, resolution.y - m_healthBarHeight - 5);
 
 	//background of health bar
 	m_healthBarBackground.setSize(Vector2f(m_healthBarWidth, m_healthBarHeight));
 	m_healthBarBackground.setFillColor(Color(52, 43, 55));
-	m_healthBarBackground.setPosition(resolution.x/2 -80 , resolution.y-90);
+	m_healthBarBackground.setPosition(resolution.x - m_healthBarWidth - 5, resolution.y - m_healthBarHeight - 5);
 
 
 	m_hungerBar.setSize(Vector2f(m_hungerBarStartWidth,m_hungerBarHeight));
 	m_hungerBar.setFillColor(Color(205, 133, 63));
-	m_hungerBar.setPosition(resolution.x / 2 + 80, resolution.y - 90);
+	m_hungerBar.setPosition(resolution.x - m_hungerBarStartWidth - 5, resolution.y - m_hungerBarHeight - m_healthBarHeight - 5);
 
 
 	//background of hunger bar
 	m_hungerBarBackground.setSize(Vector2f(m_hungerBarStartWidth, m_hungerBarHeight));
 	m_hungerBarBackground.setFillColor(Color(52, 43, 55));
-	m_hungerBarBackground.setPosition(resolution.x / 2 + 80 , resolution.y - 90);
+	m_hungerBarBackground.setPosition(resolution.x - m_hungerBarStartWidth - 5, resolution.y - m_hungerBarHeight - m_healthBarHeight - 5);
 
 	//background of weapon
 	m_backgroundWeapon.setSize(Vector2f(m_backgroundWeaponWidth, m_backgroundWeaponHeight));
+<<<<<<< Updated upstream
 	m_backgroundWeapon.setFillColor(Color(52, 43, 55));
 	m_backgroundWeapon.setPosition(resolution.x / 2 + 350, resolution.y - 100);
+=======
+	m_backgroundWeapon.setFillColor(Color(52, 43, 55, 150));
+	m_backgroundWeapon.setPosition(resolution.x / 2 - 110, resolution.y - m_backgroundWeaponHeight - 5);
+>>>>>>> Stashed changes
 
 	//background of weapon square
 	m_backgroundWeaponSquare.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare.setFillColor(Color(126, 132, 247));
+<<<<<<< Updated upstream
 	m_backgroundWeaponSquare.setPosition(resolution.x / 2 + 360, resolution.y - 85);
 
 	m_backgroundWeaponSquare2.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
@@ -119,6 +144,25 @@ Hud::Hud(){
 	m_backgroundWeaponSquare5.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
 	m_backgroundWeaponSquare5.setFillColor(Color(126, 132, 247));
 	m_backgroundWeaponSquare5.setPosition(resolution.x / 2 + 640, resolution.y - 85);
+=======
+	m_backgroundWeaponSquare.setPosition(resolution.x / 2 - 100, resolution.y - m_backgroundWeaponSquareHeight - 20);
+
+	m_backgroundWeaponSquare2.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare2.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare2.setPosition(resolution.x / 2 - 30, resolution.y - m_backgroundWeaponSquareHeight - 20);
+	
+	m_backgroundWeaponSquare3.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare3.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare3.setPosition(resolution.x / 2 + 40, resolution.y - m_backgroundWeaponSquareHeight - 20);
+
+	m_backgroundWeaponSquare4.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare4.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare4.setPosition(resolution.x / 2 + 110, resolution.y - m_backgroundWeaponSquareHeight - 20);
+
+	m_backgroundWeaponSquare5.setSize(Vector2f(m_backgroundWeaponSquareWidth, m_backgroundWeaponSquareHeight));
+	m_backgroundWeaponSquare5.setFillColor(Color(126, 132, 247));
+	m_backgroundWeaponSquare5.setPosition(resolution.x / 2 + 180, resolution.y - m_backgroundWeaponSquareHeight - 20);
+>>>>>>> Stashed changes
 	//wood quantity
 	m_woodQuantityText.setFont(m_font);
 	m_woodQuantityText.setCharacterSize(50);
@@ -159,20 +203,22 @@ Hud::Hud(){
 	m_notEnoughResourcse.setString("You don't have Sufficient Resources to Craft ");
 
 	//darkness
-	darkness.setFillColor(Color::Color(0,0,0, 125));
+	darkness.setFillColor(Color::Color(0,0,0, 100));
 	darkness.setOrigin(Vector2f(0, 0));
 	darkness.setSize(Vector2f(3000.0f,3000.0f));
 
 	//main menu text
 	m_mainMenuText.setFont(m_font);
-	m_mainMenuText.setCharacterSize(60);
+	m_mainMenuText.setCharacterSize(50);
+	m_mainMenuText.setOutlineColor(Color::Black);
+	m_mainMenuText.setOutlineThickness(3);
 	m_mainMenuText.setFillColor(Color::White);
 	m_mainMenuText.setPosition(500, 60);
 	std::stringstream mainMenuStream;
 	mainMenuStream <<
 		"ISLAND 51" <<
 		"\n\n\n1 - Play Game" <<
-		"\n\n\n2 - Rules " <<
+		"\n\n\n2 - Rules & Controls " <<
 		"\n\n\n3 - High Scores " <<
 		"\n\n\n4 - Exit";
 	m_mainMenuText.setString(mainMenuStream.str());
@@ -194,9 +240,23 @@ Hud::Hud(){
 	m_numWeaponText.setFont(m_font2);
 	m_numWeaponText.setCharacterSize(20);
 	m_numWeaponText.setFillColor(Color::White);
+<<<<<<< Updated upstream
 	m_numWeaponText.setPosition(resolution.x / 2 + 350, resolution.y - 100);
+=======
+	m_numWeaponText.setPosition(resolution.x / 2 - 110, resolution.y - m_backgroundWeaponHeight - 5);
+>>>>>>> Stashed changes
 	m_numWeaponText.setString("1			2			3			4			5");
+
+	//Bar Background
+	m_barBackground.setFillColor(Color::Color(0, 0, 0, 70)); //Transparent Black
+	Vector2f barBackgroundSize = Vector2f((float)resolution.x / 8.0f,(float) resolution.y / 8.0f);
+	m_barBackground.setSize(barBackgroundSize);
+	m_barBackground.setPosition(resolution.x - barBackgroundSize.x, resolution.y - barBackgroundSize.y);
 }
+
+/*
+	GETTER FUNCTIONS
+*/
 
 
 Text Hud::getScoreText() {
@@ -280,6 +340,11 @@ Text Hud::getNumWeaponText() {
 	return m_numWeaponText;
 }
 
+Text Hud::getIntroText()
+{
+	return m_introSkipText;
+}
+
 RectangleShape Hud::getHealthBar() {
 
 	return m_healthBar;
@@ -338,6 +403,15 @@ RectangleShape Hud::getDarkness()
 {
 	return darkness;
 }
+
+RectangleShape Hud::getBarBackground()
+{
+	return m_barBackground;
+}
+
+/*
+	SETTER FUNCTIONS
+*/
 
 void Hud::setDarkness(float darknessLevel)
 {

@@ -10,7 +10,17 @@ void Engine::input()
 		// Checking that the key has be pressed
 		if (event.type == Event::KeyPressed)
 		{
+			if (state == State::INTRO)
+			{
+				//Close Cutscene if enter is pressed
+				if (event.key.code == Keyboard::Enter)
+				{
 
+					state = State::MAIN_MENU;
+					introVoice.stop();
+					UI_Sound.play();
+				}
+			}
 			//Input for when the game is being played
 			if (state == State::PLAYING) {
 

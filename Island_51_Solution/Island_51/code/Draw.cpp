@@ -10,6 +10,20 @@ void Engine::draw()
     //Setting Mouse Cursor to be visible in the game
     m_Window.setMouseCursorVisible(true);
 
+<<<<<<< Updated upstream
+=======
+    //Setting Up Intro cutscene
+    if (state == State::INTRO)
+    {
+        m_Window.clear();
+
+        //draw the background image and the text
+        m_Window.draw(spriteIntroComic);
+        m_Window.draw(m_hud.getIntroText());
+
+    }
+
+>>>>>>> Stashed changes
     if (state == State::PLAYING)
     {
         // Clear the window to preaper for rendering 
@@ -87,6 +101,11 @@ void Engine::draw()
         // Draw the player
         m_Window.draw(player.getSprite());
         m_Window.draw(player.getSpriteWeapon());
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
         // Draw the crosshair
         m_Window.draw(spriteCrosshair);
 
@@ -114,12 +133,24 @@ void Engine::draw()
         {
             m_Window.draw(m_weaponIcons2[4].getSprite());
         }
+<<<<<<< Updated upstream
 
         // Draw ammo and score information
         m_Window.draw(m_hud.getAmmoText());
         m_Window.draw(m_hud.getScoreText());
 
         // drawing the Health and Hunger bars in the game
+=======
+        //m_Window.draw(spriteAmmoIcon);
+
+        m_Window.draw(m_hud.getAmmoText());
+        m_Window.draw(m_hud.getScoreText());
+
+        //Drawing Bar Background first
+        m_Window.draw(m_hud.getBarBackground());
+
+        //m_Window.draw(m_hud.getHiScoreText());
+>>>>>>> Stashed changes
         m_Window.draw(m_hud.getHealthBarBackground());
         m_Window.draw(m_hud.getHealthBar());
         m_Window.draw(m_hud.getHungerBarBackground());
@@ -181,7 +212,11 @@ void Engine::draw()
 
     }
 
+<<<<<<< Updated upstream
     // Check if hte game state is paused
+=======
+    
+>>>>>>> Stashed changes
     if (state == State::PAUSED)
     {
        // Draw the pased text on the window

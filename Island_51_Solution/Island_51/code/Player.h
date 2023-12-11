@@ -6,10 +6,15 @@ using namespace sf;
 class Player
 {
 private:
+<<<<<<< Updated upstream
 	// The starting of the speed for player in the entity of the game 
 	const float START_SPEED = 990;
 	// The starting of the health for player in the entity of the game 
 	const float START_HEALTH = 100;
+=======
+	const float START_SPEED = 500;
+	const float START_HEALTH = 200;
+>>>>>>> Stashed changes
 
 	// Where is the player
 	Vector2f m_Position;
