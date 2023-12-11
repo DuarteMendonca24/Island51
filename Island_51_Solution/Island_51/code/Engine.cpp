@@ -19,7 +19,6 @@ Engine::Engine() {
 	//Load Level
 	m_ArrayLevel2 = manageLevel.loadLevel(background);
 	textureBackground = TextureHolder::GetTexture("graphics/tiles-sheet.png");
-	textureAmmoIcon = TextureHolder::GetTexture("graphics/ammo_icon.png");
 	textureCrosshair = TextureHolder::GetTexture("graphics/crosshair.png");
 	textureMainMenu = TextureHolder::GetTexture("graphics/MainMenu.png");
 	textureIntroComic = TextureHolder::GetTexture("graphics/introComic.png");
