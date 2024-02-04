@@ -117,7 +117,7 @@ Engine::Engine() {
 	//Changing color of illusionist bullets to red
 	for (int i = 0; i != 100; ++i)
 	{
-		m_illusionsBullets[i].changeColor(Color::Color(255, 0, 0));
+		m_illusionsBullets[i].setColor(Color::Color(255, 0, 0));
 	}
 
 

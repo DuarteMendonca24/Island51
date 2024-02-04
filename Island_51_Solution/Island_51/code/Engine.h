@@ -74,10 +74,10 @@ private:
     TextureHolder m_TextureHolder;
 
     //number of each type of pickup the player has 
-    int numTreePickup = 0;
-    int numStonePickup = 0;
-    int numIronPickup = 0;
-    int numSoulPickup = 0;
+    int numTreePickup =  10;
+    int numStonePickup = 10;
+    int numIronPickup =  10;
+    int numSoulPickup =  10;
 
     //the tile size
     const int TILE_SIZE = 50;

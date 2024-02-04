@@ -310,22 +310,27 @@ void Engine::input()
 					if (handEquipped)
 					{
 						punch.play();
+						bullets[currentBullet].setColor(sf::Color::Color(0, 255, 0, 0));
 					}
 					else if (woodSwordEquipped)
 					{
 						sword.play();
+						bullets[currentBullet].setColor(sf::Color::Color(0, 255, 0, 0));
 					}
 					else if (stoneSwordEquipped)
 					{
 						sword.play();
+						bullets[currentBullet].setColor(sf::Color::Color(0, 255, 0, 0));
 					}
 					else if (ironSwordEquipped)
 					{
 						sword.play();
+						bullets[currentBullet].setColor(sf::Color::Color(0, 255, 0, 0));
 					}
 					else if (arrowEquipped)
 					{
 						bowShot.play();
+						bullets[currentBullet].setColor(sf::Color::Color(0, 255, 0));
 					}
 					else
 					{

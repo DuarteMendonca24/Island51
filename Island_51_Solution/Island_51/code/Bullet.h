@@ -7,7 +7,7 @@ class Bullet
 private:
 	// Where is the bullet?
 	Vector2f m_Position;
-
+	Color bulletColor;
 	// What each bullet looks like
 	RectangleShape m_BulletShape;
 
@@ -63,6 +63,8 @@ public:
 	int getRange();
 	void setRange(int range);
 
-	void changeColor(Color color);
+	//Set Color of the bullets
+	void setColor(Color color);
+
 	
 };

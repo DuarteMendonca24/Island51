@@ -4,7 +4,8 @@
 Bullet::Bullet()
 {
 	m_BulletShape.setSize(sf::Vector2f(5, 5));
-	m_BulletShape.setFillColor(sf::Color::Green);
+	bulletColor = sf::Color::Color(0,255,0,0);
+	m_BulletShape.setFillColor(bulletColor);
 	
 }
 
@@ -105,7 +106,7 @@ int Bullet::getRange()
 	return m_Range;
 }
 
-void Bullet::changeColor(Color color)
+void Bullet::setColor(Color color)
 {
 	m_BulletShape.setFillColor(color);
 }
