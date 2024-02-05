@@ -50,19 +50,19 @@ Hud::Hud(){
 	m_gameruleText.setFont(m_font);
 	m_gameruleText.setCharacterSize(40);
 	m_gameruleText.setFillColor(Color::White);
-	m_gameruleText.setPosition(150, 250);
+	m_gameruleText.setPosition(150, 100);
 	std::stringstream ruleStream;
 	ruleStream <<
-		"Here is the rule of the Survival game " <<
-		"\n1- After killing the Enemy they will drop item " <<
-		"\n2- The player can create new wepons using the craft system" <<
-		"\n3- If the hunger reach 0, the player heath bar will start decreasing" <<
-		"\n4- When the player dies, they can continue from where they died but their score is set to 0 " <<
-		"\n5- Enemies sometimes drop their soul which is needed to create the boat to escape " <<
-		"\n Credits: Kamil, Duarte, Jeff and Emmanuel " <<
-		"\n" <<
-		"\n Controls:" <<
-		"\n WASD - Move Around" <<
+		"Rules:" <<
+		"\n\n1- Killing enemies will drop health , food or souls" <<
+		"\n2- Gather resources by destroying trees ,stone and iron" <<
+		"\n3- New wepons can be created using the crafting system" <<
+		"\n4- If the hunger/brown bar reaches 0, you will take damage" <<
+		"\n5- Killing enemies will increase the score" <<
+		"\n6- If you die ,you can continue but your score is set to 0 " <<
+		"\n7- Craft the boat using souls to escape and finish the game" <<
+		"\n\n Controls:" <<
+		"\n\n WASD - Move Around" <<
 		"\n Q - Open Crafting" <<
 		"\n Left Shift - Confirm Crafting" <<
 		"\n TAB - Open Inventory" <<
@@ -197,16 +197,16 @@ Hud::Hud(){
 
 	//instruction to tell the player what key to press to go back to menu
 	m_goBackMenuText.setFont(m_font);
-	m_goBackMenuText.setCharacterSize(50);
+	m_goBackMenuText.setCharacterSize(35);
 	m_goBackMenuText.setFillColor(Color::White);
-	m_goBackMenuText.setPosition(10, 10);
+	m_goBackMenuText.setPosition(resolution.x - 650, 10);
 	m_goBackMenuText.setString("Press Escape to go back to main menu");
 
 	//instruction to tell the player what key to press to go back to menu
 	m_highScoreText.setFont(m_font);
 	m_highScoreText.setCharacterSize(50);
 	m_highScoreText.setFillColor(Color::White);
-	m_highScoreText.setPosition(700, 60);
+	m_highScoreText.setPosition(resolution.x/2 - 150, 150);
 
 	//Numberes of weapons
 	m_numWeaponText.setFont(m_font2);

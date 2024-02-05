@@ -560,7 +560,7 @@ void Engine::update(float dtAsSeconds)
         stringstream ssHighScore;
         // Update the high score text with the scores from the array
         ssHighScore << "High Scores" <<
-            "\n\n\n 1 -> " << m_scores[0] << " pts" <<
+            "\n\n 1 -> " << m_scores[0] << " pts" <<
             "\n\n 2 -> " << m_scores[1] << " pts" <<
             "\n\n 3 -> " << m_scores[2] << " pts" <<
             "\n\n 4 -> " << m_scores[3] << " pts" <<
