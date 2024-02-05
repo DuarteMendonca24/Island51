@@ -365,7 +365,7 @@ void Engine::input()
 				fireRate = handFireRate;
 			}
 
-			if (Keyboard::isKeyPressed(Keyboard::Num2))
+			if (Keyboard::isKeyPressed(Keyboard::Num2) && woodSwordBulletsInClip > 0)
 			{
 				// Equip Wood Sword if unlocked
 				player.getAttack(2);
@@ -386,7 +386,7 @@ void Engine::input()
 				fireRate = woodSwordFireRate;
 			}
 
-			if (Keyboard::isKeyPressed(Keyboard::Num3))
+			if (Keyboard::isKeyPressed(Keyboard::Num3) && stoneSwordBulletsInClip > 0)
 			{
 				// Equip Stone Sword if unlocked
 				player.getAttack(3);
@@ -407,7 +407,7 @@ void Engine::input()
 				fireRate = stoneSwordFireRate;
 			}
 
-			if (Keyboard::isKeyPressed(Keyboard::Num4))
+			if (Keyboard::isKeyPressed(Keyboard::Num4) && ironSwordBulletsInClip > 0)
 			{
 				// Equip Iron Sword if unlocked
 				player.getAttack(4);
@@ -428,7 +428,7 @@ void Engine::input()
 				fireRate = ironSwordFireRate;
 			}
 
-			if (Keyboard::isKeyPressed(Keyboard::Num5))
+			if (Keyboard::isKeyPressed(Keyboard::Num5) && arrowBulletsInClip > 0)
 			{
 				// Equip arrow if unlocked
 				player.getAttack(5);
