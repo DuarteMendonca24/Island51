@@ -54,6 +54,9 @@ public:
     // A regular RenderWindow
     RenderWindow m_Window;
 
+    //Level Manager Object
+    LevelManager manageLevel;
+
 
 private:
 
@@ -74,8 +77,6 @@ private:
     //this array will handle the illusions created
     Zombie* Illusions = NULL;
 
-    //Level Manager Object
-    LevelManager manageLevel;
 
     //TextureHolder object
     TextureHolder m_TextureHolder;

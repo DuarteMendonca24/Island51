@@ -1,9 +1,9 @@
 ﻿  CreateHorde.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(108,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(344,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,29): warning C4309: 'initializing': truncation of constant value
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(105,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(109,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(345,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(32,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(33,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(38,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
@@ -52,203 +52,14 @@ C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Creat
           ]
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(113,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(113,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(160,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(161,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  Draw.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(108,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(344,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-  Engine.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(108,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(344,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(7,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(8,44): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(12,52): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(12,38): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(18,58): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(18,36): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(28,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(34,70): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(75,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(75,36): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(76,53): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(76,36): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(87,28): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(88,28): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(89,28): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(90,28): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.cpp(91,28): warning C4305: 'argument': truncation from 'double' to 'float'
-  DetectCollisions.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(108,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(344,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(14,16): warning C4244: '=': conversion from 'const int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(15,17): warning C4244: '=': conversion from 'const int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(39,95): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(39,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(50,19): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(51,18): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  HandleInput.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(108,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(344,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-  Main.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(108,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(344,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-  Player.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(42,29): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(43,30): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(115,9): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(207,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(214,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(215,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(241,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(246,22): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(248,28): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(251,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(253,27): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(261,26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(438,22): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(440,28): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(444,21): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Player.cpp(446,27): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  SoundEngine.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(108,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(344,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
   Update.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(103,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(108,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(344,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(344,40): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(345,40): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,29): warning C4309: 'initializing': truncation of constant value
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(105,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(109,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(345,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(346,42): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(348,97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(348,109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(474,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(488,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with

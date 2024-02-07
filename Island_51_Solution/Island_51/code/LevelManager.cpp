@@ -256,3 +256,9 @@ int** LevelManager::getArray()
 {
 	return m_ArrayLevel;
 }
+
+Vector2i LevelManager::getRandomSpawner()
+{
+	Vector2i spawner = m_SpawnPoisitons[RandomBetween(0, current_spawn_block_counter)];
+	return spawner;
+}

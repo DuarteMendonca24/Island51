@@ -129,6 +129,7 @@ std::list<Pickup*> Engine::createPickup(Vector2f position)
 	// Extract X and Y coordinates from the specified position
 	float posX = position.x;
 	float posY = position.y;
+	
 	// Offset between consecutive pickups along the X-axis
 	int xOffset = 25;
 	// Create a new Pickup object
@@ -153,15 +154,17 @@ std::list<Pickup*> Engine::createResorces(int numResources)
 	// Loop to create the specified number of resources
 	for (int i = 0; i < numResources; i++)
 	{
+
+		Vector2i spawnLocation = manageLevel.getRandomSpawner();
+		Vector2f position = Vector2f((float)spawnLocation.x, (float)spawnLocation.y);
+		
+		// Getting Random position from available spawn locations
 		// Generate a random type for the resource (4 to 6)
 		srand(static_cast<int>(time(0)) * i);
 		int type = (rand() % 3) + 4;
-		// Generate random positions for the resource within specified ranges
-		float posX = (rand() % 3251) + 2380;
-		float posY = (rand() % 1951) + 450;
 		// Create a new Pickup object for each resource
 		Pickup* resource = new Pickup();
-		resource->spawnPickup(type, posX, posY, 2.5);
+		resource->spawnPickup(type, position.x, position.y, 2.5);
 		// Add the resource to the list
 		resourceList.push_back(resource);
 	}

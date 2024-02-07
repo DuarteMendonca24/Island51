@@ -55,4 +55,5 @@ public:
 	int RandomBetween(int min, int max);
 
 	int** getArray();
+	Vector2i getRandomSpawner();
 };

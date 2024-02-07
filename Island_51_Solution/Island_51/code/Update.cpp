@@ -340,12 +340,12 @@ void Engine::update(float dtAsSeconds)
                         if ((*it4)->hit())
                         {
                             // Generate new position and type for the respawned pickup
-                            srand((int)time(0) * i);
-                            float posX = (rand() % 3651) + 2380;
-                            float posY = (rand() % 1951) + 450;
+                            srand((int)time(0) * i); 
+                            Vector2i spawnLocation = manageLevel.getRandomSpawner();
+                            Vector2f position = Vector2f((float)spawnLocation.x, (float)spawnLocation.y);
                             float m_type = (rand() % 3) + 4;
                             // Create and insert the respawned pickup into the list
-                            std::list<Pickup*> newPickup = createRespawnResorces(1, posX, posY, m_type);
+                            std::list<Pickup*> newPickup = createRespawnResorces(1, position.x, position.y, m_type);
                             m_PickupList.insert(m_PickupList.end(), newPickup.begin(), newPickup.end());
 
                             // Tree pickup
