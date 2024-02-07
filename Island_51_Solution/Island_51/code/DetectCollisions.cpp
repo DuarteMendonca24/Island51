@@ -24,14 +24,27 @@ bool Engine::detectCollisions(Player& character)
 	int endX = (int)(detectionZone.left / TILE_SIZE) + 2;
 	int endY = (int)(detectionZone.top / TILE_SIZE) + 3;
 
+	if (playerInsideCave)
+	{
+		if (startX < 0)startX = 0;
+		if (startY < 0)startY = 0;
+		if (endX >= 100 * TILE_SIZE)
+			endX = 100 * TILE_SIZE;
+		if (endY >= 100 * TILE_SIZE)
+			endY = 100 * TILE_SIZE;
+	}
+	else
+	{
+		if (startX < 0)startX = 0;
+		if (startY < 0)startY = 0;
+		if (endX >= manageLevel.getLevelSize().x)
+			endX = manageLevel.getLevelSize().x;
+		if (endY >= manageLevel.getLevelSize().y)
+			endY = manageLevel.getLevelSize().y;
+	}
 	// Make sure we don't test positions lower than zero
 	// Or higher than the end of the array
-	if (startX < 0)startX = 0;
-	if (startY < 0)startY = 0;
-	if (endX >= manageLevel.getLevelSize().x)
-		endX = manageLevel.getLevelSize().x;
-	if (endY >= manageLevel.getLevelSize().y)
-		endY = manageLevel.getLevelSize().y;
+	
 
 
 	// Has the character fallen out of the map?
@@ -52,7 +65,7 @@ bool Engine::detectCollisions(Player& character)
 
 		
 			// Is player colliding with a water block i.e platform
-			if (m_ArrayLevel2[y][x] == 0)
+			if ((!playerInsideCave) && (m_ArrayLevel2[y][x] == 0))
 			{
 				//if the player right body colliding the water
 				if (character.getRight().intersects(block))
@@ -80,11 +93,49 @@ bool Engine::detectCollisions(Player& character)
 					break;
 				}
 				 else if (character.getHead().intersects(block))//if the player head body colliding the water
-				{
+				 {
 					//stop up
 					character.stopUp();
 					headTime.RestartTimer();
 					
+					//Break the loop
+					break;
+				 }
+
+			}
+			else if ((playerInsideCave) && (m_ArrayLevel1[y][x] == 0))
+			{
+				//if the player right body colliding the water
+				if (character.getRight().intersects(block))
+				{
+					//Stop right
+					character.stopRight();
+					rightTime.RestartTimer();
+					//Break the loop
+					break;
+				}
+				else if (character.getLeft().intersects(block))//if the player left body colliding the water
+				{
+					//Stop Left
+					character.stopLeft();
+					leftTime.RestartTimer();
+					//Break the loop
+					break;
+				}
+				else if (character.getFeet().intersects(block))//if the player feet body colliding the water
+				{
+					//Stop down
+					character.stopDown();
+					feetTime.RestartTimer();
+					//Break the loop
+					break;
+				}
+				else if (character.getHead().intersects(block))//if the player head body colliding the water
+				{
+					//stop up
+					character.stopUp();
+					headTime.RestartTimer();
+
 					//Break the loop
 					break;
 				}

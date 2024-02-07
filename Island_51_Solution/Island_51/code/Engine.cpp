@@ -2,6 +2,9 @@
 
 
 Engine::Engine() {
+
+	CaveGeneration cave;
+	cave.Start();
 	// Get the screen resolution and create an SFML window and View
 	loadSounds();
 	resolution.x = VideoMode::getDesktopMode().width;
@@ -18,7 +21,9 @@ Engine::Engine() {
 	select.position(m_Window.getSize().x, m_Window.getSize().y);
 	//Load Level
 	m_ArrayLevel2 = manageLevel.loadLevel(background);
+	m_ArrayLevel1 = cave.loadLevel(caveBackground);
 	textureBackground = TextureHolder::GetTexture("graphics/tiles-sheet.png");
+	textureCaveBackground = TextureHolder::GetTexture("graphics/cave-tiles-sheet.png");
 	textureCrosshair = TextureHolder::GetTexture("graphics/crosshair.png");
 	textureMainMenu = TextureHolder::GetTexture("graphics/MainMenu.png");
 	textureIntroComic = TextureHolder::GetTexture("graphics/introComic.png");
@@ -123,7 +128,6 @@ Engine::Engine() {
 
 }
 void Engine::run() {
-
 	// Timing 	
 	Clock clock;
 	loadSounds();
@@ -175,4 +179,9 @@ void Engine::run() {
 int** Engine::getArrayLevel()
 {
 	return m_ArrayLevel2;
+}
+
+void GenerateCave()
+{
+
 }

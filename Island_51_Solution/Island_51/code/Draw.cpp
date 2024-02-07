@@ -37,8 +37,15 @@ void Engine::draw()
         // And draw everything related to it
         m_Window.setView(mainView);
 
-        // Draw the background
-        m_Window.draw(background, &textureBackground);
+        
+        if (playerInsideCave)
+        {
+            m_Window.draw(caveBackground, &textureCaveBackground);
+        }
+        else {
+            // Draw the background
+            m_Window.draw(background, &textureBackground);
+        }
 
 
            // Draw the zombie illusions if they are active 

@@ -1,101 +1,38 @@
-﻿  CreateHorde.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(105,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(109,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(345,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(32,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(33,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(38,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(39,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(44,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(45,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(50,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(51,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(66,47): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(66,30): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(80,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+﻿  DetectCollisions.cpp
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(105,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(105,29): warning C4309: 'initializing': truncation of constant value
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(106,26): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(110,31): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(352,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(14,16): warning C4244: '=': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(81,11): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(15,17): warning C4244: '=': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(87,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(87,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(88,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(88,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(89,31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(89,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(90,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(90,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(104,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(52,95): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(105,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(52,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(113,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\CreateHorde.cpp(113,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Update.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(104,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(105,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(109,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(345,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(346,42): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(348,109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(474,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(488,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(63,19): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
-          [
-              T=int
-          ]
-          and
           [
               T=float
           ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(488,59): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\DetectCollisions.cpp(64,18): warning C4244: '=': conversion from 'int' to 'T', possible loss of data
           with
-          [
-              T=int
-          ]
-          and
           [
               T=float
           ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(499,81): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(499,58): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-  Generating Code...
   Island_51.vcxproj -> C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

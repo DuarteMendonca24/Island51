@@ -18,6 +18,7 @@
 #include "Craft.h"
 #include "Weapons.h"
 #include "Timer.h"
+#include "CaveGeneration.h"
 using namespace sf;
 
 static class Engine
@@ -56,7 +57,7 @@ public:
 
     //Level Manager Object
     LevelManager manageLevel;
-
+    bool playerInsideCave = true;
 
 private:
 
@@ -195,6 +196,9 @@ private:
     // Create the background
     VertexArray background;
 
+    //Create the cave Background
+    VertexArray caveBackground;
+
     //Textures
     // Here is the instabce of TextureHolder
 
@@ -214,6 +218,7 @@ private:
 
     //Texture Variables
     Texture textureBackground;
+    Texture textureCaveBackground;
     Texture textureIntroComic;
     Texture textureAmmoIcon;
     Texture textureCrosshair;
@@ -324,7 +329,9 @@ private:
     bool detectCollisions(Player& character);
     // The 2d array with the map for the level
     // A pointer to a pointer
+    int** m_ArrayLevel1 = NULL;
     int** m_ArrayLevel2 = NULL;
+
 
     //Check the Resourse is enough
     bool m_EnoughResources = false;

@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="code\Bullet.h" />
+    <ClInclude Include="code\CaveGeneration.h" />
     <ClInclude Include="code\Craft.h" />
     <ClInclude Include="code\Engine.h" />
     <ClInclude Include="code\HUD.h" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\Bullet.cpp" />
+    <ClCompile Include="code\CaveGeneration.cpp" />
     <ClCompile Include="code\Craft.cpp" />
     <ClCompile Include="code\CreateHorde.cpp" />
     <ClCompile Include="code\Draw.cpp" />

@@ -207,3 +207,4 @@ Vector2f Pickup::getPosCoordinates() {
 
 	return m_Position;
 }
+
