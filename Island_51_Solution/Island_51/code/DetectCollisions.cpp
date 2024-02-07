@@ -45,8 +45,8 @@ bool Engine::detectCollisions(Player& character)
 		for (int y = startY; y < endY; y++)
 		{
 			
-			// Initialize the starting position of the current block
 
+			// Initialize the starting position of the current block
 			block.left = x * TILE_SIZE;
 			block.top = y * TILE_SIZE;
 
@@ -58,28 +58,33 @@ bool Engine::detectCollisions(Player& character)
 				if (character.getRight().intersects(block))
 				{
 					//Stop right
-					character.stopRight(block.left);
+					character.stopRight();
+					rightTime.RestartTimer();
 					//Break the loop
 					break;
 				}
 				else if (character.getLeft().intersects(block))//if the player left body colliding the water
 				{
 					//Stop Left
-					character.stopLeft(block.left);
+					character.stopLeft();
+					leftTime.RestartTimer();
 					//Break the loop
 					break;
 				}
 				else if (character.getFeet().intersects(block))//if the player feet body colliding the water
 				{
 					//Stop down
-					character.stopDown(block.top);
+					character.stopDown();
+					feetTime.RestartTimer();
 					//Break the loop
 					break;
 				}
 				 else if (character.getHead().intersects(block))//if the player head body colliding the water
 				{
 					//stop up
-					character.stopUp((block.top));
+					character.stopUp();
+					headTime.RestartTimer();
+					
 					//Break the loop
 					break;
 				}

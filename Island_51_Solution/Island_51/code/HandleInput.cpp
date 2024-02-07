@@ -251,7 +251,7 @@ void Engine::input()
 		if (state == State::PLAYING)
 		{
 			// Handle the pressing and releasing of the WASD keys
-			if (Keyboard::isKeyPressed(Keyboard::W))
+			if ((Keyboard::isKeyPressed(Keyboard::W))&&(headTime.GetElapsedTime()>0.2f))
 			{
 				player.moveUp();
 			}
@@ -260,7 +260,7 @@ void Engine::input()
 				player.stopUp();
 			}
 
-			if (Keyboard::isKeyPressed(Keyboard::S))
+			if ((Keyboard::isKeyPressed(Keyboard::S)) && (feetTime.GetElapsedTime() > 0.2f))
 			{
 				player.moveDown();
 			}
@@ -269,7 +269,7 @@ void Engine::input()
 				player.stopDown();
 			}
 
-			if (Keyboard::isKeyPressed(Keyboard::A))
+			if ((Keyboard::isKeyPressed(Keyboard::A)) && (leftTime.GetElapsedTime() > 0.2f))
 			{
 				player.moveLeft();
 			}
@@ -278,7 +278,7 @@ void Engine::input()
 				player.stopLeft();
 			}
 
-			if (Keyboard::isKeyPressed(Keyboard::D))
+			if ((Keyboard::isKeyPressed(Keyboard::D)) && (rightTime.GetElapsedTime() > 0.2f))
 			{
 				player.moveRight();
 			}

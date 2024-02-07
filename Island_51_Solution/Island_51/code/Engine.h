@@ -17,11 +17,18 @@
 #include "HUD.h"
 #include "Craft.h"
 #include "Weapons.h"
+#include "Timer.h"
 using namespace sf;
 
 static class Engine
 {
 public:
+    //Creating Timer
+    Timer headTime;
+    Timer feetTime;
+    Timer leftTime;
+    Timer rightTime;
+
     //Horde Object
     //CreateHorde
     //Zombie List

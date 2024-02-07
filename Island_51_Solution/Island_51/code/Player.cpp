@@ -23,7 +23,10 @@ Player::Player()
 	// for smooth rotation
 	m_Sprite.setOrigin(39/2, 37/2);
 	m_SpriteWeapon.setOrigin(16 / 2, 42/ 2);
+
 }
+
+
 
 // Reset stats for the player each game
 void Player::resetPlayerStats()
@@ -444,28 +447,4 @@ void Player::updateLeftRightHeadFeet()
 
 }
 
-// Setting the player postiton to stop moving upwards 
-void Player::stopUp(float position)
-{
-	m_Position.y = position + getPosition().height;
-	m_Sprite.setPosition(m_Position);
-}
-// Setting the player postiton to stop moving downwards
-void Player::stopDown(float position)
-{
-	m_Position.y = position - getPosition().height;
-	m_Sprite.setPosition(m_Position);
-}
-// Setting the player postiion to stop moving to the right side
-void Player::stopRight(float position)
-{
 
-	m_Position.x = position - m_Sprite.getGlobalBounds().width;
-	m_Sprite.setPosition(m_Position);
-}
-// Setting the player postiion to stop moving to the left side
-void Player::stopLeft(float position)
-{
-	m_Position.x = position  + m_Sprite.getGlobalBounds().width + 50;
-	m_Sprite.setPosition(m_Position);
-}

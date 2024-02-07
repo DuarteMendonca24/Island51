@@ -142,6 +142,7 @@
     <ClInclude Include="code\Player.h" />
     <ClInclude Include="code\State.h" />
     <ClInclude Include="code\TextureHolder.h" />
+    <ClInclude Include="code\Timer.h" />
     <ClInclude Include="code\Weapons.h" />
     <ClInclude Include="code\Zombie.h" />
   </ItemGroup>

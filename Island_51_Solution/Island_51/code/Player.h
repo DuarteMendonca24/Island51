@@ -151,11 +151,6 @@ public:
 	FloatRect getLeft();
 	void updateLeftRightHeadFeet();
 
-	// Make the character stand firm
-	void stopDown(float position);
-	void stopUp(float position);
-	void stopRight(float position);
-	void stopLeft(float position);
 
 };
 
