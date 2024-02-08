@@ -24,6 +24,8 @@ Player::Player()
 	m_Sprite.setOrigin(39/2, 37/2);
 	m_SpriteWeapon.setOrigin(16 / 2, 42/ 2);
 
+	m_CollisionBox = FloatRect(m_Sprite.getGlobalBounds());
+
 }
 
 
@@ -447,4 +449,8 @@ void Player::updateLeftRightHeadFeet()
 
 }
 
+FloatRect Player::getCollisionBox()
+{
+	return m_CollisionBox;
+}
 

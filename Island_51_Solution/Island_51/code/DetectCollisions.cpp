@@ -3,7 +3,7 @@ using namespace std;
 #include <iostream>;
 bool Engine::detectCollisions(Player& character)
 {
-	
+
 	bool reachedGoal = false;
 	// Make a rect for all his parts
 	FloatRect detectionZone = character.getPosition();
@@ -18,9 +18,8 @@ bool Engine::detectCollisions(Player& character)
 //	Apr 29th changed zone
 // 21 11 2022 introducded rounding to allow for small differences
 	int startX = (int)(detectionZone.left / TILE_SIZE) - 3;
-	int startY = (int)(detectionZone.top / TILE_SIZE) -2;
-	
-	//02/12/21 changed 2 to 1 for Endx
+	int startY = (int)(detectionZone.top / TILE_SIZE) - 2;
+
 	int endX = (int)(detectionZone.left / TILE_SIZE) + 2;
 	int endY = (int)(detectionZone.top / TILE_SIZE) + 3;
 
@@ -44,7 +43,7 @@ bool Engine::detectCollisions(Player& character)
 	}
 	// Make sure we don't test positions lower than zero
 	// Or higher than the end of the array
-	
+
 
 
 	// Has the character fallen out of the map?
@@ -52,99 +51,116 @@ bool Engine::detectCollisions(Player& character)
 	FloatRect level(0, 0, manageLevel.getLevelSize().x * TILE_SIZE, manageLevel.getLevelSize().y * TILE_SIZE);
 	//cout << "ENDX" << endX <<"\n";
 	//cout << "STARTX" << startX << "\n";
-	for (int x = startX; x < endX; x++)
-	{	
-		
-		for (int y = startY; y < endY; y++)
-		{
-			
 
-			// Initialize the starting position of the current block
-			block.left = x * TILE_SIZE;
-			block.top = y * TILE_SIZE;
+	/*
+		Calculating Player Location on the map
+	*/
+	Vector2f characterLocation = character.getCenter();
+	float locationX = characterLocation.x;
+	float locationY = characterLocation.y;
+	int playerLocationXInt = (int)locationX / TILE_SIZE;
+	int playerLocationYInt = (int)locationY / TILE_SIZE;
+	//cout << playerLocationXInt << "   " << playerLocationYInt << endl; // Which tile is the player on currently?
+	bool* neighbours = checkNeighbours(playerLocationXInt, playerLocationYInt);
 
-		
-			// Is player colliding with a water block i.e platform
-			if ((!playerInsideCave) && (m_ArrayLevel2[y][x] == 0))
-			{
-				//if the player right body colliding the water
-				if (character.getRight().intersects(block))
-				{
-					//Stop right
-					character.stopRight();
-					rightTime.RestartTimer();
-					//Break the loop
-					break;
-				}
-				else if (character.getLeft().intersects(block))//if the player left body colliding the water
-				{
-					//Stop Left
-					character.stopLeft();
-					leftTime.RestartTimer();
-					//Break the loop
-					break;
-				}
-				else if (character.getFeet().intersects(block))//if the player feet body colliding the water
-				{
-					//Stop down
-					character.stopDown();
-					feetTime.RestartTimer();
-					//Break the loop
-					break;
-				}
-				 else if (character.getHead().intersects(block))//if the player head body colliding the water
-				 {
-					//stop up
-					character.stopUp();
-					headTime.RestartTimer();
-					
-					//Break the loop
-					break;
-				 }
-
-			}
-			else if ((playerInsideCave) && (m_ArrayLevel1[y][x] == 0))
-			{
-				//if the player right body colliding the water
-				if (character.getRight().intersects(block))
-				{
-					//Stop right
-					character.stopRight();
-					rightTime.RestartTimer();
-					//Break the loop
-					break;
-				}
-				else if (character.getLeft().intersects(block))//if the player left body colliding the water
-				{
-					//Stop Left
-					character.stopLeft();
-					leftTime.RestartTimer();
-					//Break the loop
-					break;
-				}
-				else if (character.getFeet().intersects(block))//if the player feet body colliding the water
-				{
-					//Stop down
-					character.stopDown();
-					feetTime.RestartTimer();
-					//Break the loop
-					break;
-				}
-				else if (character.getHead().intersects(block))//if the player head body colliding the water
-				{
-					//stop up
-					character.stopUp();
-					headTime.RestartTimer();
-
-					//Break the loop
-					break;
-				}
-
-			}
-
-		}
-
+	if (neighbours[0])
+	{
+		character.stopLeft();
+		leftTime.RestartTimer();
 	}
+
+	if (neighbours[1])
+	{
+		character.stopRight();
+		rightTime.RestartTimer();
+	}
+
+	if (neighbours[2])
+	{
+		character.stopDown();
+		feetTime.RestartTimer();
+	}
+
+	if (neighbours[3])
+	{
+		character.stopUp();
+		headTime.RestartTimer();
+	}
+	
+
+
+
 	// All done, return, a new level might be required
 	return reachedGoal;
+}
+
+bool* Engine::checkNeighbours(int posX, int posY)
+{
+	//BOOLEAN ARRAY 
+	//INDEX 0 - LEFT
+	//INDEX 1 - RIGHT
+	//INDEX 2 - FEET
+	//INDEX 3 - HEAD
+	bool neighbourCheck[4] = { false,false,false,false };
+	int leftX = posX - 1;
+	int rightX = posX + 1;
+	int feetY = posY + 1;
+	int headY = posY - 1;
+	//m_ArrayLevel1
+	if (playerInsideCave)
+	{
+		if (m_ArrayLevel1[posY][leftX] < 1)
+		{
+			//Left
+			neighbourCheck[0] = true;
+		}
+
+		if (m_ArrayLevel1[posY][rightX] < 1)
+		{
+			//Right
+			neighbourCheck[1] = true;
+		}
+
+		if (m_ArrayLevel1[feetY][posX] < 1)
+		{
+			//Feet
+			neighbourCheck[2] = true;
+		}
+
+		if (m_ArrayLevel1[headY][posX] < 1)
+		{
+			//Head
+			neighbourCheck[3] = true;
+		}
+	}
+	else
+	{
+		if (m_ArrayLevel2[leftX][posY] < 1)
+		{
+			//Left
+			neighbourCheck[0] = true;
+		}
+
+		if (m_ArrayLevel2[rightX][posY] < 1)
+		{
+			//Right
+			neighbourCheck[1] = true;
+		}
+
+		if (m_ArrayLevel2[posX][feetY] < 1)
+		{
+			//Feet
+			neighbourCheck[2] = true;
+		}
+
+		if (m_ArrayLevel2[posX][headY] < 1)
+		{
+			//Head
+			neighbourCheck[3] = true;
+		}
+	}
+
+	
+
+	return neighbourCheck;
 }

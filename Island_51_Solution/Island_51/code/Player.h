@@ -69,7 +69,11 @@ private:
 	FloatRect m_Head;
 	FloatRect m_Right;
 	FloatRect m_Left;
+
+	FloatRect m_CollisionBox;
+
 	// All our public functions will come next
+
 public:
 	// The function from the player class
 	Player();
@@ -150,6 +154,8 @@ public:
 	FloatRect getRight();
 	FloatRect getLeft();
 	void updateLeftRightHeadFeet();
+
+	FloatRect getCollisionBox();
 
 
 };

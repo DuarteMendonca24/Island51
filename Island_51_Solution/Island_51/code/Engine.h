@@ -49,6 +49,7 @@ public:
     void loadSounds();
     int** getArrayLevel();
     int RandomBetween(int min, int max);
+    bool* checkNeighbours(int posX, int posY);
 
     Zombie* createIllusions(Vector2f playerPosition);
 

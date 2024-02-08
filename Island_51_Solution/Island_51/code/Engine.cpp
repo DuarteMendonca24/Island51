@@ -13,7 +13,7 @@ Engine::Engine() {
 
 	
 	m_Window.create(VideoMode(resolution.x, resolution.y), "Island 51", Style::Fullscreen);
-
+	m_Window.setFramerateLimit(120);
 	// Create a an SFML View for the main action
 	View mainView(sf::FloatRect(0, 0, resolution.x, resolution.y));
 	m_hudView.reset(
