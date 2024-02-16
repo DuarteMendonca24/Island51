@@ -28,6 +28,12 @@ Engine::Engine() {
 	textureMainMenu = TextureHolder::GetTexture("graphics/MainMenu.png");
 	textureIntroComic = TextureHolder::GetTexture("graphics/introComic.png");
 	textureWin = TextureHolder::GetTexture("graphics/winComic.png");
+	textureCaveEntrance = TextureHolder::GetTexture("graphics/caveEntrance.png");
+
+	//Load Texture for Cave Entrance
+	spriteCaveEntrance.setTexture(textureCaveEntrance);
+	spriteCaveEntrance.setPosition(-2000, -2000);
+
 	//Load Texture for Intro Comic
 	spriteIntroComic.setTexture(textureIntroComic);
 	spriteIntroComic.setPosition(resolution.x / 2 - 271, resolution.y / 2 - 394.5);
@@ -55,15 +61,26 @@ Engine::Engine() {
 	spriteMainMenu.setPosition(0, 0);
 
 
-	//Zombie Amount Decpends on wave number
-	numZombies = 5 * wave;
+	//Zombie Amount to spawn
+	numEnemies = 5;
+	numCaveEnemies = 15;
 	//the number of resource to spawn
-	numResource = 20;
+	numResource = 30;
+	numCaveResource = 40;
 	Vector2i worldSize = manageLevel.getLevelSize();
-	m_EnemiesList = createHorde(numZombies, arena);
-	numZombiesAlive = numZombies;
+
+	//Island Resources and Enemies
+	m_EnemiesList = createHorde(numEnemies);
+	numEnemiesAlive = numEnemies;
 	m_PickupList = createResorces(numResource);
 	numResourceAlive = numResource;
+
+	//Cave Resources and Enemies
+	m_EnemiesListCave = createHorde(numCaveEnemies);
+	numCaveEnemiesAlive = numCaveEnemies;
+	m_PickupListCave = createResorces(numCaveResource);
+	numCaveResourceAlive = numCaveResource;
+
 	IntRect arena;
 	arena.width = worldSize.x * TILE_SIZE;
 	arena.height = worldSize.y * TILE_SIZE;
@@ -178,7 +195,16 @@ void Engine::run() {
 
 int** Engine::getArrayLevel()
 {
-	return m_ArrayLevel2;
+	int** arrLvl;
+	if (playerInsideCave)
+	{
+		arrLvl = m_ArrayLevel1;
+	}
+	else
+	{
+		arrLvl = m_ArrayLevel2;
+	}
+	return arrLvl;
 }
 
 void GenerateCave()

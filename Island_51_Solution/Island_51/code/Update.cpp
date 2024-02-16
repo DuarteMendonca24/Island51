@@ -104,7 +104,17 @@ void Engine::update(float dtAsSeconds)
             {
                 // Update the position and behavior of the enemy
                 (*it)->update(dtAsSeconds, playerPosition);
-
+                if ((*it)->enemyState == (*it)->getWanderingState())
+                {
+                    int** arrayLvl = getArrayLevel();
+                    int failSafeCounter = 0;
+                    while(((*it)->checkWalkPointAccessability(arrayLvl))||(failSafeCounter>20))
+                    {
+                        (*it)->createWalkPoint();
+                        failSafeCounter++;
+                    }
+                        
+                }
                 //I think I should move this to another place , here is more to update each zombioe
                 //if its and explosive enemie and its close to the player
                 if ((*it)->getType() == 4 && (*it)->distanceToPlayer(playerPosition) < 500) {
@@ -212,7 +222,7 @@ void Engine::update(float dtAsSeconds)
                                 m_hiScore = wave;
                             }
                             // Decrease the count of alive zombies
-                            numZombiesAlive--;
+                            numEnemiesAlive--;
                         }
                         // Play a splat sound
                         splat.play();

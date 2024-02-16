@@ -249,7 +249,7 @@ void Zombie::update(float elapsedTime,Vector2f playerLocation)
 	//Function to make the enemy wander around 
 	if (enemyState == EnemyState::WANDERING) 
 	{// If the enemies is in wandering mode:
-
+		
 		if (m_Position.x < walkPoint.x + 10 &&
 			m_Position.x > walkPoint.x - 10 &&
 			m_Position.y < walkPoint.y + 10 &&
@@ -417,7 +417,7 @@ Vector2f Zombie::createWalkPoint()
 	float x_pos = m_Position.x;
 	float y_pos = m_Position.y;
 	// Set the radius within which the zombie can randomly walk
-	int radius = 400;
+	int radius = 500;
 	bool isWater = true;
 
 	//Generating Random Values
@@ -429,6 +429,19 @@ Vector2f Zombie::createWalkPoint()
 	y_pos += (float)dist(rd);
 	// Return the new random position as a Vector2f
 	return Vector2f(x_pos, y_pos);
+}
+
+bool Zombie::checkWalkPointAccessability(int** ArrayLevel)
+{
+	bool isTheWalkpointInsideOfTheMap = false;
+	Vector2i walkPointTilePos = Vector2i((int)walkPoint.x / 50, (int)walkPoint.y / 50);
+	
+	if (ArrayLevel[walkPointTilePos.y][walkPointTilePos.x] < 1)
+	{
+		isTheWalkpointInsideOfTheMap = true;
+	}
+
+	return isTheWalkpointInsideOfTheMap;
 }
 
 

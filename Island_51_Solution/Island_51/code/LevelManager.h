@@ -56,4 +56,5 @@ public:
 
 	int** getArray();
 	Vector2i getRandomSpawner();
+
 };

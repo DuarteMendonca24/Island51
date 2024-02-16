@@ -37,7 +37,7 @@ public:
     /*
         LIST OF VARIABLES NEEDED FOR OTHER CLASSES
     */
-    std::list<Zombie*> createHorde(int numZombies, IntRect arena);
+    std::list<Zombie*> createHorde(int numZombies);
     std::list<Zombie*> createEnemies(int numZombies, Vector2f position, int type);
     std::list<Pickup*> createPickup(Vector2f position);
     std::list<Pickup*> createResorces(int numResource);
@@ -59,6 +59,8 @@ public:
     //Level Manager Object
     LevelManager manageLevel;
     bool playerInsideCave = true;
+
+    
 
 private:
 
@@ -88,15 +90,19 @@ private:
     int numStonePickup = 10;
     int numIronPickup =  10;
     int numSoulPickup =  10;
-
+    
     //the tile size
     const int TILE_SIZE = 50;
     // Prepare for a horde of zombies
-    int numZombies;
-    int numZombiesAlive;
+    int numEnemies;
+    int numCaveEnemies;
+    int numEnemiesAlive;
+    int numCaveEnemiesAlive;
     // Prepare for a horde of resource
     int numResource;
+    int numCaveResource;
     int numResourceAlive;
+    int numCaveResourceAlive;
     //Gun Variables
     int currentBullet = 1;
     int bulletsInClip = 12;
@@ -137,10 +143,9 @@ private:
     void update(float dtAsSeconds);
 
     //view for the background
-    View m_BGMainView;
-
-    //view for the background
     View mainView;
+
+    View caveView;
 
     //view for HUD
     View m_hudView;
@@ -200,6 +205,9 @@ private:
     //Create the cave Background
     VertexArray caveBackground;
 
+    //Cave Entrance Spawn Location
+    Vector2i caveEntranceLocation = Vector2i(8500, 1500);
+
     //Textures
     // Here is the instabce of TextureHolder
 
@@ -227,6 +235,7 @@ private:
     Texture GUI_background_Texture;
     Texture textureRule;
     Texture textureWin;
+    Texture textureCaveEntrance;
     
     //Sprites variables
     Sprite spriteCrosshair;
@@ -234,6 +243,7 @@ private:
     Sprite spriteAmmoIcon;
     Sprite spriteIntroComic;
     Sprite spriteWinComic;
+    Sprite spriteCaveEntrance;
 
     //SoundBuffer Variables
 
@@ -308,6 +318,10 @@ private:
     //changing the array to a list
     std::list<Zombie*> m_EnemiesList;
     std::list<Pickup*> m_PickupList;
+
+    //List for Cave Enemies and Resources
+    std::list<Zombie*> m_EnemiesListCave;
+    std::list<Pickup*> m_PickupListCave;
 
     //array to display inventory resource items
     Pickup m_inventoryIcons[4];

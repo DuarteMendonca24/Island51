@@ -91,6 +91,13 @@ public:
 		TARGETING   // State representing the enemy targeting
 	};
 
+	EnemyState getWanderingState()
+	{
+		return EnemyState::WANDERING;
+	}
+
+	bool checkWalkPointAccessability(int** ArrayLevel);
+
 	// Declaration of a variable to hold the current state of the enemy
 	EnemyState enemyState = EnemyState::TARGETING;
 
