@@ -133,27 +133,27 @@ bool* Engine::checkNeighbours(int posX, int posY)
 			neighbourCheck[3] = true;
 		}
 	}
-	else
+	else if(!playerInsideCave)
 	{
-		if (m_ArrayLevel2[leftX][posY] < 1)
+		if (m_ArrayLevel2[posY][leftX] < 1)
 		{
 			//Left
 			neighbourCheck[0] = true;
 		}
 
-		if (m_ArrayLevel2[rightX][posY] < 1)
+		if (m_ArrayLevel2[posY][rightX] < 1)
 		{
 			//Right
 			neighbourCheck[1] = true;
 		}
 
-		if (m_ArrayLevel2[posX][feetY] < 1)
+		if (m_ArrayLevel2[feetY][posX] < 1)
 		{
 			//Feet
 			neighbourCheck[2] = true;
 		}
 
-		if (m_ArrayLevel2[posX][headY] < 1)
+		if (m_ArrayLevel2[headY][posX] < 1)
 		{
 			//Head
 			neighbourCheck[3] = true;
