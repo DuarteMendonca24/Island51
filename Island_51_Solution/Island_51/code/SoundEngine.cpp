@@ -62,12 +62,26 @@ void Engine::loadSounds(){
 	UI_SoundBuffer.loadFromFile("sound/UI_Select.wav");
 	UI_Sound.setBuffer(UI_SoundBuffer);
 
-	// Prepare Background Music
-	musicBuffer.loadFromFile("sound/backgroundmusic.wav");
-	music.setBuffer(musicBuffer);
+	// Prepare Background Music for Island
+	islandMusicBuffer.loadFromFile("sound/backgroundmusic.wav");
+	islandMusic.setBuffer(islandMusicBuffer);
+
+	// Prepare Background Music for Caves
+	caveBackgroundMusicBuffer.loadFromFile("sound/cavebackgroundmusic.wav");
+	caveBackgroundMusic.setBuffer(caveBackgroundMusicBuffer);
+
+	// Prepare Background Music for MainMenu
+	mainMenuMusicBuffer.loadFromFile("sound/mainmenumusic.wav");
+	mainMenuMusic.setBuffer(mainMenuMusicBuffer);
 	
-	music.setLoop(true);
-	music.setVolume(20);
+	islandMusic.setLoop(true);
+	islandMusic.setVolume(20);
+
+	caveBackgroundMusic.setLoop(true);
+	caveBackgroundMusic.setVolume(50);
+
+	mainMenuMusic.setLoop(true);
+	mainMenuMusic.setVolume(50);
 
 	
 	

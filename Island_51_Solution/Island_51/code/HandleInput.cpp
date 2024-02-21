@@ -19,6 +19,7 @@ void Engine::input()
 					state = State::MAIN_MENU;
 					introVoice.stop();
 					UI_Sound.play();
+					mainMenuMusic.play();
 				}
 			}
 			if (state == State::WIN)
@@ -45,21 +46,27 @@ void Engine::input()
 
 				// Inventory 
 				if (event.key.code == Keyboard::M) {
-
+					teleportEnemiesAndResources();
 					if (!playerInsideCave) {
 
 						playerInsideCave = true;
+						mainMenuMusic.stop();
+						islandMusic.stop();
+						caveBackgroundMusic.play();
 					}
 					else if (playerInsideCave) {
 
 						playerInsideCave = false;
+						mainMenuMusic.stop();
+						islandMusic.play();
+						caveBackgroundMusic.stop();
 					}
 
 				}
 
 				// Inventory 
 				if (event.key.code == Keyboard::Tab) {
-					
+					UI_Sound.play();
 					if (!m_inventoryActive) {
 
 						m_inventoryActive = true;
@@ -75,6 +82,7 @@ void Engine::input()
 				if (event.key.code == Keyboard::Q)
 				{
 					state = State::CRAFT;
+					UI_Sound.play();
 				}
 
 				//close game
@@ -107,13 +115,15 @@ void Engine::input()
 			}
 			// Going to the Main Menu
 			else if (state == State::MAIN_MENU) {
-
+				mainMenuMusic.play();
 				// If 1 press play game from the menu
 				if (event.key.code == Keyboard::Num1) {
 
 					state = State::PLAYING;
+
+					mainMenuMusic.stop();
 					gameStart.play();
-					music.play();
+					islandMusic.play();
 				}
 				// If 2 press Check rule from the menu
 				else if (event.key.code == Keyboard::Num2) {

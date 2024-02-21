@@ -50,6 +50,7 @@ public:
     int** getArrayLevel();
     int RandomBetween(int min, int max);
     bool* checkNeighbours(int posX, int posY);
+    void teleportEnemiesAndResources();
 
     Zombie* createIllusions(Vector2f playerPosition);
 
@@ -244,7 +245,8 @@ private:
     Sprite spritePause;
 
     //SoundBuffer Variables
-
+    SoundBuffer mainMenuMusicBuffer;
+    SoundBuffer caveBackgroundMusicBuffer;
     SoundBuffer introVoiceBuffer;
     SoundBuffer splatBuffer;
     SoundBuffer punchBuffer;
@@ -266,7 +268,7 @@ private:
     SoundBuffer guiseletionBuffer;
     SoundBuffer metalclashBuffer;
     SoundBuffer gameoverBuffer;
-    SoundBuffer musicBuffer;
+    SoundBuffer islandMusicBuffer;
     SoundBuffer spottedBuffer;
     SoundBuffer gameStartBuffer;
     SoundBuffer swordBuffer;
@@ -274,6 +276,9 @@ private:
     SoundBuffer winVoiceBuffer;
 
     //Sound Variables
+
+    Sound mainMenuMusic;
+    Sound caveBackgroundMusic;
     Sound introVoice;
     Sound hit;
     Sound splat; 
@@ -295,7 +300,7 @@ private:
     Sound guiseletionsound;
     Sound metalclashsound;
     Sound gameoversound;
-    Sound music;
+    Sound islandMusic;
     Sound spotted;
     Sound gameStart;
     Sound sword;

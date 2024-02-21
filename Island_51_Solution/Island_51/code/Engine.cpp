@@ -108,7 +108,7 @@ Engine::Engine() {
 	m_inventoryIcons[1].spawnPickup(5,100, 500, 3.5);
 	m_inventoryIcons[2].spawnPickup(6,100, 600, 3.5);
 	m_inventoryIcons[3].spawnPickup(3,70, 680, 2.5);
-	music.play();
+	islandMusic.play();
 
 	//spawning weapon to be icons in the inventory
 	m_weaponIcons[0].spawn(1, 1.1, resolution.x / 2 - 90, resolution.y - 55);
@@ -203,7 +203,14 @@ int** Engine::getArrayLevel()
 	return m_ArrayLevel2;
 }
 
-void GenerateCave()
+void Engine::teleportEnemiesAndResources()
 {
+	if (playerInsideCave)
+	{
 
+	}
+	else if (!playerInsideCave)
+	{
+
+	}
 }
