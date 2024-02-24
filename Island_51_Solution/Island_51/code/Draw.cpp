@@ -7,8 +7,7 @@ using namespace sf;
 
 void Engine::draw()
 {
-    //Setting Mouse Cursor to be visible in the game
-    m_Window.setMouseCursorVisible(true);
+    
     //Setting Up Intro cutscene
     if (state == State::INTRO)
     {
@@ -32,6 +31,7 @@ void Engine::draw()
     {
         // Clear the window to preaper for rendering 
         m_Window.clear();
+        m_Window.setMouseCursorVisible(false);
 
         // set the mainView to be displayed in the m_Window
         // And draw everything related to it
@@ -41,10 +41,29 @@ void Engine::draw()
         if (playerInsideCave)
         {
             m_Window.draw(caveBackground, &textureCaveBackground);
+            if (DistanceToCave() > 300)
+            {
+                m_Window.draw(caveExit);
+            }
+            else if (DistanceToCave() <= 300)
+            {
+                m_Window.draw(caveExitPrompt);
+            }
+
+            
         }
         else {
             // Draw the background
             m_Window.draw(background, &textureBackground);
+
+            if (DistanceToCave() > 300)
+            {
+                m_Window.draw(caveEntrance);
+            }
+            else if (DistanceToCave() <= 300)
+            {
+                m_Window.draw(caveEntrancePrompt);
+            }
         }
 
 
@@ -118,6 +137,16 @@ void Engine::draw()
         // Switch to the HUD view
         m_Window.setView(m_hudView);
 
+        if (playerInsideCave)
+        {
+            m_Window.draw(vigetteCave);
+
+        }
+        else {
+
+            m_Window.draw(vigetteIsland);
+        }
+
         // Draw all the HUD elements
         if (!m_HandWeaponActive2)
         {
@@ -148,7 +177,7 @@ void Engine::draw()
         // Draw ammo and score information
         m_Window.draw(m_hud.getScoreText());
 
-
+       
         //Drawing Bar Background first
         m_Window.draw(m_hud.getBarBackground());
 
@@ -209,8 +238,10 @@ void Engine::draw()
         m_Window.draw(spriteCraft);
         // Draw the inventory
         m_Window.draw(spriteInventory);
+        
         // Draw the pause
         m_Window.draw(spritePause);
+
     }
 
     // Check if the game state have rules for the game
@@ -234,6 +265,8 @@ void Engine::draw()
         m_Window.draw(m_hud.getPausedText());
         // Play the puase sound effect
         guiseletionsound.play();
+        //Setting Mouse Cursor to be visible in the game
+        m_Window.setMouseCursorVisible(true);
     }
 
    // Check if the game state is Game Over
@@ -248,6 +281,8 @@ void Engine::draw()
         // Draw the high score 
         m_Window.draw(m_hud.getHighscoreText());
         //gameoversound.play();
+        //Setting Mouse Cursor to be visible in the game
+        m_Window.setMouseCursorVisible(true);
     }
 
     // Check if the game state is High Score
@@ -261,7 +296,8 @@ void Engine::draw()
         m_Window.draw(m_hud.getGoBackMenuText());
         // here is the high score
         m_Window.draw(m_hud.getHighscoreText());
-
+        //Setting Mouse Cursor to be visible in the game
+        m_Window.setMouseCursorVisible(true);
     }
 
     // Check if the game state is Main menu
@@ -270,6 +306,8 @@ void Engine::draw()
         //draw the background image and the text
         m_Window.draw(spriteMainMenu);
         m_Window.draw(m_hud.getMainMenuText());
+        //Setting Mouse Cursor to be visible in the game
+        m_Window.setMouseCursorVisible(true);
     }
 
     // Check if the game state is Craft
@@ -288,9 +326,13 @@ void Engine::draw()
             m_Window.draw(m_hud.getNotEnoughResourcse());
           
         }
+
         // Play a sound effect gui seletion
         guiseletionsound.play();
-
+        if (!m_inventoryActive)
+        {
+            m_inventoryActive = true;
+        }
         // Check if the inventory is active
         if (m_inventoryActive) {
             //draw the inventory icons
@@ -304,6 +346,23 @@ void Engine::draw()
             m_Window.draw(m_hud.getStoneQuantityText());
             m_Window.draw(m_hud.getIronQuantityText());
         }
+        std::stringstream ssNumTreePickups;
+        std::stringstream ssNumStonePickups;
+        std::stringstream ssNumIronPickups;
+        std::stringstream ssNumSoulPickups;
+
+        // Update the tree pickup text
+        ssNumTreePickups << "x " << numTreePickup;
+        m_hud.setWoodQuantityText(ssNumTreePickups.str());
+        // Update the stone pickup text
+        ssNumStonePickups << "x " << numStonePickup;
+        m_hud.setStoneQuantityText(ssNumStonePickups.str());
+        // Update the iron pickup text
+        ssNumIronPickups << "x " << numIronPickup;
+        m_hud.setIronQuantityText(ssNumIronPickups.str());
+        // Update the soul pickup text
+        ssNumSoulPickups << "x " << numSoulPickup;
+        m_hud.setSoulQuantityText(ssNumSoulPickups.str());
     }
 
     // Update the game winow to disaply any change made during the process 

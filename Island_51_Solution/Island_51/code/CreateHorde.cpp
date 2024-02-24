@@ -60,8 +60,7 @@ std::list<Zombie*> Engine::createHorde(int numZombies, IntRect arena)
 		// Create a new Enemy object and spawn it
 		Zombie* zombie = new Zombie();
 		//Getting Spawner Location To Spawn Zombie
-		int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
-		Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
+		Vector2i spawnLocation = manageLevel.getRandomSpawner();
 		//sapwn the enemies
 		zombie->spawn(spawnLocation.x, spawnLocation.y, type, i);
 		// Add the zombie to the list
@@ -148,8 +147,6 @@ std::list<Pickup*> Engine::createPickup(Vector2f position)
 //changing the function to return a list
 std::list<Pickup*> Engine::createResorces(int numResources)
 {
-	// Create an empty list to store Pickup pointers
-	std::list<Pickup*> resourceList;
 
 	// Loop to create the specified number of resources
 	for (int i = 0; i < numResources; i++)

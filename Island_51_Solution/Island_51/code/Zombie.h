@@ -139,6 +139,8 @@ public:
 
 	//move the rectangle to the next cell in the animation
 	void moveTextureRect();
+
+	void setEnemyPosition(Vector2f location);
 };
 
 

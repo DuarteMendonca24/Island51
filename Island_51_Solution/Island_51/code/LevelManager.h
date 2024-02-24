@@ -48,7 +48,6 @@ public:
 
 	void createNewSpawner(int x, int y);
 	
-	Vector2i getSpawner(int i);
 
 	int getSpawnerCount();
 

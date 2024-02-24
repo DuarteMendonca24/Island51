@@ -431,6 +431,10 @@ Vector2f Zombie::createWalkPoint()
 	return Vector2f(x_pos, y_pos);
 }
 
-
+void Zombie::setEnemyPosition(Vector2f location)
+{
+	m_Position.x = location.x;
+	m_Position.y = location.y;
+}
 
 

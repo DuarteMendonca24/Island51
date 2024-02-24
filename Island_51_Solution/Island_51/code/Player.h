@@ -127,14 +127,8 @@ public:
 	// We will call this function once every frame
 	void update(float elapsedTime, Vector2i mousePosition);
 
-	// Give player a speed boost
-	void upgradeSpeed();
 
-	// Give the player some health
-	void upgradeHealth();
 
-	// Here is the health for the player
-	void setHealth(float x);
 
 	// Increase the maximum amount of health the player can have
 	void increaseHealthLevel(int amount);
@@ -157,6 +151,9 @@ public:
 
 	FloatRect getCollisionBox();
 
+	void setPosition(Vector2f newPos);
+
+	bool playerMoving();
 
 };
 

@@ -208,3 +208,10 @@ Vector2f Pickup::getPosCoordinates() {
 	return m_Position;
 }
 
+void Pickup::setPosition(Vector2f pos)
+{
+	m_Position.x = pos.x;
+	m_Position.y = pos.y;
+
+	m_Sprite.setPosition(m_Position);
+}

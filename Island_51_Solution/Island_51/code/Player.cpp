@@ -157,6 +157,28 @@ void Player::stopDown()
 	m_DownPressed = false;
 }
 
+bool Player::playerMoving()
+{
+	if (m_LeftPressed)
+	{
+		return true;
+	}
+	if (m_RightPressed)
+	{
+		return true;
+	}
+	if (m_UpPressed)
+	{
+		return true;
+	}
+	if (m_DownPressed)
+	{
+		return true;
+	}
+	return false;
+
+}
+
 void Player::update(float elapsedTime, Vector2i mousePosition)
 {
 	
@@ -256,25 +278,6 @@ void Player::update(float elapsedTime, Vector2i mousePosition)
 	m_Sprite.setPosition(m_Position);
 }
 
-// Upgrade player speed by 40%
-void Player::upgradeSpeed()
-{
-	// 40% speed upgrade
-	m_Speed += (START_SPEED * .4);
-}
-// Upgrade player maximum health by 20%
-void Player::upgradeHealth()
-{
-	// 20HP max health upgrade
-	m_MaxHealth = m_MaxHealth + 20;
-
-}
-// Seting player health to a specific value 
-void Player::setHealth(float x)
-{
-	// Health 
-	m_Health =  x;
-}
 
 // Increase player health by a certain amount
 void Player::increaseHealthLevel(int amount)
@@ -454,3 +457,8 @@ FloatRect Player::getCollisionBox()
 	return m_CollisionBox;
 }
 
+void Player::setPosition(Vector2f newPos)
+{
+	m_Position.x = newPos.x;
+	m_Position.y = newPos.y;
+}

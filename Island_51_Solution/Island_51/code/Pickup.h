@@ -90,5 +90,7 @@ public:
 	
 	// Declaraton the function that respresgntinh positon coordinates 
 	Vector2f getPosCoordinates();
+
+	void setPosition(Vector2f pos);
 };
 #pragma once

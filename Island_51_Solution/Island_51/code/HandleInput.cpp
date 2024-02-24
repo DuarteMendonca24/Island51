@@ -46,27 +46,35 @@ void Engine::input()
 
 				// Inventory 
 				if (event.key.code == Keyboard::M) {
-					teleportEnemiesAndResources();
-					if (!playerInsideCave) {
+					if (DistanceToCave() <= 300)
+					{
+						
+						if (!playerInsideCave) {
 
-						playerInsideCave = true;
-						mainMenuMusic.stop();
-						islandMusic.stop();
-						caveBackgroundMusic.play();
-					}
-					else if (playerInsideCave) {
+							playerInsideCave = true;
+							mainMenuMusic.stop();
+							islandMusic.stop();
+							caveBackgroundMusic.play();
+							player.setPosition(caveEntranceAndExit);
+						}
+						else if (playerInsideCave) {
 
-						playerInsideCave = false;
-						mainMenuMusic.stop();
-						islandMusic.play();
-						caveBackgroundMusic.stop();
+							playerInsideCave = false;
+							mainMenuMusic.stop();
+							islandMusic.play();
+							caveBackgroundMusic.stop();
+							player.setPosition(caveEntranceAndExit);
+						}
+						teleportEnemiesAndResources();
 					}
+					
 
 				}
 
 				// Inventory 
 				if (event.key.code == Keyboard::Tab) {
 					UI_Sound.play();
+					
 					if (!m_inventoryActive) {
 
 						m_inventoryActive = true;
@@ -81,6 +89,8 @@ void Engine::input()
 				//Craft
 				if (event.key.code == Keyboard::Q)
 				{
+					m_inventoryActive = false;
+					draw();
 					state = State::CRAFT;
 					UI_Sound.play();
 				}
@@ -109,8 +119,17 @@ void Engine::input()
 			else if (state == State::GAME_OVER) {
 
 				state = State::MAIN_MENU;
+				islandMusic.stop();
+				caveBackgroundMusic.stop();
+				mainMenuMusic.play();
 				// Reset the player's stats
+				playerInsideCave = false;
 				player.resetPlayerStats();
+				player.setPosition(Vector2f(40.0f * 50.0f,30.0f * 50.0f));
+				numTreePickup =  0;
+				numStonePickup = 0;
+				numIronPickup =  0;
+				numSoulPickup =  0;
 				
 			}
 			// Going to the Main Menu
@@ -122,7 +141,6 @@ void Engine::input()
 					state = State::PLAYING;
 
 					mainMenuMusic.stop();
-					gameStart.play();
 					islandMusic.play();
 				}
 				// If 2 press Check rule from the menu
@@ -212,6 +230,7 @@ void Engine::input()
 					{
 						woodSwordBulletsInClip = woodSwordBulletsInClip + 30;
 						numTreePickup = numTreePickup - 3;
+						
 						pickup.play();
 					}
 					// craft stone sword
@@ -273,10 +292,12 @@ void Engine::input()
 		// Handle controls while playing
 		if (state == State::PLAYING)
 		{
+			
 			// Handle the pressing and releasing of the WASD keys
 			if ((Keyboard::isKeyPressed(Keyboard::W))&&(headTime.GetElapsedTime()>0.01f))
 			{
 				player.moveUp();
+
 			}
 			else
 			{
@@ -309,6 +330,7 @@ void Engine::input()
 			{
 				player.stopRight();
 			}
+
 
 			// Fire a bullet
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))

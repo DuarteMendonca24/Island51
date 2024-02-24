@@ -14,6 +14,9 @@ private:
 	int** map;
 
 	int mapSmoothIteration = 0;
+	int spawnerIteration = 0;
+	static const int MAX_SPAWNER_AMOUNT = 1000;
+	Vector2i spawnerPositions[MAX_SPAWNER_AMOUNT];
 
 public:
 	//Default Constructor
@@ -47,6 +50,8 @@ public:
 
 	Vector2i getMapSize();
 
+
+	//Vector2i* getSpawners(int& spawnerCount);
 
 
 

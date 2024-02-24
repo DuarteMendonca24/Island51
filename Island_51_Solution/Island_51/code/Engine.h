@@ -29,6 +29,7 @@ public:
     Timer feetTime;
     Timer leftTime;
     Timer rightTime;
+    Timer stepTime;
 
     //Horde Object
     //CreateHorde
@@ -51,17 +52,23 @@ public:
     int RandomBetween(int min, int max);
     bool* checkNeighbours(int posX, int posY);
     void teleportEnemiesAndResources();
-
+    void playRandomFootstep();
     Zombie* createIllusions(Vector2f playerPosition);
+    float DistanceToCave();
+
+    Vector2f spawnersForCave[100];
 
     // A regular RenderWindow
     RenderWindow m_Window;
 
     //Level Manager Object
     LevelManager manageLevel;
-    bool playerInsideCave = true;
+    bool playerInsideCave = false;
 
 private:
+    //Player Spawn Positons And Cave Entrance/ Exit
+    Vector2f caveEntranceAndExit = Vector2f(17.0f * 50.0f, 13.0f * 50.0f);
+
 
     //used to write to file
     bool m_scoreFile = false;
@@ -232,6 +239,12 @@ private:
     Texture textureCraft;
     Texture textureInventory;
     Texture texturePause;
+    Texture caveEntranceTexture;
+    Texture caveExitTexture;
+    Texture caveEntrancePromptTexture;
+    Texture caveExitPromptTexture;
+    Texture vigetteCaveTexture;
+    Texture vigetteIslandTexture;
     
     //Sprites variables
     Sprite spriteCrosshair;
@@ -243,6 +256,12 @@ private:
     Sprite spriteCraft;
     Sprite spriteInventory;
     Sprite spritePause;
+    Sprite caveEntrance;
+    Sprite caveExit;
+    Sprite caveEntrancePrompt;
+    Sprite caveExitPrompt;
+    Sprite vigetteCave;
+    Sprite vigetteIsland;
 
     //SoundBuffer Variables
     SoundBuffer mainMenuMusicBuffer;
@@ -307,8 +326,35 @@ private:
     Sound UI_Sound;
     Sound winVoice;
 
-
-
+    //Step Sounds
+    //Cave step sounds
+    SoundBuffer cave_step1_buffer;
+    SoundBuffer cave_step2_buffer;
+    SoundBuffer cave_step3_buffer;
+    SoundBuffer cave_step4_buffer;
+    SoundBuffer cave_step5_buffer;
+    Sound cave_step1;
+    Sound cave_step2;
+    Sound cave_step3;
+    Sound cave_step4;
+    Sound cave_step5;
+    //Island Step Sounds
+    SoundBuffer island_step1_buffer;
+    SoundBuffer island_step2_buffer;
+    SoundBuffer island_step3_buffer;
+    SoundBuffer island_step4_buffer;
+    SoundBuffer island_step5_buffer;
+    SoundBuffer island_step6_buffer;
+    SoundBuffer island_step7_buffer;
+    SoundBuffer island_step8_buffer;
+    Sound island_step1;
+    Sound island_step2;
+    Sound island_step3;
+    Sound island_step4;
+    Sound island_step5;
+    Sound island_step6;
+    Sound island_step7;
+    Sound island_step8;
     //Bar Variables
 
     float m_currentHunger = 200;
@@ -320,7 +366,10 @@ private:
     Zombie* zombies = NULL;
     //changing the array to a list
     std::list<Zombie*> m_EnemiesList;
+    //List for Pickups
     std::list<Pickup*> m_PickupList;
+    // Create an empty list to store Pickup pointers
+    std::list<Pickup*> resourceList;
 
     //array to display inventory resource items
     Pickup m_inventoryIcons[4];

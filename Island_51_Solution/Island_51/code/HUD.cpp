@@ -28,10 +28,12 @@ Hud::Hud(){
 
 	// Game Over
 	m_gameOverText.setFont(m_font);
-	m_gameOverText.setCharacterSize(125);
+	m_gameOverText.setCharacterSize(82);
 	m_gameOverText.setFillColor(Color::Color(255,50,0));
 	m_gameOverText.setPosition(250, 850);
 	m_gameOverText.setString("YOU DIED, PRESS SPACE TO CONTINUE");
+	m_gameOverText.setOutlineColor(Color::Black);
+	m_gameOverText.setOutlineThickness(5);
 
 	// Levelling up
 	m_levelUpText.setFont(m_font);
@@ -188,7 +190,7 @@ Hud::Hud(){
 	m_mainMenuText.setPosition(500, 60);
 	std::stringstream mainMenuStream;
 	mainMenuStream <<
-		"ISLAND 51" <<
+		"" <<
 		"\n\n\n1 - Play Game" <<
 		"\n\n\n2 - Rules & Controls " <<
 		"\n\n\n3 - High Scores " <<

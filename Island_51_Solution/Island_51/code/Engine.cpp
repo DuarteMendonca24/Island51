@@ -22,6 +22,8 @@ Engine::Engine() {
 	//Load Level
 	m_ArrayLevel2 = manageLevel.loadLevel(background);
 	m_ArrayLevel1 = cave.loadLevel(caveBackground);
+
+
 	textureBackground = TextureHolder::GetTexture("graphics/tiles-sheet.png");
 	textureCaveBackground = TextureHolder::GetTexture("graphics/cave-tiles-sheet.png");
 	textureCrosshair = TextureHolder::GetTexture("graphics/crosshair.png");
@@ -32,6 +34,25 @@ Engine::Engine() {
 	textureCraft = TextureHolder::GetTexture("graphics/craft.png");
 	textureInventory = TextureHolder::GetTexture("graphics/inventory.png");
 	texturePause = TextureHolder::GetTexture("graphics/pause.png");
+	caveEntranceTexture = TextureHolder::GetTexture("graphics/caveEntrance.png");
+	caveExitTexture = TextureHolder::GetTexture("graphics/CaveExit.png");
+	caveEntrancePromptTexture = TextureHolder::GetTexture("graphics/caveEntrance2.png");
+	caveExitPromptTexture = TextureHolder::GetTexture("graphics/CaveExit2.png");
+	vigetteCaveTexture = TextureHolder::GetTexture("graphics/CaveVigette.png");
+	vigetteIslandTexture = TextureHolder::GetTexture("graphics/IslandVigette.png");
+
+	vigetteCave.setTexture(vigetteCaveTexture);
+	vigetteIsland.setTexture(vigetteIslandTexture);
+	vigetteCave.setPosition(Vector2f(0, 0));
+	vigetteIsland.setPosition(Vector2f(0,0));
+	caveEntrancePrompt.setTexture(caveEntrancePromptTexture);
+	caveEntrancePrompt.setPosition(Vector2f(caveEntranceAndExit.x, caveEntranceAndExit.y - 33));
+	caveExitPrompt.setTexture(caveExitPromptTexture);
+	caveExitPrompt.setPosition(caveEntranceAndExit);
+	caveEntrance.setTexture(caveEntranceTexture);
+	caveEntrance.setPosition(caveEntranceAndExit);
+	caveExit.setTexture(caveExitTexture);
+	caveExit.setPosition(caveEntranceAndExit);
 	//Load Texture for Intro Comic
 	spriteIntroComic.setTexture(textureIntroComic);
 	spriteIntroComic.setPosition(resolution.x / 2 - 271, resolution.y / 2 - 394.5);
@@ -95,9 +116,7 @@ Engine::Engine() {
 	player.spawn(arena, resolution, TILE_SIZE);
 
 
-	int spawnersAvailable = manageLevel.getSpawnerCount();
-	int chooseSpawner = manageLevel.RandomBetween(0, spawnersAvailable);
-	Vector2i spawnLocation = manageLevel.getSpawner(chooseSpawner);
+	Vector2i spawnLocation = manageLevel.getRandomSpawner();
 
 	Illusionist[0].spawn(spawnLocation.x, spawnLocation.y, 0, 1); // Top Illusionist
 	Illusionist[1].spawn(spawnLocation.x, spawnLocation.y, 0, 1); // Top Illusionist
@@ -165,6 +184,11 @@ void Engine::run() {
 		timeSinceLastUpdate = dt;
 		//Taking Player Input
 		input();
+
+		if (player.playerMoving())
+		{
+			playRandomFootstep();
+		}
 		//If in Intro state draw and update asfast as possible
 		if (state == State::INTRO)
 		{
@@ -205,12 +229,72 @@ int** Engine::getArrayLevel()
 
 void Engine::teleportEnemiesAndResources()
 {
+	
 	if (playerInsideCave)
 	{
+		//Update all Enemies
+		std::list<Zombie*>::iterator it;
+
+		for (it = m_EnemiesList.begin(); it != m_EnemiesList.end();)
+		{ 
+			(*it)->setEnemyPosition(Vector2f(manageLevel.RandomBetween(0, 100) * 50, manageLevel.RandomBetween(0, 100) * 50));
+			it++;
+			
+		}
+
+		//Update all Resources
+		std::list<Pickup*>::iterator it6;
+		for (it6 = resourceList.begin(); it6 != resourceList.end();) { 
+			(*it6)->setPosition(Vector2f(manageLevel.RandomBetween(0, 100) * 50, manageLevel.RandomBetween(0, 100) * 50));
+			it6++;
+			
+		}
 
 	}
 	else if (!playerInsideCave)
 	{
 
+		std::list<Zombie*>::iterator it;
+
+		for (it = m_EnemiesList.begin(); it != m_EnemiesList.end();)
+		{
+
+
+			Vector2i spawnerInt = manageLevel.getRandomSpawner();
+			Vector2f spawnerFloat = Vector2f((float)spawnerInt.x, (float)spawnerInt.y);
+			(*it)->setEnemyPosition(spawnerFloat);
+			it++;
+
+		}
+
+		//Update all Resources
+		std::list<Pickup*>::iterator it6;
+		for (it6 = resourceList.begin(); it6 != resourceList.end();) {
+			Vector2i spawnerInt = manageLevel.getRandomSpawner();
+			Vector2f spawnerFloat = Vector2f((float)spawnerInt.x, (float)spawnerInt.y);
+			(*it6)->setPosition(spawnerFloat);
+			it6++;
+
+		}
 	}
+	
+	
+}
+
+float Engine::DistanceToCave()
+{
+	// Get the x and y coordinates of the player
+	float playerX = player.getPosition().left;
+	float playerY = player.getPosition().top;
+
+	//its using 25 because of player being a 50x50 image , dont forget to see player size
+	int x1 = playerX + 25; // center of player
+	int y1 = playerY + 25; // center of player
+	int x2 = caveEntranceAndExit.x + 25; //centre of the enemies
+	int y2 = caveEntranceAndExit.y + 25;//centre of the enemies
+	int xsquared = (x2 - x1) * (x2 - x1);
+	int ysquared = (y2 - y1) * (y2 - y1);
+	double d = sqrt(xsquared + ysquared);
+	float distance = (float)d;
+	return distance;
 }

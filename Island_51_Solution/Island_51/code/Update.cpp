@@ -286,6 +286,8 @@ void Engine::update(float dtAsSeconds)
                             {
                                 delete[] Illusions;
                                 m_illusions = false;
+                                numSoulPickup += 5;
+                                
                                 
                             }
                         }
@@ -395,7 +397,11 @@ void Engine::update(float dtAsSeconds)
                     }
                     // Food Pickup
                     else if ((*it5)->getType() == 2) {
-                        m_currentHunger += 30;
+                        m_currentHunger += 50;
+                        if (m_currentHunger > 200)
+                        {
+                            m_currentHunger = 200;
+                        }
                         // Erase the pickup from the list and get the next valid iterator
                         it5 = m_PickupList.erase(it5);
                     }
@@ -432,53 +438,58 @@ void Engine::update(float dtAsSeconds)
             }
         }
         //----------------------------------------------------------------------------------------
-            // Increment the number of frames since the last HUD calculation
-            framesSinceLastHUDUpdate++;
-            // Calculate FPS every fpsMeasurementFrameInterval frames
-            if (framesSinceLastHUDUpdate > fpsMeasurementFrameInterval)
-            {
+            
 
-                // Update game HUD text
-                std::stringstream ssAmmo;
-                std::stringstream ssScore;
-                std::stringstream ssHiScore;
-                std::stringstream ssWave;
-                std::stringstream ssZombiesAlive;
-                //update resources
-                std::stringstream ssNumTreePickups;
-                std::stringstream ssNumStonePickups;
-                std::stringstream ssNumIronPickups;
-                std::stringstream ssNumSoulPickups;
-                // Update the tree pickup text
-                ssNumTreePickups << "x " << numTreePickup;
-                m_hud.setWoodQuantityText(ssNumTreePickups.str());
-                // Update the stone pickup text
-                ssNumStonePickups << "x " << numStonePickup;
-                m_hud.setStoneQuantityText(ssNumStonePickups.str());
-                // Update the iron pickup text
-                ssNumIronPickups << "x " << numIronPickup;
-                m_hud.setIronQuantityText(ssNumIronPickups.str());
-                // Update the soul pickup text
-                ssNumSoulPickups << "x " << numSoulPickup;
-                m_hud.setSoulQuantityText(ssNumSoulPickups.str());
-                // Update the ammo text
-                ssAmmo << bulletsInClip;
-                m_hud.setAmmoText(ssAmmo.str());
-                // Update the score text
-                ssScore << "Score:" << m_score;
-                m_hud.setScoreText(ssScore.str());
-                // Update the wave
-                ssWave << "Wave:" << wave;
-                m_hud.setWaveNumberText(ssWave.str());
-                //health bar width is 300
-                m_hud.setHealthSize(player.getHealth());
-                // Hunger bar width is 
-                m_hud.setHungerSize(m_currentHunger);
-                //Update last the HUD frame
-                framesSinceLastHUDUpdate = 0;
-                //Update last the time since
-                timeSinceLastUpdate = Time::Zero;
-            } // End HUD update
+        // Update game HUD text
+        std::stringstream ssAmmo;
+        std::stringstream ssScore;
+        std::stringstream ssHiScore;
+        std::stringstream ssWave;
+        std::stringstream ssZombiesAlive;
+        //update resources
+        std::stringstream ssNumTreePickups;
+        std::stringstream ssNumStonePickups;
+        std::stringstream ssNumIronPickups;
+        std::stringstream ssNumSoulPickups;
+        // Update the tree pickup text
+        ssNumTreePickups << "x " << numTreePickup;
+        m_hud.setWoodQuantityText(ssNumTreePickups.str());
+        // Update the stone pickup text
+        ssNumStonePickups << "x " << numStonePickup;
+        m_hud.setStoneQuantityText(ssNumStonePickups.str());
+        // Update the iron pickup text
+        ssNumIronPickups << "x " << numIronPickup;
+        m_hud.setIronQuantityText(ssNumIronPickups.str());
+        // Update the soul pickup text
+        ssNumSoulPickups << "x " << numSoulPickup;
+        m_hud.setSoulQuantityText(ssNumSoulPickups.str());
+        // Update the ammo text
+        if (handEquipped)
+        {
+            ssAmmo << static_cast<unsigned char>(236);
+        }
+        else
+        {
+
+            ssAmmo << bulletsInClip;
+        }
+
+        m_hud.setAmmoText(ssAmmo.str());
+        // Update the score text
+        ssScore << "Score:" << m_score;
+        m_hud.setScoreText(ssScore.str());
+        // Update the wave
+        ssWave << "Wave:" << wave;
+        m_hud.setWaveNumberText(ssWave.str());
+         //health bar width is 300
+        m_hud.setHealthSize(player.getHealth());
+        // Hunger bar width is 
+        m_hud.setHungerSize(m_currentHunger);
+        //Update last the HUD frame
+        framesSinceLastHUDUpdate = 0;
+        //Update last the time since
+        timeSinceLastUpdate = Time::Zero;
+          
     } // End updating the scene
 
      // Check if the game is in the playing state
@@ -510,6 +521,8 @@ void Engine::update(float dtAsSeconds)
     // Check if the game is in the Craft state
     if (state == State::CRAFT)
     {
+        
+                
         // Check if m_EnoughResources is true
         if (m_EnoughResources)
         {
@@ -553,6 +566,7 @@ void Engine::update(float dtAsSeconds)
         }
         // Close the file
         writeFile.close();
+        m_score = 0;
     }
     // Check if the game is in the High Score state
     if (state == State::HIGHSCORE) {

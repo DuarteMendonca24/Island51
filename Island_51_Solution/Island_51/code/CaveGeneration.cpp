@@ -92,6 +92,10 @@ void CaveGeneration::RandomFillMap() {
 			{
 				map[x][y] = 0;
 			}
+			else if ((x >= 10) && (y >= 10) && (x < 20) && (y < 20))
+			{
+				map[x][y] = 1;
+			}
 			else
 			{
 				map[x][y] = getFillValue();
@@ -230,4 +234,4 @@ Vector2i CaveGeneration::getMapSize() {
 	return mapSize;
 }
 
-	
+

@@ -61,16 +61,16 @@ int** LevelManager::loadLevel(VertexArray& rVaLevel)
 			}
 			else if (val == '1')
 			{
-				val = randomiseGrassTile(val);
 				//Making Spawner
-				if (current_spawn_block_counter != MAX_SPAWNERS_AVAILABLE && val == '3')
+				if (current_spawn_block_counter != MAX_SPAWNERS_AVAILABLE)
 				{
 					int randomNum = RandomBetween(1, 5);
-					if (randomNum == 1)
+					if (randomNum == 3)
 					{
 						createNewSpawner(x, y);
 					}
 				}
+				val = randomiseGrassTile(val);
 				
 			}
 			//cout << val << " ";
@@ -233,10 +233,6 @@ void LevelManager::createNewSpawner(int x, int y)
 	current_spawn_block_counter++;
 }
 
-Vector2i LevelManager::getSpawner(int i)
-{
-	return m_SpawnPoisitons[i];
-}
 
 int LevelManager::getSpawnerCount()
 {
