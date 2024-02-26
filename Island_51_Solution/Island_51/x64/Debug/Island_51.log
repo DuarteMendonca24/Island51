@@ -1,46 +1,7 @@
-﻿  Update.cpp
+﻿  Draw.cpp
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(114,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(114,29): warning C4309: 'initializing': truncation of constant value
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(115,26): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(119,31): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(415,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(346,42): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(348,109): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(483,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(497,82): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(497,59): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(508,81): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Update.cpp(508,58): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
   Island_51.vcxproj -> C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe

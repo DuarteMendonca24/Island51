@@ -179,7 +179,7 @@ void Engine::draw()
 
        
         //Drawing Bar Background first
-        m_Window.draw(m_hud.getBarBackground());
+        //m_Window.draw(m_hud.getBarBackground());
 
         // drawing the Health and Hunger bars in the game
         m_Window.draw(m_hud.getHealthBarBackground());
@@ -187,8 +187,8 @@ void Engine::draw()
         m_Window.draw(m_hud.getHungerBarBackground());
         m_Window.draw(m_hud.getHungerBar());
         m_Window.draw(m_hud.getDarkness());
-        m_Window.draw(m_hud.getHungerText());
-        m_Window.draw(m_hud.getHealthText());
+        //m_Window.draw(m_hud.getHungerText());
+        //m_Window.draw(m_hud.getHealthText());
         //Draw inventory icons and quantities if the inventory is active
         if (m_inventoryActive) {
             //draw the inventory icons
