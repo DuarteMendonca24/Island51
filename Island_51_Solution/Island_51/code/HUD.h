@@ -31,6 +31,8 @@ private:
 	Text m_pressText;
 	Text m_hungerText;
 	Text m_healthText;
+	Text m_craftText;
+	Text m_ammoDisplayText;
 
 	//Health bar
 	RectangleShape m_healthBar;
@@ -53,7 +55,7 @@ private:
 	// Craft background
 	RectangleShape m_backgroundCraft;
 	float m_backgroundWidth = 1000;
-	float m_backgroundHeight = 1000;
+	float m_backgroundHeight = 900;
 
 	// Weapon background
 	RectangleShape m_backgroundWeapon;
@@ -78,6 +80,26 @@ private:
 
 	RectangleShape darkness;
 	RectangleShape m_barBackground;
+	RectangleShape m_pausedBackground;
+
+	RectangleShape m_shiftBackground;
+	RectangleShape m_downBackground;
+	RectangleShape m_upBackground;
+	RectangleShape m_exitBackground;
+	float m_backgroundWidthCraft = 200;
+	float m_backgroundHeightCraft = 100;
+
+	RectangleShape m_ammoBackground;
+	float m_backgroundWidthAmmo = 350;
+	float m_backgroundHeightAmmo = 200;
+
+	RectangleShape m_inventoryBackground;
+	float m_backgroundWidthInventory = 300;
+	float m_backgroundHeightInventory = 450;
+
+	Vector2f m_Position;
+
+	float finalDis = 110;
 
 public:
 	Hud();
@@ -101,6 +123,8 @@ public:
 	Text getPressText();
 	Text getHungerText();
 	Text getHealthText();
+	Text getCraftText();
+	Text getAmmoDisplayText();
 	RectangleShape getHealthBar();
 	RectangleShape getHealthBarBackground();
 	RectangleShape getHungerBar();
@@ -114,10 +138,16 @@ public:
 	RectangleShape getBackgroudWeaponSquare4();
 	RectangleShape getBackgroudWeaponSquare5();
 	RectangleShape getBarBackground();
+	RectangleShape getPausedBackground();
 	RectangleShape getBackgroudPressSquare();
 	RectangleShape getBackgroudPressSquare2();
 	RectangleShape getBackgroudPressSquare3();
-
+	RectangleShape getShiftBackgroud();
+	RectangleShape getUpBackgroud();
+	RectangleShape getDownBackgroud();
+	RectangleShape getExitBackgroud();
+	RectangleShape getAmmoBackgroud();
+	RectangleShape getInventoryBackgroud();
 	//Setter Function
 	void setScoreText(String text);
 	void setAmmoText(String text);
@@ -132,8 +162,14 @@ public:
 	void setHighScore(String text);
 	void setNumWeapon(int num);
 	
-	
-	
-	
+	void moveTextRightWood(float dt, float speed);
+	void moveTextLeftWood(float dt, float speed);
+	void moveTextRightStone(float dt, float speed);
+	void moveTextLeftStone(float dt, float speed);
+	void moveTextRightIron(float dt, float speed);
+	void moveTextLeftIron(float dt, float speed);
+	void moveTextRightSoul(float dt, float speed);
+	void moveTextLeftSoul(float dt, float speed);
+	Vector2f getPosition();
 	
 };

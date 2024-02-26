@@ -44,7 +44,7 @@ void Engine::input()
 					state = State::PAUSED;
 				}
 
-				// Inventory 
+				// SWITCH MAP
 				if (event.key.code == Keyboard::M) {
 					if (DistanceToCave() <= 300)
 					{
@@ -195,6 +195,11 @@ void Engine::input()
 		//Craft item needs to be outside because it checks for key release events
 		if (state == State::CRAFT)
 		{
+			if (event.key.code == Keyboard::E && state == State::CRAFT)
+			{
+				state = State::PLAYING;
+				clock.restart();
+			}
 			// Inventory 
 			if (event.key.code == Keyboard::Tab) {
 				if (!m_inventoryActive) {
@@ -223,7 +228,7 @@ void Engine::input()
 					UI_Sound.play();
 				}
 				// keypress enter to craft
-				if (event.key.code == Keyboard::LShift)
+				if (event.key.code == Keyboard::LShift || event.key.code == Keyboard::RShift)
 				{
 					// craft wood sword
 					if (select.GetPressed() == 0 && numTreePickup >= 3)
@@ -264,12 +269,6 @@ void Engine::input()
 						pickup.play();
 
 
-					}
-					// exit the craft
-					else if (select.GetPressed() == 5 && state == State::CRAFT)
-					{
-						state = State::PLAYING;
-						clock.restart();
 					}
 					else
 					{

@@ -91,7 +91,34 @@ void Engine::update(float dtAsSeconds)
                 m_enemyBullets[i].update(dtAsSeconds);
             }
         }
-
+        /*
+        for (int i = 0; i < 4; i++)
+        {
+            m_inventoryIcons[i].update(dtAsSeconds,10);
+        }*/
+        if (m_inventoryActive)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                m_inventoryIcons[i].inventoryMove(dtAsSeconds, 1);
+            }
+            m_hud.moveTextRightWood(dtAsSeconds, 1);
+            m_hud.moveTextRightStone(dtAsSeconds, 1);
+            m_hud.moveTextRightIron(dtAsSeconds, 1);
+            m_hud.moveTextRightSoul(dtAsSeconds, 1);
+        }
+        
+        if (!m_inventoryActive)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                m_inventoryIcons[i].inventoryMoveLeft(dtAsSeconds, 1);
+            }
+            m_hud.moveTextLeftWood(dtAsSeconds, 1);
+            m_hud.moveTextLeftStone(dtAsSeconds, 1);
+            m_hud.moveTextLeftIron(dtAsSeconds, 1);
+            m_hud.moveTextLeftSoul(dtAsSeconds, 1);
+        }
         //Update code for the enemies
         // ----------------------------------------------------------------------------------------
 
@@ -437,6 +464,7 @@ void Engine::update(float dtAsSeconds)
                 it6 = m_PickupList.erase(it6++);
             }
         }
+  
         //----------------------------------------------------------------------------------------
             
 

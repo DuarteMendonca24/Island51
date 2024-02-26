@@ -121,7 +121,7 @@ int Pickup::gotIt()
 	return m_Value;
 }
 // update the pickup stated based on the elspased time 
-void Pickup::update(float elapsedTime)
+void Pickup::update(float elapsedTime, float speed)
 {
 	// if the objetct is spawned 
 	if (m_Spawned)
@@ -148,7 +148,16 @@ void Pickup::update(float elapsedTime)
 		// spawn the pickup and reset the timer
 		//spawn();
 	}
-
+	/*
+	if (m_DirectionX > m_Position.x)
+	{
+		m_Position.x = m_Position.x + speed + elapsedTime;
+	}
+	if (m_DirectionX < m_Position.x)
+	{
+		m_Position.x = m_Position.x - speed + elapsedTime;
+	}*/
+	m_Sprite.setPosition(m_Position);
 }
 // Upgrade the pickup increaseing its valu 
 void Pickup::upgrade()
@@ -213,5 +222,29 @@ void Pickup::setPosition(Vector2f pos)
 	m_Position.x = pos.x;
 	m_Position.y = pos.y;
 
+	m_Sprite.setPosition(m_Position);
+}
+void Pickup::inventoryMove(float dt, float speed)
+{
+	//move right
+	if (finalDis < m_Position.x)
+	{
+		m_Position.x = finalDis - speed + dt;
+	}
+	else
+	{
+		m_Position.x += m_Position.x * speed * dt;
+	}
+	m_Sprite.setPosition(m_Position);
+}
+
+void Pickup::inventoryMoveLeft(float dt, float speed)
+{
+	//move 
+	m_Position.x -= m_Position.x * speed * dt;
+	if (30 > m_Position.x)
+	{
+		m_Position.x += m_Position.x * speed * dt;
+	}
 	m_Sprite.setPosition(m_Position);
 }

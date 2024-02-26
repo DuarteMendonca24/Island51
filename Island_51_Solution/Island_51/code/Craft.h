@@ -1,7 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 using namespace sf;
-const int MAX_NUMBER_OF_CRAFT = 6; // max number of the item
+const int MAX_NUMBER_OF_CRAFT = 5; // max number of the item
 
 class Craft
 {

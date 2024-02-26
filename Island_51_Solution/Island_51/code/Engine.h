@@ -245,6 +245,9 @@ private:
     Texture caveExitPromptTexture;
     Texture vigetteCaveTexture;
     Texture vigetteIslandTexture;
+    Texture textureArrow;
+    Texture textureSelect;
+    Texture textureExit;
     
     //Sprites variables
     Sprite spriteCrosshair;
@@ -262,6 +265,11 @@ private:
     Sprite caveExitPrompt;
     Sprite vigetteCave;
     Sprite vigetteIsland;
+    Sprite spritePause2;
+    Sprite spriteArrow;
+    Sprite spriteArrowDown;
+    Sprite spriteSelect;
+    Sprite spriteExit;
 
     //SoundBuffer Variables
     SoundBuffer mainMenuMusicBuffer;
@@ -412,4 +420,5 @@ private:
     bool m_StoneWeaponActive2 = false;
     bool m_IronWeaponActive2 = false;
     bool m_BowWeaponActive2 = false;
+
 };

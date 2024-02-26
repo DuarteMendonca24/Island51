@@ -51,6 +51,9 @@ private:
 
 	//Positon pickup
 	Vector2f m_Position;
+
+	float m_DirectionX;
+	float finalDis = 100;
 	// Public prototypes go here
 public:
 
@@ -68,7 +71,7 @@ public:
 	Sprite getSprite();
 
 	// Let the pickup update itself each frame
-	void update(float elapsedTime);
+	void update(float elapsedTime, float speed);
 
 	// Is this pickup currently spawned?
 	bool isSpawned();
@@ -92,5 +95,7 @@ public:
 	Vector2f getPosCoordinates();
 
 	void setPosition(Vector2f pos);
+	void inventoryMove(float dt, float speed);
+	void inventoryMoveLeft(float dt, float speed);
 };
 #pragma once

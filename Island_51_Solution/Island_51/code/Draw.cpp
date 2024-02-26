@@ -147,6 +147,8 @@ void Engine::draw()
             m_Window.draw(vigetteIsland);
         }
 
+        m_Window.draw(m_hud.getAmmoBackgroud());
+    
         // Draw all the HUD elements
         if (!m_HandWeaponActive2)
         {
@@ -181,6 +183,8 @@ void Engine::draw()
         //Drawing Bar Background first
         //m_Window.draw(m_hud.getBarBackground());
 
+        //Drawing Bar Background first
+        m_Window.draw(m_hud.getBarBackground());
         // drawing the Health and Hunger bars in the game
         m_Window.draw(m_hud.getHealthBarBackground());
         m_Window.draw(m_hud.getHealthBar());
@@ -189,8 +193,13 @@ void Engine::draw()
         m_Window.draw(m_hud.getDarkness());
         //m_Window.draw(m_hud.getHungerText());
         //m_Window.draw(m_hud.getHealthText());
+        //m_Window.draw(m_hud.getHungerText());
+        //m_Window.draw(m_hud.getHealthText());
+        
         //Draw inventory icons and quantities if the inventory is active
+        /*
         if (m_inventoryActive) {
+            m_Window.draw(m_hud.getInventoryBackgroud());
             //draw the inventory icons
             for (int i = 0; i < 4; i++)
             {
@@ -200,7 +209,16 @@ void Engine::draw()
             m_Window.draw(m_hud.getWoodQuantityText());
             m_Window.draw(m_hud.getStoneQuantityText());
             m_Window.draw(m_hud.getIronQuantityText());
+        }*/
+        m_Window.draw(m_hud.getInventoryBackgroud());
+        for (int i = 0; i < 4; i++)
+        {
+            m_Window.draw(m_inventoryIcons[i].getSprite());
         }
+        m_Window.draw(m_hud.getSoulQuantityText());
+        m_Window.draw(m_hud.getWoodQuantityText());
+        m_Window.draw(m_hud.getStoneQuantityText());
+        m_Window.draw(m_hud.getIronQuantityText());
         //
         m_Window.draw(m_hud.getBackgroudWeapon());
         m_Window.draw(m_hud.getBackgroudWeaponSquare());
@@ -241,7 +259,7 @@ void Engine::draw()
         
         // Draw the pause
         m_Window.draw(spritePause);
-
+        m_Window.draw(m_hud.getAmmoDisplayText());
     }
 
     // Check if the game state have rules for the game
@@ -261,12 +279,15 @@ void Engine::draw()
     // Check if hte game state is paused
     if (state == State::PAUSED)
     {
+        m_Window.draw(m_hud.getPausedBackground());
        // Draw the pased text on the window
         m_Window.draw(m_hud.getPausedText());
         // Play the puase sound effect
         guiseletionsound.play();
         //Setting Mouse Cursor to be visible in the game
         m_Window.setMouseCursorVisible(true);
+        // Draw the pause
+        m_Window.draw(spritePause2);
     }
 
    // Check if the game state is Game Over
@@ -363,6 +384,15 @@ void Engine::draw()
         // Update the soul pickup text
         ssNumSoulPickups << "x " << numSoulPickup;
         m_hud.setSoulQuantityText(ssNumSoulPickups.str());
+        m_Window.draw(m_hud.getExitBackgroud());
+        m_Window.draw(m_hud.getUpBackgroud());
+        m_Window.draw(m_hud.getDownBackgroud());
+        m_Window.draw(m_hud.getShiftBackgroud());
+        m_Window.draw(m_hud.getCraftText());
+        m_Window.draw(spriteArrow);
+        m_Window.draw(spriteArrowDown);
+        m_Window.draw(spriteSelect);
+        m_Window.draw(spriteExit);
     }
 
     // Update the game winow to disaply any change made during the process 

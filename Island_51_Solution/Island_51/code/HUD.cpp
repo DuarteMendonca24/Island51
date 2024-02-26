@@ -1,7 +1,7 @@
 #include "HUD.h"
 #include <sstream>
 
-Hud::Hud(){
+Hud::Hud() {
 
 	Vector2u resolution;
 	resolution.x = VideoMode::getDesktopMode().width;
@@ -23,13 +23,15 @@ Hud::Hud(){
 	m_pausedText.setFont(m_font);
 	m_pausedText.setCharacterSize(155);
 	m_pausedText.setFillColor(Color::White);
-	m_pausedText.setPosition(400, 400);
-	m_pausedText.setString("Press Enter \nto continue");
+	m_pausedText.setPosition(500, resolution.y - 200);
+	m_pausedText.setString("Game Paused");
 
 	// Game Over
 	m_gameOverText.setFont(m_font);
 	m_gameOverText.setCharacterSize(82);
 	m_gameOverText.setFillColor(Color::Color(255,50,0));
+	m_gameOverText.setCharacterSize(125);
+	m_gameOverText.setFillColor(Color::Color(255, 50, 0));
 	m_gameOverText.setPosition(250, 850);
 	m_gameOverText.setString("YOU DIED, PRESS SPACE TO CONTINUE");
 	m_gameOverText.setOutlineColor(Color::Black);
@@ -70,14 +72,14 @@ Hud::Hud(){
 		"\n TAB - Open Inventory" <<
 		"\n Left Mouse Button - Shoot/Punch" <<
 		"\n 1-5 - Select Weapon";
-		
+
 	m_gameruleText.setString(ruleStream.str());
 
 	// Ammo
 	m_ammoText.setFont(m_font3);
 	m_ammoText.setCharacterSize(55);
 	m_ammoText.setFillColor(Color::White);
-	m_ammoText.setPosition(200, 980);
+	m_ammoText.setPosition(150, 980);
 
 	// Score
 	m_scoreText.setFont(m_font);
@@ -141,33 +143,33 @@ Hud::Hud(){
 	m_woodQuantityText.setFont(m_font);
 	m_woodQuantityText.setCharacterSize(50);
 	m_woodQuantityText.setFillColor(Color::White);
-	m_woodQuantityText.setPosition(110, 330);
+	m_woodQuantityText.setPosition(50, 330);
 	m_woodQuantityText.setString("x 0");
 
 	//stone quantity
 	m_stoneQuantityText.setFont(m_font);
 	m_stoneQuantityText.setCharacterSize(50);
 	m_stoneQuantityText.setFillColor(Color::White);
-	m_stoneQuantityText.setPosition(110, 415);
+	m_stoneQuantityText.setPosition(50, 415);
 	m_stoneQuantityText.setString("x 0");
 
 	//iron quantity
 	m_ironQuantityText.setFont(m_font);
 	m_ironQuantityText.setCharacterSize(50);
 	m_ironQuantityText.setFillColor(Color::White);
-	m_ironQuantityText.setPosition(110, 515);
+	m_ironQuantityText.setPosition(50, 515);
 	m_ironQuantityText.setString("x 0");
 
 	//soul quantity
 	m_soulQuantityText.setFont(m_font);
 	m_soulQuantityText.setCharacterSize(50);
 	m_soulQuantityText.setFillColor(Color::White);
-	m_soulQuantityText.setPosition(110, 615);
+	m_soulQuantityText.setPosition(50, 615);
 	m_soulQuantityText.setString("x 0");
 
 	//Background Craft
 	m_backgroundCraft.setSize(Vector2f(m_backgroundWidth, m_backgroundHeight));
-	m_backgroundCraft.setFillColor(Color::Color(0,0,255,1));
+	m_backgroundCraft.setFillColor(Color::Color(0, 0, 255, 1));
 	m_backgroundCraft.setPosition(490, 0);
 
 	m_notEnoughResourcse.setFont(m_font2);
@@ -177,9 +179,14 @@ Hud::Hud(){
 	m_notEnoughResourcse.setString("You don't have Sufficient Resources to Craft ");
 
 	//darkness
-	darkness.setFillColor(Color::Color(0,0,0, 100));
+	darkness.setFillColor(Color::Color(0, 0, 0, 100));
 	darkness.setOrigin(Vector2f(0, 0));
-	darkness.setSize(Vector2f(3000.0f,3000.0f));
+	darkness.setSize(Vector2f(3000.0f, 3000.0f));
+
+	//darkness
+	m_pausedBackground.setFillColor(Color::Color(0, 0, 0, 100));
+	m_pausedBackground.setOrigin(Vector2f(0, 0));
+	m_pausedBackground.setSize(Vector2f(3000.0f, 3000.0f));
 
 	//main menu text
 	m_mainMenuText.setFont(m_font);
@@ -249,7 +256,7 @@ Hud::Hud(){
 	m_hungerText.setFont(m_font2);
 	m_hungerText.setCharacterSize(20);
 	m_hungerText.setFillColor(Color::White);
-	m_hungerText.setPosition(resolution.x /2 + 820, resolution.y - 80);
+	m_hungerText.setPosition(resolution.x / 2 + 820, resolution.y - 80);
 	m_hungerText.setString("Hunger");
 	//Health Text
 	m_healthText.setFont(m_font2);
@@ -257,8 +264,44 @@ Hud::Hud(){
 	m_healthText.setFillColor(Color::White);
 	m_healthText.setPosition(resolution.x / 2 + 820, resolution.y - 40);
 	m_healthText.setString("Health");
-}
 
+	m_shiftBackground.setSize(Vector2f(m_backgroundWidthCraft, m_backgroundHeightCraft));
+	m_shiftBackground.setFillColor(Color::Red);
+	m_shiftBackground.setPosition(550, resolution.y - 150);
+
+	m_upBackground.setSize(Vector2f(m_backgroundWidthCraft, m_backgroundHeightCraft));
+	m_upBackground.setFillColor(Color::Color(128, 128, 128));
+	m_upBackground.setPosition(780, resolution.y - 150);
+
+	m_downBackground.setSize(Vector2f(m_backgroundWidthCraft, m_backgroundHeightCraft));
+	m_downBackground.setFillColor(Color::Color(128, 128, 128));
+	m_downBackground.setPosition(1010, resolution.y - 150);
+
+	m_exitBackground.setSize(Vector2f(m_backgroundWidthCraft, m_backgroundHeightCraft));
+	m_exitBackground.setFillColor(Color::Green);
+	m_exitBackground.setPosition(1240, resolution.y - 150);
+
+	m_craftText.setFont(m_font3);
+	m_craftText.setCharacterSize(40);
+	m_craftText.setFillColor(Color::Black);
+	m_craftText.setPosition(695, resolution.y - 100);
+	m_craftText.setString("E		   W		   S	   Shift");
+
+	m_ammoBackground.setSize(Vector2f(m_backgroundWidthAmmo, m_backgroundHeightAmmo));
+	m_ammoBackground.setFillColor(Color(128, 128, 128, 150));
+	m_ammoBackground.setPosition(0, resolution.y - 150);
+
+	//ammo Text
+	m_ammoDisplayText.setFont(m_font2);
+	m_ammoDisplayText.setCharacterSize(20);
+	m_ammoDisplayText.setFillColor(Color::White);
+	m_ammoDisplayText.setPosition(0, resolution.y - 140);
+	m_ammoDisplayText.setString("					Ammo Display");
+
+	m_inventoryBackground.setSize(Vector2f(m_backgroundWidthInventory, m_backgroundHeightInventory));
+	m_inventoryBackground.setFillColor(Color(52, 43, 55, 150));
+	m_inventoryBackground.setPosition(0, (resolution.y/2) - 250  );
+}
 
 
 Text Hud::getScoreText() {
@@ -361,6 +404,27 @@ Text Hud::getHealthText()
 {
 	return m_healthText;
 }
+
+Text Hud::getCraftText()
+{
+	return m_craftText;
+}
+
+Text Hud::getAmmoDisplayText()
+{
+	return m_ammoDisplayText;
+}
+
+RectangleShape Hud::getInventoryBackgroud() {
+
+	return m_inventoryBackground;
+}
+
+RectangleShape Hud::getAmmoBackgroud() {
+
+	return m_ammoBackground;
+}
+
 RectangleShape Hud::getHealthBar() {
 
 	return m_healthBar;
@@ -374,6 +438,26 @@ RectangleShape Hud::getHealthBarBackground() {
 RectangleShape Hud::getHungerBar() {
 
 	return m_hungerBar;
+}
+
+RectangleShape Hud::getShiftBackgroud() {
+
+	return m_shiftBackground;
+}
+
+RectangleShape Hud::getUpBackgroud() {
+
+	return m_upBackground;
+}
+
+RectangleShape Hud::getDownBackgroud() {
+
+	return m_downBackground;
+}
+
+RectangleShape Hud::getExitBackgroud() {
+
+	return m_exitBackground;
 }
 
 RectangleShape Hud::getHungerBarBackground() {
@@ -413,6 +497,10 @@ RectangleShape Hud::getBackgroudWeaponSquare5() {
 
 RectangleShape Hud::getBackgroudCraft() {
 	return m_backgroundCraft;
+}
+
+RectangleShape Hud::getPausedBackground() {
+	return m_pausedBackground;
 }
 
 RectangleShape Hud::getDarkness()
@@ -500,3 +588,66 @@ void Hud::setHighScore(String text)
 	m_highScoreText.setString(text);
 }
 
+void Hud::moveTextRightWood(float dt, float speed) {
+	m_Position = m_woodQuantityText.getPosition();
+	float newX = m_Position.x += m_Position.x * speed * dt;
+	if (finalDis < m_Position.x)
+	{
+		newX = m_Position.x = finalDis - speed * dt;
+	}
+	m_woodQuantityText.setPosition(newX, m_Position.y);
+}
+void Hud::moveTextRightStone(float dt, float speed) {
+	m_Position = m_stoneQuantityText.getPosition();
+	float newX = m_Position.x += m_Position.x * speed * dt;
+	if (finalDis < m_Position.x)
+	{
+		newX = m_Position.x = finalDis - speed * dt;
+	}
+	m_stoneQuantityText.setPosition(newX, m_Position.y);
+}
+
+void Hud::moveTextRightIron(float dt, float speed) {
+	m_Position = m_ironQuantityText.getPosition();
+	float newX = m_Position.x += m_Position.x * speed * dt;
+	if (finalDis < m_Position.x)
+	{
+		newX = m_Position.x = finalDis - speed * dt;
+	}
+	m_ironQuantityText.setPosition(newX, m_Position.y);
+}
+
+void Hud::moveTextRightSoul(float dt, float speed) {
+	m_Position = m_soulQuantityText.getPosition();
+	float newX = m_Position.x += m_Position.x * speed * dt;
+	if (finalDis < m_Position.x)
+	{
+		newX = m_Position.x = finalDis - speed * dt;
+	}
+	m_soulQuantityText.setPosition(newX, m_Position.y);
+}
+
+
+void Hud::moveTextLeftWood(float dt, float speed) {
+	m_Position = m_woodQuantityText.getPosition();
+	float newX = m_Position.x -= m_Position.x * speed * dt;
+	m_woodQuantityText.setPosition(newX, m_Position.y);
+}
+
+void Hud::moveTextLeftStone(float dt, float speed) {
+	m_Position = m_stoneQuantityText.getPosition();
+	float newX = m_Position.x -= m_Position.x * speed * dt;
+	m_stoneQuantityText.setPosition(newX, m_Position.y);
+}
+
+void Hud::moveTextLeftIron(float dt, float speed) {
+	m_Position = m_ironQuantityText.getPosition();
+	float newX = m_Position.x -= m_Position.x * speed * dt;
+	m_ironQuantityText.setPosition(newX, m_Position.y);
+}
+
+void Hud::moveTextLeftSoul(float dt, float speed) {
+	m_Position = m_soulQuantityText.getPosition();
+	float newX = m_Position.x -= m_Position.x * speed * dt;
+	m_soulQuantityText.setPosition(newX, m_Position.y);
+}

@@ -1,7 +1,7 @@
 ﻿  Draw.cpp
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(114,29): warning C4305: 'initializing': truncation from '__int64' to 'int'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(114,29): warning C4309: 'initializing': truncation of constant value
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(115,26): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(119,31): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\Island_51\code\Engine.h(415,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
-  Island_51.vcxproj -> C:\Users\Admin\Documents\GitHub\Island51\Island_51_Solution\x64\Debug\Island_51.exe
+C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Engine.h(114,27): warning C4305: 'initializing': truncation from '__int64' to 'int'
+C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Engine.h(114,29): warning C4309: 'initializing': truncation of constant value
+C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Engine.h(115,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Engine.h(119,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\Island_51\code\Engine.h(424,2): warning C4091: 'static ': ignored on left of 'Engine' when no variable is declared
+  Island_51.vcxproj -> C:\Users\wongk\OneDrive\Documents\GitHub\TeamProject\Island51\Island_51_Solution\x64\Debug\Island_51.exe

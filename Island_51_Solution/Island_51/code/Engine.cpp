@@ -53,6 +53,9 @@ Engine::Engine() {
 	caveEntrance.setPosition(caveEntranceAndExit);
 	caveExit.setTexture(caveExitTexture);
 	caveExit.setPosition(caveEntranceAndExit);
+	textureArrow = TextureHolder::GetTexture("graphics/arrow.png");
+	textureSelect = TextureHolder::GetTexture("graphics/select.png");
+	textureExit = TextureHolder::GetTexture("graphics/exit.png");
 	//Load Texture for Intro Comic
 	spriteIntroComic.setTexture(textureIntroComic);
 	spriteIntroComic.setPosition(resolution.x / 2 - 271, resolution.y / 2 - 394.5);
@@ -98,6 +101,29 @@ Engine::Engine() {
 	spritePause.setTexture(texturePause);
 	spritePause.setPosition(resolution.x / 2 - 325, resolution.y - 50);
 	spritePause.setScale(0.7, 0.7);
+
+	//Load Texture for pause2
+	spritePause2.setTexture(texturePause);
+	spritePause2.setPosition(700, 150);
+	spritePause2.setScale(12, 12);
+
+	//Load Texture for arrow
+	spriteArrow.setTexture(textureArrow);
+	spriteArrow.setPosition(785, resolution.y - 145);
+
+	//Load Texture for arrow down
+	spriteArrowDown.setTexture(textureArrow);
+	spriteArrowDown.setPosition(1095, resolution.y - 55);
+	spriteArrowDown.setRotation(180);
+
+	//Load Texture for select
+	spriteSelect.setTexture(textureSelect);
+	spriteSelect.setPosition(1245, resolution.y - 145);
+
+	//Load Texture for exit
+	spriteExit.setTexture(textureExit);
+	spriteExit.setPosition(565, resolution.y - 145);
+
 	//Zombie Amount Decpends on wave number
 	numZombies = 5 * wave;
 	//the number of resource to spawn
@@ -122,11 +148,10 @@ Engine::Engine() {
 	Illusionist[1].spawn(spawnLocation.x, spawnLocation.y, 0, 1); // Top Illusionist
 
 	//spawning resources to be icons in the inventory
-
-	m_inventoryIcons[0].spawnPickup(4,100, 400, 3.5);
-	m_inventoryIcons[1].spawnPickup(5,100, 500, 3.5);
-	m_inventoryIcons[2].spawnPickup(6,100, 600, 3.5);
-	m_inventoryIcons[3].spawnPickup(3,70, 680, 2.5);
+	m_inventoryIcons[0].spawnPickup(4,30, 400, 3.5);
+	m_inventoryIcons[1].spawnPickup(5,30, 500, 3.5);
+	m_inventoryIcons[2].spawnPickup(6,30, 600, 3.5);
+	m_inventoryIcons[3].spawnPickup(3,30, 680, 3.5);
 	islandMusic.play();
 
 	//spawning weapon to be icons in the inventory
