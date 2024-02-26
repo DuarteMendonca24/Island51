@@ -161,6 +161,7 @@ public:
 	void setDarkness(float darknessLevel);
 	void setHighScore(String text);
 	void setNumWeapon(int num);
+	void setBackgroundSize(float size);
 	
 	void moveTextRightWood(float dt, float speed);
 	void moveTextLeftWood(float dt, float speed);

@@ -369,7 +369,7 @@ private:
 
     float m_hungerTickAmount = 2.5;
     float dtSinceDrawUpdate;
-
+    float backgroundInventory = 2.5;
     //Zombie List
     Zombie* zombies = NULL;
     //changing the array to a list

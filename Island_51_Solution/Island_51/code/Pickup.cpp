@@ -233,7 +233,7 @@ void Pickup::inventoryMove(float dt, float speed)
 	}
 	else
 	{
-		m_Position.x += m_Position.x * speed * dt;
+		m_Position.x += m_Position.x * speed * dt + 1;
 	}
 	m_Sprite.setPosition(m_Position);
 }
@@ -241,10 +241,10 @@ void Pickup::inventoryMove(float dt, float speed)
 void Pickup::inventoryMoveLeft(float dt, float speed)
 {
 	//move 
-	m_Position.x -= m_Position.x * speed * dt;
+	m_Position.x -= m_Position.x * speed * dt +1;
 	if (30 > m_Position.x)
 	{
-		m_Position.x += m_Position.x * speed * dt;
+		m_Position.x += m_Position.x * speed * dt +1;
 	}
 	m_Sprite.setPosition(m_Position);
 }

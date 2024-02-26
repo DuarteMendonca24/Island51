@@ -143,28 +143,28 @@ Hud::Hud() {
 	m_woodQuantityText.setFont(m_font);
 	m_woodQuantityText.setCharacterSize(50);
 	m_woodQuantityText.setFillColor(Color::White);
-	m_woodQuantityText.setPosition(50, 330);
+	m_woodQuantityText.setPosition(-100, 330);
 	m_woodQuantityText.setString("x 0");
 
 	//stone quantity
 	m_stoneQuantityText.setFont(m_font);
 	m_stoneQuantityText.setCharacterSize(50);
 	m_stoneQuantityText.setFillColor(Color::White);
-	m_stoneQuantityText.setPosition(50, 415);
+	m_stoneQuantityText.setPosition(-100, 415);
 	m_stoneQuantityText.setString("x 0");
 
 	//iron quantity
 	m_ironQuantityText.setFont(m_font);
 	m_ironQuantityText.setCharacterSize(50);
 	m_ironQuantityText.setFillColor(Color::White);
-	m_ironQuantityText.setPosition(50, 515);
+	m_ironQuantityText.setPosition(-100, 515);
 	m_ironQuantityText.setString("x 0");
 
 	//soul quantity
 	m_soulQuantityText.setFont(m_font);
 	m_soulQuantityText.setCharacterSize(50);
 	m_soulQuantityText.setFillColor(Color::White);
-	m_soulQuantityText.setPosition(50, 615);
+	m_soulQuantityText.setPosition(-100, 615);
 	m_soulQuantityText.setString("x 0");
 
 	//Background Craft
@@ -296,7 +296,7 @@ Hud::Hud() {
 	m_ammoDisplayText.setCharacterSize(20);
 	m_ammoDisplayText.setFillColor(Color::White);
 	m_ammoDisplayText.setPosition(0, resolution.y - 140);
-	m_ammoDisplayText.setString("					Ammo Display");
+	m_ammoDisplayText.setString("						Ammo");
 
 	m_inventoryBackground.setSize(Vector2f(m_backgroundWidthInventory, m_backgroundHeightInventory));
 	m_inventoryBackground.setFillColor(Color(52, 43, 55, 150));
@@ -560,7 +560,10 @@ void Hud::setHungerSize(float size)
 {
 	m_hungerBar.setSize(Vector2f(size, m_healthBar.getSize().y));
 }
-
+void Hud::setBackgroundSize(float size)
+{
+	m_inventoryBackground.setSize(Vector2f(size, m_inventoryBackground.getSize().y));
+}
 
 void Hud::setWoodQuantityText(String text) {
 
@@ -590,7 +593,7 @@ void Hud::setHighScore(String text)
 
 void Hud::moveTextRightWood(float dt, float speed) {
 	m_Position = m_woodQuantityText.getPosition();
-	float newX = m_Position.x += m_Position.x * speed * dt;
+	float newX = m_Position.x += m_Position.x * speed * dt + 1;
 	if (finalDis < m_Position.x)
 	{
 		newX = m_Position.x = finalDis - speed * dt;
@@ -599,7 +602,7 @@ void Hud::moveTextRightWood(float dt, float speed) {
 }
 void Hud::moveTextRightStone(float dt, float speed) {
 	m_Position = m_stoneQuantityText.getPosition();
-	float newX = m_Position.x += m_Position.x * speed * dt;
+	float newX = m_Position.x += m_Position.x * speed * dt + 1;
 	if (finalDis < m_Position.x)
 	{
 		newX = m_Position.x = finalDis - speed * dt;
@@ -609,7 +612,7 @@ void Hud::moveTextRightStone(float dt, float speed) {
 
 void Hud::moveTextRightIron(float dt, float speed) {
 	m_Position = m_ironQuantityText.getPosition();
-	float newX = m_Position.x += m_Position.x * speed * dt;
+	float newX = m_Position.x += m_Position.x * speed * dt + 1;
 	if (finalDis < m_Position.x)
 	{
 		newX = m_Position.x = finalDis - speed * dt;
@@ -619,7 +622,7 @@ void Hud::moveTextRightIron(float dt, float speed) {
 
 void Hud::moveTextRightSoul(float dt, float speed) {
 	m_Position = m_soulQuantityText.getPosition();
-	float newX = m_Position.x += m_Position.x * speed * dt;
+	float newX = m_Position.x += m_Position.x * speed * dt + 1;
 	if (finalDis < m_Position.x)
 	{
 		newX = m_Position.x = finalDis - speed * dt;
@@ -630,24 +633,40 @@ void Hud::moveTextRightSoul(float dt, float speed) {
 
 void Hud::moveTextLeftWood(float dt, float speed) {
 	m_Position = m_woodQuantityText.getPosition();
-	float newX = m_Position.x -= m_Position.x * speed * dt;
+	float newX = m_Position.x -= m_Position.x * speed * dt + 1;
+	if (-100 > m_Position.x)
+	{
+		newX = m_Position.x = -100 + speed * dt;
+	}
 	m_woodQuantityText.setPosition(newX, m_Position.y);
 }
 
 void Hud::moveTextLeftStone(float dt, float speed) {
 	m_Position = m_stoneQuantityText.getPosition();
-	float newX = m_Position.x -= m_Position.x * speed * dt;
+	float newX = m_Position.x -= m_Position.x * speed * dt + 1;
+	if (-100 > m_Position.x)
+	{
+		newX = m_Position.x = -100 + speed * dt;
+	}
 	m_stoneQuantityText.setPosition(newX, m_Position.y);
 }
 
 void Hud::moveTextLeftIron(float dt, float speed) {
 	m_Position = m_ironQuantityText.getPosition();
-	float newX = m_Position.x -= m_Position.x * speed * dt;
+	float newX = m_Position.x -= m_Position.x * speed * dt + 1;
+	if (-100 > m_Position.x)
+	{
+		newX = m_Position.x = -100 + speed * dt;
+	}
 	m_ironQuantityText.setPosition(newX, m_Position.y);
 }
 
 void Hud::moveTextLeftSoul(float dt, float speed) {
 	m_Position = m_soulQuantityText.getPosition();
-	float newX = m_Position.x -= m_Position.x * speed * dt;
+	float newX = m_Position.x -= m_Position.x * speed * dt + 1;
+	if (-100 > m_Position.x)
+	{
+		newX = m_Position.x = -100 + speed * dt;
+	}
 	m_soulQuantityText.setPosition(newX, m_Position.y);
 }

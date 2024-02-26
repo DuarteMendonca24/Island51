@@ -106,6 +106,14 @@ void Engine::update(float dtAsSeconds)
             m_hud.moveTextRightStone(dtAsSeconds, 1);
             m_hud.moveTextRightIron(dtAsSeconds, 1);
             m_hud.moveTextRightSoul(dtAsSeconds, 1);
+            if (300 <= backgroundInventory)
+            {
+                backgroundInventory = backgroundInventory;
+            }
+            else
+            {
+                backgroundInventory += 500 * dtAsSeconds;
+            }
         }
         
         if (!m_inventoryActive)
@@ -118,6 +126,14 @@ void Engine::update(float dtAsSeconds)
             m_hud.moveTextLeftStone(dtAsSeconds, 1);
             m_hud.moveTextLeftIron(dtAsSeconds, 1);
             m_hud.moveTextLeftSoul(dtAsSeconds, 1);
+            if (0 >= backgroundInventory)
+            {
+                backgroundInventory = backgroundInventory;
+            }
+            else
+            {
+                backgroundInventory -= 500 * dtAsSeconds;
+            }
         }
         //Update code for the enemies
         // ----------------------------------------------------------------------------------------
@@ -513,6 +529,7 @@ void Engine::update(float dtAsSeconds)
         m_hud.setHealthSize(player.getHealth());
         // Hunger bar width is 
         m_hud.setHungerSize(m_currentHunger);
+        m_hud.setBackgroundSize(backgroundInventory);
         //Update last the HUD frame
         framesSinceLastHUDUpdate = 0;
         //Update last the time since
@@ -555,7 +572,7 @@ void Engine::update(float dtAsSeconds)
         if (m_EnoughResources)
         {
             // Increment m_SecondsSince by the elapsed time
-            m_SecondsSince += dtAsSeconds;
+            m_SecondsSince += 10 * dtAsSeconds;
         }
         // Check if m_SecondsSince is greater than or equal to 1 and m_EnoughResources is still true
         if (m_SecondsSince >= 1 && m_EnoughResources)

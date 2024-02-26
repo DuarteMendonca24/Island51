@@ -149,9 +149,9 @@ Engine::Engine() {
 
 	//spawning resources to be icons in the inventory
 	m_inventoryIcons[0].spawnPickup(4,30, 400, 3.5);
-	m_inventoryIcons[1].spawnPickup(5,30, 500, 3.5);
-	m_inventoryIcons[2].spawnPickup(6,30, 600, 3.5);
-	m_inventoryIcons[3].spawnPickup(3,30, 680, 3.5);
+	m_inventoryIcons[1].spawnPickup(5,30, 510, 3.5);
+	m_inventoryIcons[2].spawnPickup(6,30, 620, 3.5);
+	m_inventoryIcons[3].spawnPickup(3,30, 715, 3.5);
 	islandMusic.play();
 
 	//spawning weapon to be icons in the inventory
