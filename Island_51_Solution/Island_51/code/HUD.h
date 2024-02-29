@@ -55,7 +55,7 @@ private:
 	// Craft background
 	RectangleShape m_backgroundCraft;
 	float m_backgroundWidth = 1000;
-	float m_backgroundHeight = 900;
+	float m_backgroundHeight = 1060;
 
 	// Weapon background
 	RectangleShape m_backgroundWeapon;
@@ -90,7 +90,7 @@ private:
 	float m_backgroundHeightCraft = 100;
 
 	RectangleShape m_ammoBackground;
-	float m_backgroundWidthAmmo = 350;
+	float m_backgroundWidthAmmo = 150;
 	float m_backgroundHeightAmmo = 200;
 
 	RectangleShape m_inventoryBackground;

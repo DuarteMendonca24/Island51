@@ -92,10 +92,10 @@ private:
     TextureHolder m_TextureHolder;
 
     //number of each type of pickup the player has 
-    int numTreePickup =  10;
-    int numStonePickup = 10;
-    int numIronPickup =  10;
-    int numSoulPickup =  10;
+    int numTreePickup =  0;
+    int numStonePickup = 0;
+    int numIronPickup =  0;
+    int numSoulPickup =  0;
 
     //the tile size
     const int TILE_SIZE = 50;
@@ -243,11 +243,14 @@ private:
     Texture caveExitTexture;
     Texture caveEntrancePromptTexture;
     Texture caveExitPromptTexture;
-    Texture vigetteCaveTexture;
+    Texture vigetteCaveTexture; 
     Texture vigetteIslandTexture;
     Texture textureArrow;
     Texture textureSelect;
     Texture textureExit;
+    Texture craftingBackgroundTexture;
+    Texture boatTexture;
+    Texture pauseScreenTexture;
     
     //Sprites variables
     Sprite spriteCrosshair;
@@ -270,6 +273,9 @@ private:
     Sprite spriteArrowDown;
     Sprite spriteSelect;
     Sprite spriteExit;
+    Sprite craftingBackground;
+    Sprite boat;
+    Sprite pauseScreen;
 
     //SoundBuffer Variables
     SoundBuffer mainMenuMusicBuffer;

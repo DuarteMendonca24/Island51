@@ -137,7 +137,15 @@ std::list<Pickup*> Engine::createPickup(Vector2f position)
 	srand(static_cast<int>(time(0)));
 	int type = (rand() % 3) + 1;
 	// Spawn the pickup at the specified position with the random type
-	pickup->spawnPickup(type, posX, posY, 1);
+	if (type == 3)
+	{
+		pickup->spawnPickup(type, posX, posY, 2.5);
+
+	}
+	else
+	{
+		pickup->spawnPickup(type, posX, posY, 1);
+	}
 	// Add the pickup to the list
 	pickupList.push_back(pickup);
 	// Return the list of Pickup pointers representing the spawned pickup

@@ -29,10 +29,8 @@ Hud::Hud() {
 	// Game Over
 	m_gameOverText.setFont(m_font);
 	m_gameOverText.setCharacterSize(82);
-	m_gameOverText.setFillColor(Color::Color(255,50,0));
-	m_gameOverText.setCharacterSize(125);
 	m_gameOverText.setFillColor(Color::Color(255, 50, 0));
-	m_gameOverText.setPosition(250, 850);
+	m_gameOverText.setPosition(250, 960);
 	m_gameOverText.setString("YOU DIED, PRESS SPACE TO CONTINUE");
 	m_gameOverText.setOutlineColor(Color::Black);
 	m_gameOverText.setOutlineThickness(5);
@@ -75,11 +73,12 @@ Hud::Hud() {
 
 	m_gameruleText.setString(ruleStream.str());
 
-	// Ammo
+	//ammo Text
 	m_ammoText.setFont(m_font3);
-	m_ammoText.setCharacterSize(55);
+	m_ammoText.setCharacterSize(50);
 	m_ammoText.setFillColor(Color::White);
-	m_ammoText.setPosition(150, 980);
+	m_ammoText.setPosition(5, resolution.y - 150);
+	m_ammoText.setString("");
 
 	// Score
 	m_scoreText.setFont(m_font);
@@ -102,7 +101,6 @@ Hud::Hud() {
 	m_healthBarBackground.setSize(Vector2f(m_healthBarWidth, m_healthBarHeight));
 	m_healthBarBackground.setFillColor(Color(52, 43, 55));
 	m_healthBarBackground.setPosition(resolution.x - m_healthBarWidth - 5, resolution.y - m_healthBarHeight - 5);
-
 
 	m_hungerBar.setSize(Vector2f(m_hungerBarStartWidth, m_hungerBarHeight));
 	m_hungerBar.setFillColor(Color(205, 133, 63));
@@ -169,8 +167,8 @@ Hud::Hud() {
 
 	//Background Craft
 	m_backgroundCraft.setSize(Vector2f(m_backgroundWidth, m_backgroundHeight));
-	m_backgroundCraft.setFillColor(Color::Color(0, 0, 255, 1));
-	m_backgroundCraft.setPosition(490, 0);
+	m_backgroundCraft.setFillColor(Color::Color(52, 43, 55, 150));
+	m_backgroundCraft.setPosition(490, 10);
 
 	m_notEnoughResourcse.setFont(m_font2);
 	m_notEnoughResourcse.setCharacterSize(50);
@@ -184,7 +182,7 @@ Hud::Hud() {
 	darkness.setSize(Vector2f(3000.0f, 3000.0f));
 
 	//darkness
-	m_pausedBackground.setFillColor(Color::Color(0, 0, 0, 100));
+	m_pausedBackground.setFillColor(Color::Color(32, 35, 35, 150));
 	m_pausedBackground.setOrigin(Vector2f(0, 0));
 	m_pausedBackground.setSize(Vector2f(3000.0f, 3000.0f));
 
@@ -288,15 +286,9 @@ Hud::Hud() {
 	m_craftText.setString("E		   W		   S	   Shift");
 
 	m_ammoBackground.setSize(Vector2f(m_backgroundWidthAmmo, m_backgroundHeightAmmo));
-	m_ammoBackground.setFillColor(Color(128, 128, 128, 150));
+	m_ammoBackground.setFillColor(Color(52, 43, 55, 150));
 	m_ammoBackground.setPosition(0, resolution.y - 150);
 
-	//ammo Text
-	m_ammoDisplayText.setFont(m_font2);
-	m_ammoDisplayText.setCharacterSize(20);
-	m_ammoDisplayText.setFillColor(Color::White);
-	m_ammoDisplayText.setPosition(0, resolution.y - 140);
-	m_ammoDisplayText.setString("						Ammo");
 
 	m_inventoryBackground.setSize(Vector2f(m_backgroundWidthInventory, m_backgroundHeightInventory));
 	m_inventoryBackground.setFillColor(Color(52, 43, 55, 150));

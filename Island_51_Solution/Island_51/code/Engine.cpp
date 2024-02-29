@@ -40,11 +40,21 @@ Engine::Engine() {
 	caveExitPromptTexture = TextureHolder::GetTexture("graphics/CaveExit2.png");
 	vigetteCaveTexture = TextureHolder::GetTexture("graphics/CaveVigette.png");
 	vigetteIslandTexture = TextureHolder::GetTexture("graphics/IslandVigette.png");
+	craftingBackgroundTexture = TextureHolder::GetTexture("graphics/CraftingBackground.png");
+	boatTexture = TextureHolder::GetTexture("graphics/boat.png");
+	pauseScreenTexture = TextureHolder::GetTexture("graphics/PauseScreen.PNG");
 
+	boat.setTexture(boatTexture);
+	boat.setPosition(Vector2f(30 * 50, 31 * 50));
+
+	pauseScreen.setTexture(pauseScreenTexture);
+	pauseScreen.setPosition(Vector2f(700, 150));
+	craftingBackground.setTexture(craftingBackgroundTexture);
 	vigetteCave.setTexture(vigetteCaveTexture);
 	vigetteIsland.setTexture(vigetteIslandTexture);
 	vigetteCave.setPosition(Vector2f(0, 0));
 	vigetteIsland.setPosition(Vector2f(0,0));
+	craftingBackground.setPosition(Vector2f(0, 0));
 	caveEntrancePrompt.setTexture(caveEntrancePromptTexture);
 	caveEntrancePrompt.setPosition(Vector2f(caveEntranceAndExit.x, caveEntranceAndExit.y - 33));
 	caveExitPrompt.setTexture(caveExitPromptTexture);
@@ -53,6 +63,7 @@ Engine::Engine() {
 	caveEntrance.setPosition(caveEntranceAndExit);
 	caveExit.setTexture(caveExitTexture);
 	caveExit.setPosition(caveEntranceAndExit);
+
 	textureArrow = TextureHolder::GetTexture("graphics/arrow.png");
 	textureSelect = TextureHolder::GetTexture("graphics/select.png");
 	textureExit = TextureHolder::GetTexture("graphics/exit.png");
@@ -162,10 +173,10 @@ Engine::Engine() {
 	m_weaponIcons[4].spawn(5, 1.1, resolution.x / 2 + 190, resolution.y - 65);
 	//spawning weapon to be icons 
 	m_weaponIcons2[0].spawn(1, 2.5, 50, 1000);
-	m_weaponIcons2[1].spawn(2, 2, 50, 950);
-	m_weaponIcons2[2].spawn(3, 2, 50, 950);
-	m_weaponIcons2[3].spawn(4, 2, 50, 950);
-	m_weaponIcons2[4].spawn(5, 2, 50, 950);
+	m_weaponIcons2[1].spawn(2, 2, 50, 990);
+	m_weaponIcons2[2].spawn(3, 2, 50, 990);
+	m_weaponIcons2[3].spawn(4, 2, 50, 990);
+	m_weaponIcons2[4].spawn(5, 2, 50, 990);
 
 	//Reading the highscores from the file
 	std::ifstream readFile;

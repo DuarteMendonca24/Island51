@@ -36,7 +36,6 @@ void Engine::draw()
         // set the mainView to be displayed in the m_Window
         // And draw everything related to it
         m_Window.setView(mainView);
-
         
         if (playerInsideCave)
         {
@@ -76,7 +75,8 @@ void Engine::draw()
            
                }
            }
-           
+
+           m_Window.draw(boat);
            // Make sure that it active in the game
            if (m_illusionist) {
            
@@ -191,25 +191,6 @@ void Engine::draw()
         m_Window.draw(m_hud.getHungerBarBackground());
         m_Window.draw(m_hud.getHungerBar());
         m_Window.draw(m_hud.getDarkness());
-        //m_Window.draw(m_hud.getHungerText());
-        //m_Window.draw(m_hud.getHealthText());
-        //m_Window.draw(m_hud.getHungerText());
-        //m_Window.draw(m_hud.getHealthText());
-        
-        //Draw inventory icons and quantities if the inventory is active
-        /*
-        if (m_inventoryActive) {
-            m_Window.draw(m_hud.getInventoryBackgroud());
-            //draw the inventory icons
-            for (int i = 0; i < 4; i++)
-            {
-                m_Window.draw(m_inventoryIcons[i].getSprite());
-            }
-            m_Window.draw(m_hud.getSoulQuantityText());
-            m_Window.draw(m_hud.getWoodQuantityText());
-            m_Window.draw(m_hud.getStoneQuantityText());
-            m_Window.draw(m_hud.getIronQuantityText());
-        }*/
         m_Window.draw(m_hud.getInventoryBackgroud());
         for (int i = 0; i < 4; i++)
         {
@@ -287,7 +268,7 @@ void Engine::draw()
         //Setting Mouse Cursor to be visible in the game
         m_Window.setMouseCursorVisible(true);
         // Draw the pause
-        m_Window.draw(spritePause2);
+        m_Window.draw(pauseScreen);
     }
 
    // Check if the game state is Game Over
@@ -334,8 +315,12 @@ void Engine::draw()
     // Check if the game state is Craft
     if (state == State::CRAFT)
     {
+
+        m_Window.draw(craftingBackground);
         // draw the background for the crafting 
         m_Window.draw(m_hud.getBackgroudCraft());
+
+        m_Window.draw(m_hud.getInventoryBackgroud());
 
         // Draw the creafting selction
         select.draw(m_Window);

@@ -124,12 +124,14 @@ void Engine::input()
 				mainMenuMusic.play();
 				// Reset the player's stats
 				playerInsideCave = false;
+				teleportEnemiesAndResources();
 				player.resetPlayerStats();
 				player.setPosition(Vector2f(40.0f * 50.0f,30.0f * 50.0f));
 				numTreePickup =  0;
 				numStonePickup = 0;
 				numIronPickup =  0;
 				numSoulPickup =  0;
+				m_currentHunger = 200;
 				
 			}
 			// Going to the Main Menu
@@ -255,7 +257,7 @@ void Engine::input()
 						pickup.play();
 					}
 					// craft arrow
-					else if (select.GetPressed() == 3 && numTreePickup >= 2 && numStonePickup >= 2)
+					else if (select.GetPressed() == 3 && numTreePickup >= 1 && numStonePickup >= 1)
 					{
 						arrowBulletsInClip = arrowBulletsInClip + 20;
 						numTreePickup = numTreePickup - 1;
@@ -445,7 +447,7 @@ void Engine::input()
 				m_StoneWeaponActive2 = false;
 				m_IronWeaponActive2 = true;
 				m_BowWeaponActive2 = true;
-				// Equipping the correct parameters for the Stone Sword
+				// Equipping the correct parameters for the  
 				currentBullet = stoneSwordCurrentBullet;
 				bulletsInClip = stoneSwordBulletsInClip;
 				fireRate = stoneSwordFireRate;

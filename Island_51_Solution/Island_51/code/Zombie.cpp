@@ -72,6 +72,17 @@ void Zombie::spawn(float startX, float startY, int type, int seed)
 		m_type = type;
 
 		break;
+	default:
+		// Mushroom Golem(spawns 2 rats when killed)
+		m_Sprite = Sprite(TextureHolder::GetTexture(
+			"graphics/boss2.png"));
+		m_Sprite.setTextureRect(sf::IntRect{ 209, 11, 52, 58 });
+		m_Speed = MUSHROOMGOLEM_SPEED;
+		m_Health = MUSHROOMGOLEM_HEALTH;
+		m_ScoreValue = MUSHROOMGOLEM_VALUE;
+		m_type = type;
+		break;
+
 	}
 
 	// Modify the speed to make the zombie unique

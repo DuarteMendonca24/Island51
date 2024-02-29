@@ -27,7 +27,7 @@ void Pickup::spawnPickup(int type, float startX, float startY , float scale)
 		break;
 
 	case 3:
-		// Food
+		// Soul
 		m_Sprite = Sprite(TextureHolder::GetTexture("graphics/soul.png"));
 
 		m_Type = type;

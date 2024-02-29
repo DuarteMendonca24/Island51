@@ -451,6 +451,11 @@ void Engine::update(float dtAsSeconds)
                     // Soul Pickup
                     else if ((*it5)->getType() == 3) {
                         numSoulPickup++;
+                        int randomNum = RandomBetween(0, 3);
+                        if (randomNum == 0)
+                        {
+                            numSoulPickup++;
+                        }
                         // Erase the pickup from the list and get the next valid iterator
                         it5 = m_PickupList.erase(it5);
                     }
@@ -618,8 +623,8 @@ void Engine::update(float dtAsSeconds)
         // Create a stringstream for formatting the high score text
         stringstream ssHighScore;
         // Update the high score text with the scores from the array
-        ssHighScore << "High Scores" <<
-            "\n\n\n 1 -> " << m_scores[0] << " pts" <<
+        ssHighScore << "\nHigh Scores" <<
+            "\n\n 1 -> " << m_scores[0] << " pts" <<
             "\n\n 2 -> " << m_scores[1] << " pts" <<
             "\n\n 3 -> " << m_scores[2] << " pts" <<
             "\n\n 4 -> " << m_scores[3] << " pts" <<
